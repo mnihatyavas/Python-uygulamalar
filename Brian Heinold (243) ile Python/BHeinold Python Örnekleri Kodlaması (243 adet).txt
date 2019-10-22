@@ -1,0 +1,285 @@
+1.Basics (145)
+    1.1.Getting Started (6)
+        p10103a.py: Girilen selsiyüs dereceyi fahrenhayt'e çeviren örnek.
+        p10103b.py: Girilen iki sayýnýn ortalamasýný gösteren örnek.
+        p10105.py: input ile dizge ve eval-input ile sayýsal veri giriþi örneði.
+        p10106.py: print sonunda sep-eration ve end kullanýmý örneði.
+        p10107.py: Deðiþkenlere deðer atama ve bunlarý sonrasýnda hatýrlama örneði.
+        p10108_sýnav.py: Ara sýnav örneði.
+
+    1.2.For loops (5)
+        p10201.py: for-range döngüsüyle tekrarlý veri giriþ ve görüntüleme örneði.
+        p10202.py: for-i-range döngüsünde i deðiþkeni adýný deðiþtirme örneði.
+        p10203.py: for-i-range(ilk,son,artýþ/azalýþ) deðerlerini deðiþtirme örneði.
+        p10204.py: for-range döngüsüyle taban-tabana yýldýzlý üçgen çizme örneði.
+        p10205_sýnav.py: Ara sýnav örneði.
+
+    1.3.Numbers (6)
+        p10304.py: randint ile [8->257] arasý tesadüfi sayýnýn 2**sayý deðeri örneði.
+        p10305.py: pi, sin, asin modüllü ve abs ile round modülsüz fonksiyonlar örneði.
+        p10306.py: dir(math), dir(pi), dir(sin), dir(asin), dir(abs) ve dir(round) döküm örneði.
+        p10307.py: randint, random, pow, factorial fonksiyonlarý ve (**) üs örneði.
+        p10308a_sýnav.py: Ara sýnav örneði-1.
+        p10308b_sýnav.py: Ara sýnav örneði-2.
+
+    1.4.If statements (7)
+        p10401.py: if-else ile 1->5 arasý geliþigüzel sayý tahmini örneði.
+        p10402.py: if Not <= 100 and Not >=95, if hasta and Not == 0 ve elif not (Not > 24) örneði.
+        p10403.py: if 100 >= Not >=95 ve if not (100>= Not >=25) örneði.
+        p10404.py: if-elif-..else örneði.
+        p10405a_sýnav.py: Ara sýnav örneði-1.
+        p10405b_sýnav.py: Ara sýnav örneði-2.
+        p10405c_sýnav.py: Ara sýnav örneði-3.
+
+    1.5.Miscellaneous Topics I (7)
+        p10501.py: Tekrarlý sayaç artýþý ve x,y=y,x deðiþtokuþ örneði.
+        p10502.py: Toplam, ortalama, asal sayýlar (1 ve kendine bölünen) ve enküçük-enbüyük örneði.
+        p10506.py: Virgülle ayrýk çoklu veri giriþi/input ve çoklu satýr yorumu (""") örneði.
+        p10508.py: print("-"*50) ve "if randint(0,10000) % 12 == 0" % kalan örneði.
+        p10509a_sýnav.py: Ara sýnav örneði-1.
+        p10509b_sýnav.py: Ara sýnav örneði-2.
+        p10509c_sýnav.py: Ara sýnav örneði-3.
+
+    1.6.Strings (9)
+        p10601.py: ",',""" ile dizge, input'la dizge giriþi ve len(dizge) ile uzunluk örneði.
+        p10602.py: s=s+k ile dizge eklentisi, "karakter-ler" in s ile içerilme örneði.
+        p10604.py: for i in range(len(s)): s[i], range(len(s)-1,-1,-1) ve range(len(s)-1,-len(s)-1,-1) örneði.
+        p10605.py: s[0:len(s)], s[2:10:2], s[:5], s[5:] ve s[::-1] tersten örneði.
+        p10606.py: Ýngiliz alfabesinden eksiltme-eklemeyle türkçe alfabeye örneði.
+        p10608.py: cümle.count(), indeks, raplace, isalpha ve dir(str) metodlarý listeleme örneði.
+        p10610.py: str(pi) tamsayý ve küsürat ayrýmý, mesaj þifreleme ve deþifreleme örneði.
+        p10611a_sýnav.py: Ara sýnav örneði-1.
+        p10611b_sýnav.py: Ara sýnav örneði-2.
+
+    1.7.Lists (8)
+        p10701.py: Listeye veri giriþi, ekleme, çoklama; sort, reverse, len, append ve metodlar listesi örneði.
+        p10706a.py: Listelerle frekans toplamý ve yüzdesi örneði.
+        p10706b.py: 10 soru cevaplý listelerle test deðerlemesi örneði.
+        p10707a_sýnav.py: Ara sýnav örneði-1.
+        p10707b_sýnav.py: Ara sýnav örneði-2.
+        p10707c_sýnav.py: Ara sýnav örneði-3.
+        p10707d_sýnav.py: Ara sýnav örneði-4.
+        p10707e_sýnav.py: Ara sýnav örneði-5.
+
+    1.8.More with Lists (15)
+        p10801.py: Liste'den tesadüfi tekli choise veya gruplu sample eleman seçimi örneði.
+        p10802.py: split'le dizgeyi listeye çevirme örneði.
+        p10803.py: join'le listeyi dizgeye çevirme örneði.
+        p10804.py: Comprehension'le kapsamlý listelerin pratik teþekkülü örneði.
+        p10805.py: Comprehension'li pratik listelere devam örneði.
+        p10806.py: 2 ve daha çok boyutlu listeler örneði.
+        p10807a_sýnav.py: Ara sýnav örneði-1.
+        p10807b_sýnav.py: Ara sýnav örneði-2.
+        p10807c_sýnav.py: Ara sýnav örneði-3.
+        p10807d_sýnav.py: Ara sýnav örneði-4.
+        p10807e_sýnav.py: Ara sýnav örneði-5.
+        p10807f_sýnav.py: Ara sýnav örneði-6
+        p10807g_sýnav.py: Ara sýnav örneði-7
+        p10807h_sýnav.py: Ara sýnav örneði-8
+        p10807i_sýnav.py: Ara sýnav örneði-9.
+
+    1.9.While loops (14)
+        p10901.py: while döngüsüyle genel bir F-C-K ýsý çevirici örneði.
+        p10904.py: "while not input()" ve "while not input().isalpha()" döngülerle asal sayý tesbiti örneði.
+        p10905a.py: while döngülü 0->100 arasý sayý tahminleme örneði.
+        p10905b.py: Ayný tahminlemenin for-try-except'le yönlendilirmeli örneði.
+        p10906a_sýnav.py: Ara sýnav örneði-1.
+        p10906b_sýnav.py: Ara sýnav örneði-2.
+        p10906c_sýnav.py: Ara sýnav örneði-3.
+        p10906d_sýnav.py: Ara sýnav örneði-4.
+        p10906e_sýnav.py: Ara sýnav örneði-5.
+        p10906f_sýnav.py: Ara sýnav örneði-6.
+        p10906g_sýnav.py: Ara sýnav örneði-7.
+        p10906h_sýnav.py: Ara sýnav örneði-8.
+        p10906i_sýnav.py: Ara sýnav örneði-9.
+        p10906j_sýnav.py: Ara sýnav örneði-10.
+
+    1.10.Miscellaneous Topics II (17)
+        p11001.py: Palindromik (tersiyle ayný) sayýlar, doðum gününden bugüne günsayýsý, dizge toplamý, küsüratý, asal sayýlar örneði.
+        p11003.py: Kýsakesek yöntemler (toplama, çýkarma, çarpma, bölme, eþittir, yerdeðiþtirme, dizge endeksleri) örneði.
+        p11007.py: Formatlý sayýlar (d, f, binler, küsürat, yanaþýklýk) ve dizgeler (s) örneði.
+        p11008.py: 10x10 formatlý çarpým cetveli; 2x+3y=4 ve x-y=7 þartýný saðlayan x,y; x^2+y^2=z^2 þartýný saðlayan x,y,z; harfleri artýrarak yazma örneði.
+        p11009a_sýnav.py: Ara sýnav örneði-1.
+        p11009b_sýnav.py: Ara sýnav örneði-2.
+        p11009c_sýnav.py: Ara sýnav örneði-3.
+        p11009d_sýnav.py: Ara sýnav örneði-4.
+        p11009e_sýnav.py: Ara sýnav örneði-5.
+        p11009f_sýnav.py: Ara sýnav örneði-6.
+        p11009g_sýnav.py: Ara sýnav örneði-7.
+        p11009h_sýnav.py: Ara sýnav örneði-8.
+        p11009i_sýnav.py: Ara sýnav örneði-9.
+        p11009j_sýnav.py: Ara sýnav örneði-10.
+        p11009k_sýnav.py: Ara sýnav örneði-11.
+        p11009l_sýnav.py: Ara sýnav örneði-12.
+        p11009m_sýnav.py: Ara sýnav örneði-13.
+
+    1.11.Dictionaries (13)
+        p11101.py: Anahtar-deðer çiftli sözlük yaratma, deðiþiklik ve silme örneði.
+        p11102.py: Sözlükten kelime bulma, kelime puanýný topama ve 52'lik sýralý/karýlý vanti örneði.
+        p11103.py: A-Z/a-z ASCII harfler ve deðerleri, sözlük.items()/keys()/values() örneði.
+        p11104.py: Metin dosyasýndan okunan kelimeleri artan sýralayýp tekrar sayýlarýnýn tespiti örneði.
+        p11105a_sýnav.py: Ara sýnav örneði-1.
+        p11105b_sýnav.py: Ara sýnav örneði-2.
+        p11105c_sýnav.py: Ara sýnav örneði-3.
+        p11105d_sýnav.py: Ara sýnav örneði-4.
+        p11105e_sýnav.py: Ara sýnav örneði-5.
+        p11105f_sýnav.py: Ara sýnav örneði-6.
+        p11105g_sýnav.py: Ara sýnav örneði-7.
+        p11105h_sýnav.py: Ara sýnav örneði-8.
+        p11105i_sýnav.py: Ara sýnav örneði-9.
+
+    1.12.Text Files (10)
+        p11201.py: Metin dosyasýndan satýr-satýr okuma ve yazma örneði.
+        p11203a.py: "p10706b.py" 10 soru-cevap testini dosyalamaya uyarlama örneði.
+        p11203b.py: 2 takýmýn 1-150 skorunun 1000 adet farklý tarihteki azami fark listesi dosyalama örneði.
+        p11203c.py: "p11105h_sýnav.py" dünya zaman dilimleri'ni dosyalamaya uyarlama örneði.
+        p11204.py: Metin dosyasý kelimelerinin uzunluklarý, sesli/sessiz harfle baþlamalarý, ibare içermeleri örneði.
+        p11205a_sýnav.py: Ara sýnav örneði-1.
+        p11205b_sýnav.py: Ara sýnav örneði-2.
+        p11205c_sýnav.py: Ara sýnav örneði-3.
+        p11205d_sýnav.py: Ara sýnav örneði-4.
+        p11205e_sýnav.py: Ara sýnav örneði-5.
+
+    1.13.Functions (13)
+        p11301.py: "def-ine" ile parametresiz fonksiyon tanýmlama örneði.
+        p11302.py: "def" ile 1 ve 2 parametreli fonksiyon tanýmlama örneði.
+        p11303.py: Parametreli ve "return" deðer dönüþlü fonksiyonlarla ýsý derecesi ve 2 bilinmeyenli denklem örneði.
+        p11304.py: Varsayýlý ve deðiþken isimli parametreli fonksiyonlar örneði.
+        p11305.py: Fonksiyonlarda lokal/global deðiþkenler ve bunlarýn dýþ deðerlere etkimesi örneði.
+        p11306a_sýnav.py: Ara sýnav örneði-1.
+        p11306b_sýnav.py: Ara sýnav örneði-2.
+        p11306c_sýnav.py: Ara sýnav örneði-3.
+        p11306d_sýnav.py: Ara sýnav örneði-4.
+        p11306e_sýnav.py: Ara sýnav örneði-5.
+        p11306f_sýnav.py: Ara sýnav örneði-6.
+        p11306g_sýnav.py: Ara sýnav örneði-7.
+        p11306h_sýnav.py: Ara sýnav örneði-8.
+
+    1.14.Object-Oriented Programming (15)
+        p11402a.py: 2 parametreli init sýnýfýyla 7 farklý hesap iþlemi örneði.
+        p11402b.py: Verili dizgedeki kelimelerin sýnýf nesnesiyle analizi örneði.
+        p11403a.py: Ebeveyn ve miraslayan çocuk sýnýf metodlarý örneði.
+        p11403b.py: Çocuðun ebeveyn tip deðiþkeni ve metodlarýný da miraslanmasý örneði.
+        p11404.py: 52'lik standart Vanti sýnýf nesnesiyle daðýtýlan ardýþýk kartýn düþük/yüksekliði örneði.
+        p11405.py: 3 oyunculu Kazý_Kazan sýnýf nesnesi genel oyunu örneði.
+        p11407a_sýnav.py: Ara sýnav örneði-1.
+        p11407b_sýnav.py: Ara sýnav örneði-2.
+        p11407c_sýnav.py: Ara sýnav örneði-3.
+        p11407d_sýnav.py: Ara sýnav örneði-4.
+        p11407e_sýnav.py: Ara sýnav örneði-5.
+        p11407f_sýnav.py: Ara sýnav örneði-6
+        p11407g_sýnav.py: Ara sýnav örneði-7.
+        p11407h_sýnav.py: Ara sýnav örneði-8.
+        p11407i_sýnav.py: Ara sýnav örneði-9.
+
+2.Graphics (48)
+    2.15.GUI Programming with Tkinter (20)
+        p21501.py: Dereceyi fahrenhayta çeviren veri giriþli tkinter GUI örneði.
+        p21502.py: Label etiketlerde font, text, grid ve configure özellikleri örneði.
+        p21503.py: Label etiketlerde bg, row, column, columnspan, padx ve pady örneði.
+        p21504.py: Entry ile dizgesel isim ve sayýsal yaþ veri giriþi örneði.
+        p21505a.py: Button ile kontrollü veri giriþi örneði.
+        p21505b.py: Alfabenin 29 harfinden lambda destekli buton'lar yaratma örneði.
+        p21506.py: Alfabenin her buton tuþuna kaç kez týklandýðýnýn takibi örneði.
+        p21507a.py: 2 oyunculu ve (3x3) matrisli tic_tac_toe (Kazý_Kazan) oyunu örneði.
+        p21507b.py: 3 oyunculu ve (6x6) hücreli Kazý_Kazan oyunu örneði.
+        p21507c.py: 3 oyunculu ve (5x7) týklamalý tesadüfi Kazý_Kazan oyunu örneði.
+        p21507d.py: 3 oyunculu ve (5x7) týklamasýz tesadüfi Kazý_Kazan oyunu örneði.
+
+    2.16.GUI Programming II (18)
+        p21601.py: Diðer programlarýn import'layabileceði tesadüfi Renk.renk() metodu örneði.
+        p21601a.py: A-Z ve Button düðmeleri karýþýklýðý örneði.
+        p21601b.py: grid-row düzenlemesiyle A-Z ve Button karýþýklýðýnýn giderilmesi örneði.
+        p21601c.py: A-Z düðmelerini Frame'le düzenleme örneði.
+        p21602.py: %10-15-100-255 seçenekli genel renk #ffffff-->rgb(255,255,255) çevrimi örneði.
+        p21603.py: PhotoImage widget/bileþeniyle .gif resim dosyalarýný görüntüleme örneði.
+        p21604.py: Import'lanabilir 1000 elemanlý tesadüfi renk listesi örneði.
+        p21604a.py: Canvas'la çizim (kutu, hat, oval, daire, resim), silme, deðiþtirme, animasyon örneði.
+        p21604b.py: Canvas'la tesadüfi zemin/hat renkli kalýn ve renkli çizgi örneði.
+        p21604c.py: Canvas'la içiçe kutu, çizgi, oval, poligon yýldýz ve metin çizimi örneði.
+        p21604d.py: Canvas'la çoklu yýldýz poligon, bitmap, ýzgara, resim ve oval'li sürükle-yaz örneði.
+        p21605.py: Çoklu tercihli Checkbutton ve tikel tercihli Radiobutton örneði.
+        p21606.py: Text ve import'lu ScrollText ile çok satýrlý metin girme, deðiþtirme, silme örneði.
+        p21607.py: Scale ölçekli sürgüsü ve deðerlerini get()'le alýp görüntüleme örneði.
+        p21608.py: Import math'li her türlü hesap iþlemi görüntülemeyi "Return" ile olay yakalama örneði.
+        p21609a.py: 4 adet yön tuþlarýyla bir Canvas kutusunun hareketlendirilmesi örneði.
+        p21609b.py: Fare olayýna baðlamalý kutu sürükleme, ebatlama, renkleme örneði.
+        p21609c.py: Ayný fareli kutu sürükleme, ebatlama, renklemeyi güncelleme örneði.
+
+    2.17.GUI Programming III (10)
+        p21703.py: Bir bileþen etkinliðini cget'le alma ve state'le deðiþtirme örneði.
+        p21704a.py: Tüm python mesaj kutularý ve kök.protocol GUI kapatma yönetimi örneði.
+        p21704b.py: Önceki örneðin frame'li düðmelerle tek-tek kontrolü örneði.
+        p21706.py: Günlük saatý 23:59:59 biçiminde görüntüleme örneði.
+        p21707a.py: askopenfilename'le istenilen tek bir (metin) dosyanýn okunup görüntülenmesi örneði.
+        p21707b.py: Önceki örneðin butonlu ve istenilen her dosyaya uygulanmasý örneði.
+        p21708.py: askopenfilename ve asksaveasfilename ile dosya okuma ve farklý saklama örneði.
+        p21709.py: Toplevel ile istenilen adette çoklu pencere yaratma örneði.
+        p21710.py: Buton'lu pack'le sol, sað, üst, alt, X, Y, herikisi, esnet vb bileþen paketleme örneði.
+        p21711.py: StringVar() ve textvariable'le düðme ve etiket metni deðiþikliði örneði.
+
+    2.18.Further Graphical Programming
+
+3.Intermediate Topics (50)
+    3.19.Miscellaneous topics III
+    3.20.Useful modules (12)
+        p32001.py: random geliþigüzel sayý üretme modülü örneði.
+        p32002a.py: time, datetime modülleri ve sleep, strftime örneði.
+        p32002b.py: calendar modülü ve monthcalendar metoduyla aylýk takvim üretme örneði.
+        p32002c.py: calendar.TextCalendar, HTMLCalendar, itermonthdays, month_name, day_name örneði.
+        p32003a.py: os modülüyle dizin yaratma, deðiþtirme, silme; dizin ve dosya listeleme örneði.
+        p32003b.py: os ve shutil ile dosya kopyalama örneði.
+        p32003c.py: os.path.split, join, basename, dirname, exists ve getsize örneði.
+        p32003d.py: os.walk ile istenilen dizin ve altýndakileri listeleme örneði.
+        p32004.py: os.system ve execv'yle .exe programlarýný iþletme; sys.exit()'le çýkýþ örneði.
+        p32005.py: zipfile modülüyle fermuarlý dosyalarý açma örneði.
+        p32006.py: urlopen modülüyle internet sayfasýný html olarak okuma örneði.
+        p32007.py: winsound Beep ve PlaySound'la ses/Wav dosyalarýný seslendirme örneði.
+
+    3.21.Regular expressions (6)
+        p32101.py: regex.substitute (raw"kalýp", "deðiþtir", "dizge") ile düzenli ifadeler örneði.
+        p32102.py: replace ile re.sub karþýlaþtýrmalý örneði.
+        p32104.py: re.sub "deðiþtir" için def fonksiyon kullanýmý örneði.
+        p32105.py: re.sub, re.findall, re.split, re.match, re.search, re.finditer, re.compile kalýplý kalýp.sub ve kalýp.findall örneði.
+        p32106a.py: re.compile kalýp.match ("dizge") ile roma rakamýný ondalýða çevirme örneði.
+        p32106b.py: re.match ("(gr1) (gr2) (gr3)") ile "ayadý. gg, yyyy" veriyi "gg/aa/yyyy"a çevirme örneði.
+
+    3.22.Math (13)
+        p32201.py: atan2 ile 0->180 derece, kayannokta e gösterimi, modf ile tam ve küsürat eldesi örneði.
+        p32204.py: fraction modülünün Fraction numeratör/denominatör ve gcd/eob örneði.
+        p32205.py: decimal modülü Decimal ondalýk ve bölünen/bölen ile getcontext().prec hassasiyet deðiþtirme örneði.
+        p32206a.py: cmart mülüyle kompleks sayýlar, polar ve rectangular gösterimi örneði.
+        p32206b.py: PILL (Pillow) modülü ve kompleks sayýlarla renkli mozaik resmi yaratma GUI örneði.
+        p32206c.py: PILL modülü ve kompleks sayýlý gri mite parazit resmi yaratma GUI örneði.
+        p32206d.py: PILL modüllü kompleks sayýlarla renkli mite resmi yaratma GUI örneði.
+        p32206e.py: PILL modülüyle resim açma, bulanýk filitreleme ve saklama GUI örneði.
+        p32207.py: Dev boþ matrislerin kýt deðerlerini sözlükleme ipucu örneði.
+        p32208a.py: import random'la seed, uniform ve gauss saptanabilir tesadüfilik örneði.
+        p32208b.py: from os import urandom ile saptanamaz tesadüfilik örneði.
+        p32209.py: hex, oct, bin, int, 2 argümanlý int ve 3 argümanlý pow fonksiyonlarý örneði.
+        p32210.py: >>> etkileþimli python kabuðunda iþlem yapma örneði.
+
+    3.23.Working with functions (6)
+        p32301.py: Fonksiyon nesnesi, listesi, artan/azalan sýralama, key sýralama örneði.
+        p32302.py: Öðr.no, ödev, ara ve final notuna göre artan/azalan sýralama GUI örneði.
+        p32303.py: Kendini çaðýran fonksiyonla faktöriyel ve faktör örneði.
+        4p32304.py: Map ve filter'lý (kapsamlý ve þartlý) liste, reduce add ve mul-tiply örneði.
+        p32306a.py: Sade, *'lý ve **'lý tekli, çoklu, sözlük elemanlý fonksiyon argümanlarý örneði.
+        p32306b.py: Fonksiyonda deðer saklayan nesneli GUI örneði.
+
+    3.24.The itertools and collections modules (10)
+        p32401.py: itertools modülüyle permutations ve combinations örneði.
+        p32402.py: for döngüsüyle itertools product fonksiyonunun kullanýmý örneði. 
+        p32403.py: itertoos groupby fonksiyonuyla sýrasýz/sýralý listelerde þartsýz/þartlý gruplama örneði.
+        p32404.py: itertool modülünün chain, count ve cycle fonksiyonlarý örneði.
+        p32405.py: collections Counter most_common'la dizge karakter tekrar sýklýðý örneði.
+        p32406.py: Counter'la dosya metni karakter ve kelimelerinin sýklýðýnýn artan/azalan örneði.
+        p32406x1.txt: collections Counter'la kullanýlacak Ýngilizce metin dosyasý örneði.
+        p32406x2.txt: collections Counter'la kullanýlacak Türkçe metin dosyasý örneði.
+        p32407.py: 2 ayrý Counter dizgesi +-&| iliþkileri örneði.
+        p32408.py: collections defaultdict'le dizge karakter sýklýðýný int/float/str/list/lambda'yla histogramlama örneði.
+
+    3.25.Exceptions (3)
+        p32501.py: try-except ile input sayýsal veri giriþindeki istisna yönetimi örneði.
+        p32502.py: try-except-else-finally ile dosya metni okumada istisna yönetimi örneði.
+        p32502x.txt: Hatasýz else bloðunda okunacak metin dosyasý örneði.
