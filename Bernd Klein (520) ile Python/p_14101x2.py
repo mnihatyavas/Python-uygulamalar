@@ -1,0 +1,96 @@
+# coding:iso-8859-9 Türkçe
+# p_14101x2.py: Takvim sýnýfý metodlarýyla günün artýkyýl kontrollü bir ilerletilmesi ana/alt-örneði.
+
+class Takvim (object): # Takvim sýnýfý gg/aa/yyyy takvimini yürütür...
+    aylar = (31,28,31,30,31,30,31,31,30,31,30,31)
+    yerelTarih = "Ýngiliz"
+
+    @staticmethod
+    def artýkYýl (yýl):
+        """ 
+        yýl%400 == 0 ise artýk yýldýr...
+        yýl%400 != 0 and yýl%100 == 0 ise artýk yýl deðildir...
+        yýl%4 == 0 and yýl%100 != 0 ise artýk yýldýr...
+        Tüm diðer yýllar genel yýldýr, yani artýk yýl deðildir...
+        """
+        if not yýl % 4 == 0: return False
+        elif not yýl % 100 == 0: return True
+        elif not yýl % 400 == 0: return False
+        else: return True
+
+    def __init__ (self, g, a, y): self.takvimiKur (g, a, y) # public/genel...
+    def takvimiKur (self, g, a, y): # g,a,y tamsayý ve y 4 rakamlý olmalýdýr...
+        if type (g) == int and type (a) == int and type (y) == int:
+            self.__gün = g # private/özel...
+            self.__ay = a
+            self.__yýl = y
+        else: raise TypeError ("gg,aa, yyyy tamsayý olmalýdýr!")
+    def __str__ (self):
+        if Takvim.yerelTarih == "Ýngiliz": # gg/aa/yyyy
+            return "{0:02d}/{1:02d}/{2:4d}" .format (self.__gün, self.__ay, self.__yýl)
+        else: # aa/gg/yyyy
+            # Amerikan tarih tarzýdýr...
+            return "{0:02d}/{1:02d}/{2:4d}".format (self.__ay, self.__gün, self.__yýl)
+    def ilerlet (self): # Tarihi/günü bir artýrýr...
+        ayGünleri = Takvim.aylar [self.__ay - 1]
+        if self.__ay == 2 and Takvim.artýkYýl (self.__yýl): ayGünleri +=1
+        if self.__gün == ayGünleri:
+            self.__gün = 1
+            if self.__ay == 12:
+                self.__ay = 1
+                self.__yýl +=1
+            else: self.__ay +=1
+        else: self.__gün +=1
+
+
+if __name__ == "__main__":
+    x = Takvim (31, 12, 2016)
+    print (x, end=" ")
+    x.ilerlet()
+    print ("==>bir gün sonrasý:", x)
+
+    print ("\n2016 bir artýk yýldýr:")
+    x = Takvim (28, 2, 2016)
+    print (x, end=" ")
+    x.ilerlet()
+    print ("==>bir gün sonrasý:", x)
+
+    x = Takvim (28, 2, 2019)
+    print (x, end=" ")
+    x.ilerlet()
+    print ("==>bir gün sonrasý:", x)
+
+    print ("\n1900 artýk yýl deðildir, 100'e bölünür ama 400'e deðil:")
+    x = Takvim (28, 2, 1900)
+    print (x, end=" ")
+    x.ilerlet()
+    print ("==>bir gün sonrasý:", x)
+
+    print ("\n2000 artýk yýldýr, (100'e ve) 400'e bölünür:")
+    x = Takvim (28, 2, 2000)
+    print (x, end=" ")
+    x.ilerlet()
+    print ("==>bir gün sonrasý:", x)
+
+    print ("\nAmerikan tarih tarzýna dönelim:")
+    Takvim.yerelTarih = "Amerikan"
+    x.ilerlet()
+    print ("Bir gün sonrasý:", x)  
+
+"""Çýktý:
+>python p_14101x2.py
+31/12/2016 ==>bir gün sonrasý: 01/01/2017
+
+2016 bir artýk yýldýr:
+28/02/2016 ==>bir gün sonrasý: 29/02/2016
+28/02/2019 ==>bir gün sonrasý: 01/03/2019
+
+1900 artýk yýl deðildir, 100'e bölünür ama 400'e deðil:
+28/02/1900 ==>bir gün sonrasý: 01/03/1900
+
+2000 artýk yýldýr, (100'e ve) 400'e bölünür:
+28/02/2000 ==>bir gün sonrasý: 29/02/2000
+
+Amerikan tarih tarzýna dönelim:
+Bir gün sonrasý: 03/01/2000
+"""

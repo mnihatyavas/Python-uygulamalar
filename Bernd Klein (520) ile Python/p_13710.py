@@ -1,0 +1,45 @@
+# coding:iso-8859-9
+# p_13710.py: Sýnýf-içi al-koy metodlarla özel özelliklerinin deðerlerini deðiþtirme örneði.
+
+class Robot:
+    def __init__ (self, adý=None, yýlý=2018):
+        self.__ad = adý
+        self.__yýl = yýlý
+    def selamla (self):
+        if self.__ad: print ("Selam, benim adým Robot " + self.__ad + "!")
+        else: print ("Selam, ben henüz adý konulmamýþ bir Robotum!")
+    def adKoy (self, adý): self.__ad = adý
+    def adAl (self): return self.__ad
+    def yýlKoy (self, yýlý): self.__yýl = yýlý
+    def yýlAl (self): return self.__yýl
+    def __str__ (self): return "Robotun Adý: " + self.__ad + ", Ýmalat Tarihi: " +  str (self.__yýl)
+
+
+if __name__ == "__main__":
+    x = Robot ("Mahmut Nihat", 19570417)
+    y = Robot ("Muhammed Ali", 20000101)
+    z = Robot ("Zeliha Nihal", 19550807)
+    q = Robot ()
+
+    print ("__özel sýnýf tip deðiþkenlerine setter-getter/koyucu-alýcý metodlarla eriþilebilir.\n")
+    for rbt in [x, y, z, q]:
+        rbt.selamla()
+        if rbt.adAl() == "Muhammed Ali": rbt.yýlKoy (20190425)
+        print ("Benim imalat tarihim " + str (rbt.yýlAl()) + "'dir!\n")
+
+"""Çýktý:
+>python p_13710.py
+__özel sýnýf tip deðiþkenlerine setter-getter/koyucu-alýcý metodlarla eriþilebilir.
+
+Selam, benim adým Robot Mahmut Nihat!
+Benim imalat tarihim 19570417'dir!
+
+Selam, benim adým Robot Muhammed Ali!
+Benim imalat tarihim 20190425'dir!
+
+Selam, benim adým Robot Zeliha Nihal!
+Benim imalat tarihim 19550807'dir!
+
+Selam, ben henüz adý konulmamýþ bir Robotum!
+Benim imalat tarihim 2018'dir!
+"""

@@ -1,0 +1,69 @@
+# coding:iso-8859-9 Türkçe
+# p_13407.py: Dekoratörlü sonsuz döngülü üreteçle mesaj ve karakter çýktýlarý örneði.
+
+from functools import wraps
+
+def hazýrla (üret):
+    # Dekoratör: Ýlk yield<None> bir ilerletilip esas mesajý iletmeye hazýrlar...
+    @wraps (üret)
+    def üreteç (*args,**kwargs):   
+        g = üret (*args,**kwargs)   
+        next (g)   
+        return g   
+    return üreteç
+
+@hazýrla
+def sonsuz_döngü (msj):
+    sayaç = 0
+    mesaj = yield None # Ýlk None dekoratörle atlatýlýr...
+    while True:
+        if sayaç >= len (msj):
+            sayaç = 0
+            print()
+        mesaj = yield msj [sayaç]
+        if mesaj != None: sayaç = 0 if mesaj < 0 else mesaj
+        else: sayaç += 1
+
+mesaj = "Dekoratörle hazýrlanan sonsuz üreteç fonksiyonu!.."
+x = sonsuz_döngü (mesaj) 
+
+print ("Mesajýn 5 kez tekrarý:", "\n", "-"*22, sep="")
+say = 0
+while True:
+    say +=1
+    print (next (x), end="" )
+    if say >= len (mesaj) * 5: break
+
+print ("\n\nMesajýn tek karakterli kontrolu:\n", "-"*32, sep="", end="")
+print (next (x))
+print (x.send (4))
+print (next (x))
+print (next (x))
+print (x.send (5))
+print (next (x))
+print (next (x))
+print (x.send (int (len(mesaj)/2)) )
+print (x.send (len (mesaj) - 3))
+
+"""Çýktý:
+>python p_13407.py
+Mesajýn 5 kez tekrarý:
+----------------------
+Dekoratörle hazýrlanan sonsuz üreteç fonksiyonu!..
+Dekoratörle hazýrlanan sonsuz üreteç fonksiyonu!..
+Dekoratörle hazýrlanan sonsuz üreteç fonksiyonu!..
+Dekoratörle hazýrlanan sonsuz üreteç fonksiyonu!..
+Dekoratörle hazýrlanan sonsuz üreteç fonksiyonu!..
+
+Mesajýn tek karakterli kontrolu:
+--------------------------------
+D
+r
+a
+t
+a
+t
+ö
+n
+!
+"""

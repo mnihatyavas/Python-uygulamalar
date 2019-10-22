@@ -1,0 +1,33 @@
+# coding:iso-8859-9
+# p_13709.py: Genel, korunaklý ve özel tip deðiþkenlerinin eriþilebilme ve deðiþtirilebilme farklýlýðý örneði.
+
+from p_13709x import A
+
+x = A()
+
+x.genel = x.genel + " Yani beni istediðiniz gibi deðiþtirebilirsiniz."
+print (x.genel)
+
+print()
+x._korunaklý = x._korunaklý + " Ve beni de deðiþtirebilirsiniz."
+print (x._korunaklý)
+
+print()
+try: print (x.__özel)
+except Exception as ist: print ("AttributeError/ÖzellikHatasý:", ist)
+
+print()
+print (x._A__özel) # Gizli özel deðiþkenin tavsiye edilmeyen kaçak eriþimi...
+
+"""Çýktý:
+>python p_13709.py
+Ben herkese açýk genel bir tip deðiþkeni özelliðiyim. Yani beni istediðiniz gibi
+ deðiþtirebilirsiniz.
+
+Ben sadece altsýflara açýk korunaklý bir tip deðiþkeni özelliðiyim. Ve beni de d
+eðiþtirebilirsiniz.
+
+AttributeError/ÖzellikHatasý: 'A' object has no attribute '__özel'
+
+Ben herkese kapalý sýnýfiçi özel bir tip deðiþkeni özelliðiyim.
+"""

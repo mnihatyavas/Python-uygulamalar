@@ -1,0 +1,38 @@
+# coding:iso-8859-9
+# p_13708a.py: Sýnýf nesnesi repr ve str metod tiplemesi eval yapýlamamasý örneði.
+
+class Robot:
+    def __init__ (self, adý, yýlý):
+        self.ad = adý
+        self.yýl = yýlý
+    def __repr__ (self):
+        return "Robotumuz " + self.ad + ", " +  str (self.yýl) +  " tarihinde imal edildi."
+    def __str__ (self):
+        return "Robotun adý: " + self.ad + ", Ýmalat tarihi: " +  str (self.yýl)
+
+if __name__ == "__main__":
+    x = Robot ("Muhammed Ali", 19790631)
+
+    print (x, ", Tipi:", type (x) ) # __str__ metodunu kendi sýnýf tiplemesiyle kullanýr...
+
+    temsiliX = repr (x)
+    print (temsiliX, type (temsiliX) ) # __repr__ metodunu str tiplemesiyle kullanýr...
+
+    dizgeX = str (x)
+    print (dizgeX, ",", type (dizgeX) ) # __str__ metodunu str tiplemesiyle kullanýr...
+
+    try:
+        yeni1 = eval (temsiliX)
+        yeni2 = eval (dizgeX)
+    except Exception as ist: print (ist)
+
+    print ("Devam")
+
+"""Çýktý:
+>python p_13708a.py
+Robotun adý: Muhammed Ali, Ýmalat tarihi: 19790631 , Tipi: <class '__main__.Robot'>
+Robotumuz Muhammed Ali, 19790631 tarihinde imal edildi. <class 'str'>
+Robotun adý: Muhammed Ali, Ýmalat tarihi: 19790631 , <class 'str'>
+invalid syntax (<string>, line 1)
+Devam
+"""

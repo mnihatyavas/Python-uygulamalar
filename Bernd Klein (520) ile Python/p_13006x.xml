@@ -1,0 +1,40 @@
+<sergi raf = "Yeni Gelenler">
+<film baslik = "Arkadaki Dusman">
+    <katagori>Savas, Heyecan</katagori>
+    <bicim>DVD</bicim>
+    <yil>2003</yil>
+    <itibar>PG</itibar>
+    <yildizlar>10</yildizlar>
+    <aciklama>Amerika-Japonya savasi hakkinda</aciklama>
+</film>
+<film baslik = "Donusenler">
+    <katagori>Canlandirma, Bilim Kurgu</katagori>
+    <bicim>DVD</bicim>
+    <yil>1989</yil>
+    <itibar>R</itibar>
+    <yildizlar>8</yildizlar>
+    <aciklama>Bir bilim kurgu filmi</aciklama>
+</film>
+    <film baslik = "Uc Silahli">
+    <katagori>Canlandirma, Aksiyon</katagori>
+    <bicim>DVD</bicim>
+    <bolumler>4</bolumler>
+    <itibar>PG</itibar>
+    <yildizlar>10</yildizlar>
+    <aciklama>Korkmaya kendinizi hazirlayin!</aciklama>
+</film>
+<film baslik = "Istar">
+    <katagori>Komedi</katagori>
+    <bicim>VHS</bicim>
+    <itibar>PG</itibar>
+    <yildizlar>2</yildizlar>
+    <aciklama>Izlemesi sikici</aciklama>
+</film>
+<film baslik = "Kudurus">
+    <katagori>Bilim Kurgu</katagori>
+    <bicim>VHS</bicim>
+    <itibar>PG</itibar>
+    <yildizlar>8</yildizlar>
+    <aciklama>New York'ta canavarlar</aciklama>
+</film>
+</sergi>

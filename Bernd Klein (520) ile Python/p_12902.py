@@ -1,0 +1,97 @@
+# coding:iso-8859-9 Türkçe
+# p_12902.py: Ýçiçe klasörlerdeki modül-içi fonksiyonlarý __init__.py vasýtasýyla doðrudan çaðýrma örneði.
+
+from paketim import *
+
+print ("\n ==>paketim.paketim1.modül1A fonksiyonlarý çaðrýlýyor:")
+fonk11a()
+fonk12a()
+print (" ==>paketim.paketim1.modül1B fonksiyonlarý çaðrýlýyor:")
+fonk11b()
+fonk12b()
+
+print ("\n ==>paketim.paketim2.modül2A fonksiyonlarý çaðrýlýyor:")
+fonk21a()
+fonk22a()
+print (" ==>paketim.paketim2.modül2B fonksiyonlarý çaðrýlýyor:")
+fonk21b()
+fonk22b()
+
+print ("\n ==>paketim.paketim3.modül3A fonksiyonlarý çaðrýlýyor:")
+fonk31a()
+fonk32a()
+print (" ==>paketim.paketim3.modül3 fonksiyonlarý çaðrýlýyor:")
+fonk31b()
+fonk32b()
+
+"""Çýktý:
+>python p_12902.py
+paketim klasöründen modülA.py çaðrýlýyor...
+paketim klasöründen modülB.py çaðrýlýyor...
+
+ ==>paketim.paketim1.modül1A fonksiyonlarý çaðrýlýyor:
+paketim.paketim1 klasörü modül1A.py modülünden fonk11a() fonksiyonuyum....
+paketim.paketim1 klasörü modül1A.py modülünden fonk12a() fonksiyonuyum....
+ ==>paketim.paketim1.modül1B fonksiyonlarý çaðrýlýyor:
+paketim.paketim1 klasörü modül1B.py modülünden fonk11b() fonksiyonuyum....
+paketim.paketim1 klasörü modül1B.py modülünden fonk12b() fonksiyonuyum....
+
+ ==>paketim.paketim2.modül2A fonksiyonlarý çaðrýlýyor:
+paketim.paketim2 klasörü modül2A.py modülünden fonk21a() fonksiyonuyum....
+paketim.paketim2 klasörü modül2A.py modülünden fonk22a() fonksiyonuyum....
+ ==>paketim.paketim2.modül2B fonksiyonlarý çaðrýlýyor:
+paketim.paketim2 klasörü modül2B.py modülünden fonk21b() fonksiyonuyum....
+paketim.paketim2 klasörü modül2B.py modülünden fonk22b() fonksiyonuyum....
+
+ ==>paketim.paketim3.modül3A fonksiyonlarý çaðrýlýyor:
+paketim.paketim3 klasörü modül3A.py modülünden fonk31a() fonksiyonuyum....
+paketim.paketim3 klasörü modül3A.py modülünden fonk32a() fonksiyonuyum....
+ ==>paketim.paketim3.modül3 fonksiyonlarý çaðrýlýyor:
+paketim.paketim3 klasörü modül3B.py modülünden fonk31b() fonksiyonuyum....
+paketim.paketim3 klasörü modül3B.py modülünden fonk32b() fonksiyonuyum....
+"""
+
+"""Not: paketim __init__.py içeriðine son eklenenler:
+# coding:iso-8859-9 Türkçe
+
+from paketim.paketim1.modül1A import *
+from paketim.paketim1.modül1B import *
+
+from paketim.paketim2.modül2A import *
+from paketim.paketim2.modül2B import *
+
+from paketim.paketim3.modül3A import *
+from paketim.paketim3.modül3B import *
+"""
+
+"""Tam paket þemasý:
+paketim
+    __init__.py
+    modülA.py
+        fonkA1()
+        fonkA2()
+    modülB.py
+        fonkB1()
+        fonkB2()
+    paketim1
+        modül1A.py
+            fonk11a()
+            fonk12a()
+        modül1B.py
+            fonk11b()
+            fonk12b()
+    paketim2
+        modül2A.py
+            fonk21a()
+            fonk22a()
+        modül2B.py
+            fonk21b()
+            fonk22b()
+    paketim3
+        modül3A.py
+            fonk31a()
+            fonk32a()
+        modül3B.py
+            fonk31b()
+            fonk32b()
+"""

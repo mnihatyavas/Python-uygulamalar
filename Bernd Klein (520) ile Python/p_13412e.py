@@ -1,0 +1,43 @@
+# coding:iso-8859-9 Türkçe
+# p_13412e.py: 50 adet farklý ihtimal aðýrlýklý 0-1'ler serisi üreteci örneði.
+
+import random
+
+def tesadüfiBirlerSýfýrlar():
+    ihtimal = 0.5
+    while True:
+        x = random.random()
+        mesaj = yield 1 if x < ihtimal else 0
+        if mesaj != None: ihtimal = mesaj
+
+x = tesadüfiBirlerSýfýrlar()
+next (x)  # Üreteç baþlatýlýyor...
+
+print ("4 farklý yoðunlukta 50 adet tesadüfi seri 1-0 üretimi:", "\n", "-"*76, sep="", end="")
+
+for ih in [0.2, 0.4, 0.6, 0.8]:
+    print ("\nBirler ihtimali yüzdesi: %" + str (ih*100) )
+    sayaç = 0
+    x.send (ih)    
+    for i in range (50):
+        bit = next (x)
+        print (bit, end="")
+        if bit == 1: sayaç +=1
+    print ("\tBirler sayýsý: ", sayaç, "/50", sep="")
+
+"""Çýktý:
+>python p_13412e.py
+4 farklý yoðunlukta 50 adet tesadüfi seri 1-0 üretimi:
+----------------------------------------------------------------------------
+Birler ihtimali yüzdesi: %20.0
+00100000010000011100001001000010001000001100010000      Birler sayýsý: 12/50
+
+Birler ihtimali yüzdesi: %40.0
+00110000101010000000110110000011010010001011000110      Birler sayýsý: 18/50
+
+Birler ihtimali yüzdesi: %60.0
+10101111110101001000111111011100011101011010101111      Birler sayýsý: 32/50
+
+Birler ihtimali yüzdesi: %80.0
+11111100011111101110111111111111101011011111111111      Birler sayýsý: 42/50
+"""

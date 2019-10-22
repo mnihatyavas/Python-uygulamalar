@@ -1,0 +1,38 @@
+# coding:iso-8859-9
+# p_13803.py: Sýnýf tip özelliðinin init kurucu ve del imhacý hazý metodlarda kullanýmý örneði.
+
+class C: 
+    sayaç = 0 # Sýnýf tip deðiþkeni...
+    def __init__ (self):  type (self).sayaç += 1
+    def __del__ (self): C.sayaç -= 1 # C == type(self)
+
+
+if __name__ == "__main__":
+    x = C()
+    print ("Yaratma sonrasý toplam tipleme sayýsý: : " + str (C.sayaç) )
+
+    y = C()
+    print ("Yaratma sonrasý toplam tipleme sayýsý: : " + str (C.sayaç) )
+
+    z = C()
+    print ("Yaratma sonrasý toplam tipleme sayýsý: : " + str (C.sayaç) )
+
+    del z
+    print ("\nÝmha sonrasý kalan tipleme sayýsý: : " + str (C.sayaç) )
+
+    del y
+    print ("Ýmha sonrasý kalan tipleme sayýsý: : " + str (C.sayaç) )
+
+    del x
+    print ("Ýmha sonrasý kalan tipleme sayýsý: : " + str (C.sayaç) )
+
+"""Çýktý:
+>python p_13803.py
+Yaratma sonrasý toplam tipleme sayýsý: : 1
+Yaratma sonrasý toplam tipleme sayýsý: : 2
+Yaratma sonrasý toplam tipleme sayýsý: : 3
+
+Ýmha sonrasý kalan tipleme sayýsý: : 2
+Ýmha sonrasý kalan tipleme sayýsý: : 1
+Ýmha sonrasý kalan tipleme sayýsý: : 0
+"""

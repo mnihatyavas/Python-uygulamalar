@@ -1,0 +1,37 @@
+# coding:iso-8859-9
+# p_13706.py: Sýnýf nesnesi metodlarý, çoklu tip deðiþkenlerine deðer atama ve okuma örneði.
+
+class Robot:
+    def __init__ (self, adý = None, tarih = None):
+        self.ad = adý
+        self.imalat = tarih
+    def selamlaþma (self):
+        if self.ad: print ("\nMerhaba, benim adým " + self.ad + "!")
+        else: print ("Merhaba, ben henüz adý konmamýþ bir robotum!")
+        if self.imalat: print ("Ýmalat tarihim: " + str (self.imalat) )
+        else: print ("Ýmalat tarihim maalesef bilinmiyor!")
+    def adKoy (self, adý): self.ad = adý
+    def adAl (self): return self.ad
+    def tarihKoy (self, imalTarihi): self.imalat = imalTarihi
+    def tarihAl (self): return self.imalat
+
+x1 = Robot()
+x1.selamlaþma()
+
+x1.adKoy ("Robot Nihat")
+x1.selamlaþma()
+
+x3 = Robot ("Robot Mahmut Nihat", 19570417)
+x3.selamlaþma()
+
+"""Çýktý:
+>python p_13706.py
+Merhaba, ben henüz adý konmamýþ bir robotum!
+Ýmalat tarihim maalesef bilinmiyor!
+
+Merhaba, benim adým Robot Nihat!
+Ýmalat tarihim maalesef bilinmiyor!
+
+Merhaba, benim adým Robot Mahmut Nihat!
+Ýmalat tarihim: 19570417
+"""

@@ -1,0 +1,40 @@
+# coding:iso-8859-9
+# p_13708b.py: Sýnýf nesnesi repr ve str metodlu tiplemelerin eval'le çevrilebilmesi örneði.
+
+class Robot:
+    def __init__ (self, adý, yýlý):
+        self.ad = adý
+        self.yýl = yýlý
+    def __repr__ (self): return "Robot(\"" + self.ad + "\", " +  str (self.yýl) +  ")"
+    def __str__ (self): return "Robot(\"" + self.ad + "\", " +  str (self.yýl) +  ")"
+
+if __name__ == "__main__":
+    x = Robot ("Muhammed Ali", 19790631)
+
+    print (x, type (x) ) # __str__ metodunu kendi sýnýf tiplemesiyle kullanýr...
+
+    temsiliX = repr (x)
+    print (temsiliX, type (temsiliX) ) # __repr__ metodunu str tiplemesiyle kullanýr...
+
+    dizgeX = str (x)
+    print (dizgeX, type (dizgeX) ) # __str__ metodunu str tiplemesiyle kullanýr...
+
+    try:
+        yeni1 = eval (temsiliX)
+        print (yeni1, type (yeni1))
+        yeni2 = eval (dizgeX)
+        print (yeni2, type (yeni2))
+    except Exception as ist: print (ist)
+
+    print ("\n__repr__ ve __str__ eval'le normalen çevrilmiyor, ama sýnýfadý/Robot() ile yanýltýlarak çevriliyor!..")
+
+"""Çýktý:
+>python p_13708b.py
+Robot("Muhammed Ali", 19790631) <class '__main__.Robot'>
+Robot("Muhammed Ali",19790631) <class 'str'>
+Robot("Muhammed Ali", 19790631) <class 'str'>
+Robot("Muhammed Ali", 19790631) <class '__main__.Robot'>
+Robot("Muhammed Ali", 19790631) <class '__main__.Robot'>
+
+__repr__ ve __str__ eval'le normalen çevrilmiyor, ama sýnýfadý/Robot() ile yanýltýlarak çevriliyor!..
+"""

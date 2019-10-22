@@ -1,0 +1,47 @@
+# coding:iso-8859-9 Türkçe
+# p_13104.py: re.split'le seçici ayrýþtýrma ve re.sub'la kelimeleri deðiþtirme örneði.
+
+import re
+
+baþkalaþým = "OF bodies chang'd to various forms, I sing: Ye Gods, from whom these miracles did spring, Inspire my numbers with coelestial heat;..."
+print ("Ayrýþan noktalamasýz sadece harfli kelimeler listesi:", re.split ("\W+", baþkalaþým) )
+print ("-"*75, "\n")
+#---------------------------------------------------------------------------------------------------------
+
+satýrlar = ["soyadý: Obama, adý: Barack, mesleði: ABD Baþkaný",
+    "soyadý: Merkel, adý: Angela, mesleði: Alman Þansöylesi",
+    "soyadý: Akþener, adý: Meral, mesleði: ÝYÝ Parti Baþkaný"]
+
+print ("re.split'le seçici ayrýþtýrma:")
+for satýr in satýrlar: print (re.split (",* *\w*: ", satýr) )
+
+print ("\nre.split[1:]'le ilk elemansýz seçici ayrýþtýrma:")
+for satýr in satýrlar: print (re.split (",* *\w*: ", satýr)[1:] )
+print ("-"*75, "\n")
+#---------------------------------------------------------------------------------------------------------
+
+dizge = "Evet, ben evet dedim ve tekrar Evet diyeceðim."
+sonuç = re.sub ("[eE]vet", "hayýr", dizge)
+print ("Bulunanýn baþka ibareyle deðiþtirilmesi:", sonuç)
+
+"""Çýktý:
+>python p_13104.py
+Ayrýþan noktalamasýz sadece harfli kelimeler listesi: ['OF', 'bodies', 'chang',
+'d', 'to', 'various', 'forms', 'I', 'sing', 'Ye', 'Gods', 'from', 'whom', 'these',
+'miracles', 'did', 'spring', 'Inspire', 'my', 'numbers', 'with', 'coelestial', 'heat', '']
+---------------------------------------------------------------------------
+
+re.split'le seçici ayrýþtýrma:
+['', 'Obama', 'Barack', 'ABD Baþkaný']
+['', 'Merkel', 'Angela', 'Alman Þansöylesi']
+['', 'Akþener', 'Meral', 'ÝYÝ Parti Baþkaný']
+
+re.split[1:]'le ilk elemansýz seçici ayrýþtýrma:
+['Obama', 'Barack', 'ABD Baþkaný']
+['Merkel', 'Angela', 'Alman Þansöylesi']
+['Akþener', 'Meral', 'ÝYÝ Parti Baþkaný']
+---------------------------------------------------------------------------
+
+Bulunanýn baþka ibareyle deðiþtirilmesi: hayýr, ben hayýr dedim ve tekrar hayýr
+diyeceðim.
+"""

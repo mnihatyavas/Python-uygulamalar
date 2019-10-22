@@ -1,0 +1,40 @@
+# coding:iso-8859-9
+# p_13802.py: Tüpleli sýnýf ip özelliði ve init kuruculu tip deðiþken özellikleri örneði.
+
+class Robot:
+    ÜçlüKanun = (
+        """Bir robot bir insaný yaralayamaz, veya bir insanýn yaralanabilme olayýna duyarsýz kalamaz.""",
+        """Bir robot bir insan tarafýndan verilen talimatlara, Ýlk Kanunu ihlal etmiyorsa uymalýdýr.""",
+        """Bir robot kendi varlýðýný, Ýlk ve Ýkinci Kanunlara ters düþmüyorsa korumalýdýr.""" )
+    def __init__ (self, adý, yýlý):
+        self.ad = adý
+        self.yýl = yýlý
+    # Gereken diðer metodlar...
+
+x = Robot ("Robot Nihat", "19570417")
+
+for sýra, metin in enumerate (Robot.ÜçlüKanun):
+    print ("Madde." + str (sýra+1) + ":\n" + metin + "\n")
+
+print (str ("-"*79) + "\n" + x.ÜçlüKanun [1] )
+
+print ("\nAdý: " + x.ad + ", Ýmal tarihi: " + x.yýl)
+
+
+
+"""Çýktý:
+>python p_13802.py
+Madde.1:
+Bir robot bir insaný yaralayamaz, veya bir insanýn yaralanabilme olayýna duyarsýz kalamaz.
+
+Madde.2:
+Bir robot bir insan tarafýndan verilen talimatlara, Ýlk Kanunu ihlal etmiyorsa uymalýdýr.
+
+Madde.3:
+Bir robot kendi varlýðýný, Ýlk ve Ýkinci Kanunlara ters düþmüyorsa korumalýdýr.
+
+-------------------------------------------------------------------------------
+Bir robot bir insan tarafýndan verilen talimatlara, Ýlk Kanunu ihlal etmiyorsa uymalýdýr.
+
+Adý: Robot Nihat, Ýmal tarihi: 19570417
+"""

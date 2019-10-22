@@ -1,0 +1,63 @@
+# coding:iso-8859-9
+# p_13704.py: Sýnýf argümanlý fonksiyon, sýnýfýn init tipleri ve fonksiyon metodlarý örneði.
+
+def selam (argümanNesnesi):
+    print ("Merhaba, benim adým " + argümanNesnesi.ad + "!")
+
+class Robot: pass
+
+x = Robot()
+x.ad = "Robot Ali"
+
+selam (x) # Argümaný sýnýf olan ve sýnýf özelliðini yansýtan fonksiyon...
+#-------------------------------------------------------------------------------------------------
+
+class Robot: selamlaþma = selam
+
+x = Robot()
+x.ad = "Robot Ali"
+
+Robot.selamlaþma (x) # Fonksiyon iþleten sýnýf metodunun özellik yansýtmasý...
+x.ad = "Robot Muhammed Ali"
+x.selamlaþma() # Bir üstekiyle aynýdýr...
+print ("-"*75, "\n", sep="")
+#-------------------------------------------------------------------------------------------------
+
+class Robot:
+    def __init__ (self, adý = None):
+        self.ad = adý
+        print ("\n==>Sýnýf fonksiyonu, metoddur.\nSýnýf nesnesinin her yaratýlýmasýnda otomatik iþletilen metod 'init'dir.\n'init' metodu sýnýfýn tip deðiþkenlerini barýndýrýr.")
+
+    def selamlaþma (self):
+        if self.ad: print ("Merhaba, benim adým " + self.ad + "!")
+        else: print ("Merhaba, ben henüz adý konulmamýþ bir robotum!")
+
+x = Robot()
+x.selamlaþma()
+y = Robot ("Robot Ali")
+y.selamlaþma()
+z = Robot ("Robot Muhammed Ali")
+z.selamlaþma()
+
+"""Çýktý:
+>python p_13704.py
+Merhaba, benim adým Robot Ali!
+Merhaba, benim adým Robot Ali!
+Merhaba, benim adým Robot Muhammed Ali!
+---------------------------------------------------------------------------
+
+==>Sýnýf fonksiyonu, metoddur.
+Sýnýf nesnesinin her yaratýlýmasýnda otomatik iþletilen metod 'init'dir.
+'init' metodu sýnýfýn tip deðiþkenlerini barýndýrýr.
+Merhaba, ben henüz adý konulmamýþ bir robotum!
+
+==>Sýnýf fonksiyonu, metoddur.
+Sýnýf nesnesinin her yaratýlýmasýnda otomatik iþletilen metod 'init'dir.
+'init' metodu sýnýfýn tip deðiþkenlerini barýndýrýr.
+Merhaba, benim adým Robot Ali!
+
+==>Sýnýf fonksiyonu, metoddur.
+Sýnýf nesnesinin her yaratýlýmasýnda otomatik iþletilen metod 'init'dir.
+'init' metodu sýnýfýn tip deðiþkenlerini barýndýrýr.
+Merhaba, benim adým Robot Muhammed Ali!
+"""

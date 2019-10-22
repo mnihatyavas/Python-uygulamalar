@@ -1,0 +1,38 @@
+# coding:iso-8859-9
+# p_13711.py: Sýnýf nesnesinin init kurucu ve del imhacý hazýr metodlarý örneði.
+
+class Robot():
+    def __init__ (self, isim):
+        self.ad = isim
+        print ("Bu kurucu __init__ metodu (" + self.ad + ") adlý robot nesnesini yarattý!")
+    def __del__ (self):
+        print ("   Bu imhacý __del__ metodu (" + self.ad + ") adlý robot nesnesini yok etti!")
+
+
+if __name__ == "__main__":
+    x = Robot ("Mahmut Nihat")
+    y = Robot ("Muhammed Ali")
+    z = x
+    q = Robot("")
+
+    print ("\nx robotu siliniyor..."); del x # z, x'i gördüðünden henüz silmedi...
+    print ("z robotu siliniyor..."); del z # Baþka kopyalar kalmayýnca sildi.
+    print ("y robotu siliniyor..."); del y
+    print ("q robotu siliniyor..."); del q
+
+
+
+"""Çýktý:
+>python p_13711.py
+Bu kurucu __init__ metodu (Mahmut Nihat) adlý robot nesnesini yarattý!
+Bu kurucu __init__ metodu (Muhammed Ali) adlý robot nesnesini yarattý!
+Bu kurucu __init__ metodu () adlý robot nesnesini yarattý!
+
+x robotu siliniyor...
+z robotu siliniyor...
+   Bu imhacý __del__ metodu (Mahmut Nihat) adlý robot nesnesini yok etti!
+y robotu siliniyor...
+   Bu imhacý __del__ metodu (Muhammed Ali) adlý robot nesnesini yok etti!
+q robotu siliniyor...
+   Bu imhacý __del__ metodu () adlý robot nesnesini yok etti!
+"""

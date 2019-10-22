@@ -1,0 +1,24 @@
+# coding:iso-8859-9
+# p_13703.py: Fonksiyon nesnesinin özelliði, parametresi ve return'ü örneði.
+
+def fonk1 (x): return 42
+
+fonk1.x = 42
+print ("Sýnýf nesnesine olduðu gibi fonksiyon nesnesine de attribute:atýf/özellik verilebilir")
+print (fonk1 (10), fonk1.x)
+#----------------------------------------------------------------------------------
+
+def fonk2 (x):
+    fonk2.sayaç = getattr (fonk2, "sayaç",  0) + 1 
+    return "MontyPython"
+
+for i in range (20): fonk2 (i)
+
+print (fonk2.sayaç, fonk2 (10) )
+
+"""Çýktý:
+>python p_13703.py
+Sýnýf nesnesine olduðu gibi fonksiyon nesnesine de attribute:atýf/özellik verilebilir
+42 42
+20 MontyPython
+"""

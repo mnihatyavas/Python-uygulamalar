@@ -1,0 +1,41 @@
+# coding:iso-8859-9 Türkçe
+# p_13903.py: Sýnýf init genel özellikleri ve metod-içi kullanýlan özel deðiþkenleri örneði.
+
+class Robot:
+    def __init__ (self, adý, yýlý, fiziði = 0.5, psikolojisi = 0.5):
+        self.ad = adý
+        self.yýl = yýlý
+        self.__fizik = fiziði
+        self.__psikoloji = psikolojisi
+
+    #@property
+    def durum (self):
+        toplam = self.__fizik + self.__psikoloji
+        if toplam <= -1: return "Perperiþan hissediyorum!"
+        elif toplam <= 0: return "Kötü hissediyorum!"
+        elif toplam <= 0.5: return "Daha iyi olabilirdi!"
+        elif toplam <= 1: return "Fena deðilim gibi!"
+        else: return "Muhteþemim!" 
+
+
+if __name__ == "__main__":
+    x = Robot ("Muhammed Ali", 20190428, 0.2, 0.4)
+    y = Robot ("Mahmut Nihat", 19570417, -0.4, 0.3)
+    z = Robot ("Zeliha Candan", 19550810, 1.2, 1.3)
+    q = Robot ("Canan Candan", 19740115, -1.2, -1.3)
+
+    print ("Ben " + str (x.yýl) + " doðumlu robot " + x.ad + "'yim. Bugünkü durumum: " + x.durum())
+    print ("Ben " + str (y.yýl) + " doðumlu robot " + y.ad + "'ým. Bugünkü durumum: " + y.durum())
+    print ("Ben " + str (z.yýl) + " doðumlu robot " + z.ad + "'ým. Bugünkü durumum: " + z.durum())
+    print ("Ben " + str (q.yýl) + " doðumlu robot " + q.ad + "'ým. Bugünkü durumum: " + q.durum())
+    # @property kullanýldýðýnda "x.durum()" metodu yerine "x.durum" özelliði gelmelidir...
+
+
+
+"""Çýktý:
+>python p_13903.py
+Ben 20190428 doðumlu robot Muhammed Ali'yim. Bugünkü durumum: Fena deðilim gibi!
+Ben 19570417 doðumlu robot Mahmut Nihat'ým. Bugünkü durumum: Kötü hissediyorum!
+Ben 19550810 doðumlu robot Zeliha Candan'ým. Bugünkü durumum: Muhteþemim!
+Ben 19740115 doðumlu robot Canan Candan'ým. Bugünkü durumum: Perperiþan hissediyorum!
+"""

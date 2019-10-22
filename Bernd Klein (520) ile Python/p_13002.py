@@ -1,0 +1,36 @@
+# coding:iso-8859-9 Türkçe
+# p_13002.py: Disk ve internet dosyasýndan re.search aramasý örneði.
+
+import re
+
+ajanda = open ("p_13002x.txt")
+print ("'p_13002x.txt' adlý telefon rehberindeki 'J.*Neu' uyanlar listesi:")
+for satýr in ajanda:
+    if re.search (r"J.*Neu", satýr): print (satýr.rstrip() )
+ajanda.close()
+print ("-"*75, "\n")
+#-----------------------------------------------------------------------------------------------------
+
+from urllib.request import urlopen
+
+print ("'https://www.python-course.eu/simpsons_phone_book.txt' adlý telefon rehberindeki 'J.*Neu' uyanlar listesi:")
+with urlopen ('https://www.python-course.eu/simpsons_phone_book.txt') as ajanda:
+    for satýr in ajanda:
+        # Bir byte dizgesi olan satýrý utf-8'e çevirelim...
+        satýr = satýr.decode ('utf-8').rstrip()
+        if re.search (r"J.*Neu", satýr): print (satýr)
+
+"""Çýktý:
+>python p_13002.py
+'p_13002x.txt' adlý telefon rehberindeki 'J.*Neu' uyanlar listesi:
+Jack Neu 555-7666
+Jeb Neu 555-5543
+Jennifer Neu 555-3652
+---------------------------------------------------------------------------
+
+'https://www.python-course.eu/simpsons_phone_book.txt' adlý telefon rehberindeki
+ 'J.*Neu' uyanlar listesi:
+Jack Neu 555-7666
+Jeb Neu 555-5543
+Jennifer Neu 555-3652
+"""

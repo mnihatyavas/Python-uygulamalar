@@ -1,0 +1,67 @@
+# coding:iso-8859-9 Türkçe
+# p_13201.py: Normal def ve anonim lambda fonksiyonlarla ayný iþlem sonuçlarý örneði.
+
+from random import randint
+
+def topla (x,y): return x+y
+def çýkar (x,y): return x-y
+def çarp (x,y): return x*y
+def böl (x,y): return x/y
+def kalan (x,y): return x%y
+def yüzde (x,y):
+    if (x>y): return (x-y)/y*100
+    else: return -(y-x)/x*100
+
+try:a = float (input ("a sayýsýný girin: "))
+except: a = randint (-100, 100)
+try: b = float (input ("b sayýsýný girin: "))
+except: b = randint (-100, 100)
+
+print ("\nNormal 'def fonksiyon(a,b):return a#b' ile 6 iþlem:", "\n", "-"*51, sep="")
+print ("a={} ve b={} sayýsýnýn toplamý={}" .format (a, b, topla (a, b)) )
+print ("a={} ve b={} sayýsýnýn çýkarýmý={}" .format (a, b, çýkar (a, b)) )
+print ("a={} ve b={} sayýsýnýn çarpýmý={}" .format (a, b, çarp (a, b)) )
+print ("a={} ve b={} sayýsýnýn bölümü={}" .format (a, b, böl (a, b)) )
+print ("a={} ve b={} sayýsýnýn kalaný={}" .format (a, b, kalan (a, b)) )
+print ("a={} ve b={} sayýsýnýn yüzdesi=%{}" .format (a, b, yüzde (a, b)) )
+#---------------------------------------------------------------------------------------------------------
+
+topla2 = lambda x,y: x+y
+çýkar2 = lambda x,y: x-y
+çarp2 = lambda x,y: x*y
+böl2 = lambda x,y: x/y
+kalan2 = lambda x,y: x%y
+if (a>b): yüzde2 = lambda x,y: (x-y)/y*100
+else: yüzde2 = lambda x,y: -(y-x)/x*100
+
+print ("\nLambdalý anonim fonksiyon 'iþlem = lambda a,b:a#b' ile 6 iþlem:", "\n", "-"*63, sep="")
+print ("a={} ve b={} sayýsýnýn toplamý={}" .format (a, b, topla2 (a, b)) )
+print ("a={} ve b={} sayýsýnýn çýkarýmý={}" .format (a, b, çýkar2 (a, b)) )
+print ("a={} ve b={} sayýsýnýn çarpýmý={}" .format (a, b, çarp2 (a, b)) )
+print ("a={} ve b={} sayýsýnýn bölümü={}" .format (a, b, böl2 (a, b)) )
+print ("a={} ve b={} sayýsýnýn kalaný={}" .format (a, b, kalan2 (a, b)) )
+print ("a={} ve b={} sayýsýnýn yüzdesi=%{}" .format (a, b, yüzde2 (a, b)) )
+
+"""Çýktý:
+>python p_13201.py
+a sayýsýný girin:
+b sayýsýný girin:
+
+Normal 'def fonksiyon(a,b):return a#b' ile 6 iþlem:
+---------------------------------------------------
+a=18 ve b=62 sayýsýnýn toplamý=80
+a=18 ve b=62 sayýsýnýn çýkarýmý=-44
+a=18 ve b=62 sayýsýnýn çarpýmý=1116
+a=18 ve b=62 sayýsýnýn bölümü=0.2903225806451613
+a=18 ve b=62 sayýsýnýn kalaný=18
+a=18 ve b=62 sayýsýnýn yüzdesi=%-244.44444444444446
+
+Lambdalý anonim fonksiyon 'iþlem = lambda a,b:a#b' ile 6 iþlem:
+---------------------------------------------------------------
+a=18 ve b=62 sayýsýnýn toplamý=80
+a=18 ve b=62 sayýsýnýn çýkarýmý=-44
+a=18 ve b=62 sayýsýnýn çarpýmý=1116
+a=18 ve b=62 sayýsýnýn bölümü=0.2903225806451613
+a=18 ve b=62 sayýsýnýn kalaný=18
+a=18 ve b=62 sayýsýnýn yüzdesi=%-244.44444444444446
+"""

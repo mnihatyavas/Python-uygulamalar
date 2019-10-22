@@ -1,0 +1,26 @@
+# coding:iso-8859-9 Türkçe
+# p_13502.py: try-raise ile hazýr veya özel istisna fýrlatýp except Exception'la yakalama örneði.
+
+try: raise SyntaxError ("Afedersiniz, kendi hatam!..")
+except Exception as ist: print (ist)
+
+print ("Program devam ediyor...")
+print ("-"*75, "\n", sep="")
+#-----------------------------------------------------------------------------------------------------
+
+class Ýstisnam (Exception): pass
+
+try: raise Ýstisnam ("Hazýr arþiv istisnalarý dýþýnda kendi istisnanýzý da yaratýp fýrlatabilirsiniz!")
+except Exception as ist: print (ist)
+
+print ("Program devam ediyor...")
+
+"""Çýktý:
+>python p_13502.py
+Afedersiniz, kendi hatam!..
+Program devam ediyor...
+---------------------------------------------------------------------------
+
+Hazýr arþiv istisnalarý dýþýnda kendi istisnanýzý da yaratýp fýrlatabilirsiniz!
+Program devam ediyor...
+"""

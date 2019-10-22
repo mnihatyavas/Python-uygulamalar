@@ -1,0 +1,38 @@
+# coding:iso-8859-9 Türkçe
+# p_14001.py: Bir sýnýfýn diðer bir sýnýfa ait özellik ve metodlarý miraslamasý örneði.
+
+class Þahýs:
+    def __init__ (self, adý, soyadý):
+        self.ad = adý
+        self.soyad = soyadý
+    def adsoyadAl (self): return self.ad + " " + self.soyad
+
+class Ýþgören (Þahýs): # inheritance/miras...
+    def __init__ (self, adý, soyadý, bordroNosu):
+        #Þahýs.__init__ (self, adý, soyadý)
+        super().__init__ (adý, soyadý)
+        #super (Ýþgören, self).__init__ (adý, soyadý)
+        self.bordroNo = bordroNosu
+    def iþgörenAl (self): return self.adsoyadAl() + ", " +  self.bordroNo
+
+
+x1 = Þahýs ("M.Nihat", "Yavaþ")
+x2 = Þahýs ("Z.Nihal", "Candan")
+
+y1 = Ýþgören ("M.Ali", "Göktürk", "20190429-001")
+y2 = Ýþgören ("Atilla", "Göktürk", "20190429-051")
+
+print ("Ad soyad:", x1.adsoyadAl() )
+print ("Ad soyad:", x2.adsoyadAl() )
+print()
+print ("Ad soyad ve personel no:", y1.iþgörenAl() )
+print ("Ad soyad ve personel no:", y2.iþgörenAl() )
+
+"""Çýktý:
+>python p_14001.py
+Ad soyad: M.Nihat Yavaþ
+Ad soyad: Z.Nihal Candan
+
+Ad soyad ve personel no: M.Ali Göktürk, 20190429-001
+Ad soyad ve personel no: Atilla Göktürk, 20190429-051
+"""

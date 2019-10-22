@@ -1,0 +1,84 @@
+# coding:iso-8859-9 Türkçe
+# p_13501.py: try-except ve fonksiyon içi raise ile hata yönetimi örneði.
+
+while True:
+    try:
+        n = input ("\nLütfen bir tamsayý deðer girin: ")
+        n = int (n)
+        break
+    except ValueError: print ("Geçersiz tamsayý! Tekrar deneyin...")
+
+print ("Aferin, geçerli bir tamsayý giriþi (", n, ") gerçekleþtirdiniz!", sep="")
+print ("-"*75, "\n", sep="")
+#-----------------------------------------------------------------------------------------------------
+
+import sys
+
+try:
+    dosya = open ('tamsayý.txt')
+    satýr = dosya.readline()
+    tamsayý = int (satýr.strip() )
+except IOError as istisna:
+    hataNo, hataAçýklama = istisna.args
+    print ("Okuma/Yazma hatasý ({0}): {1}" .format (hataNo, hataAçýklama) )
+    # "print (istisna)" veya "print (sys.exc_info()[0])" þeklinde de yazýlabilir... 
+except ValueError: print ("Dosya satýrý geçerli tamsayý içermiyor.")
+except:
+    print ("Umulmayan diðer hatalar:", sys.exc_info()[0] )
+    raise
+print ("-"*75, "\n", sep="")
+#-----------------------------------------------------------------------------------------------------
+
+try:
+    dosya = open ('tamsayý.txt')
+    tamsayý = int (dosya.readline().strip() )
+except (IOError, ValueError): print ("Okuma/Yazma veya DeðerHatasý oluþtu.")
+except: print ("Tahmin edilmeyen baþka bir hata oluþtu.")
+print ("-"*75, "\n", sep="")
+#-----------------------------------------------------------------------------------------------------
+
+def fonk():
+    try: x = int ("tamsayý")
+    except ValueError as ist:
+        print ("Fonksiyon içinde yakalanan hata:", ist)
+
+try: fonk()
+except ValueError as ist:
+    print ("Hata yakalandý:", ist)
+
+print ("Hata yönetildi; devam edelim...")
+print ("-"*75, "\n", sep="")
+#-----------------------------------------------------------------------------------------------------
+
+def fonk():
+    try: x = int ("tamsayý")
+    except ValueError as ist:
+        print ("Fonksiyon içinde yakalanan hata:", ist)
+        raise # Çaðrýlan yere döner...
+
+try: fonk()
+except ValueError as ist:
+    print ("Hata yakalandý:", ist)
+
+print ("Hata yönetildi; devam edelim...")
+
+"""Çýktý:
+>python p_13501.py
+Lütfen bir tamsayý deðer girin: 4
+Aferin, geçerli bir tamsayý giriþi (4) gerçekleþtirdiniz!
+---------------------------------------------------------------------------
+
+Okuma/Yazma hatasý (2): No such file or directory
+---------------------------------------------------------------------------
+
+Okuma/Yazma veya DeðerHatasý oluþtu.
+---------------------------------------------------------------------------
+
+Fonksiyon içinde yakalanan hata: invalid literal for int() with base 10: 'tamsayý'
+Hata yönetildi; devam edelim...
+---------------------------------------------------------------------------
+
+Fonksiyon içinde yakalanan hata: invalid literal for int() with base 10: 'tamsayý'
+Hata yakalandý: invalid literal for int() with base 10: 'tamsayý'
+Hata yönetildi; devam edelim...
+"""

@@ -1,0 +1,36 @@
+# coding:iso-8859-9 Türkçe
+# p_13404.py: Argümansýz send-yield deðer geçirme, print üreteç ve istisnasý örneði.
+
+def argümansýz_iletiþim():
+    print ("Argümansýz iletiþim fonksiyonu baþlatýldý!")
+    x = yield # send(..) ile yield'e argüman aktarýlabilir...
+    print ("send->yield ile alýnan deðer:", x)
+
+fonk1 = argümansýz_iletiþim()
+
+try:
+    next (fonk1) # Ýlk next ile ilk print çalýþtýrýlýr...
+    next (fonk1) # Ýkinci next ile yield-x'li ikinci print çalýþtýrýlýr...
+    next (fonk1) # except iþletilir...
+except StopIteration: print ("HATA1")
+#--------------------------------------------------------------------------------------------------
+
+fonk2 = argümansýz_iletiþim()
+
+print()
+try:
+    next (fonk2) # ilk print...
+    print (fonk2.send ("Merhaba!") ) # yield'e gönderilen mesajlý x print'i...
+    next (fonk2) # except...
+except StopIteration: print ("HATA2")
+
+"""Çýktý:
+>python p_13404.py
+Argümansýz iletiþim fonksiyonu baþlatýldý!
+send->yield ile alýnan deðer: None
+HATA1
+
+Argümansýz iletiþim fonksiyonu baþlatýldý!
+send->yield ile alýnan deðer: Merhaba!
+HATA2
+"""

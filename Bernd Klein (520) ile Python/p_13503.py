@@ -1,0 +1,52 @@
+# coding:iso-8859-9 Türkçe
+# p_13503.py: try-except-except...finally ile hata yönetimi örneði.
+
+try:
+    x = float (input ("Herhangibir sayý girin: "))
+    tersi = 1.0 / x
+    print ("\nGirilen sayýnýn tersi:", tersi)
+except: pass
+finally: print ("Bir istisna oluþsa da oluþmasa da finally iþletilir.")
+
+print ("-"*75, "\n", sep="")
+#-----------------------------------------------------------------------------------------------------
+
+try:
+    x = float (input ("Herhangibir sayý girin: "))
+    tersi = 1.0 / x
+    print ("\nGirilen sayýnýn tersi:", tersi)
+except ValueError: print ("Geçersiz bir sayý girdiniz!")
+except ZeroDivisionError: print ("Sýfýr girdiniz, tersi sonsuzdur!")
+finally: print ("Bir istisna oluþsa da oluþmasa da finally iþletilir.")
+
+"""Çýktý:
+>python p_13503.py
+Herhangibir sayý girin: 0
+Bir istisna oluþsa da oluþmasa da finally iþletilir.
+---------------------------------------------------------------------------
+
+Herhangibir sayý girin: 0
+Sýfýr girdiniz, tersi sonsuzdur!
+Bir istisna oluþsa da oluþmasa da finally iþletilir.
+
+>python p_13503.py  ** TEKRAR **
+Herhangibir sayý girin: qq
+Bir istisna oluþsa da oluþmasa da finally iþletilir.
+---------------------------------------------------------------------------
+
+Herhangibir sayý girin: qq
+Geçersiz bir sayý girdiniz!
+Bir istisna oluþsa da oluþmasa da finally iþletilir.
+
+>python p_13503.py  ** TEKRAR **
+Herhangibir sayý girin: 2
+
+Girilen sayýnýn tersi: 0.5
+Bir istisna oluþsa da oluþmasa da finally iþletilir.
+---------------------------------------------------------------------------
+
+Herhangibir sayý girin: 4
+
+Girilen sayýnýn tersi: 0.25
+Bir istisna oluþsa da oluþmasa da finally iþletilir.
+"""

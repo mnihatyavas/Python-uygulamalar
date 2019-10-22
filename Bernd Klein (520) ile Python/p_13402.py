@@ -1,0 +1,58 @@
+# coding:iso-8859-9 Türkçe
+# p_13402.py: Þehirli yield-next, dahili sayaçlý fibonaki yield ve harici sayaçlý fib yield üreteç örneði.
+
+from p_13402x import þehir_üreteci, fibonaki, fib2
+
+þehir = þehir_üreteci()
+print ("Þehir üreteci fonksiyonu yield elementleri:")
+
+try:
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+    print ("-->Birsonraki þehir: " + next (þehir) )
+except StopIteration: print ("Üreteç elementleri sonuna ulaþýldý...")
+#----------------------------------------------------------------------------------------------
+
+f = fibonaki (18)
+print ("\nFibonaki üreteci fonksiyonu yield elementleri:")
+for x in f: print (x, end=" ")
+#----------------------------------------------------------------------------------------------
+
+print ("\n\nSayaçlý Fibonaki üreteçi:")
+sayaç = 0
+for x in fib2():
+    print (x, " ", end="")
+    sayaç += 1
+    if (sayaç > 18): break 
+
+"""Çýktý:
+>python p_13402.py
+Þehir üreteci fonksiyonu yield elementleri:
+-->Birsonraki þehir: Londra
+-->Birsonraki þehir: Hamburg
+-->Birsonraki þehir: Konstanz
+-->Birsonraki þehir: Amsterdam
+-->Birsonraki þehir: Berlin
+-->Birsonraki þehir: Zürih
+-->Birsonraki þehir: Þafhoyzen
+-->Birsonraki þehir: Þtutgart
+-->Birsonraki þehir: Ýstanbul
+-->Birsonraki þehir: Ýzmir
+Üreteç elementleri sonuna ulaþýldý...
+
+Fibonaki üreteci fonksiyonu yield elementleri:
+0  1  1  2  3  5  8  13  21  34  55  89  144  233  377  610  987  1597  2584
+
+Sayaçlý Fibonaki üreteçi:
+0  1  1  2  3  5  8  13  21  34  55  89  144  233  377  610  987  1597  2584
+"""

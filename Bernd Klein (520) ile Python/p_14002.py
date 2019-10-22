@@ -1,0 +1,38 @@
+# coding:iso-8859-9 Türkçe
+# p_14002.py: Miraslayan metodlarýnýn miras metodlarýný override/esgeçme örneði.
+
+class Kiþi:
+    def __init__ (self, ad, soyad, yýl):
+        self.ad = ad
+        self.soyad = soyad
+        self.yýl = yýl
+    def __str__ (self): return self.ad + " " + self.soyad + ", " + str (2019 - self.yýl)
+
+
+class Personel (Kiþi): # Miras...
+    def __init__ (self, ad, soyad, yýl, pno):
+        super().__init__ (ad, soyad, yýl) # Override/esgeçme Kiþi__init__
+        self.pno = pno
+    def __str__ (self): return super().__str__() + "; " +  self.pno # Override/esgeçme Kiþi__str__
+
+
+x1 = Kiþi ("M.Nihat", "Yavaþ", 1957)
+x2 = Kiþi ("Z.Nihal", "Candan", 1955)
+
+y1 = Personel ("M.Ali", "Göktürk", 2010, "20190429-001")
+y2 = Personel ("Atilla", "Göktürk", 1982, "20190429-051")
+
+print ("Ad soyad ve yaþ:", x1)
+print ("Ad soyad ve yaþ:", x2)
+print()
+print ("Ad soyad, yaþ ve personel no:", y1)
+print ("Ad soyad, yaþ ve personel no:", y2)
+
+"""Çýktý:
+>python p_14002.py
+Ad soyad ve yaþ: M.Nihat Yavaþ, 62
+Ad soyad ve yaþ: Z.Nihal Candan, 64
+
+Ad soyad, yaþ ve personel no: M.Ali Göktürk, 9; 20190429-001
+Ad soyad, yaþ ve personel no: Atilla Göktürk, 37; 20190429-051
+"""

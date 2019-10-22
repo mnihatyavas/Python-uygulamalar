@@ -1,0 +1,74 @@
+# coding:iso-8859-9 Türkçe
+# p_13003.py: re.search ve re.match ile tek/çok satýrlý dizge baþýnda/sonunda arama örneði.
+
+import re
+
+satýr = "O kiþi Mayer adýnda bir Alman'dýr."
+if re.search (r"M[ae][iy]er", satýr): print ("Bir Mayer olarak okunan ad buldum!")
+if re.search (r"M[ae][iy]e?r", "O kiþi Mair adýnda bir Ýngiliz'dir."): print ("Mair olarak okunan bir ad buldum!")
+
+if re.search (r"Þub(at)? 2019", "Bu Þubat 2019 ayý 28 çekiyor."): print ("Þubat veya Þub olarak okunan ay adý buldum!")
+print ("-"*75, "\n")
+#-----------------------------------------------------------------------------------------------------
+
+dizge1 = "Mayer çok genel olarak kullanýlan bir addýr."
+dizge2 = "Onun adý Meyer ama kendisi bir Alman deðildir."
+print ("re.search'le 1.dizge içinde var mý?", re.search (r"M[ae][iy]er", dizge1) )
+print ("re.search'le 2.dizge içinde var mý?", re.search (r"M[ae][iy]er", dizge2) )
+
+print ("\nre.match'le 1.dizge baþýnda var mý?", re.match (r"M[ae][iy]er", dizge1) ) # Sadece dizge baþý kontrolu yapar...
+print ("re.match'le 2.dizge baþýnda var mý?", re.match (r"M[ae][iy]er", dizge2) )
+print ("-"*75, "\n")
+#-----------------------------------------------------------------------------------------------------
+
+# ^ ile dizge baþý kontrolu...
+print ("^re.search'le tek satýrlý 1.dizgenin dizge baþýnda var mý?", re.search (r"^M[ae][iy]er", dizge1) )
+print ("^re.search'le tek satýrlý 2.dizgenin dizge baþýnda var mý?", re.search (r"^M[ae][iy]er", dizge2) )
+
+dizge = dizge2 + "\n" + dizge1
+print ("\nM'siz ^re.search'le çok satýrlý dizgenin dizge baþýnda var mý?", re.search (r"^M[ae][iy]er", dizge) )
+
+print ("M'li ^re.search'le çok satýrlý dizgenin herhangibir satýr baþýnda var mý?", re.search (r"^M[ae][iy]er", dizge, re.MULTILINE) )
+print ("M'li ^re.search'le çok satýrlý dizgenin herhangibir satýr baþýnda var mý?", re.search (r"^M[ae][iy]er", dizge, re.M) )
+
+print ("\nM'li ^re.match'le çok satýrlý dizgenin herhangibir satýr baþýnda var mý?", re.match (r"^M[ae][iy]er", dizge, re.M) )
+print ("-"*75, "\n")
+#-----------------------------------------------------------------------------------------------------
+
+# $ ile dizge sonu kontrolu...
+print ("'Python.' dizge sonunda var mý?", re.search (r"Python\.$", "En sevdiðim programlama dili: Python.") )
+print ("'Python.' dizge sonunda var mý?", re.search (r"Python\.$", "En sevdiðim programlama dilleri: Python ve Perl.") )
+print ("'Python.' M'siz çoklu satýrlý dizgenin herhangibir satýr sonunda var mý?", re.search (r"Python\.$", "En sevdiðim programlama dili Python.\nBazýlarýnýn tercihleri ise Java veya Perl.") )
+print ("'Python.' M'li çoklu satýrlý dizgenin herhangibir satýr sonunda var mý?", re.search (r"Python\.$", "En sevdiðim programlama dili Python.\nBazýlarýnýn tercihleri ise Java veya Perl.", re.M) )
+
+
+
+"""Çýktý:
+>python p_13003.py
+Bir Mayer olarak okunan ad buldum!
+Mair olarak okunan bir ad buldum!
+Þubat veya Þub olarak okunan ay adý buldum!
+---------------------------------------------------------------------------
+
+re.search'le 1.dizge içinde var mý? <re.Match object; span=(0, 5), match='Mayer'>
+re.search'le 2.dizge içinde var mý? <re.Match object; span=(9, 14), match='Meyer'>
+
+re.match'le 1.dizge baþýnda var mý? <re.Match object; span=(0, 5), match='Mayer'>
+re.match'le 2.dizge baþýnda var mý? None
+---------------------------------------------------------------------------
+
+^re.search'le tek satýrlý 1.dizgenin dizge baþýnda var mý? <re.Match object; span=(0, 5), match='Mayer'>
+^re.search'le tek satýrlý 2.dizgenin dizge baþýnda var mý? None
+
+M'siz ^re.search'le çok satýrlý dizgenin dizge baþýnda var mý? None
+M'li ^re.search'le çok satýrlý dizgenin herhangibir satýr baþýnda var mý? <re.Match object; span=(47, 52), match='Mayer'>
+M'li ^re.search'le çok satýrlý dizgenin herhangibir satýr baþýnda var mý? <re.Match object; span=(47, 52), match='Mayer'>
+
+M'li ^re.match'le çok satýrlý dizgenin herhangibir satýr baþýnda var mý? None
+---------------------------------------------------------------------------
+
+'Python.' dizge sonunda var mý? <re.Match object; span=(30, 37), match='Python.'>
+'Python.' dizge sonunda var mý? None
+'Python.' M'siz çoklu satýrlý dizgenin herhangibir satýr sonunda var mý? None
+'Python.' M'li çoklu satýrlý dizgenin herhangibir satýr sonunda var mý? <re.Match object; span=(29, 36), match='Python.'>
+"""

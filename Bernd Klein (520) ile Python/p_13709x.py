@@ -1,0 +1,8 @@
+# coding:iso-8859-9
+# p_13709x.py: genel, _korunaklý ve __özel tip deðiþkenli sýnýf nesnesi alt-örneði.
+
+class A():
+    def __init__ (self):
+        self.__özel = "Ben herkese kapalý sýnýfiçi özel bir tip deðiþkeni özelliðiyim."
+        self._korunaklý = "Ben sadece altsýflara açýk korunaklý bir tip deðiþkeni özelliðiyim."
+        self.genel = "Ben herkese açýk genel bir tip deðiþkeni özelliðiyim."

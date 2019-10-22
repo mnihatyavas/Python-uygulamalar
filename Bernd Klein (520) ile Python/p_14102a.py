@@ -1,0 +1,52 @@
+# coding:iso-8859-9 Türkçe
+# p_14102a.py: Çoklu mirasta miraslananlarýn öncelikli sýrasý ve esgeçen metod mevcudiyeti örneði.
+
+class A: # veya "class A (object):"
+    def metod (self): print ("A'nýn metod'u çaðrýldý.")
+
+class B (A): # B, A'yý miraslar...
+    def metod (self): print ("B'nýn metod'u çaðrýldý.") # A metodu override/esgeçilir...
+
+class C (A): # C de A'yý miraslar...
+    def metod (self): print ("C'nýn metod'u çaðrýldý.") # A metodu override/esgeçilir...
+
+class D (C, B): pass # Çoklu miras (D ise B ve C'yi miraslar)...
+
+x = D()
+x.metod()
+#------------------------------------------------------------------------------------------------
+
+#del D
+class D (B, C): pass # B mirasýný C mirasýndan önceye deðiþtirdik...
+
+x = D()
+x.metod()
+#------------------------------------------------------------------------------------------------
+
+#del B, D
+class B (A): pass
+class D (B, C): pass
+
+x = D()
+x.metod()
+#------------------------------------------------------------------------------------------------
+
+class B (A):
+    def metod (self): print ("B'nýn metod'u çaðrýldý.")
+class C (A):
+    def metod (self): print ("C'nýn metod'u çaðrýldý.")
+class D (B, C):
+    def metod (self): print ("D'nýn metod'u çaðrýldý.")
+
+x = D()
+x.metod()
+
+
+
+"""Çýktý:
+>python p_14102a.py
+C'nýn metod'u çaðrýldý.
+B'nýn metod'u çaðrýldý.
+C'nýn metod'u çaðrýldý.
+D'nýn metod'u çaðrýldý.
+"""

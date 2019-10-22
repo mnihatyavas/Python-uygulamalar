@@ -1,0 +1,41 @@
+# coding:iso-8859-9 Türkçe
+# p_13101.py: re.findall ile çoklu sonuçlarý bulma örneði.
+
+import re
+
+dizge = "Ne yakýz ki çare 10 pare, ýþýldar hare, þekillenir kare, tekrarlanýr çaresiz hare."
+kalýp = "[çphkfy]are"
+sonuç = re.findall (kalýp, dizge)
+print ("Bulunan uyumlu ibareler:", sonuç)
+print ("-"*75, "\n")
+#-------------------------------------------------------------------------------------------------------
+
+kurslar = "Yeni baþlayanlar için Python Eðitim Kursu: 15/Aðustos/2019 - 19/Aðustor/2019; Orta seviyeliler için Python Eðitim Kursu: 12/Aralýk/2019 - 16/Aralýk/2019; Python Metin Ýþleme Kursu: 31/Ekim/2019 - 4/Kasým/2019"
+print ("Bulunan Python kurslarý listesi:", sonuç)
+sonuç = re.findall ("([^:]*):([^;]*;?)", kurslar)
+print ("\nBulunan Python kurslarý 2 elemanlý tüpleli listesi:", sonuç)
+print ("-"*75, "\n")
+#-------------------------------------------------------------------------------------------------------
+
+dizge = "Python kurslarý için kararlaþtýrýlan þehirler Paris, Londra ve Ýstanbul!"
+sonuç = re.search (r"þehir.*(Londra|Paris|Zurich|Strasbourg|Ýstanbul)", dizge)
+if sonuç: print ("Düzenlenecek kurslarý kapsayan", sonuç.group() )
+
+"""Çýktý:
+>python p_13101.py
+Bulunan uyumlu ibareler: ['çare', 'pare', 'hare', 'kare', 'çare', 'hare']
+---------------------------------------------------------------------------
+
+Bulunan Python kurslarý listesi: ['Yeni baþlayanlar için Python Eðitim Kursu:
+15/Aðustos/2019 - 19/Aðustor/2019;', ' Orta seviyeliler için Python Eðitim Kursu:
+12/Aralýk/2019 - 16/Aralýk/2019;', ' Python Metin Ýþleme Kursu: 31/Ekim/2019 -
+4/Kasým/2019']
+
+Bulunan Python kurslarý 2 elemanlý tüpleli listesi: [('Yeni baþlayanlar için Python
+Eðitim Kursu', ' 15/Aðustos/2019 - 19/Aðustor/2019;'), (' Orta seviyeliler için
+Python Eðitim Kursu', ' 12/Aralýk/2019 - 16/Aralýk/2019;'), (' Python Metin
+Ýþleme Kursu', ' 31/Ekim/2019 - 4/Kasým/2019')]
+---------------------------------------------------------------------------
+
+Düzenlenecek kurslarý kapsayan þehirler Paris, Londra ve Ýstanbul
+"""

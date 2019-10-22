@@ -1,0 +1,39 @@
+# coding:iso-8859-9
+# p_13705.py: Sýnýf nesnesi metodu, tip deðiþkenine deðer koyma ve alma örneði.
+
+class Robot:
+    def __init__ (self, adý = None): self.ad = adý
+    def selamlaþma (self):
+        if self.ad: print ("Merhaba, benim adým " + self.ad + "!")
+        else: print ("Merhaba, ben henüz adý konmamýþ bir robotum!")
+    def adKoy (self, adý): self.ad = adý
+    def adAl (self): return self.ad
+
+x1 = Robot()
+x1.selamlaþma()
+
+x1.adKoy ("Robot Nihat")
+x1.selamlaþma()
+
+x2 = Robot()
+x2.adKoy (x1.adAl() )
+x2.selamlaþma()
+
+x3 = Robot ("Robot Mahmut Nihat")
+x3.selamlaþma()
+
+print ("\nx1 robotunun adý:", x1.adAl() )
+print ("x2 robotunun adý:", x2.adAl() )
+print ("x3 robotunun adý:", x3.adAl() )
+
+"""Çýktý:
+>python p_13705.py
+Merhaba, ben henüz adý konmamýþ bir robotum!
+Merhaba, benim adým Robot Nihat!
+Merhaba, benim adým Robot Nihat!
+Merhaba, benim adým Robot Mahmut Nihat!
+
+x1 robotunun adý: Robot Nihat
+x2 robotunun adý: Robot Nihat
+x3 robotunun adý: Robot Mahmut Nihat
+"""

@@ -1,0 +1,35 @@
+# coding:iso-8859-9
+# p_13805.py: @class/static metodlarla ebob'li pay/payda üreten sýnýf nesnesi örneði.
+
+class tamsayýlýBölüm (object):
+    def __init__ (self, bölünen, bölen):
+        self.pay, self.payda = tamsayýlýBölüm.sonuç (bölünen, bölen)
+
+    @staticmethod
+    def ebob (a, b): # ebob: EnBüyükOrtakBölen
+        while b != 0: a, b = b, a%b
+        return a
+
+    @classmethod
+    def sonuç (sýnýf, n1, n2):
+        g = sýnýf.ebob (n1, n2)
+        return (n1 // g, n2 // g)
+
+    def __str__ (self):
+        return str (self.pay) + '/' + str (self.payda)
+
+if __name__ == "__main__":
+    print ("8/24 =", tamsayýlýBölüm (8, 24) )
+    print ("48/6 =", tamsayýlýBölüm (48, 6) )
+    print ("5/24 =", tamsayýlýBölüm (5, 24) )
+    print ("5/240 =", tamsayýlýBölüm (5, 240) )
+
+
+
+"""Çýktý:
+>python p_13805.py
+8/24 = 1/3
+48/6 = 8/1
+5/24 = 5/24
+5/240 = 1/48
+"""

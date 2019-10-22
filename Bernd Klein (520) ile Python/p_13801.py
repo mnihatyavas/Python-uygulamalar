@@ -1,0 +1,39 @@
+# coding:iso-8859-9
+# p_13801.py: Sýnýf özelliði ve deðiþtirilmesinin kopyalarýyla iliþkisi örneði.
+
+class A: a = "Ben bir sýnýf özelliði tip deðiþkeniyim!"
+
+x = A()
+y = A()
+
+print ("x.a:", x.a)
+print ("y.a:", y.a)
+print ("A.a:", A.a)
+print ("-"*75, "\n", sep="")
+#--------------------------------------------------------------------------------------------------
+
+x.a = "x.a için yeni bir tip özelliði yaratýyorum!"
+print ("A.a:", A.a)
+print ("y.a:", y.a)
+
+A.a = "Önceki sýnýf özelliði 'a'yý deðiþtiriyorum!"
+print ("\nA.a:", A.a)
+print ("y.a:", y.a)
+print ("x.a:", x.a)
+
+# x.__dict__, y.__dict__, A.__dict__ ve x.__class__.__dict__ farklýdýr...
+
+"""Çýktý:
+>python p_13801.py
+x.a: Ben bir sýnýf özelliði tip deðiþkeniyim!
+y.a: Ben bir sýnýf özelliði tip deðiþkeniyim!
+A.a: Ben bir sýnýf özelliði tip deðiþkeniyim!
+---------------------------------------------------------------------------
+
+A.a: Ben bir sýnýf özelliði tip deðiþkeniyim!
+y.a: Ben bir sýnýf özelliði tip deðiþkeniyim!
+
+A.a: Önceki sýnýf özelliði 'a'yý deðiþtiriyorum!
+y.a: Önceki sýnýf özelliði 'a'yý deðiþtiriyorum!
+x.a: x.a için yeni bir tip özelliði yaratýyorum!
+"""

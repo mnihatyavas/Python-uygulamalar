@@ -1,0 +1,44 @@
+# coding:iso-8859-9 Türkçe
+# p_13001.py: in ve re.search ile bir dizgede ibare aranmasý örneði.
+
+dizge = "Regular expressions regexp/regex/re düzenli ibareler kolayca izah edilebilir."
+print (dizge)
+print ("Dizgemizde 'kolayca' ibaresi var mý?", "kolayca" in dizge)
+print ("-"*75, "\n")
+#-------------------------------------------------------------------------------------------------------
+
+import re
+
+x = re.search ("kedi", "Bir kediyle bir fare asla arkadaþ olamazlar.")
+print ("'kedi' uyumu var mý?", x)
+
+x = re.search ("inek", "Bir kediyle bir fare asla arkadaþ olamazlar.")
+print ("'inek' uyumu var mý?", x)
+print ("-"*75, "\n")
+#-------------------------------------------------------------------------------------------------------
+
+if re.search ("kedi", "Bir kediyle bir fare asla arkadaþ olamazlar."):
+    print ("Bir 'kedi' çeþidi bulundu :-)" )
+else: print ("Hiç bir kedi bulunamadý :-)" )
+
+if re.search ("inek", "Bir kediyle bir fare asla arkadaþ olamazlar."):
+    print ("Kediler ve fareler, ayrýca bir de inek.")
+else: print ("Etrafta hiç ineðe rastlanmadý.")
+
+
+
+"""Çýktý:
+>python p_13001.py
+
+Regular expressions regexp/regex/re düzenli ibareler kolayca izah edilebilir.
+
+Dizgemizde 'kolayca' ibaresi var mý? True
+---------------------------------------------------------------------------
+
+'kedi' uyumu var mý? <re.Match object; span=(4, 8), match='kedi'>
+'inek' uyumu var mý? None
+---------------------------------------------------------------------------
+
+Bir 'kedi' çeþidi bulundu :-)
+Etrafta hiç ineðe rastlanmadý.
+"""

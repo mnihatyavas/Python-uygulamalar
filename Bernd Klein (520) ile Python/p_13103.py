@@ -1,0 +1,41 @@
+# coding:iso-8859-9 Türkçe
+# p_13103.py: dizge.split(ayraç, adet) ile dizge kelimelerini listeye çevirme örneði.
+
+hukukKurslarý = "Let reverence for the laws be breathed by every American mother to the lisping babe that prattles on her lap. Let it be taught in schools, in seminaries, and in colleges. Let it be written in primers, spelling books, and in almanacs. Let it be preached from the pulpit, proclaimed in legislative halls, and enforced in the courts of justice. And, in short, let it become the political religion of the nation."
+print ("Dizge kelimelerini listeye çevirme:", hukukKurslarý.split() )
+
+satýr = "James;Miller;öðretmen;Python;JavaScript"
+print ("\nVarsayýlý boþluk yerine ';' ayracýyla dizgeden listeye çevirme:", satýr.split (";") )
+
+mormonDini = "The god of the world's leading religion. The chief temple is in the holy city of New York."
+print ("\nÝlk 3 kelime ayrýþýr, kalaný ayrýþmadan listelenir:", mormonDini.split (" ", 3) )
+
+mormonDini = "The god  \t of the world's leading religion. The chief temple is in the holy city of New York."
+print ("\n' ' ayracý çoklu boþlukta ve '\\t'de þaþýrýr:", mormonDini.split (" ", 5) )
+
+print ("\nBu þaþýrma 'None' ayracýyla düzeltilir:", mormonDini.split (None, 5) )
+
+"""Çýktý:
+>python p_13103.py
+Dizge kelimelerini listeye çevirme: ['Let', 'reverence', 'for', 'the', 'laws',
+'be', 'breathed', 'by', 'every', 'American', 'mother', 'to', 'the', 'lisping',
+'babe', 'that', 'prattles', 'on', 'her', 'lap.', 'Let', 'it', 'be', 'taught', 'in',
+'schools,', 'in', 'seminaries,', 'and', 'in', 'colleges.', 'Let', 'it', 'be',
+'written', 'in', 'primers,', 'spelling', 'books,', 'and', 'in', 'almanacs.', 'Let',
+ 'it', 'be', 'preached', 'from', 'the', 'pulpit,', 'proclaimed', 'in', 'legislative', 
+'halls,', 'and', 'enforced', 'in', 'the', 'courts', 'of', 'justice.', 'And,', 'in',
+'short,', 'let', 'it', 'become', 'the', 'political', 'religion', 'of', 'the', 'nation.']
+
+Varsayýlý boþluk yerine ';' ayracýyla dizgeden listeye çevirme: ['James', 'Miller',
+ 'öðretmen', 'Python', 'JavaScript']
+
+Ýlk 3 kelime ayrýþýr, kalaný ayrýþmadan listelenir: ['The', 'god', 'of', 
+"the world's leading religion. The chief temple is in the holy city of New York."]
+
+' ' ayracý çoklu boþlukta ve '\t'de þaþýrýr: ['The', 'god', '', '\t', 'of',
+"the world's leading religion. The chief temple is in the holy city of New York."]
+
+Bu þaþýrma 'None' ayracýyla düzeltilir: ['The', 'god', 'of', 'the', "world's", 
+'leading religion. The chief temple is in the holy city of New York.']
+
+"""
