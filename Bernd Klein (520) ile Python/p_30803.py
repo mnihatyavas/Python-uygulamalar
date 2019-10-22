@@ -1,0 +1,86 @@
+# coding:iso-8859-9 Türkçe
+# p_30803.py: Aðýrlýklý karþýlýklý seçilen yegane elemanlarýn biçimli dökümü örneði.
+
+from p_30801 import karþýlýklýSeçim as ks, aðýrlýklýKarþýlýklýSeçim as aks
+
+def bireþimci (veriler, aðýrlýklarý=None, biçimlemeFonksiyonu=None, tekrarlanabilirSeçimMi=True):
+    def tercih (veriler, aðýrlýklarý):
+        if aðýrlýklarý: return aks (*zip (veriler, aðýrlýklarý))
+        else: return ks (*veriler)
+
+    def bireþimle():
+        if not tekrarlanabilirSeçimMi: belle = set()
+        while True:
+            yeniSeçilen = tercih (veriler, aðýrlýklarý)
+            if not tekrarlanabilirSeçimMi:
+                seçilen = str (yeniSeçilen)
+                while seçilen in belle:
+                    yeniSeçilen = tercih (veriler, aðýrlýklarý)
+                    seçilen = str (yeniSeçilen)
+                belle.add (seçilen)
+            if biçimlemeFonksiyonu: yield biçimlemeFonksiyonu (yeniSeçilen)
+            else: yield yeniSeçilen
+    return bireþimle
+
+
+aðýrlýklýAdlar = [("Hatice", 60), ("Süheyla", 12) , ("Zeliha", 8), ("Nihat", 35), ("Songül", 37), ("Nedim", 29), ("Sevim", 45),
+    ("Nur", 7), ("Yücel", 19), ("Serap", 52), ("Sema", 45), ("Fatih", 48), ("Selda", 37), ("Canan", 17), ("Zafer", 25), ("Belkýs", 8),
+    ("Hilal", 33), ("Atilla", 42)]
+
+aðýrlýklýSoyadlar = [("Yavaþ", 15), ("Küçükbay", 7), ("Kaçar", 4), ("Candan", 37), ("Özbay", 43), ("Göktürk", 49),
+    ("Eskici", 3), ("Aydan", 19), ("Çiller", 23), ("Akþener", 17), ("Çiçek", 72), ("Öztürk", 95), ("Amanat", 3), ("Hastürk", 71),
+    ("Kölük", 12), ("Fýrat", 47), ("Havlucu", 34), ("Özen", 51)] # Liste uzunluklarý ayný olmak zorunda deðil...
+
+adlar, aðýrlýklarý = zip (*aðýrlýklýAdlar)
+aðýrlýkToplamý = sum (aðýrlýklarý)
+adlarýnAðýrlýklarý = [x / aðýrlýkToplamý for x in aðýrlýklarý]
+soyadlar, aðýrlýklarý = zip (*aðýrlýklýSoyadlar)
+aðýrlýkToplamý = sum (aðýrlýklarý)
+soyadlarýnAðýrlýklarý = [x / aðýrlýkToplamý for x in aðýrlýklarý]
+aðýrlýklarý = (adlarýnAðýrlýklarý, soyadlarýnAðýrlýklarý)
+
+eleman = bireþimci (
+    (adlar, soyadlar),
+    aðýrlýklarý = aðýrlýklarý,
+    biçimlemeFonksiyonu=lambda x: " ".join (x),
+    tekrarlanabilirSeçimMi=False)
+eleman = eleman()
+
+try: sayý = abs (int (input ("Kaç eleman seçilecek [15]? ")))
+except: sayý = 15
+
+print ("\nAðýrlýklý karþýlýklý seçilen yegane ", sayý, " eleman listesi:", "\n", "-"*54, sep="")
+for _ in range (sayý): print ((_+1), ": ", next (eleman), sep="")
+
+
+
+"""Çýktý:
+>python p_30803.py
+Kaç eleman seçilecek [15]?
+
+Aðýrlýklý karþýlýklý seçilen yegane 15 eleman listesi:
+------------------------------------------------------
+1: Canan Candan
+2: Hatice Çiller
+3: Hatice Öztürk
+4: Hatice Candan
+5: Sevim Hastürk
+6: Selda Çiçek
+7: Nihat Çiçek
+8: Süheyla Yavaþ
+9: Songül Öztürk
+10: Hilal Öztürk
+11: Zeliha Hastürk
+12: Serap Öztürk
+13: Hatice Özbay
+14: Serap Çiçek
+15: Atilla Havlucu
+
+>python p_30803.py  ** TEKRAR **
+Kaç eleman seçilecek [15]? 2
+
+Aðýrlýklý karþýlýklý seçilen yegane 2 eleman listesi:
+------------------------------------------------------
+1: Hilal Özen
+2: Atilla Hastürk
+"""

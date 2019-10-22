@@ -1,0 +1,38 @@
+# coding:iso-8859-9 Türkçe
+# p_30606.py: Numpy.random.choise(dizi,size(s,k),replace=False) ile þehirler dizisinden tesadüfi yegane (s,k) þekilli matris seçimi örneði.
+
+from random import choice as tercih
+
+þehirler = ["Berlin", "Hamburg", "Münih", "Amsterdam", "Londra", "Paris",
+    "Zürih", "Haydelberg", "Strasburg", "Augsburg", "Milano", "Roma", "Madrid",
+    "Barselona", "Atina", "Sofya", "SarayBosna", "Tiran", "Ýstanbul"]
+
+print ("Listedeki ", len (þehirler), " Avrupa þehrinden ziyaret tercihim: ", tercih (þehirler), sep="")
+#----------------------------------------------------------------------------------------------------------
+
+from numpy.random import choice as seçilen
+
+print ("\nListedeki ", len (þehirler), " Avrupa þehrinden görmeyi seçtiðim: ", seçilen (þehirler), sep="")
+print ("Listedeki ", len (þehirler), " Avrupa þehrinden görmeyi seçtiðim üçlü dizi: ", seçilen (þehirler, size=3), sep="")
+print ("\nListedeki ", len (þehirler), " Avrupa þehrinden görmeyi seçtiðim (3,4)=onikili matris:\n", seçilen (þehirler, size=(3,4)), sep="")
+print ("\nListedeki ", len (þehirler), " Avrupa þehrinden görmeyi seçtiðim yegane (3,4)=onikili matris:\n", seçilen (þehirler, size=(3,4), replace=False), sep="")
+
+
+
+"""Çýktý:
+>python p_30606.py
+Listedeki 19 Avrupa þehrinden ziyaret tercihim: Roma
+
+Listedeki 19 Avrupa þehrinden görmeyi seçtiðim: Sofya
+Listedeki 19 Avrupa þehrinden görmeyi seçtiðim üçlü dizi: ['Amsterdam' 'Amsterdam' 'Zürih']
+
+Listedeki 19 Avrupa þehrinden görmeyi seçtiðim (3,4)=onikili matris:
+[['SarayBosna' 'Hamburg' 'Hamburg' 'Hamburg']
+ ['Amsterdam' 'SarayBosna' 'Milano' 'Paris']
+ ['Madrid' 'Haydelberg' 'Haydelberg' 'Zürih']]
+
+Listedeki 19 Avrupa þehrinden görmeyi seçtiðim yegane (3,4)=onikili matris:
+[['Atina' 'Berlin' 'Amsterdam' 'Münih']
+ ['Sofya' 'Haydelberg' 'Tiran' 'Ýstanbul']
+ ['Paris' 'Augsburg' 'Zürih' 'Barselona']]
+"""

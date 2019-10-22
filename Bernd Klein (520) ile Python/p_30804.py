@@ -1,0 +1,100 @@
+# coding:iso-8859-9 Türkçe
+# p_30804.py: 4 ibareler listesini biçimli yegane ve aðýrlýksýz bireþimleme örneði.
+
+import p_30801 as p381
+
+def biçimle (veriler):
+    yüklem, zarf, sýfat, ad, sýfat2 = veriler
+    biçim = "Bu þarap %s olup %s %s %s'lý, \nsonrasýnda ise aðýzda kalýcý bir %s lezzetinde!"
+    return biçim % (yüklem, zarf, sýfat, ad, sýfat2)  
+
+# Örnek: Bu þarap tam-esritici olup tekdüzeli tütünümsü aroma'lý, sonrasýnda ise aðýzda kalýcý bir kebabýmsý lezzetinde!
+
+yüklemler = ['hafif-esritici', 'orta-esritici', 'tam-esritici']
+zarflar = ['münasip', 'iddalý', 'zorgulu', 'baskýlý', 'tamamen', 'daimi', 
+    'uygun', 'inanýlýr', 'farkedilir', 'heyecanlandýrýcý', 'hareketlendirici', 'verimli', 
+    'enerjik', 'heveslendirici', 'mantarýmsý', 'genelde', 'kutsalca', 'etkileþimcili', 
+    'içtenci', 'tekdüzeli', 'nesnel', 'parlatýcý', 'öncülleyici', 'profesyonelce', 
+    'artarcasýna', 'hýzla', 'süratle', 'kesintisizce', 'sinerjik', 'yegane']
+adlar = ['aroma', 'koku', 'tat']
+sýfatlar = ['sivrimsi', 'parlaðýmsý', 'kalýcýmsý', 'iskoç esansý', 'tereyaðý',
+    'çikolata', 'karmamsý', 'topraksý', 'gevrekce', 'vurgulu',
+    'kebab', 'çiçeðimsi', 'yemiþen', 'meyve', 'çimenimsi',
+    'otumsu', 'reçel', 'meyvesuyu', 'moka', 'meþemsi',
+    'rafinemsi', 'bünyemsi', 'sýký-sýkýmsý', 'baskýnýmsý', 'baskýlýmsý',
+    'tütünümsü', 'yapayýmsý', 'meþesizimsi', 'vanilya', 'kadifemsi']
+
+veriler = (yüklemler, zarflar, sýfatlar, adlar, sýfatlar)
+bireþim = p381.bireþimci (veriler, aðýrlýklarý=None, biçimlemeFonksiyonu=biçimle, tekrarlanabilirSeçimMi=False)
+þarapTadlarýnýnYorumu = bireþim()
+
+try: sayý = abs (int (input ("Kaç adet saçmasapan þarap tadý yorumu yapalým [12]? ")))
+except: sayý = 12
+
+print()
+for i in range (sayý):
+    print ("{0:d}.þarap:".format(i+1) )
+    print (next (þarapTadlarýnýnYorumu) )
+    print()
+
+
+
+"""Çýktý:
+>python p_30804.py
+Kaç adet saçmasapan þarap tadý yorumu yapalým [12]? 1
+
+1.þarap:
+Bu þarap tam-esritici olup heveslendirici kalýcýmsý aroma'lý,
+sonrasýnda ise aðýzda kalýcý bir çikolata lezzetinde!
+
+>python p_30804.py  ** TEKRAR **
+Kaç adet saçmasapan þarap tadý yorumu yapalým [12]?
+
+1.þarap:
+Bu þarap tam-esritici olup inanýlýr reçel aroma'lý,
+sonrasýnda ise aðýzda kalýcý bir sivrimsi lezzetinde!
+
+2.þarap:
+Bu þarap tam-esritici olup zorgulu iskoç esansý tat'lý,
+sonrasýnda ise aðýzda kalýcý bir gevrekce lezzetinde!
+
+3.þarap:
+Bu þarap hafif-esritici olup süratle iskoç esansý koku'lý,
+sonrasýnda ise aðýzda kalýcý bir tereyaðý lezzetinde!
+
+4.þarap:
+Bu þarap hafif-esritici olup tamamen tereyaðý tat'lý,
+sonrasýnda ise aðýzda kalýcý bir vurgulu lezzetinde!
+
+5.þarap:
+Bu þarap tam-esritici olup baskýlý tereyaðý koku'lý,
+sonrasýnda ise aðýzda kalýcý bir tereyaðý lezzetinde!
+
+6.þarap:
+Bu þarap orta-esritici olup inanýlýr bünyemsi koku'lý,
+sonrasýnda ise aðýzda kalýcý bir vanilya lezzetinde!
+
+7.þarap:
+Bu þarap tam-esritici olup uygun yemiþen koku'lý,
+sonrasýnda ise aðýzda kalýcý bir vanilya lezzetinde!
+
+8.þarap:
+Bu þarap hafif-esritici olup mantarýmsý meyve koku'lý,
+sonrasýnda ise aðýzda kalýcý bir topraksý lezzetinde!
+
+9.þarap:
+Bu þarap hafif-esritici olup nesnel çikolata aroma'lý,
+sonrasýnda ise aðýzda kalýcý bir meyvesuyu lezzetinde!
+
+10.þarap:
+Bu þarap tam-esritici olup yegane iskoç esansý aroma'lý,
+sonrasýnda ise aðýzda kalýcý bir karmamsý lezzetinde!
+
+11.þarap:
+Bu þarap orta-esritici olup tekdüzeli tütün koku'lý,
+sonrasýnda ise aðýzda kalýcý bir iskoç esansý lezzetinde!
+
+12.þarap:
+Bu þarap orta-esritici olup nesnel vurgulu koku'lý,
+sonrasýnda ise aðýzda kalýcý bir tereyaðý lezzetinde!
+"""

@@ -1,0 +1,36 @@
+# coding:iso-8859-9 Türkçe
+# p_30902.py: Numpy dizi elemanlarýný boolean ve randint'le süzgeçleme örneði.
+
+import numpy as np
+from random import randint
+
+A = np.array ([123, 188, 190, 99, 77, 88, 100])
+B = np.array ([4, 7, 2, 8, 6, 9, 5])
+C = B <= 5
+D = A[C]
+
+print ("A dizisi: ", A, "\nB dizisi: ", B,
+    "\n(B <= 5) Boolean çevrimi: ", C,
+    "\nC'nin True'larýnýn konumlarýný A süzgeç endeksi yap: ", D, sep="")
+print ("-"*70)
+#--------------------------------------------------------------------------------------------------------
+
+print ("\nA dizisinin (0, 2, 3, 1, 6, 1) endeks elemanlarýný göster:\n", A[[0, 2, 3, 1, 6, 1]])
+print ("\nA dizisinin geliþigüzel 10 elemanýný göster:\n", A[[randint (0,6) for i in range (10)]])
+
+
+
+"""Çýktý:
+>python p_30902.py
+A dizisi: [123 188 190  99  77  88 100]
+B dizisi: [4 7 2 8 6 9 5]
+(B <= 5) Boolean çevrimi: [ True False  True False False False  True]
+C'nin True'larýnýn konumlarýný A süzgeç endeksi yap: [123 190 100]
+----------------------------------------------------------------------
+
+A dizisinin (0, 2, 3, 1, 6, 1) endeks elemanlarýný göster:
+ [123 190  99 188 100 188]
+
+A dizisinin geliþigüzel 10 elemanýný göster:
+ [ 77 100  99 188 123 100 188 100 123  99]
+"""

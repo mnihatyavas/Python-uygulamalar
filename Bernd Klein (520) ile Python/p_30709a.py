@@ -1,0 +1,34 @@
+# coding:iso-8859-9 Türkçe
+# p_30709a.py: Gauss tesadüfi frekans üretici ve matplotlib grafiði örneði.
+
+from random import gauss as g
+import matplotlib.pyplot as mp
+
+n = 1000
+deðerler = []
+sýklýklar = {}
+while len (deðerler) < n:
+    deðer = g (180, 30) # 180 anadeðer etrafýnda 30 standart sapmalý tesadüfi ondalýk üretme...
+    #if 130 < deðer < 230: # Üretilenin tümünü kapsat...
+    sýklýklar[int (deðer)] = sýklýklar.get (int (deðer), 0) + 1 # 0-20 arasý y-deðer üretme...
+    deðerler.append (deðer)
+
+deðerler.sort()
+print (deðerler[:5], deðerler[995:]) # Baþtan ve sondan 5'er deðer [80-288]...
+#-----------------------------------------------------------------------------------------------
+
+sýklýk = list (sýklýklar.items()) # Sözlüðün anahtar ve deðerlerini liste olarak al...
+sýklýk.sort()
+mp.style.use ("dark_background")
+mp.plot (*list (zip (*sýklýk)))
+#mp.savefig ("p_30709ax.png")
+mp.show()
+
+
+
+"""Çýktý:
+>python p_30709.py
+[95.3057432432776, 97.02055853091295, 104.63957106331833, 106.14337633959009, 10
+9.37793982566741] [254.4796008235056, 254.69487434904192, 256.46660272806764, 26
+5.60481507537014, 269.12631757634955]
+"""

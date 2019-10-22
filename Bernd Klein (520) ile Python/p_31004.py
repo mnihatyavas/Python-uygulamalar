@@ -1,0 +1,44 @@
+# coding:iso-8859-9 Türkçe
+# p_31004.py: Numpy matrissel çarpýmlý alýþveriþ örneði.
+
+import numpy as np
+
+# 4 müþterinin herbirinin A, B, C mallarýndan satýn aldýklarý gramajlar...
+müþteriler = np.array ([
+    [100, 175, 210],
+    [90, 160, 150],
+    [200, 50, 100],
+    [120, 0, 310] ])
+
+# A, B ve C mallarýnýn 100 gramýnýn TL fiyatlarý...
+fiyatlar = np.array ([2.98, 3.90, 1.99])
+
+tutarlarTL = np.dot (müþteriler / 1000, fiyatlar * 10) # TL fiyatlarý...
+# gr->kg için müþteriler/1000 ve 100gr->1kg için de fiyatlar*10 alýnmalý...
+
+print ("Müþterilerin gram cinsinden satýn aldýklarý A, B ve C mal miktarlarý dizisi:\n",
+    müþteriler, " ==>Þekli: ", müþteriler.shape, sep="")
+print ("\nA, B ve C mallarýnýn 100 gram TL fiyatlarý dizisi:\n", fiyatlar,
+    " ==>Þekli: ", fiyatlar.shape, sep="")
+print ("\nHerbir müþterinin satýn aldýklarýnýn (matrissel çarpým) TL tutarlarý:\n",
+    tutarlarTL, " ==>Þekli: ", tutarlarTL.shape, sep="")
+print ("\nAlýþveriþ genel toplamý:", int (tutarlarTL.sum() * 100) / 100, "TL")
+
+
+
+"""Çýktý:
+>python p_31004.py
+Müþterilerin gram cinsinden satýn aldýklarý A, B ve C mal miktarlarý dizisi:
+[[100 175 210]
+ [ 90 160 150]
+ [200  50 100]
+ [120   0 310]] ==>Þekli: (4, 3)
+
+A, B ve C mallarýnýn 100 gram TL fiyatlarý dizisi:
+[2.98 3.9  1.99] ==>Þekli: (3,) = (3, 1)
+
+Herbir müþterinin satýn aldýklarýnýn (matrissel çarpým) TL tutarlarý:
+[13.984 11.907  9.9    9.745] ==>Þekli: (4,) = (4, 1) transpose()
+
+Alýþveriþ genel toplamý: 45.53 TL
+"""

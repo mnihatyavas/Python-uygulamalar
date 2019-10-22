@@ -1,0 +1,43 @@
+# coding:iso-8859-9 Türkçe
+# p_30710b.py: Jeneratör üreteçle aðýrlýk nisbetinde tesadüfi sýfýr ve bir üretme örneði.
+
+import random
+
+def tesadüfiBirSýfýr (a):
+    while True:
+        x = random.random()
+        yield 1 if x < a else 0
+
+def üret (tesadüfiÜreteç, n):
+    for i in range (n): yield next (tesadüfiÜreteç)
+
+try: kere = abs (int (input ("Kaç adet tesadüfi sayý üretsin [1 000 000]? ")))
+except: kere = 1000000
+
+try: aðýrlýk = abs (eval (input ("[0->1] aðýrlýðý kaç olsun [0.50]? ")))
+except: aðýrlýk = 0.5
+if aðýrlýk > 1: aðýrlýk = 0.5
+
+print ("\nSonuç: %", (aðýrlýk * 1000) / 10, " aðýrlýklý ", kere, " adet 0/1'in ortalamasý: %", (sum (_ for _ in üret (tesadüfiBirSýfýr (aðýrlýk), kere)) / kere) * 1000 / 10, sep="")
+
+
+
+"""Çýktý:
+>python p_30710b.py
+Kaç adet tesadüfi sayý üretsin [1 000 000]? 100
+[0->1] aðýrlýðý kaç olsun [0.50]? 0.85
+
+Sonuç: %85.0 aðýrlýklý 100 adet 0/1'in ortalamasý: %87.0
+
+>python p_30710b.py  ** TEKRAR **
+Kaç adet tesadüfi sayý üretsin [1 000 000]? 10000
+[0->1] aðýrlýðý kaç olsun [0.50]? 0.257
+
+Sonuç: %25.7 aðýrlýklý 10000 adet 0/1'in ortalamasý: %25.779999999999994
+
+>python p_30710b.py  ** TEKRAR **
+Kaç adet tesadüfi sayý üretsin [1 000 000]?
+[0->1] aðýrlýðý kaç olsun [0.50]?
+
+Sonuç: %50.0 aðýrlýklý 1000000 adet 0/1'in ortalamasý: %50.0561
+"""

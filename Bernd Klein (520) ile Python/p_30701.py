@@ -1,0 +1,26 @@
+# coding:iso-8859-9 Türkçe
+# p_30701.py: random.choise(..) ile dizge, liste ve tüpleden tesadüfi eleman seçme örneði.
+
+from random import choice as seç
+
+alfabe = "abcçdefgðhýijklmnoöprstuüvyz"
+meslekler = ["alim", "filozof", "mühendis", "ulema", "öðretmen", "polis"]
+seviye = ("baþlangýç", "orta", "ileri", "uzman")
+
+print ("Alfabeden geliþigüzel bir harf seçelim:", seç (alfabe) )
+print ("Hangi mesleði tercih edersin?", seç (meslekler) )
+print ("Hangi seviyedeki eðitimi almayý istiyorsun?", seç (seviye) )
+
+
+
+"""Çýktý:
+>python p_30701.py
+Alfabeden geliþigüzel bir harf seçelim: g
+Hangi mesleði tercih edersin? polis
+Hangi seviyeli eðitimi almayý istiyorsun? uzman
+
+>python p_30701.py  ** TEKRAR **
+Alfabeden geliþigüzel bir harf seçelim: ç
+Hangi mesleði tercih edersin? ulema
+Hangi seviyedeki eðitimi almayý istiyorsun? orta
+"""

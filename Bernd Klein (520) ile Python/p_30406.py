@@ -1,0 +1,203 @@
+# coding:iso-8859-9 Türkçe
+# p_30406.py: Çok boyutlu matris çarpýmlarýnda, ilkinin son ve ikincinin sondan birönceki boyut eþitliði örneði.
+
+import numpy as np
+import sys
+
+X = np.array ([
+    [[3, 1, 2], [4, 2, 2]],
+    [[-1, 0, 1], [1, -1, -2]],
+    [[3, 2, 2], [4, 4, 3]],
+    [[2, 2, 1], [3, 1, 3]] ]) # X(4,2,3) matrisi...
+
+Y = np.array ([
+    [[2, 3, 1, 2, 1], [2, 2, 2, 0, 0], [3, 4, 0, 1, -1]],
+    [[1, 4, 3, 2, 2], [4, 1, 1, 4, -3], [4, 1, 0, 3, 0]] ]) # Y(2,3,5) matrisi...
+
+# Çarpým uygunluðu için ilkinin son deðeriyle, ikincinin sondan bir önceki eþit olmalýdýr...
+cevap = (X.shape[-1] == Y.shape[-2])
+print ("Çarpým uygun mu?",  cevap)
+if not cevap:
+    print ("HATA: Çarpýlan matris þekilleri birbirleriyle uyumsuz!")
+    sys.exit (-1)
+
+Z = np.dot (X, Y)
+print ("Þekilleri: X", X.shape, " * Y(", Y.shape, " = Z", Z.shape, sep="")
+print("\nX, Y ve sonuç çarpým matrisleri:")
+print (X, "\n---\n", Y, "\n---\n", Z, sep="")
+print ("-"*70)
+#-----------------------------------------------------------------------------------------------------
+
+"""Numpy'nin yaptýðý çok boyutlu matris çarpýmý için, ilk matrisin son boyutu
+ve ikinci matrisin sondan birönceki boyutu ayrý tutulup, ilk matrisin kalan baþlangýç
+boyutlarý i,j,.. dýþ döngülerini, ikinci matrisin de kalan boyutlarý ise k,m,.. iç
+döngülerini oluþturacak þekilde döngüler kurulur. Ayrý tutulan boyutlar ise en iç
+döngüde ':' ile çarpým matris indisleri sýrasýna konularak, çarpýmlar sum()/topla
+fonksiyonuyla toplanarak sonuç matrisin baþtan sona deðerleri elde edilerek
+alt-alta sýralanýr...
+"""
+
+print ("\nZ(4,2,2,5) = X(4,2,3) * Y(2,3,5) çarpým sonuç matrisin baþtan sona tüm sýralý deðerlerinin alt-alta dökümü:\n", "-"*79, sep="")
+sýra = 0
+for i in range (X.shape [0]):
+    for j in range (X.shape [1]):
+        for k in range (Y.shape [0]):
+            for m in range (Y.shape [2]):
+                sýra +=1
+                biçim = "{:2d}.deðer = topla (X[{}, {}, :] * Y[{}, :, {}] :{:3d}"
+                argümanlar = (sýra, i, j, k, m, sum (X [i, j, :] * Y [k, :, m]) )
+                print (biçim .format (*argümanlar) )
+print ("-"*79)
+#-----------------------------------------------------------------------------------------------------
+
+Z2 = np.zeros (Z.shape, dtype=np.int)
+for i in range (X.shape [0]):
+    for j in range (X.shape [1]):
+        for k in range (Y.shape [0]):
+            for m in range (Y.shape [2]):
+                Z2 [i, j, k, m] = sum (X[i, j, :] * Y [k, :, m])
+
+print ("\nZ2=X*Y döngülü toplama metodlu matrisle Numpy Z=np.dot (X,Y) matrisleri eþitler mi?", np.array_equal (Z2, Z) )
+
+
+
+"""Çýktý:
+>python p_30406.py
+Çarpým uygun mu? True
+Þekilleri: X(4, 2, 3) * Y((2, 3, 5) = Z(4, 2, 2, 5)
+
+X, Y ve sonuç çarpým matrisleri:
+[[[ 3  1  2]
+  [ 4  2  2]]
+
+ [[-1  0  1]
+  [ 1 -1 -2]]
+
+ [[ 3  2  2]
+  [ 4  4  3]]
+
+ [[ 2  2  1]
+  [ 3  1  3]]]
+---
+[[[ 2  3  1  2  1]
+  [ 2  2  2  0  0]
+  [ 3  4  0  1 -1]]
+
+ [[ 1  4  3  2  2]
+  [ 4  1  1  4 -3]
+  [ 4  1  0  3  0]]]
+---
+[[[[ 14  19   5   8   1]
+   [ 15  15  10  16   3]]
+
+  [[ 18  24   8  10   2]
+   [ 20  20  14  22   2]]]
+
+
+ [[[  1   1  -1  -1  -2]
+   [  3  -3  -3   1  -2]]
+
+  [[ -6  -7  -1   0   3]
+   [-11   1   2  -8   5]]]
+
+
+ [[[ 16  21   7   8   1]
+   [ 19  16  11  20   0]]
+
+  [[ 25  32  12  11   1]
+   [ 32  23  16  33  -4]]]
+
+
+ [[[ 11  14   6   5   1]
+   [ 14  11   8  15  -2]]
+
+  [[ 17  23   5   9   0]
+   [ 19  16  10  19   3]]]]
+----------------------------------------------------------------------
+
+Z(4,2,2,5) = X(4,2,3) * Y(2,3,5) çarpým sonuç matrisin baþtan sona tüm sýralý deðerlerinin alt-alta dökümü:
+-------------------------------------------------------------------------------
+ 1.deðer = topla(X[0, 0, :] * Y[0, :, 0] : 14
+ 2.deðer = topla(X[0, 0, :] * Y[0, :, 1] : 19
+ 3.deðer = topla(X[0, 0, :] * Y[0, :, 2] :  5
+ 4.deðer = topla(X[0, 0, :] * Y[0, :, 3] :  8
+ 5.deðer = topla(X[0, 0, :] * Y[0, :, 4] :  1
+ 6.deðer = topla(X[0, 0, :] * Y[1, :, 0] : 15
+ 7.deðer = topla(X[0, 0, :] * Y[1, :, 1] : 15
+ 8.deðer = topla(X[0, 0, :] * Y[1, :, 2] : 10
+ 9.deðer = topla(X[0, 0, :] * Y[1, :, 3] : 16
+10.deðer = topla(X[0, 0, :] * Y[1, :, 4] :  3
+11.deðer = topla(X[0, 1, :] * Y[0, :, 0] : 18
+12.deðer = topla(X[0, 1, :] * Y[0, :, 1] : 24
+13.deðer = topla(X[0, 1, :] * Y[0, :, 2] :  8
+14.deðer = topla(X[0, 1, :] * Y[0, :, 3] : 10
+15.deðer = topla(X[0, 1, :] * Y[0, :, 4] :  2
+16.deðer = topla(X[0, 1, :] * Y[1, :, 0] : 20
+17.deðer = topla(X[0, 1, :] * Y[1, :, 1] : 20
+18.deðer = topla(X[0, 1, :] * Y[1, :, 2] : 14
+19.deðer = topla(X[0, 1, :] * Y[1, :, 3] : 22
+20.deðer = topla(X[0, 1, :] * Y[1, :, 4] :  2
+21.deðer = topla(X[1, 0, :] * Y[0, :, 0] :  1
+22.deðer = topla(X[1, 0, :] * Y[0, :, 1] :  1
+23.deðer = topla(X[1, 0, :] * Y[0, :, 2] : -1
+24.deðer = topla(X[1, 0, :] * Y[0, :, 3] : -1
+25.deðer = topla(X[1, 0, :] * Y[0, :, 4] : -2
+26.deðer = topla(X[1, 0, :] * Y[1, :, 0] :  3
+27.deðer = topla(X[1, 0, :] * Y[1, :, 1] : -3
+28.deðer = topla(X[1, 0, :] * Y[1, :, 2] : -3
+29.deðer = topla(X[1, 0, :] * Y[1, :, 3] :  1
+30.deðer = topla(X[1, 0, :] * Y[1, :, 4] : -2
+31.deðer = topla(X[1, 1, :] * Y[0, :, 0] : -6
+32.deðer = topla(X[1, 1, :] * Y[0, :, 1] : -7
+33.deðer = topla(X[1, 1, :] * Y[0, :, 2] : -1
+34.deðer = topla(X[1, 1, :] * Y[0, :, 3] :  0
+35.deðer = topla(X[1, 1, :] * Y[0, :, 4] :  3
+36.deðer = topla(X[1, 1, :] * Y[1, :, 0] :-11
+37.deðer = topla(X[1, 1, :] * Y[1, :, 1] :  1
+38.deðer = topla(X[1, 1, :] * Y[1, :, 2] :  2
+39.deðer = topla(X[1, 1, :] * Y[1, :, 3] : -8
+40.deðer = topla(X[1, 1, :] * Y[1, :, 4] :  5
+41.deðer = topla(X[2, 0, :] * Y[0, :, 0] : 16
+42.deðer = topla(X[2, 0, :] * Y[0, :, 1] : 21
+43.deðer = topla(X[2, 0, :] * Y[0, :, 2] :  7
+44.deðer = topla(X[2, 0, :] * Y[0, :, 3] :  8
+45.deðer = topla(X[2, 0, :] * Y[0, :, 4] :  1
+46.deðer = topla(X[2, 0, :] * Y[1, :, 0] : 19
+47.deðer = topla(X[2, 0, :] * Y[1, :, 1] : 16
+48.deðer = topla(X[2, 0, :] * Y[1, :, 2] : 11
+49.deðer = topla(X[2, 0, :] * Y[1, :, 3] : 20
+50.deðer = topla(X[2, 0, :] * Y[1, :, 4] :  0
+51.deðer = topla(X[2, 1, :] * Y[0, :, 0] : 25
+52.deðer = topla(X[2, 1, :] * Y[0, :, 1] : 32
+53.deðer = topla(X[2, 1, :] * Y[0, :, 2] : 12
+54.deðer = topla(X[2, 1, :] * Y[0, :, 3] : 11
+55.deðer = topla(X[2, 1, :] * Y[0, :, 4] :  1
+56.deðer = topla(X[2, 1, :] * Y[1, :, 0] : 32
+57.deðer = topla(X[2, 1, :] * Y[1, :, 1] : 23
+58.deðer = topla(X[2, 1, :] * Y[1, :, 2] : 16
+59.deðer = topla(X[2, 1, :] * Y[1, :, 3] : 33
+60.deðer = topla(X[2, 1, :] * Y[1, :, 4] : -4
+61.deðer = topla(X[3, 0, :] * Y[0, :, 0] : 11
+62.deðer = topla(X[3, 0, :] * Y[0, :, 1] : 14
+63.deðer = topla(X[3, 0, :] * Y[0, :, 2] :  6
+64.deðer = topla(X[3, 0, :] * Y[0, :, 3] :  5
+65.deðer = topla(X[3, 0, :] * Y[0, :, 4] :  1
+66.deðer = topla(X[3, 0, :] * Y[1, :, 0] : 14
+67.deðer = topla(X[3, 0, :] * Y[1, :, 1] : 11
+68.deðer = topla(X[3, 0, :] * Y[1, :, 2] :  8
+69.deðer = topla(X[3, 0, :] * Y[1, :, 3] : 15
+70.deðer = topla(X[3, 0, :] * Y[1, :, 4] : -2
+71.deðer = topla(X[3, 1, :] * Y[0, :, 0] : 17
+72.deðer = topla(X[3, 1, :] * Y[0, :, 1] : 23
+73.deðer = topla(X[3, 1, :] * Y[0, :, 2] :  5
+74.deðer = topla(X[3, 1, :] * Y[0, :, 3] :  9
+75.deðer = topla(X[3, 1, :] * Y[0, :, 4] :  0
+76.deðer = topla(X[3, 1, :] * Y[1, :, 0] : 19
+77.deðer = topla(X[3, 1, :] * Y[1, :, 1] : 16
+78.deðer = topla(X[3, 1, :] * Y[1, :, 2] : 10
+79.deðer = topla(X[3, 1, :] * Y[1, :, 3] : 19
+80.deðer = topla(X[3, 1, :] * Y[1, :, 4] :  3
+-------------------------------------------------------------------------------
+
+Z2=X*Y döngülü toplama metodlu matrisle Numpy Z=np.dot (X,Y) matrisleri eþitlermi? True
+"""

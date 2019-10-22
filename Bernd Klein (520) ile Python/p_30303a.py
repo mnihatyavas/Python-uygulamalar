@@ -1,0 +1,111 @@
+# coding:iso-8859-9 Türkçe
+# p_30303a.py: numpy.dtype ile ülkeler tablosunun herbir kolonunu ayrý tipleyebilme örneði.
+
+import numpy as np
+
+dt = np.dtype ([('Ülke', 'S20'), ('Yoðunluk', 'i4'), ('Alan', 'i4'), ('Nüfus', 'i4')]) # i4=int32
+# Ülke adlarý "S20" tiple sadece binary(128) karakterlerle temsil edilebilir...
+ülkelerTablosu = np.array ([ # Azalan nüfus yoðunluðuna göre sýralýdýr...
+    ('Hollanda', 393, 41526, 16928800),
+    ('Belcika', 337, 30510, 11007020), # Ascii(128) dýþý Türkçe karakterleri kabul etmiyor...
+    ('Birlesik Krallik', 256, 243610, 62262000),
+    ('Almanya', 233, 357021, 81799600),
+    ('Leh Cumhuriyeti', 205, 160, 32842),
+    ('Italya', 192, 301230, 59715625),
+    ('Isvicre', 177, 41290, 7301994),
+    ('Luksemburg', 173, 2586, 512000),
+    ('Fransa', 111, 547030, 63601002),
+    ('Avusturya', 97, 83858, 8169929),
+    ('Yunanistan', 81, 131940, 11606813),
+    ('Irlanda', 65, 70280, 4581269),
+    ('Isvec', 20, 449964, 9515744),
+    ('Finlandiya', 16, 338424, 5410233),
+    ('Norvec', 13, 385252, 5033675) ],
+    dtype=dt)
+
+print ("Bazý Avrupa ülkelerinin nüfus-alan-yoðunluk bilgileri:\n", ülkelerTablosu, sep="")
+
+print ("\nÝlk ülke:", ülkelerTablosu [0])
+print ("Orta ülke:", ülkelerTablosu [int (len (ülkelerTablosu) / 2)])
+print ("Son ülke:", ülkelerTablosu [-1])
+
+print ("\nÜlke adlarý:\n", ülkelerTablosu ["Ülke"], sep="")
+print ("Ülke nüfuslarý:\n", ülkelerTablosu ["Nüfus"], sep="")
+print ("Ülke alanlarý:\n", ülkelerTablosu ["Alan"], sep="")
+print ("Ülke nüfus yoðunluklarý:\n", ülkelerTablosu ["Yoðunluk"], sep="")
+
+print ("\nNüfus/Alan hesaplamasýyla ülkelerin nüfus yoðunluklarý listesi:")
+for i in range (len (ülkelerTablosu)):
+    print (ülkelerTablosu ["Ülke"] [i], "=", (ülkelerTablosu ["Nüfus"] [i] / ülkelerTablosu ["Alan"] [i]) )
+
+print ("\nFormatlý Nüfus/Alan hesaplamasýyla ülkelerin nüfus yoðunluklarý listesi:")
+for i in range (len (ülkelerTablosu)):
+    print ("{:17s}= {:6.2f} kiþi/km2" .format (str (ülkelerTablosu ["Ülke"][i]) [2:-1], (ülkelerTablosu ["Nüfus"] [i] / ülkelerTablosu ["Alan"] [i])) )
+
+
+
+"""Çýktý:
+>python p_30303.py
+Bazý Avrupa ülkelerinin nüfus-alan-yoðunluk bilgileri:
+[(b'Hollanda', 393,  41526, 16928800) (b'Belcika', 337,  30510, 11007020)
+ (b'Birlesik Krallik', 256, 243610, 62262000)
+ (b'Almanya', 233, 357021, 81799600)
+ (b'Leh Cumhuriyeti', 205,    160,    32842)
+ (b'Italya', 192, 301230, 59715625) (b'Isvicre', 177,  41290,  7301994)
+ (b'Luksemburg', 173,   2586,   512000) (b'Fransa', 111, 547030, 63601002)
+ (b'Avusturya',  97,  83858,  8169929)
+ (b'Yunanistan',  81, 131940, 11606813)
+ (b'Irlanda',  65,  70280,  4581269) (b'Isvec',  20, 449964,  9515744)
+ (b'Finlandiya',  16, 338424,  5410233) (b'Norvec',  13, 385252,  5033675)]
+
+Ýlk ülke: (b'Hollanda', 393, 41526, 16928800)
+Orta ülke: (b'Luksemburg', 173, 2586, 512000)
+Son ülke: (b'Norvec', 13, 385252, 5033675)
+
+Ülke adlarý:
+[b'Hollanda' b'Belcika' b'Birlesik Krallik' b'Almanya' b'Leh Cumhuriyeti'
+ b'Italya' b'Isvicre' b'Luksemburg' b'Fransa' b'Avusturya' b'Yunanistan'
+ b'Irlanda' b'Isvec' b'Finlandiya' b'Norvec']
+Ülke nüfuslarý:
+[16928800 11007020 62262000 81799600    32842 59715625  7301994   512000
+ 63601002  8169929 11606813  4581269  9515744  5410233  5033675]
+Ülke alanlarý:
+[ 41526  30510 243610 357021    160 301230  41290   2586 547030  83858
+ 131940  70280 449964 338424 385252]
+Ülke nüfus yoðunluklarý:
+[393 337 256 233 205 192 177 173 111  97  81  65  20  16  13]
+
+Nüfus/Alan hesaplamasýyla ülkelerin nüfus yoðunluklarý listesi:
+b'Hollanda' = 407.66748543081445
+b'Belcika' = 360.7676171746968
+b'Birlesik Krallik' = 255.58064118878536
+b'Almanya' = 229.11705473907696
+b'Leh Cumhuriyeti' = 205.2625
+b'Italya' = 198.23930219433655
+b'Isvicre' = 176.8465488011625
+b'Luksemburg' = 197.98917246713071
+b'Fransa' = 116.26602197320074
+b'Avusturya' = 97.4257554437263
+b'Yunanistan' = 87.9703880551766
+b'Irlanda' = 65.1859561752988
+b'Isvec' = 21.147789600945853
+b'Finlandiya' = 15.986552372172186
+b'Norvec' = 13.065928275518361
+
+Formatlý Nüfus/Alan hesaplamasýyla ülkelerin nüfus yoðunluklarý listesi:
+Hollanda         = 407.67 kiþi/km2
+Belcika          = 360.77 kiþi/km2
+Birlesik Krallik = 255.58 kiþi/km2
+Almanya          = 229.12 kiþi/km2
+Leh Cumhuriyeti  = 205.26 kiþi/km2
+Italya           = 198.24 kiþi/km2
+Isvicre          = 176.85 kiþi/km2
+Luksemburg       = 197.99 kiþi/km2
+Fransa           = 116.27 kiþi/km2
+Avusturya        =  97.43 kiþi/km2
+Yunanistan       =  87.97 kiþi/km2
+Irlanda          =  65.19 kiþi/km2
+Isvec            =  21.15 kiþi/km2
+Finlandiya       =  15.99 kiþi/km2
+Norvec           =  13.07 kiþi/km2
+"""

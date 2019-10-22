@@ -1,0 +1,45 @@
+# coding:iso-8859-9 Türkçe
+# p_30502.py: 3 boyutlu (3,4,2) þekilli matrisin varsayýlý, C-satýr, F-sütun, hafýzada A ve K düzende sökülmesi örneði. 
+
+import numpy as np
+
+A = np.array ([
+    [[ 0,  1],   [ 2,  3],   [ 4,  5],    [ 6,  7]],
+    [[ 8,  9],   [10, 11], [12, 13], [14, 15]],
+    [[16, 17], [18, 19], [20, 21], [22, 23]] ]) # A(3,4,2))
+
+print ("A(3,4,2) 3 boyutlu matris:\n", A, "==>", A.shape, sep="")
+
+sökükA = A.ravel()
+print ("\nSökülen A(24,) 0 boyutlu dizi: ", sökükA, "==>", sökükA.shape, sep="")
+print ("C++ satýr düzenli sökükA:", A.ravel (order="C") ) # Varsayýlý...
+print ("Fortran sütun düzenli sökükA:", A.ravel (order="F") )
+print ("A hafýzada F deðilse C düzenli sökükA:", A.ravel (order="A") )
+print ("K hafýzadaki C/F düzenli sökükA:", A.ravel (order="K") )
+
+
+
+"""Çýktý:
+>python p_30502.py
+A(3,4,2) 3 boyutlu matris:
+[[[ 0  1]
+  [ 2  3]
+  [ 4  5]
+  [ 6  7]]
+
+ [[ 8  9]
+  [10 11]
+  [12 13]
+  [14 15]]
+
+ [[16 17]
+  [18 19]
+  [20 21]
+  [22 23]]]==>(3, 4, 2)
+
+Sökülen A(24,) 0 boyutlu dizi: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 1516 17 18 19 20 21 22 23]==>(24,)
+C++ satýr düzenli sökükA: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23]
+Fortran sütun düzenli sökükA: [ 0  8 16  2 10 18  4 12 20  6 14 22  1  9 17  3 11 19  5 13 21  7 15 23]
+A hafýzada F deðilse C düzenli sökükA: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23]
+K hafýzadaki C/F düzenli sökükA: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23]
+"""

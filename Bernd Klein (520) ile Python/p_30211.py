@@ -1,0 +1,77 @@
+# coding:iso-8859-9 Türkçe
+# p_30211.py: numpy.array asýl ve kopya diziler arasýnda order/sýralama F-C-A-K çeþitleri örneði.
+
+import numpy as np
+
+x = np.array ([[42,22,12], [44,53,66]], order='F') # order=F/C/A/K
+y = x.copy() # Kopyanýn order='C' (varsayýlý)...
+x[0,0] = 1001
+
+print ("x[0,0]=1001 deðiþtirilen  ve order='F' olan orijinal dizi:\n", x, sep="")
+print ("\nKopyasý:\n", y, sep="")
+
+print ("\nOrijinal dizi için order='C' mi?", x.flags['C_CONTIGUOUS'])
+print ("Kopyasý için order='C' mi?", y.flags['C_CONTIGUOUS'])
+print ("-"*40)
+#------------------------------------------------------------------------------------------------------
+
+x = np.array ([[42,22,12], [44,53,66]]) # order='C' (varsayýlý)...
+y = x.copy()
+
+print ("\nVarsayýlý order='C' olan orijinal dizi:\n", x, sep="")
+print ("\nKopyasý:\n", y, sep="")
+
+print ("\nOrijinal dizi için order='C' mi?", x.flags['C_CONTIGUOUS'])
+print ("Kopyasý için order='C' mi?", y.flags['C_CONTIGUOUS'])
+print ("-"*40)
+#------------------------------------------------------------------------------------------------------
+
+x = np.array ([[42,22,12], [44,53,66]], order="F")
+y = x.copy (order='C')
+x[0][0] = 1001
+
+print ("\norder='F' olan orijinal dizi:\n", x, sep="")
+print ("\norder='C' olan kopyasý:\n", y, sep="")
+
+print ("\nOrijinal dizi için order='F' mi?", x.flags['F_CONTIGUOUS'])
+print ("Kopyasý için order='C' mi?", y.flags['C_CONTIGUOUS'])
+
+
+
+"""Çýktý:
+>python p_30211.py
+x[0,0]=1001 deðiþtirilen ve order='F' olan orijinal dizi:
+[[1001   22   12]
+ [  44   53   66]]
+
+Kopyasý:
+[[42 22 12]
+ [44 53 66]]
+
+Orijinal dizi için order='C' mi? False
+Kopyasý için order='C' mi? True
+----------------------------------------
+
+Varsayýlý order='C' olan orijinal dizi:
+[[42 22 12]
+ [44 53 66]]
+
+Kopyasý:
+[[42 22 12]
+ [44 53 66]]
+
+Orijinal dizi için order='C' mi? True
+Kopyasý için order='C' mi? True
+----------------------------------------
+
+order='F' olan orijinal dizi:
+[[1001   22   12]
+ [  44   53   66]]
+
+order='C' olan kopyasý:
+[[42 22 12]
+ [44 53 66]]
+
+Orijinal dizi için order='F' mi? True
+Kopyasý için order='C' mi? True
+"""

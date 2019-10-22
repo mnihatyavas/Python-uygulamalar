@@ -1,0 +1,55 @@
+# coding:iso-8859-9 Türkçe
+# p_30702.py: Deðerler listesinin mesafeler listesinde hangi aralýklara uyduðunun tespiti örneði.
+
+def kaçýncýArada (deðerim, mesafe):
+    for i in range (0, len (mesafe)):
+        if deðerim < mesafe [i]: return i-1
+    return -1
+
+mesafeler = [0, 3, 5, 7.8, 9, 12, 13.8, 16]
+print ("Mesafeler:", mesafeler); print()
+for deðerim in [-1.3, 0, 0.1, 3.2, 5, 6.2, 7.9, 10.8, 13.9, 15, 16, 16.5]:
+    print (deðerim, " ölçeði: ", kaçýncýArada (deðerim, mesafeler), ".aralýkdadýr", sep="")
+print ("-"*40)
+#----------------------------------------------------------------------------------------------------------
+
+def kaçýncý_arada (deðerim, bölümler, uçlar_1Mi=True):
+    for i in range (0, len (bölümler)):
+        if deðerim < bölümler [i]: return i-1 if uçlar_1Mi else i
+    return -1 if uçlar_1Mi else len (bölümler)
+
+aralýklar = [0, 3, 5, 7.8, 9, 12, 13.8, 16]
+print ("\n-1'li uç kontrollu:")
+for deðerim in [-1.3, 0, 0.1, 3.2, 5, 6.2, 7.9, 10.8, 13.9, 15, 16, 16.5]:
+    print (kaçýncý_arada (deðerim, aralýklar), end=", ")
+
+print ("\n\n-/+ sonsuz uçlu:") # -~/0, 1/0,..,7/16, 8/+~
+for deðerim in [-1.3, 0, 0.1, 3.2, 5, 6.2, 7.9, 10.8, 13.9, 15, 16, 16.5]:
+    print (kaçýncý_arada (deðerim, aralýklar, uçlar_1Mi=False), end=", ")
+
+
+
+"""Çýktý:
+>python p_30702.py
+Mesafeler: [0, 3, 5, 7.8, 9, 12, 13.8, 16]
+
+-1.3 ölçeði: -1.aralýkdadýr
+0 ölçeði: 0.aralýkdadýr
+0.1 ölçeði: 0.aralýkdadýr
+3.2 ölçeði: 1.aralýkdadýr
+5 ölçeði: 2.aralýkdadýr
+6.2 ölçeði: 2.aralýkdadýr
+7.9 ölçeði: 3.aralýkdadýr
+10.8 ölçeði: 4.aralýkdadýr
+13.9 ölçeði: 6.aralýkdadýr
+15 ölçeði: 6.aralýkdadýr
+16 ölçeði: -1.aralýkdadýr
+16.5 ölçeði: -1.aralýkdadýr
+----------------------------------------
+
+-1'li uç kontrollu:
+-1, 0, 0, 1, 2, 2, 3, 4, 6, 6, -1, -1,
+
+-/+ sonsuz uçlu:
+0, 1, 1, 2, 3, 3, 4, 5, 7, 7, 8, 8,
+"""

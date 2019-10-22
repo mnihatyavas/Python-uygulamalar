@@ -1,0 +1,64 @@
+# coding:iso-8859-9 Türkçe
+# p_30305.py: 3 verili tüpleyi SS:dd:ss zaman tipine dönüþtüren dtype örneði.
+
+import numpy as np
+
+zamanTipi = np.dtype ([('saat', int), ('dakika', int), ('saniye', int)])
+zamanlar = np.array ([
+    (11, 38, 5),
+    (14, 56, 0),
+    (3, 9, 1),
+    (23, 59, 59),
+    (0, 0, 0),
+    (12, 59, 59),
+    (13, 0, 0)], dtype=zamanTipi)
+
+print ("Zamanlarýn ardýþýk listesi:\n", zamanlar, sep="")
+
+print ("\nZamanlarýn alt-alta listesi:\n", "-"*30, sep="")
+for i in range (len (zamanlar)): print (zamanlar [i])
+
+print ("\nZamanlarýn biçimli listesi:\n", "-"*27, "\nSt Dk Sn\n", "-"*8, sep="")
+for i in range (len (zamanlar)): print ("{:02d}:{:02d}:{:02d}" .format (zamanlar [i] [0], zamanlar [i] [1], zamanlar [i] [2]) )
+
+print ("\nÝlk zamanlar elemaný:", zamanlar [0])
+print ("Son zamanlar elemaný:", zamanlar [-1])
+
+zamanlar [0] = (11, 33, 5) # Ýlk zamaný 5 dakika geri alalým...
+#zamanlar[len(zamanlar)] = (13, 1, 0) # Son zamaný 1 dakika ilerletip ekleyelim...
+print ("5 dk geri alýnan ilk zamanlar elemaný:", zamanlar [0])
+
+
+
+"""Çýktý:
+>python p_30305.py
+Zamanlarýn ardýþýk listesi:
+[(11, 38,  5) (14, 56,  0) ( 3,  9,  1) (23, 59, 59) ( 0,  0,  0)
+ (12, 59, 59) (13,  0,  0)]
+
+Zamanlarýn alt-alta listesi:
+------------------------------
+(11, 38, 5)
+(14, 56, 0)
+(3, 9, 1)
+(23, 59, 59)
+(0, 0, 0)
+(12, 59, 59)
+(13, 0, 0)
+
+Zamanlarýn biçimli listesi:
+---------------------------
+St Dk Sn
+--------
+11:38:05
+14:56:00
+03:09:01
+23:59:59
+00:00:00
+12:59:59
+13:00:00
+
+Ýlk zamanlar elemaný: (11, 38, 5)
+Son zamanlar elemaný: (13, 0, 0)
+5 dk geri alýnan ilk zamanlar elemaný: (11, 33, 5)
+"""

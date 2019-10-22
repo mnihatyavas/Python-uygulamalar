@@ -1,0 +1,120 @@
+# coding:iso-8859-9 Türkçe
+# p_30704.py: Verili aðýrlýklý meslek tercihlerinin uygulamalýyla kýyasý örneði.
+
+from numpy.random import choice as tercih
+
+meslekler = ["filozof", "alim", "ruhani", "mühendis", "programcý"]
+aðýrlýklarý = [0.05, 0.2, 0.15, 0.3, 0.3]
+
+print ("Kendine geliþigüzel bir meslek seç:", tercih (meslekler, p=aðýrlýklarý) )
+#---------------------------------------------------------------------------------------------------------
+
+from collections import Counter
+
+say = Counter()
+
+try: kere = abs (int (input ("\nKaç kere tercih yapacaksýn [10 000]? ")))
+except: kere = 10000
+
+for _ in range (kere):
+    meslek = tercih (meslekler, p=aðýrlýklarý)
+    say [meslek] += 1
+
+print ("\nToplam ", kere, " kerelik tercih sayýsýnýn mesleklere daðýlýmý:\n", say, sep="")
+
+#toplam = sum (say.values()) # Zaten kere=toplam...
+for meslek in say: say[meslek] /= kere
+
+print ("\nHerbir meslek ve tercihlerinin deneysel sonuç yüzdeleri:\n", say, sep="")
+
+print ("\nVerili biçimli çýktýlar:\n", "-"*52, sep="")
+for _ in range (len (meslekler)): print ("Verili meslek: {:9s} ve olasýlýk yüzdesi: %{:5.2f}" .format (meslekler[_].upper(), aðýrlýklarý[_]*100))
+
+print ("\nUygulamalý biçimli çýktýlar:\n", "-"*52, sep="")
+for meslek in say: print ("Verili meslek: {:9s} ve olasýlýk yüzdesi: %{:5.2f}" .format (meslek.upper(), say[meslek]*100))
+
+
+
+"""Çýktý:
+>python p_30704.py
+>python p_30704.py
+Kendine geliþigüzel bir meslek seç: alim
+
+Kaç kere tercih yapacaksýn [10 000]? 1957
+
+Toplam 1957 kerelik tercih sayýsýnýn mesleklere daðýlýmý:
+Counter({'programcý': 615, 'mühendis': 563, 'alim': 393, 'ruhani': 283, 'filozof': 103})
+
+Herbir meslek ve tercihlerinin deneysel sonuç yüzdeleri:
+Counter({'programcý': 0.314256515074093, 'mühendis': 0.2876852324987225, 'alim': 0.200817577925396, 'ruhani': 0.14460909555442003, 'filozof': 0.05263157894736842})
+
+Verili biçimli çýktýlar:
+----------------------------------------------------
+Verili meslek: FILOZOF   ve olasýlýk yüzdesi: % 5.00
+Verili meslek: ALIM      ve olasýlýk yüzdesi: %20.00
+Verili meslek: RUHANI    ve olasýlýk yüzdesi: %15.00
+Verili meslek: MÜHENDIS  ve olasýlýk yüzdesi: %30.00
+Verili meslek: PROGRAMCI ve olasýlýk yüzdesi: %30.00
+
+Uygulamalý biçimli çýktýlar:
+----------------------------------------------------
+Verili meslek: PROGRAMCI ve olasýlýk yüzdesi: %31.43
+Verili meslek: ALIM      ve olasýlýk yüzdesi: %20.08
+Verili meslek: FILOZOF   ve olasýlýk yüzdesi: % 5.26
+Verili meslek: MÜHENDIS  ve olasýlýk yüzdesi: %28.77
+Verili meslek: RUHANI    ve olasýlýk yüzdesi: %14.46
+
+>python p_30704.py  ** TEKRAR **
+Kendine geliþigüzel bir meslek seç: programcý
+
+Kaç kere tercih yapacaksýn [10 000]?
+
+Toplam 10000 kerelik tercih sayýsýnýn mesleklere daðýlýmý:
+Counter({'mühendis': 3043, 'programcý': 2982, 'alim': 2028, 'ruhani': 1469, 'filozof': 478})
+
+Herbir meslek ve tercihlerinin deneysel sonuç yüzdeleri:
+Counter({'mühendis': 0.3043, 'programcý': 0.2982, 'alim': 0.2028, 'ruhani': 0.1469, 'filozof': 0.0478})
+
+Verili biçimli çýktýlar:
+----------------------------------------------------
+Verili meslek: FILOZOF   ve olasýlýk yüzdesi: % 5.00
+Verili meslek: ALIM      ve olasýlýk yüzdesi: %20.00
+Verili meslek: RUHANI    ve olasýlýk yüzdesi: %15.00
+Verili meslek: MÜHENDIS  ve olasýlýk yüzdesi: %30.00
+Verili meslek: PROGRAMCI ve olasýlýk yüzdesi: %30.00
+
+Uygulamalý biçimli çýktýlar:
+----------------------------------------------------
+Verili meslek: ALIM      ve olasýlýk yüzdesi: %20.28
+Verili meslek: PROGRAMCI ve olasýlýk yüzdesi: %29.82
+Verili meslek: MÜHENDIS  ve olasýlýk yüzdesi: %30.43
+Verili meslek: FILOZOF   ve olasýlýk yüzdesi: % 4.78
+Verili meslek: RUHANI    ve olasýlýk yüzdesi: %14.69
+
+>python p_30704.py  ** TEKRAR**
+Kendine geliþigüzel bir meslek seç: programcý
+
+Kaç kere tercih yapacaksýn [10 000]? 20000
+
+Toplam 20000 kerelik tercih sayýsýnýn mesleklere daðýlýmý:
+Counter({'mühendis': 6094, 'programcý': 5974, 'alim': 3919, 'ruhani': 2993, 'filozof': 1020})
+
+Herbir meslek ve tercihlerinin deneysel sonuç yüzdeleri:
+Counter({'mühendis': 0.3047, 'programcý': 0.2987, 'alim': 0.19595, 'ruhani': 0.14965, 'filozof': 0.051})
+
+Verili biçimli çýktýlar:
+----------------------------------------------------
+Verili meslek: FILOZOF   ve olasýlýk yüzdesi: % 5.00
+Verili meslek: ALIM      ve olasýlýk yüzdesi: %20.00
+Verili meslek: RUHANI    ve olasýlýk yüzdesi: %15.00
+Verili meslek: MÜHENDIS  ve olasýlýk yüzdesi: %30.00
+Verili meslek: PROGRAMCI ve olasýlýk yüzdesi: %30.00
+
+Uygulamalý biçimli çýktýlar:
+----------------------------------------------------
+Verili meslek: PROGRAMCI ve olasýlýk yüzdesi: %29.87
+Verili meslek: MÜHENDIS  ve olasýlýk yüzdesi: %30.47
+Verili meslek: ALIM      ve olasýlýk yüzdesi: %19.60
+Verili meslek: RUHANI    ve olasýlýk yüzdesi: %14.96
+Verili meslek: FILOZOF   ve olasýlýk yüzdesi: % 5.10
+"""

@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+# p_30206.py: numpy.array ile tek boyutlu D[0]-D[-1] ve iki boyutlu D[0][0]-D[-1][-1] dizi ilk ve son elemanlarý örneði.
+
+import numpy as np
+
+F = np.array ([1, 1, 2, 3, 5, 8, 13, 21])
+print ("Dizi: ", F, "\nÝlk elemaný: ", F[0], "\nSon elemaný: ", F[-1], "\nÞekli: ", F.shape, sep="")
+
+A = np.array ([
+    [3.4, 8.7, 9.9],
+    [1.1, -7.8, -0.7],
+    [4.1, 12.3, 4.8] ])
+print ("\nDizi:\n", A, "\nÝlk elemaný: ", A[0][0], "\nSon elemaný: ", A[-1][-1], "\nÞekli: ", A.shape, sep="")
+
+
+
+"""Çýktý:
+>python p_30206.py
+Dizi: [ 1  1  2  3  5  8 13 21]
+Ýlk elemaný: 1
+Son elemaný: 21
+Þekli: (8,)
+
+Dizi:
+[[ 3.4  8.7  9.9]
+ [ 1.1 -7.8 -0.7]
+ [ 4.1 12.3  4.8]]
+Ýlk elemaný: 3.4
+Son elemaný: 4.8
+Þekli: (3, 3)
+"""

@@ -1,0 +1,19 @@
+# coding:iso-8859-9 Türkçe
+# p_30603.py: 1000 adet numpy tesadüfi sayýnýn ardýþýk toplamý ve birlemeli normalleþtirilmiþ toplamý örneði.
+
+import numpy as np
+
+randomDizi = np.random.random (1000)
+toplam = randomDizi.sum()
+print ("1000 adet randomDizi'nin toplamý:", toplam)
+
+birlemeliDizi = randomDizi / toplam # Ýhtimal iþlemlerinde kullanýlabilir...
+print ("1000 adet birlemeliDizi'nin normalleþtirilmiþ toplamý:", birlemeliDizi.sum())
+
+
+
+"""Çýktý:
+>python p_30603.py
+1000 adet randomDizi'nin toplamý: 504.0364770246135
+1000 adet birlemeliDizi'nin normalleþtirilmiþ toplamý: 1.0
+"""

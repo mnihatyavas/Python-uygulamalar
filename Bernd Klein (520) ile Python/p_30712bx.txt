@@ -1,0 +1,21 @@
+# Ýngilteredeki 20 üniversitedeki 2014-14 tarihli kayýtlý öðrenci sayýlarý:
+"Open University in England", 123490
+"University of Manchester", 37925
+"University of Nottingham", 33270
+"Sheffield Hallam University", 33100
+"University of Birmingham", 32335
+"Manchester Metropolitan University", 32160
+"University of Leeds", 30975
+"Cardiff University", 30180
+"University of South Wales", 29195
+"University College London", 28430
+"King's College London", 27645
+"University of Edinburgh", 27625
+"Northumbria University", 27565
+"University of Glasgow", 27390
+"University of Plymouth", 27203
+"Coventry University", 27002
+"University of the West of England", 26734
+"University of Central Lancashire", 26265
+"Nottingham Trent University", 26221
+"University of Sheffield", 25908

@@ -1,0 +1,93 @@
+# coding:iso-8859-9 Türkçe
+# p_30801.py: Ad ve soyad listelerinden karþýlýklý aðýrlýksýz seçimi örneði.
+
+import random
+import numpy as np
+from random import choice
+
+def aðýrlýklýÖrnekleme2 (listem, aðýrlýklarý, k):
+    seçilenKüme = set()
+    listem = list (listem)
+    aðýrlýklarý = list (aðýrlýklarý)
+    while len (seçilenKüme) < k:
+        seçilen = aðýrlýklýTercih (listem, aðýrlýklarý)
+        if seçilen not in seçilenKüme: seçilenKüme.add (seçilen)
+        # Seçilen tekrar seçilmiþse kümeye eklenmez...
+    return list (seçilenKüme)
+
+def aðýrlýklýTercih (veriler, gelmeAðýrlýklarý, kriptoluMu=True):
+    if kriptoluMu: x = random.SystemRandom().random()
+    else: x = np.random.random()
+    gelmeYüzdeleriToplamý = [0] + list (np.cumsum (gelmeAðýrlýklarý))
+    endeks = kaçýncýArada (x, gelmeYüzdeleriToplamý)
+    return veriler[endeks]
+
+def kaçýncýArada (deðerim, bölümler, uçlar_1Mi=True):
+    for i in range (0, len (bölümler)):
+        if deðerim < bölümler[i]: return i-1 if uçlar_1Mi else i
+    return -1 if uçlar_1Mi else len (bölümler)
+
+def karþýlýklýSeçim (*taranabilenler):
+    sonuç = []
+    for listem in taranabilenler: sonuç.append (choice (listem))
+    return sonuç
+
+def aðýrlýklýKarþýlýklýSeçim (*taranabilenler):
+    sonuç = []
+    for veri, aðýrlýðý in taranabilenler:
+        aðýrlýklýSeçim = aðýrlýklýTercih (veri, aðýrlýðý)
+        sonuç.append (aðýrlýklýSeçim)
+    return sonuç
+
+def bireþimci (veriler, aðýrlýklarý=None, biçimlemeFonksiyonu=None, tekrarlanabilirSeçimMi=True):
+    def tercih (veriler, aðýrlýklarý):
+        if aðýrlýklarý: return aðýrlýklýKarþýlýklýSeçim (*zip (veriler, aðýrlýklarý))
+        else: return karþýlýklýSeçim (*veriler)
+    def bireþimle():
+        if not tekrarlanabilirSeçimMi: belle = set()
+        while True:
+            yeniSeçilen = tercih (veriler, aðýrlýklarý)
+            if not tekrarlanabilirSeçimMi:
+                seçilen = str (yeniSeçilen)
+                while seçilen in belle:
+                    yeniSeçilen = tercih (veriler, aðýrlýklarý)
+                    seçilen = str (yeniSeçilen)
+                belle.add (seçilen)
+            if biçimlemeFonksiyonu: yield biçimlemeFonksiyonu (yeniSeçilen)
+            else: yield yeniSeçilen
+    return bireþimle
+
+
+if __name__ == "__main__":
+    adlar = ["Hatice", "Süheyla", "Zeliha", "Nihat", "Songül", "Nedim", "Sevim",
+        "Nur", "Yücel", "Serap", "Sema", "Fatih", "Selda", "Canan", "Zafer", "Belkýs",
+        "Hilal", "Atilla"]
+    soyadlar = ["Yavaþ", "Küçükbay", "Kaçar", "Candan", "Özbay", "Göktürk",
+        "Eskici", "Aydan", "Çiller", "Akþener", "Çiçek", "Öztürk", "Amanat", "Hastürk",
+        "Kölük", "Fýrat", "Havlucu", "Özen"] # Liste uzunluklarý ayný olmak zorunda deðil...
+
+    try: sayý = abs (int (input ("Kaç eleman seçilecek [15]? ")))
+    except: sayý = 15
+
+    elemanlar = set()
+    while len (elemanlar) < sayý:
+        eleman = karþýlýklýSeçim (adlar, soyadlar)
+        elemanlar.add (" ".join (eleman))
+    print (elemanlar)
+
+
+
+"""Çýktý:
+>python p_30801.py
+Kaç eleman seçilecek [15]?
+{'Hilal Havlucu', 'Belkýs Çiçek', 'Nedim Kölük', 'Zafer Akþener', 'Hilal Hastürk',
+'Süheyla Çiller', 'Atilla Candan', 'Atilla Öztürk', 'Zeliha Özen', 'Selda Aydan',
+'Belkýs Hastürk', 'Zeliha Küçükbay', 'Selda Havlucu', 'Sema Çiçek', 'CananEskici'}
+
+>python p_30801.py  ** TEKRAR **
+Kaç eleman seçilecek [15]? 20
+{'Hilal Küçükbay', 'Canan Hastürk', 'Nedim Eskici', 'Nihat Özen', 'Hilal Göktürk',
+'Selda Çiçek', 'Songül Hastürk', 'Songül Kaçar', 'Sevim Küçükbay', 'Nedim Özen',
+'Sema Akþener', 'Zeliha Özbay', 'Fatih Aydan', 'Zeliha Öztürk', 'Süheyla Çiller',
+'Zeliha Özen', 'Nedim Kölük', 'Canan Fýrat', 'Sema Özbay', 'Belkýs Eskici'}
+"""

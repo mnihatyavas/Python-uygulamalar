@@ -1,0 +1,57 @@
+# coding:iso-8859-9 Türkçe
+# p_30710c.py: Jeneratör üreteçle tesadüfilerin aðýrlýðýný yüzde ellileme örneði.
+
+import random
+
+def tesadüfiBirSýfýr (a):
+    while True:
+        x = random.random()
+        yield 1 if x < a else 0
+
+def üret (tesadüfiÜreteç, n):
+    for i in range (n): yield next (tesadüfiÜreteç)
+
+def yüzdeEllici (birSýfýrlar):
+    while True:
+        bit1 = next (birSýfýrlar)
+        bit2 = next (birSýfýrlar)
+        if bit1 + bit2 == 1:
+            bit3 = next (birSýfýrlar)
+            yield 1 if bit2 + bit3 == 1 else 0
+        
+def yüzdeEllici2 (birSýfýrlar):
+    bit1 = next (birSýfýrlar)
+    bit2 = next (birSýfýrlar)
+    bit3 = next (birSýfýrlar)
+    while True:
+        if bit1 + bit2 == 1: yield 1 if bit2 + bit3 == 1 else 0
+        bit1, bit2, bit3 = bit2, bit3, next (birSýfýrlar)
+
+
+try: kere = abs (int (input ("Kaç adet tesadüfi sayý üretsin [100 000]? ")))
+except: kere = 100000
+
+try: aðýrlýk = abs (eval (input ("[0->1] aðýrlýðý kaç olsun [0.85]? ")))
+except: aðýrlýk = 0.85
+if aðýrlýk > 1: aðýrlýk = 0.85
+
+print ("\nSonuç-1: orijinal %", (aðýrlýk * 1000) / 10, " aðýrlýklý ", kere, " adet 0/1'in ortalamasý: %", int ((sum (x for x in üret (yüzdeEllici (tesadüfiBirSýfýr (aðýrlýk)), kere)) / kere) * 10000000) / 100000.0, sep="")
+print ("Sonuç-2: orijinal %", (aðýrlýk * 1000) / 10, " aðýrlýklý ", kere, " adet 0/1'in ortalamasý: %", int ((sum (x for x in üret (yüzdeEllici (tesadüfiBirSýfýr (aðýrlýk)), kere)) / kere) * 10000000) / 100000.0, sep="")
+
+
+
+"""Çýktý:
+>python p_30710c.py
+Kaç adet tesadüfi sayý üretsin [100 000]?
+[0->1] aðýrlýðý kaç olsun [0.85]?
+
+Sonuç-1: orijinal %85.0 aðýrlýklý 100000 adet 0/1'in ortalamasý: %49.869
+Sonuç-2: orijinal %85.0 aðýrlýklý 100000 adet 0/1'in ortalamasý: %50.043
+
+>python p_30710c.py  ** TEKRAR **
+Kaç adet tesadüfi sayý üretsin [100 000]? 10000
+[0->1] aðýrlýðý kaç olsun [0.85]? 0.25
+
+Sonuç-1: orijinal %25.0 aðýrlýklý 10000 adet 0/1'in ortalamasý: %49.08399
+Sonuç-2: orijinal %25.0 aðýrlýklý 10000 adet 0/1'in ortalamasý: %50.0
+"""

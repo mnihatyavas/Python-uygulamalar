@@ -1,0 +1,102 @@
+# coding:iso-8859-9 Türkçe
+# p_30712c.py: 4 prensin son 4'ü favori 11 amazon kýz adayla günbegün deðiþen aðýrlýkla evlilik ihtimali örneði.
+
+import random
+import numpy as np
+from time import process_time as pt
+
+def aðýrlýklýÖrnekleme2 (listem, aðýrlýklarý, k):
+    seçilenKüme = set()
+    listem = list (listem)
+    aðýrlýklarý = list (aðýrlýklarý)
+    while len (seçilenKüme) < k:
+        seçilen = aðýrlýklýTercih (listem, aðýrlýklarý)
+        if seçilen not in seçilenKüme: seçilenKüme.add (seçilen)
+        # Seçilen tekrar seçilmiþse kümeye eklenmez...
+    return list (seçilenKüme)
+
+def aðýrlýklýTercih (zarYüzleri, gelmeAðýrlýklarý, kriptoluMu=True):
+    if kriptoluMu: x = random.SystemRandom().random()
+    else: x = np.random.random()
+    gelmeYüzdeleriToplamý = [0] + list (np.cumsum (gelmeAðýrlýklarý))
+    endeks = kaçýncýArada (x, gelmeYüzdeleriToplamý)
+    return zarYüzleri[endeks]
+
+def kaçýncýArada (deðerim, bölümler, uçlar_1Mi=True):
+    for i in range (0, len (bölümler)):
+        if deðerim < bölümler[i]: return i-1 if uçlar_1Mi else i
+    return -1 if uçlar_1Mi else len (bölümler)
+
+
+amazonAdaylar = ["Airla", "Barbara", "Eos", "Glykeria", "Hanna", "Helen",
+    "Agathangelos", "Iokaste", "Medousa", "Sofronia", "Andromeda"]
+"""3 farklý yöntem iþlem süresini gittikce kýsaltýr...
+deðiþenAðýrlýklar = [1 / len (amazonAdaylar) for _ in range (len (amazonAdaylar))] # 11'i de eþit=1/11...
+
+from fractions import Fraction
+deðiþenAðýrlýklar = [Fraction (1, 11) for _ in range (len (amazonAdaylar))]
+"""
+deðiþenAðýrlýklar = np.full (11, 1 / len (amazonAdaylar))
+PytheussesFavorileri = {"Iokaste", "Medousa", "Sofronia", "Andromeda"}
+
+try: kere = abs (int (input ("Hergün seçilecek 4'lü çekiliþ sayýsý [1 000]? ")))
+except: kere = 1000
+
+sayaç = 0
+ihtimal = 1 / 330 # %03 (binde 3)...
+geçenGünler = 0
+faktör1 = 1 / 13 # Hergün favori olmayan ilk yediliden düþülecek aðýrlýk...
+faktör2 = 1 / 12 # Hergün favori son dörtlüsüne eklenecek aðýrlýk...
+baþlat = pt()
+
+print ("\nBaþlangýç aðýrlýklar: %", [int (a * 10000) / 100 for a in deðiþenAðýrlýklar])
+while ihtimal < 0.9: # yüzde 90 (hergün 1 döngü)...
+    for i in range (kere): # Ýstenen, 1000 tesadüfi seçimden enaz 900 favori dörtlü kümesi çýkmasý...
+        seçilenDörtlü = aðýrlýklýÖrnekleme2 (amazonAdaylar, deðiþenAðýrlýklar, 4)
+        if set (seçilenDörtlü) == PytheussesFavorileri: sayaç += 1
+    ihtimal = sayaç / kere # ihtimal=900/1000: son...
+    sayaç = 0
+    deðiþenAðýrlýklar[:7] = [ aðýr - aðýr*faktör1 for aðýr in deðiþenAðýrlýklar[:7] ]
+    deðiþenAðýrlýklar[7:] = [ ihtimal + ihtimal*faktör2 for ihtimal in deðiþenAðýrlýklar[7:] ]
+    deðiþenAðýrlýklar = [ a / sum (deðiþenAðýrlýklar) for a in deðiþenAðýrlýklar]
+    geçenGünler += 1
+
+print ("Sonuç aðýrlýklar: %", [int (a * 10000) / 100 for a in deðiþenAðýrlýklar])
+print ("Ýþlem süresi (sn):", int ((pt() - baþlat) * 100) / 100)
+print ("Pytheusses'un %90 emin olabilmesi için geçen gün sayýsý: ", geçenGünler)
+
+
+
+"""Çýktý:
+>python p_30712c.py
+Hergün seçilecek 4'lü çekiliþ sayýsý [1 000]? 1
+
+Baþlangýç aðýrlýklar: % [9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09]
+Sonuç aðýrlýklar: % [3.72, 3.72, 3.72, 3.72, 3.72, 3.72, 3.72, 18.47, 18.47, 18.47, 18.47]
+Ýþlem süresi (sn): 0.04
+Pytheusses'un %90 emin olabilmesi için geçen gün sayýsý:  10
+
+>python p_30712c.py  ** TEKRAR **
+Hergün seçilecek 4'lü çekiliþ sayýsý [1 000]? 10
+
+Baþlangýç aðýrlýklar: % [9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09]
+Sonuç aðýrlýklar: % [0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 23.94, 23.94, 23.94, 23.94]
+Ýþlem süresi (sn): 0.98
+Pytheusses'un %90 emin olabilmesi için geçen gün sayýsý:  23
+
+>python p_30712c.py  ** TEKRAR **
+Hergün seçilecek 4'lü çekiliþ sayýsý [1 000]? 100
+
+Baþlangýç aðýrlýklar: % [9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09]
+Sonuç aðýrlýklar: % [0.14, 0.14, 0.14, 0.14, 0.14, 0.14, 0.14, 24.74, 24.74, 24.74, 24.74]
+Ýþlem süresi (sn): 6.13
+Pytheusses'un %90 emin olabilmesi için geçen gün sayýsý:  32
+
+>python p_30712c.py  ** TEKRAR **
+Hergün seçilecek 4'lü çekiliþ sayýsý [1 000]?
+
+Baþlangýç aðýrlýklar: % [9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09, 9.09]
+Sonuç aðýrlýklar: % [0.17, 0.17, 0.17, 0.17, 0.17, 0.17, 0.17, 24.69, 24.69, 24.69, 24.69]
+Ýþlem süresi (sn): 44.19
+Pytheusses'un %90 emin olabilmesi için geçen gün sayýsý:  31
+"""

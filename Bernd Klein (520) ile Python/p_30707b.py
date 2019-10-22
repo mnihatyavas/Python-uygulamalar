@@ -1,0 +1,79 @@
+# coding:iso-8859-9 Türkçe
+# p_30707b.py: Farklý aðýrlýklý çoklu cümleleden tümleçlerin verili ve uygulamalý aðýrlýklarý kýyasý örneði.
+
+import random
+import numpy as np
+from collections import Counter
+
+def kaçýncýArada (deðerim, bölümler, uçlar_1Mi=True):
+    for i in range (0, len (bölümler)):
+        if deðerim < bölümler[i]: return i-1 if uçlar_1Mi else i
+    return -1 if uçlar_1Mi else len (bölümler)
+
+def aðýrlýklýTercih (ibareler, gelmeAðýrlýklarý, kriptoluMu=True):
+    if kriptoluMu: x = random.SystemRandom().random()
+    else: x = np.random.random()
+    gelmeYüzdeleriToplamý = [0] + list (np.cumsum (gelmeAðýrlýklarý))
+    endeks = kaçýncýArada (x, gelmeYüzdeleriToplamý)
+    return ibareler[endeks]
+
+def aðýrlýklýKartezyenSeçim (*taranabilenler):
+    sonuç = []
+    for kelime, aðýrlýðý in taranabilenler:
+        aðýrlýklýSeçim = aðýrlýklýTercih (kelime, aðýrlýðý)
+        sonuç.append (aðýrlýklýSeçim)
+    return sonuç
+
+zamir = (["Bu", "Bir", "Herbir", "Her", "Þu", "Tüm"], [0.3, 0.2, 0.1, 0.1, 0.2, 0.1])
+sýfat = (["kýrmýzý", "yeþil", "mavi", "sarý", "gri", "beyaz"], [0.1, 0.3, 0.2, 0.2, 0.2, 0.1])
+isim = (["su", "fil", "balýk", "ýþýk", "programlama dili"], [0.3, 0.2, 0.1, 0.1, 0.3])
+tümleç = (["mutluluk", "çikolata", "zeka", "hava"], [0.5, 0.2, 0.2, 0.1])
+fiil = (["kokuyor", "tadýyor", "düþünüyor", "alýyor"], [0.2, 0.3, 0.3, 0.2])
+
+try: adet = abs (int (input ("Kaç saçmasapan cümle kuracaksýn [1000]? ")))
+except: adet = 1000
+
+cümleler = []
+for i in range (adet):
+    cümle = aðýrlýklýKartezyenSeçim (zamir, sýfat, isim, tümleç, fiil)
+    cümleler.append (" ".join (cümle) + ".")
+
+kelimeler = ["mutluluk", "çikolata", "zeka", "hava"]
+
+say = Counter()
+for tümce in cümleler:
+    for kelime in kelimeler:
+        if kelime in tümce: say[kelime] += 1
+
+kelimeToplamý = sum (say.values())
+print ("\nTanýmlanan kelime ve aðýrlýklarý:\n", tümleç, sep="")
+print ("\nUygulamada saptanan kelime ve aðýrlýklarý:")
+for anahtar in say: print (anahtar, say [anahtar] / kelimeToplamý)
+
+
+
+"""Çýktý:
+>python p_30707b.py
+Kaç saçmasapan cümle kuracaksýn [1000]?
+
+Tanýmlanan kelime ve aðýrlýklarý:
+(['mutluluk', 'çikolata', 'zeka', 'hava'], [0.5, 0.2, 0.2, 0.1])
+
+Uygulamada saptanan kelime ve aðýrlýklarý:
+zeka 0.185
+mutluluk 0.533
+çikolata 0.192
+hava 0.09
+
+>python p_30707b.py  ** TEKRAR **
+Kaç saçmasapan cümle kuracaksýn [1000]? 10000
+
+Tanýmlanan kelime ve aðýrlýklarý:
+(['mutluluk', 'çikolata', 'zeka', 'hava'], [0.5, 0.2, 0.2, 0.1])
+
+Uygulamada saptanan kelime ve aðýrlýklarý:
+mutluluk 0.5025
+hava 0.0997
+çikolata 0.1957
+zeka 0.2021
+"""

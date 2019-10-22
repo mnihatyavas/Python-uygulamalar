@@ -1,0 +1,72 @@
+# coding:iso-8859-9 Türkçe
+# p_30302.py: numpy.dtype'ýn tamsayý ve kayannoktalý çeþitleri örneði.
+
+import numpy as np
+
+dt = np.dtype ([('yoðunluk', np.int16)]) # np.int32 = "i4", np.int16 = "i2", np.int8 = "i1" (hatalý gösterim)
+x = np.array ([(393,), (337,), (256,)], dtype=dt)
+
+print ("np.array ile tek tip dizi/matris yaratýlýr;\ndtype ile ise her kolon için farklý tip yaratýlabilir.\nBöylece np.dtype bize veritabaný tablosu oluþturmamýza imkan saðlar.")
+print ("\ndt: ", dt, "\ntype(dt): ", type (dt), "\nstr(x) veya x: ", x, "\ntype(x): ", type (x), "\nrepr(x): ", repr (x), sep="")
+print ("\nx('yoðunluk'):", x ["yoðunluk"] )
+print ("-"*50)
+#----------------------------------------------------------------------------------------------------
+
+dt = np.dtype ([('yoðunluk', "i2")]) # Yukardakiyle ayný sonucu verir...
+print ("dt=:", dt)
+dt = np.dtype ([('yoðunluk', ">i2")])
+print ("dt>:", dt)
+dt = np.dtype ([('yoðunluk', "<i2")])
+print ("dt<:", dt)
+
+dt = np.dtype ([('yoðunluk', "i")]) # int64
+print ("\ndt=:", dt)
+dt = np.dtype ([('yoðunluk', ">i")])
+print ("dt>:", dt)
+dt = np.dtype ([('yoðunluk', "<i")])
+print ("dt<:", dt)
+
+dt = np.dtype ([('yoðunluk', "d")]) # d:double = float64 = f8
+print ("\ndt=:", dt)
+dt = np.dtype ([('yoðunluk', ">d")])
+print ("dt>:", dt)
+dt = np.dtype ([('yoðunluk', "<d")])
+print ("dt<:", dt)
+
+print()
+dt = np.dtype ("=d"); print (dt.name, dt.byteorder, dt.itemsize)
+dt = np.dtype (">d"); print (dt.name, dt.byteorder, dt.itemsize)
+dt = np.dtype ("<d"); print (dt.name, dt.byteorder, dt.itemsize)
+
+
+
+"""Çýktý:
+>python p_30302.py
+np.array ile tek tip dizi/matris yaratýlýr;
+dtype ile ise her kolon için farklý tip yaratýlabilir.
+Böylece np.dtype bize veritabaný tablosu oluþturmamýza imkan saðlar.
+
+dt: [('yoðunluk', '<i2')]
+type(dt): <class 'numpy.dtype'>
+str(x) veya x: [(393,) (337,) (256,)]
+type(x): <class 'numpy.ndarray'>
+repr(x): array([(393,), (337,), (256,)], dtype=[('yoðunluk', '<i2')])
+
+x('yoðunluk'): [393 337 256]
+--------------------------------------------------
+dt=: [('yoðunluk', '<i2')]
+dt>: [('yoðunluk', '>i2')]
+dt<: [('yoðunluk', '<i2')]
+
+dt=: [('yoðunluk', '<i4')]
+dt>: [('yoðunluk', '>i4')]
+dt<: [('yoðunluk', '<i4')]
+
+dt=: [('yoðunluk', '<f8')]
+dt>: [('yoðunluk', '>f8')]
+dt<: [('yoðunluk', '<f8')]
+
+float64 = 8
+float64 > 8
+float64 = 8
+"""

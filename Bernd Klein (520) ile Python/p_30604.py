@@ -1,0 +1,35 @@
+# coding:iso-8859-9 Türkçe
+
+from random import SystemRandom
+# p_30604.py: SystemRandom() ile istenilen uzunlukta verili tesadüfi karakter seçimli þifre üretme örneði.
+
+kripto = SystemRandom() # SystemRandom sýnýfýnýn bir tipleme nesnesini yaratýr...
+
+def þifreÜretici (þifreUzunluðu, kullanýlabilirKarakterler=None):
+    if kullanýlabilirKarakterler==None:
+        kullanýlabilirKarakterler = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        kullanýlabilirKarakterler += kullanýlabilirKarakterler.lower() + "0123456789"
+    uz = len (kullanýlabilirKarakterler)-1
+    þifrem = ""
+    sayaç = 0
+    while sayaç < þifreUzunluðu:
+        #tesadüfi0_255Sayý = kripto.randint (0, 256)
+        #krk = chr (tesadüfi0_255Sayý)
+        #if krk in kullanýlabilirKarakterler: þifrem += chr (tesadüfi0_255Sayý)
+        þifrem += kullanýlabilirKarakterler [kripto.randint (0, uz)]
+        sayaç += 1
+    return þifrem
+
+print ("Python tarafýndan otomatik üretilen güvenli þifre: " + þifreÜretici (15, "ABCÇDEFGÐHIÝJKLMNOÖPQRSÞTUÜVWXYZbcçdefgðhýijklmnoöpqrsþtuüvwxyz0123456789") )
+
+
+"""Çýktý:
+>python p_30604.py
+Python tarafýndan otomatik üretilen güvenli þifre: oq1ÖWÇkptcPðY9p
+
+>python p_30604.py  ** TEKRAR **
+Python tarafýndan otomatik üretilen güvenli þifre: 4XþTpMEý1JBfCj2
+
+>python p_30604.py  ** TEKRAR **
+Python tarafýndan otomatik üretilen güvenli þifre: 9Hv9QmÝHXWöETQh
+"""

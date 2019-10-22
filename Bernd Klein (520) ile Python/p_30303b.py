@@ -1,0 +1,69 @@
+# coding:iso-8859-9 Türkçe
+# p_30303b.py: numpy.unicode ile Türkçe karakterli formatlý tabloyu ekrana ve dosyaya yazdýrma örneði.
+
+import numpy as np
+
+dt = np.dtype ([('Ülke', np.unicode, 20), ('Yoðunluk', 'i4'), ('Alan', 'i4'), ('Nüfus', 'i4')])
+# Ülke adlarý np.unicode ile artýk baþýnda b'siz ve tüm karakterleri alabilir...
+ülkelerTablosu = np.array ([ # Azalan nüfus yoðunluðuna göre sýralýdýr...
+    ('Hollanda', 393, 41526, 16928800),
+    ('Belçika', 337, 30510, 11007020),
+    ('Birleþik Krallýk', 256, 243610, 62262000),
+    ('Almanya', 233, 357021, 81799600),
+    ('Leh Cumhuriyeti', 205, 160, 32842),
+    ('Ýtalya', 192, 301230, 59715625),
+    ('Ýsviçre', 177, 41290, 7301994),
+    ('Lüksemburg', 173, 2586, 512000),
+    ('Fransa', 111, 547030, 63601002),
+    ('Avusturya', 97, 83858, 8169929),
+    ('Yunanistan', 81, 131940, 11606813),
+    ('Ýrlanda', 65, 70280, 4581269),
+    ('Ýsveç', 20, 449964, 9515744),
+    ('Finlandiya', 16, 338424, 5410233),
+    ('Norveç', 13, 385252, 5033675) ],
+    dtype=dt)
+
+print ("Bazý Avrupa ülkelerinin nüfus-alan-yoðunluk bilgileri:\n", ülkelerTablosu, sep="")
+
+print ("\nFormatlý Nüfus/Alan hesaplamasýyla ülkelerin hassas nüfus yoðunluklarý listesi:")
+for i in range (len (ülkelerTablosu)):
+    print ("{:17s}= {:8.4f} kiþi/km2" .format (ülkelerTablosu["Ülke"][i], (ülkelerTablosu["Nüfus"][i] / ülkelerTablosu["Alan"][i])) )
+
+np.savetxt ("p_30303bx.csv",
+    ülkelerTablosu,
+    fmt="%s;%d;%d;%d",
+    delimiter=";") # "ülkeler.cvs" adýyla disk dosyasýna saklar...
+
+
+
+"""Çýktý:
+>python p_30303b.py
+Bazý Avrupa ülkelerinin nüfus-alan-yoðunluk bilgileri:
+[('Hollanda', 393,  41526, 16928800) ('Belçika', 337,  30510, 11007020)
+ ('Birleþik Krallýk', 256, 243610, 62262000)
+ ('Almanya', 233, 357021, 81799600)
+ ('Leh Cumhuriyeti', 205,    160,    32842)
+ ('Ýtalya', 192, 301230, 59715625) ('Ýsviçre', 177,  41290,  7301994)
+ ('Lüksemburg', 173,   2586,   512000) ('Fransa', 111, 547030, 63601002)
+ ('Avusturya',  97,  83858,  8169929)
+ ('Yunanistan',  81, 131940, 11606813) ('Ýrlanda',  65,  70280,  4581269)
+ ('Ýsveç',  20, 449964,  9515744) ('Finlandiya',  16, 338424,  5410233)
+ ('Norveç',  13, 385252,  5033675)]
+
+Formatlý Nüfus/Alan hesaplamasýyla ülkelerin hassas nüfus yoðunluklarý listesi:
+Hollanda         = 407.6675 kiþi/km2
+Belçika          = 360.7676 kiþi/km2
+Birleþik Krallýk = 255.5806 kiþi/km2
+Almanya          = 229.1171 kiþi/km2
+Leh Cumhuriyeti  = 205.2625 kiþi/km2
+Ýtalya           = 198.2393 kiþi/km2
+Ýsviçre          = 176.8465 kiþi/km2
+Lüksemburg       = 197.9892 kiþi/km2
+Fransa           = 116.2660 kiþi/km2
+Avusturya        =  97.4258 kiþi/km2
+Yunanistan       =  87.9704 kiþi/km2
+Ýrlanda          =  65.1860 kiþi/km2
+Ýsveç            =  21.1478 kiþi/km2
+Finlandiya       =  15.9866 kiþi/km2
+Norveç           =  13.0659 kiþi/km2
+"""

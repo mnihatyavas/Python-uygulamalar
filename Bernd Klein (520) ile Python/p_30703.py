@@ -1,0 +1,77 @@
+# coding:iso-8859-9 Türkçe
+# p_30703.py: Hileli aðýrlýklý zarlarla 10Bin atýþta [1,6] gelme yüzdeleri örneði.
+
+import numpy as np
+import random
+from collections import Counter as Sayaç
+
+def kaçýncýArada (x, mesafe):
+    for i in range (0, len (mesafe)):
+        if x < mesafe[i]: return i-1
+    return -1
+
+def aðýrlýklýTercih (zarYüzleri, gelmeAðýrlýklarý, kriptoluMu=True):
+    if kriptoluMu: x = random.SystemRandom().random()
+    else: x = np.random.random()
+    gelmeYüzdeleriToplamý = [0] + list (np.cumsum (gelmeAðýrlýklarý))
+    endeks = kaçýncýArada (x, gelmeYüzdeleriToplamý)
+    return zarYüzleri [endeks]
+
+
+zarýnYüzleri = [1, 2, 3, 4, 5, 6]
+gelmeAðýrlýklarý = [1/12, 1/12, 1/12, 1/12, 2/12, 6/12] # Hileli olasýlýklar toplamý: p+=12/12...
+sonuçlar = []
+
+try: kere = abs (int (input ("Zar kaç kez atýlsýn? [Varsayýlý=10 000]: ")))
+except: kere = 10000
+
+for _ in range (kere): sonuçlar.append (aðýrlýklýTercih (zarýnYüzleri, gelmeAðýrlýklarý)) # Varsayýlý kriptolu...
+zarGelenleri = Sayaç (sonuçlar)
+for anahtar in zarGelenleri: zarGelenleri [anahtar] = zarGelenleri [anahtar] / kere # 1'e normalleþtirilen gelen zar yüzdeleri...
+
+liste = sorted (list (zarGelenleri.values()) )
+print ("\nGelme yüzdeleri: ", liste,
+    "\nNormalleþtirilmiþ yüzdeler toplamý = 1 mi? ", (sum (liste) > 0.999), sep="")
+
+print ("\nBiçimli çýktýlar:\n", "-"*62, sep="")
+for i in range (len (zarýnYüzleri)):
+    print ("Zar: {:}, Normalleþtirilen sonucu: {:6.4f}, Yüzde sonucu: %{:6.2f}" .format ((i+1), liste[i], (liste[i] * 100)) )
+print ("-"*62, "\n{:30s}Yüzde sonuçlarý toplamý: %{:5.2f}" .format (" ", (sum (liste) * 100)) )
+
+
+
+"""Çýktý:
+>python p_30703.py
+Zar kaç kez atýlsýn? [Varsayýlý=10 000]: 
+
+Gelme yüzdeleri: [0.0786, 0.0833, 0.0842, 0.0886, 0.1664, 0.4989]
+Normalleþtirilmiþ yüzdeler toplamý = 1 mi? True
+
+Biçimli çýktýlar:
+--------------------------------------------------------------
+Zar: 1, Normalleþtirilen sonucu: 0.0786, Yüzde sonucu: %  7.86
+Zar: 2, Normalleþtirilen sonucu: 0.0833, Yüzde sonucu: %  8.33
+Zar: 3, Normalleþtirilen sonucu: 0.0842, Yüzde sonucu: %  8.42
+Zar: 4, Normalleþtirilen sonucu: 0.0886, Yüzde sonucu: %  8.86
+Zar: 5, Normalleþtirilen sonucu: 0.1664, Yüzde sonucu: % 16.64
+Zar: 6, Normalleþtirilen sonucu: 0.4989, Yüzde sonucu: % 49.89
+--------------------------------------------------------------
+                              Yüzde sonuçlarý toplamý: %100.00
+
+>python p_30703.py  ** TEKRAR **
+Zar kaç kez atýlsýn? [Varsayýlý=10 000]: 1957
+
+Gelme yüzdeleri: [0.07511497189575882, 0.07613694430250383, 0.0807358201328564, 0.08277976494634645, 0.17015840572304547, 0.515074092999489]
+Normalleþtirilmiþ yüzdeler toplamý = 1 mi? True
+
+Biçimli çýktýlar:
+--------------------------------------------------------------
+Zar: 1, Normalleþtirilen sonucu: 0.0751, Yüzde sonucu: %  7.51
+Zar: 2, Normalleþtirilen sonucu: 0.0761, Yüzde sonucu: %  7.61
+Zar: 3, Normalleþtirilen sonucu: 0.0807, Yüzde sonucu: %  8.07
+Zar: 4, Normalleþtirilen sonucu: 0.0828, Yüzde sonucu: %  8.28
+Zar: 5, Normalleþtirilen sonucu: 0.1702, Yüzde sonucu: % 17.02
+Zar: 6, Normalleþtirilen sonucu: 0.5151, Yüzde sonucu: % 51.51
+--------------------------------------------------------------
+                              Yüzde sonuçlarý toplamý: %100.00
+"""

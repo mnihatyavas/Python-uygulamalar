@@ -1,0 +1,143 @@
+# coding:iso-8859-9 Türkçe
+# p_30805.py: Çoklu ülkelerden depremzedelere aðýrlýklý, yegane ve biçimli yardým listesi örneði.
+
+import p_30801 as p381
+
+ülkeliAdlar = {
+    "Fransa" : [
+        ("Marie", 10), ("Thomas", 10), ("Camille", 10), ("Nicolas", 9),
+        ("Léa", 10), ("Julien", 9), ("Manon", 9), ("Quentin", 9),
+        ("Chloé", 8), ("Maxime", 9), ("Laura", 7), ("Alexandre", 6),
+        ("Clementine", 2), ("Grégory", 2), ("Sandra", 1), ("Philippe", 1) ],
+    "Ýsviçre": [
+        ("Sarah", 10), ("Hans", 10), ("Laura", 9), ("Peter", 8),
+        ("Mélissa", 9), ("Walter", 7), ("Océane", 7), ("Daniel", 7),
+        ("Noémie", 6), ("Reto", 7), ("Laura", 7), ("Bruno", 6),
+        ("Eva", 2), ("Urli", 4), ("Sandra", 1), ("Marcel", 1) ],
+    "Almanya": [
+        ("Ursula", 10), ("Peter", 10), ("Monika", 9), ("Michael", 8),
+        ("Brigitte", 9), ("Thomas", 7), ("Stefanie", 7), ("Andreas", 7),
+        ("Maria", 6), ("Wolfgang", 7), ("Gabriele", 7), ("Manfred", 6),
+        ("Nicole", 2), ("Matthias", 4), ("Christine", 1), ("Dirk", 1) ],
+    "Ýtalya" : [
+        ("Francesco", 20), ("Alessandro", 19), ("Mattia", 19), ("Lorenzo", 18),
+        ("Leonardo", 16), ("Andrea", 15), ("Gabriele", 14), ("Matteo", 14),
+        ("Tommaso", 12), ("Riccardo", 11), ("Sofia", 20), ("Aurora", 18),
+        ("Giulia", 16), ("Giorgia", 15), ("Alice", 14), ("Martina", 13) ],
+    "Türkiye":[
+        ("Mehmet", 35), ("Nihat", 3), ("Hatice", 32), ("Ali", 19),
+        ("Hasan", 25), ("Ayþe", 27), ("Kezban", 9), ("Yavuz", 3),
+        ("Özcan", 8), ("Mahmut", 22), ("Belkýs", 1) ] }
+
+ülkeliSoyadlar = {
+    "Fransa" : [
+        ("Matin", 10), ("Bernard", 10), ("Camille", 10), ("Nicolas", 9),
+        ("Dubois", 10), ("Petit", 9), ("Durand", 8), ("Leroy", 8),
+        ("Fournier", 7), ("Lambert", 6), ("Mercier", 5), ("Rousseau", 4),
+        ("Mathieu", 2), ("Fontaine", 2), ("Muller", 1), ("Robin", 1) ],
+    "Ýsviçre": [
+        ("Müller", 10), ("Meier", 10), ("Schmid", 9), ("Keller", 8),
+        ("Weber", 9), ("Huber", 7), ("Schneider", 7), ("Meyer", 7),
+        ("Steiner", 6), ("Fischer", 7), ("Gerber", 7), ("Brunner", 6),
+        ("Baumann", 2), ("Frei", 4), ("Zimmermann", 1), ("Moser", 1) ],
+    "Almanya": [
+        ("Müller", 10), ("Schmidt", 10), ("Schneider", 9), ("Fischer", 8),
+        ("Weber", 9), ("Meyer", 7), ("Wagner", 7), ("Becker", 7),
+        ("Schulz", 6), ("Hoffmann", 7), ("Schäfer", 7), ("Koch", 6),
+        ("Bauer", 2), ("Richter", 4), ("Klein", 2), ("Schröder", 1) ],
+    "Ýtalya" : [
+        ("Rossi", 20), ("Russo", 19), ("Ferrari", 19), ("Esposito", 18),
+        ("Bianchi", 16), ("Romano", 15), ("Colombo", 14), ("Ricci", 14),
+        ("Marino", 12), ("Grecco", 11), ("Bruno", 10), ("Gallo", 12),
+        ("Conti", 16), ("De Luca", 15), ("Costa", 14), ("Giordano", 13),
+        ("Mancini", 14), ("Rizzo", 13), ("Lombardi", 11), ("Moretto", 9) ],
+    "Türkiye" : [
+        ("Öztürk", 25), ("Hastürk", 19), ("Göktürk", 19), ("Yavaþ", 3),
+        ("Özen", 14), ("Fýrat", 13), ("Kölük", 1), ("Eskici", 1) ] }
+
+ülkelerinAðýrlýðý = [
+    ("Almanya", 0.3),
+    ("Fransa", 0.4),
+    ("Ýsviçre", 0.1),
+    ("Ýtalya", 0.1),
+    ("Türkiye", 0.1)]
+
+yardýmcýlarýnAðýrlýðý = [
+    ("Týbbi Yardým", 0.3),
+    ("Barýnma Yardýmý", 0.1),
+    ("Beslenme Yardýmý", 0.2),
+    ("Sosyal Yardým", 0.1),
+    ("Enkaz Kazýcý", 0.3)]
+
+bireþim = {}
+for ülke in ülkeliAdlar:
+    adlar, aðýrlýklarý = zip (*ülkeliAdlar[ülke])
+    aðýrlýklarToplamý = sum (aðýrlýklarý)
+    adlarýnAðýrlýklarý = [x / aðýrlýklarToplamý for x in aðýrlýklarý]
+    ülkeliAdlar[ülke] = [adlar, adlarýnAðýrlýklarý]
+    soyadlar, aðýrlýklarý = zip (*ülkeliSoyadlar[ülke])
+    aðýrlýklarToplamý = sum (aðýrlýklarý)
+    soyadlarýnAðýrlýklarý = [x / aðýrlýklarToplamý for x in aðýrlýklarý]
+    ülkeliSoyadlar[ülke] = [soyadlar, adlarýnAðýrlýklarý]
+    bireþim[ülke] = p381.bireþimci (
+        (adlar, soyadlar),
+        (adlarýnAðýrlýklarý, soyadlarýnAðýrlýklarý),
+        biçimlemeFonksiyonu=lambda x: " ".join (x),
+        tekrarlanabilirSeçimMi=False)
+
+try: sayý = abs (int (input ("Kaç afetzade yardýmcýsý seçilecek [10]? "))); print()
+except: sayý = 10
+
+yardýmcýlar = []
+kimlikNo = 1
+for _ in range (sayý):
+    ülke = p381.aðýrlýklýKarþýlýklýSeçim (zip (*ülkelerinAðýrlýðý))
+    yardýmKonusu = p381.aðýrlýklýKarþýlýklýSeçim (zip (*yardýmcýlarýnAðýrlýðý))
+    ülke, yardýmKonusu = ülke[0], yardýmKonusu[0]
+    yardýmcý = bireþim[ülke]()
+    kn = "{kn:05d}".format (kn=kimlikNo)
+    yardýmcýlar.append ( (kn, ülke, next (yardýmcý), yardýmKonusu) )
+    kimlikNo += 1
+
+print (yardýmcýlar); print()
+for i in range (sayý):
+    for j in range (4): print (yardýmcýlar[i][j], end=", ")
+    print()
+
+if input ("\nGönüllüler listesi disk dosyasýna yazýlsýn mý? [e/h] ") == "e":
+    with open ("p_30805x.txt", "w") as dosya:
+        dosya.write ("Referans No, Ülkesi, Ad ve Soyadý, Görevi\n")
+        for gönüllü in yardýmcýlar: dosya.write (", ".join (gönüllü) + "\n")
+
+
+
+"""Çýktý:
+>python p_30805.py
+Kaç afetzade yardýmcýsý seçilecek [10]? 2
+
+[('00001', 'Almanya', 'Brigitte Richter', 'Enkaz Kazýcý'), ('00002', 'Almanya', 'Ursula Wagner', 'Enkaz Kazýcý')]
+
+00001, Almanya, Brigitte Richter, Enkaz Kazýcý,
+00002, Almanya, Ursula Wagner, Enkaz Kazýcý,
+
+Gönüllüler listesi disk dosyasýna yazýlsýn mý? [e/h]
+
+>python p_30805.py  ** TEKRAR **
+Kaç afetzade yardýmcýsý seçilecek [10]?
+[('00001', 'Fransa', 'Marie Petit', 'Barýnma Yardýmý'), ('00002', 'Türkiye', 'Hatice Öztürk', 'Enkaz Kazýcý'),
+('00003', 'Türkiye', 'Kezban Özen', 'Týbbi Yardým'), ('00004', 'Almanya', 'Manfred Bauer', 'Týbbi Yardým'),
+('00005', 'Ýsviçre', 'Daniel Meyer', 'Týbbi Yardým'), ('00006', 'Fransa', 'Thomas Mercier', 'Beslenme Yardýmý'),
+('00007', 'Almanya', 'Manfred Becker', 'Beslenme Yardýmý'), ('00008', 'Türkiye', 'Özcan Fýrat', 'Týbbi Yardým'),
+('00009', 'Türkiye', 'Mahmut Göktürk', 'Týbbi Yardým'), ('00010', 'Fransa', 'Nicolas Nicolas', 'Enkaz Kazýcý')]
+
+00001, Fransa, Marie Petit, Barýnma Yardýmý,
+00002, Türkiye, Hatice Öztürk, Enkaz Kazýcý,
+00003, Türkiye, Kezban Özen, Týbbi Yardým,
+00004, Almanya, Manfred Bauer, Týbbi Yardým,
+00005, Ýsviçre, Daniel Meyer, Týbbi Yardým,
+00006, Fransa, Thomas Mercier, Beslenme Yardýmý,
+00007, Almanya, Manfred Becker, Beslenme Yardýmý,
+00008, Türkiye, Özcan Fýrat, Týbbi Yardým,
+00009, Türkiye, Mahmut Göktürk, Týbbi Yardým,
+00010, Fransa, Nicolas Nicolas, Enkaz Kazýcý,
+"""

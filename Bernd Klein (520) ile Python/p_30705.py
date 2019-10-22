@@ -1,0 +1,94 @@
+# coding:iso-8859-9 Türkçe
+# p_30705.py: 9 farklý renk ve aðýrlýklý misketlerin tekli ve üçlü seçim sonuçlarýný aðýrlýklarýyla kýyaslama örneði.
+
+import random
+import numpy as np
+from numpy.random import choice
+from collections import Counter
+
+def kaçýncýArada (deðerim, bölümler, uçlar_1Mi=True):
+    for i in range (0, len (bölümler)):
+        if deðerim < bölümler[i]: return i-1 if uçlar_1Mi else i
+    return -1 if uçlar_1Mi else len (bölümler)
+
+def aðýrlýklýTercih (zarYüzleri, gelmeAðýrlýklarý, kriptoluMu=True):
+    if kriptoluMu: x = random.SystemRandom().random()
+    else: x = np.random.random()
+    gelmeYüzdeleriToplamý = [0] + list (np.cumsum (gelmeAðýrlýklarý))
+    endeks = kaçýncýArada (x, gelmeYüzdeleriToplamý)
+    return zarYüzleri[endeks]
+
+def aðýrlýklýÖrnekleme (listem, aðýrlýklarý, k):
+    # aðýrlýklýTercih aðýrlýklarý ihtimalinde listem'den her kerede k yegane adetlik küme seçimi yapar...
+    seçilenKüme = set()
+    listem = list (listem)
+    aðýrlýklarý = list (aðýrlýklarý) 
+    while len (seçilenKüme) < k:
+        seçilen = aðýrlýklýTercih (listem, aðýrlýklarý)
+        seçilenKüme.add (seçilen)
+        endeks = listem.index (seçilen)
+        aðýrlýklarý.pop (endeks) # Seçilenin aðýrlýðý düþülür...
+        listem.remove (seçilen) # Seçilen listeden silinir...
+        aðýrlýklarý = [ x / sum (aðýrlýklarý) for x in aðýrlýklarý] # Düþenden dolayý yeniden aðýrlýklandýrýlýr...
+        # Kümedeki her seçilen tekrar seçilemez...
+    return list (seçilenKüme)
+
+def aðýrlýklýÖrnekleme2 (listem, aðýrlýklarý, k): # Alternatif örnekleme...
+    seçilenKüme = set()
+    listem = list (listem)
+    aðýrlýklarý = list (aðýrlýklarý)
+    while len (seçilenKüme) < k:
+        seçilen = aðýrlýklýTercih (listem, aðýrlýklarý)
+        if seçilen not in seçilenKüme: seçilenKüme.add (seçilen)
+        # Seçilen tekrar seçilmiþse kümeye eklenmez...
+    return list (seçilenKüme)
+
+
+misketler = ["kýrmýzý", "yeþil", "mavi", "sarý", "siyah", "beyaz", "pembe", "turuncu", "kahve"]
+aðýrlýklarý = [1/24, 4/24, 4/24, 2/24, 2/24, 1/24, 3/24, 6/24, 1/24]
+# k=1 tekli tercihler için: 1/24=%4.17, 6/24=%25...
+
+m = 3
+print ("10 adet ", m, "'erli aðýrlýklandýrýlmýþ seçilen küme dökümü:", sep="")
+for i in range(10): print (aðýrlýklýÖrnekleme (misketler, aðýrlýklarý, m))
+
+print ("\nRenkli misketler ve % seçilebilme aðýrlýklarý listesi:")
+for i in range (len (misketler)): print (misketler [i], ": %", int (aðýrlýklarý [i] * 1000) / 10.0, sep="", end=", ")
+
+n = 10000
+sayaç = 0
+sayaç2 = 0
+for i in range (n):
+    if "turuncu" in aðýrlýklýÖrnekleme (misketler, aðýrlýklarý, 1): sayaç += 1
+    if "turuncu" in aðýrlýklýÖrnekleme2 (misketler, aðýrlýklarý, 1): sayaç2 += 1 
+print ("\n\n", n, " kerede 2 farklý metodla 1'li turuncu misket seçim yüzdeleri: ", (100 * sayaç / n), ", ", (100 * sayaç2 / n), sep="")
+
+n = 10000
+sayaç = 0
+sayaç2 = 0
+for i in range (n):
+    if "turuncu" in aðýrlýklýÖrnekleme (misketler, aðýrlýklarý, 3): sayaç += 1
+    if "turuncu" in aðýrlýklýÖrnekleme2 (misketler, aðýrlýklarý, 3): sayaç2 += 1 
+print (n, " kerede 2 farklý metodla 3'lü turuncu misket seçim yüzdeleri: ", (100 * sayaç / n), ", ", (100 * sayaç2 / n), sep="")
+
+
+"""Çýktý:
+>python p_30705.py
+10 adet 3'erli aðýrlýklandýrýlmýþ seçilen küme dökümü:
+['pembe', 'yeþil', 'mavi']
+['turuncu', 'sarý', 'siyah']
+['yeþil', 'mavi', 'siyah']
+['pembe', 'yeþil', 'mavi']
+['turuncu', 'kýrmýzý', 'siyah']
+['turuncu', 'pembe', 'kahve']
+['turuncu', 'pembe', 'mavi']
+['turuncu', 'pembe', 'beyaz']
+['turuncu', 'pembe', 'mavi']
+['turuncu', 'pembe', 'yeþil']
+
+Renkli misketler ve % seçilebilme aðýrlýklarý listesi:
+kýrmýzý: %4.1, yeþil: %16.6, mavi: %16.6, sarý: %8.3, siyah: %8.3, beyaz: %4.1,pembe: %12.5, turuncu: %25.0, kahve: %4.1,
+
+10000 kerede 2 farklý metodla 1'li turuncu misket seçim yüzdeleri: 24.99, 24.24
+10000 kerede 2 farklý metodla 3'lü turuncu misket seçim yüzdeleri: 63.23, 64.47
+"""

@@ -1,0 +1,58 @@
+# coding:iso-8859-9 Türkçe
+# p_30707a.py: Farklý aðýrlýklý zamir, sýfat, isim, tümleç ve fiillerden tesadüfi cümleler kurma örneði.
+
+import random
+import numpy as np
+
+def kaçýncýArada (deðerim, bölümler, uçlar_1Mi=True):
+    for i in range (0, len (bölümler)):
+        if deðerim < bölümler[i]: return i-1 if uçlar_1Mi else i
+    return -1 if uçlar_1Mi else len (bölümler)
+
+def aðýrlýklýTercih (ibareler, gelmeAðýrlýklarý, kriptoluMu=True):
+    if kriptoluMu: x = random.SystemRandom().random()
+    else: x = np.random.random()
+    gelmeYüzdeleriToplamý = [0] + list (np.cumsum (gelmeAðýrlýklarý))
+    endeks = kaçýncýArada (x, gelmeYüzdeleriToplamý)
+    return ibareler[endeks]
+
+def aðýrlýklýKartezyenSeçim (*taranabilenler):
+    sonuç = []
+    for kelime, aðýrlýðý in taranabilenler:
+        aðýrlýklýSeçim = aðýrlýklýTercih (kelime, aðýrlýðý)
+        sonuç.append (aðýrlýklýSeçim)
+    return sonuç
+
+zamir = (["Bu", "Bir", "Herbir", "Her", "Þu", "Tüm"], [0.3, 0.2, 0.1, 0.1, 0.2, 0.1])
+sýfat = (["kýrmýzý", "yeþil", "mavi", "sarý", "gri", "beyaz"], [0.1, 0.3, 0.2, 0.2, 0.2, 0.1])
+isim = (["su", "fil", "balýk", "ýþýk", "programlama dili"], [0.3, 0.2, 0.1, 0.1, 0.3])
+tümleç = (["mutluluk", "çikolata", "zeka", "hava"], [0.5, 0.2, 0.2, 0.1])
+fiil = (["kokuyor", "tadýyor", "düþünüyor", "alýyor"], [0.2, 0.3, 0.3, 0.2])
+
+try: adet = abs (int (input ("Kaç saçmasapan cümle kuracaksýn [10]? ")))
+except: adet = 10
+
+for i in range (adet):
+    cümle = aðýrlýklýKartezyenSeçim (zamir, sýfat, isim, tümleç, fiil)
+    print ((i+1), ". ", " ".join (cümle) + ".", sep="")
+
+"""Çýktý:
+>python p_30707.py
+Kaç saçmasapan cümle kuracaksýn [10]?
+1. Bir gri ýþýk mutluluk tadýyor.
+2. Þu sarý su mutluluk düþünüyor.
+3. Bu gri fil mutluluk alýyor.
+4. Herbir yeþil balýk hava tadýyor.
+5. Bir sarý fil mutluluk alýyor.
+6. Þu yeþil su hava düþünüyor.
+7. Herbir gri balýk çikolata alýyor.
+8. Bu yeþil balýk zeka alýyor.
+9. Herbir kýrmýzý fil çikolata tadýyor.
+10. Bir sarý fil hava düþünüyor.
+
+>python p_30707.py  ** TEKRAR **
+Kaç saçmasapan cümle kuracaksýn [10]? 3
+1. Þu yeþil ýþýk çikolata tadýyor.
+2. Bir mavi su mutluluk kokuyor.
+3. Tüm mavi ýþýk mutluluk tadýyor.
+"""

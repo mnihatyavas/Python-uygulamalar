@@ -1,0 +1,45 @@
+# coding:iso-8859-9 Türkçe
+# p_30606.py: Numpy.random.randint(1,6,size=(5, 4)) ile tesadüfi zar atýþlý (5,4) þekilli matris örneði.
+
+import random
+
+zarAt = random.randint (1,6)
+print ("Atýlan normal tek zar sonucu:", zarAt)
+
+print ("Atýlan normal 10 zar listesi:", [random.randint (1, 6) for _ in range (10)] )
+#-------------------------------------------------------------------------------------------------
+
+print ("\nAtýlan güvenli 10 zar listesi:", [random.SystemRandom().randint (1, 6) for _ in range (10)] )
+#-------------------------------------------------------------------------------------------------
+
+import numpy as np
+
+print ("\nAtýlan Numpy tek zar skalar sonucu:", np.random.randint (1, 7) )
+print ("Atýlan Numpy tek zar dizisi:", np.random.randint (1, 7, size=1) )
+print ("Atýlan Numpy 10 zar dizisi:", np.random.randint (1, 7, size=10) )
+print ("Atýlan Numpy 10 zar dizisi:", np.random.randint (1, 7, size=(10,)) ) # Öncekiyle ayný....
+
+A = np.random.randint (1, 7, size=(5, 4))
+print ("\nAtýlan Numpy (5,4) matrisi:\n", A, "==>", A.shape, sep="")
+
+
+
+"""Çýktý:
+>python p_30605.py
+Atýlan normal tek zar sonucu: 3
+Atýlan normal 10 zar listesi: [3, 4, 6, 3, 1, 4, 3, 3, 4, 5]
+
+Atýlan güvenli 10 zar listesi: [6, 5, 3, 6, 6, 5, 5, 6, 2, 5]
+
+Atýlan Numpy tek zar skalar sonucu: 2
+Atýlan Numpy tek zar dizisi: [3]
+Atýlan Numpy 10 zar dizisi: [6 2 2 2 4 4 1 5 6 2]
+Atýlan Numpy 10 zar dizisi: [5 4 2 1 4 6 3 6 3 3]
+
+Atýlan Numpy (5,4) matrisi:
+[[6 6 2 3]
+ [2 3 4 3]
+ [1 3 1 4]
+ [5 5 3 2]
+ [2 2 5 5]]==>(5, 4)
+"""

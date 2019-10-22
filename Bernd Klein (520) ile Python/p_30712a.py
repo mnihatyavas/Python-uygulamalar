@@ -1,0 +1,34 @@
+# coding:iso-8859-9 Türkçe
+# p_30712a.py: Zar atýþlarýnda çift, ikiden büyük ve birleþik etkili gelme oranlarý örneði.
+
+from random import randint
+
+try: kere = abs (int (input ("Zar kaç kere atýlsýn [10 000]? ")))
+except: kere = 10000
+
+tümAtýþlar = [randint (1, 6) for _ in range (kere)]
+çiftGelenler = [x for x in tümAtýþlar if x % 2 == 0]
+ikidenBüyükGelenler = [x for x in tümAtýþlar if x > 2]
+ikidenbüyükVeçiftGelenler = [x for x in tümAtýþlar if x % 2 == 0 and x > 2]
+
+print ("\nÇift gelen zarlarýn yüzdesi: %{:.2f}" .format (len (çiftGelenler) / len (tümAtýþlar) * 100))
+print ("Ýkiden büyük gelen zarlarýn yüzdesi: %{:.2f}" .format (len (ikidenBüyükGelenler) / len (tümAtýþlar) * 100))
+print ("Ýkiden büyük ve çift gelen zarlarýn yüzdesi: %{:.2f}" .format (len (ikidenbüyükVeçiftGelenler) / len (tümAtýþlar) * 100))
+
+
+
+"""Çýktý:
+>python p_30712.py
+Zar kaç kere atýlsýn [10 000]?
+
+Çift gelen zarlarýn yüzdesi: %49.88
+Ýkiden büyük gelen zarlarýn yüzdesi: %66.27
+Ýkiden büyük ve çift gelen zarlarýn yüzdesi: %32.84
+
+>python p_30712.py  ** TEKRAR **
+Zar kaç kere atýlsýn [10 000]? 100
+
+Çift gelen zarlarýn yüzdesi: %48.00
+Ýkiden büyük gelen zarlarýn yüzdesi: %69.00
+Ýkiden büyük ve çift gelen zarlarýn yüzdesi: %34.00
+"""

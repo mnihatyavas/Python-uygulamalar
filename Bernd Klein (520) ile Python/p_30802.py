@@ -1,0 +1,64 @@
+# coding:iso-8859-9 Türkçe
+# p_30802.py: Ad ve soyadlarýn karþýlýklý aðýrlýksýz yegane biçimli seçim dökümü örneði.
+
+import p_30801 as p381
+
+adlar = ["Hatice", "Süheyla", "Zeliha", "Nihat", "Songül", "Nedim", "Sevim",
+    "Nur", "Yücel", "Serap", "Sema", "Fatih", "Selda", "Canan", "Zafer", "Belkýs",
+    "Hilal", "Atilla"]
+soyadlar = ["Yavaþ", "Küçükbay", "Kaçar", "Candan", "Özbay", "Göktürk",
+    "Eskici", "Aydan", "Çiller", "Akþener", "Çiçek", "Öztürk", "Amanat", "Hastürk",
+    "Kölük", "Fýrat", "Havlucu", "Özen"] # Liste uzunluklarý ayný olmak zorunda deðil...
+
+def bireþimci (veriler, aðýrlýklarý=None, biçimlemeFonksiyonu=None, tekrarSeçilebilsinMi=True):
+    def bireþimle():
+        if not tekrarSeçilebilsinMi: hatýrla = set()
+        while True:
+            seçilen = p381.karþýlýklýSeçim (*veriler)
+            if not tekrarSeçilebilsinMi: # hatýrla kümesindeyse olmayanýný dene...
+                tekrarSeçilen = str (seçilen)
+                while tekrarSeçilen in hatýrla:
+                    seçilen = p381.karþýlýklýSeçim (*veriler)
+                    tekrarSeçilen = str (seçilen)
+                hatýrla.add (tekrarSeçilen) # yegane yeniyi hatýrla kümesine ekle...
+            if biçimlemeFonksiyonu: yield biçimlemeFonksiyonu (seçilen)
+            else: yield seçilen # biçimsiz sade liste elemanlarý...
+    return bireþimle
+
+
+eleman = bireþimci (
+    (adlar, soyadlar), # Tüple içi listeler...
+    biçimlemeFonksiyonu=lambda x: " ".join(x), # Liste, týrnak ve virgülü biçimler...
+    tekrarSeçilebilsinMi=False) # Seçimler tekrarsýz yegane olsun...
+#eleman = eleman() # Bireþimci fonksiyonu deðiþken adýymýþcasýna kullanýlabilir...
+
+try: sayý = abs (int (input ("Kaç eleman seçilecek [15]? ")))
+except: sayý = 15
+
+print ("\nAd soyad listesinden karþýlýklý tesadüfi seçilen ", sayý, " eleman listesi:", "\n", "-"*67, sep="")
+for i in range (sayý): print ((i+1), ": ", next (eleman()), sep="")
+
+
+
+"""Çýktý:
+>python p_30802.py
+Kaç eleman seçilecek [15]?
+
+Ad soyad listesinden karþýlýklý tesadüfi seçilen 15 eleman listesi:
+-------------------------------------------------------------------
+1: Zafer Akþener
+2: Sema Fýrat
+3: Zeliha Göktürk
+4: Nedim Özen
+5: Selda Özen
+6: Serap Amanat
+7: Nedim Göktürk
+8: Fatih Çiçek
+9: Canan Çiller
+10: Zafer Öztürk
+11: Sevim Özbay
+12: Fatih Çiçek
+13: Sema Candan
+14: Belkýs Göktürk
+15: Serap Eskici
+"""

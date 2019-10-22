@@ -1,0 +1,34 @@
+# coding:iso-8859-9 Türkçe
+# p_30709b.py: Normalvariate tesadüfi frekans üretici ve matplotlib grafiði örneði.
+
+from random import normalvariate as nv
+import matplotlib.pyplot as mp
+
+n = 1000
+deðerler = []
+sýklýklar = {}
+while len (deðerler) < n:
+    deðer = nv (180, 30) # 180 anadeðer etrafýnda 30 standart sapmalý tesadüfi ondalýk üretme...
+    #if 130 < deðer < 230: # Üretilenin tümünü kapsat...
+    sýklýklar[int (deðer)] = sýklýklar.get (int (deðer), 0) + 1 # 0-20 arasý y-deðer üretme...
+    deðerler.append (deðer)
+
+deðerler.sort()
+print (deðerler[:5], deðerler[995:]) # Baþtan ve sondan 5'er deðer [70-290]...
+#-----------------------------------------------------------------------------------------------
+
+sýklýk = list (sýklýklar.items()) # Sözlüðün anahtar ve deðerlerini liste olarak al...
+sýklýk.sort()
+mp.style.use ("dark_background")
+mp.plot (*list (zip (*sýklýk)))
+#mp.savefig ("p_30709bx.png")
+mp.show()
+
+
+
+"""Çýktý:
+>python p_30709b.py
+[73.45953976893655, 83.52152337277587, 97.82315286011804, 98.6410332823605, 99.5
+6370046942924] [261.6905756509782, 263.62056222573585, 265.47875343956065, 278.7
+066865707825, 281.2144583467016]
+"""

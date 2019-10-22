@@ -1,0 +1,36 @@
+# coding:iso-8859-9 Türkçe
+# p_30706.py: Farklý sayýda özne, sýfat, nesne ne fiillerden çeþitli tesadüfi cümle kurma örneði.
+
+from random import choice as tercih
+
+def kartezyenSeçim (*taranabilenler):
+    sonuç = []
+    for listem in taranabilenler: sonuç.append (tercih (listem))
+    return sonuç+["."]
+
+özne = ["Bu", "Þu", "O", "Diðer", "Öteki", "Beriki", "Bir"]
+sýfat = ["kýrmýzý", "yeþil", "mavi", "sarý", "gri"]
+nesne = ["araba", "ev", "balýk", "ýþýk", "koç"]
+fiil = ["kokuyor", "uyuyor", "gözkýrpýyor", "yürüyor"]
+
+cümle = kartezyenSeçim (özne, sýfat, nesne, fiil)
+print ("Tesadüfi bir cümle:",  cümle)
+
+print ("Tesadüfi (biçimli) bir cümle: ", end="")
+for kelime in cümle: print (kelime, end=" ")
+
+
+
+"""Çýktý:
+>python p_30706.py
+Tesadüfi bir cümle: ['Öteki', 'yeþil', 'balýk', 'yürüyor', '.']
+Tesadüfi (biçimli) bir cümle: Öteki yeþil balýk yürüyor .
+
+>python p_30706.py  ** TEKRAR **
+Tesadüfi bir cümle: ['Þu', 'mavi', 'balýk', 'uyuyor', '.']
+Tesadüfi (biçimli) bir cümle: Þu mavi balýk uyuyor .
+
+>python p_30706.py  ** TEKRAR **
+Tesadüfi bir cümle: ['Beriki', 'kýrmýzý', 'koç', 'kokuyor', '.']
+Tesadüfi (biçimli) bir cümle: Beriki kýrmýzý koç kokuyor .
+"""
