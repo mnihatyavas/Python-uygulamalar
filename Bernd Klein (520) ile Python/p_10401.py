@@ -1,0 +1,34 @@
+# coding:iso-8859-9 Türkçe
+# p_10401.pt: Girilen sayý altýndaki iki tamsayý kareleri karekökünü diðerbir tamsayýya eþitleme örneði.
+
+from math import sqrt
+
+n = abs (int (eval (input ("Bir pozitif tamsayý girin [4-->]: "))))
+
+print ("Bu sayý altýnda hangi 2 sayýnýn kareleri toplamýnýn karekökü 3.sayýya eþittir?\n", "-"*78, sep="")
+for a in range (1, n+1):
+    for b in range (a, n+1):
+        cKare = a**2 + b**2
+        c = int (sqrt (cKare))
+        if cKare == c**2: print (a, b, c)
+
+
+"""Çýktý:
+>python p_10401.py
+Bir pozitif tamsayý girin [4-->]: -0.15
+Bu sayý altýnda hangi 2 sayýnýn kareleri toplamýnýn karekökü 3.sayýya eþittir?
+------------------------------------------------------------------------------
+
+>python p_10401.py  ** TEKRAR **
+Bir pozitif tamsayý girin [4-->]: 21
+Bu sayý altýnda hangi 2 sayýnýn kareleri toplamýnýn karekökü 3.sayýya eþittir?
+------------------------------------------------------------------------------
+3 4 5
+5 12 13
+6 8 10
+8 15 17
+9 12 15
+12 16 20
+15 20 25
+20 21 29
+"""

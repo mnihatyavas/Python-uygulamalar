@@ -1,0 +1,44 @@
+# coding:iso-8859-9 Türkçe
+# p_11102.py: Deðiþir ve deðiþmez küme, silme ve kopyalama örneði.
+
+baþkentler = ["Ankara", "Atina", "Londra", "Berlin", "Paris", "Ankara", "Roma"]
+küme1 = set (baþkentler)
+küme1.add ("Madrid")
+print ("\nYalýn deðiþir kümeye eleman eklenebilir:", küme1)
+
+küme2 = frozenset (baþkentler)
+print ("\nDonuk deðiþmez kümeye eleman eklenemez:", küme2)
+#-----------------------------------------------------------------------------------------------
+
+sýfatlar = {"ucuz", "pahalý", "deðerli", "ekonomik", "güzel"}
+print ("\nSet kümeler sözlük gibi ancak anahtarsýz tanýmlanabilirler: ", sýfatlar, "\nTip: ", type (sýfatlar), sep="")
+
+sýfatlar.clear()
+print ("\n'clear' ile küme elemanlarý hepten silinir:",  sýfatlar)
+#-----------------------------------------------------------------------------------------------
+
+küme3 = küme1
+küme4 = küme1.copy()
+
+küme1.clear()
+print ("\nElemanlarý temizlenen kaynak küme kopyasý:", küme1)
+print ("Kaynaktan atamalý küme:", küme3)
+print ("Kaynaktan copy'li küme:", küme4)
+
+
+"""Çýktý:
+>python p_11102.py
+
+Yalýn deðiþir kümeye eleman eklenebilir: {'Paris', 'Roma', 'Berlin', 'Londra', 'Atina', 'Madrid', 'Ankara'}
+
+Donuk deðiþmez kümeye eleman eklenemez: frozenset({'Paris', 'Roma', 'Berlin', 'Londra', 'Atina', 'Ankara'})
+
+Set kümeler sözlük gibi ancak anahtarsýz tanýmlanabilirler: {'güzel', 'pahalý','ucuz', 'ekonomik', 'deðerli'}
+Tip: <class 'set'>
+
+'clear' ile küme elemanlarý hepten silinir: set()
+
+Elemanlarý temizlenen kaynak küme kopyasý: set()
+Kaynaktan atamalý küme: set()
+Kaynaktan copy'li küme: {'Ankara', 'Paris', 'Atina', 'Madrid', 'Roma', 'Berlin', 'Londra'}
+"""

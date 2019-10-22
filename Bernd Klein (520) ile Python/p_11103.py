@@ -1,0 +1,61 @@
+# coding:iso-8859-9 Türkçe
+# p_11103.py: Kümelerde difference, - ve difference_update ile discard, remove ve pop silme farklarý örneði.
+
+x = {"a", "b", "c", "d", "e"}
+y = {"b", "c"}
+z = {"c", "d"}
+
+print ("difference'la 2 küme farký:", x.difference (y) )
+print ("Çifte difference'la 3 küme farký:", x.difference (y).difference (z) )
+print ("\n'-'yle 2 küme farký:", x - y )
+print ("Çift '-'yle 3 küme farký:", x - y - z )
+#---------------------------------------------------------------------------------------------------
+
+x.difference_update (y)
+print ("\nupdate'li difference fark sonucunu ilk kümeye günceller:", x)
+
+x.add ("c"); x.add("b")
+x = x - y
+print ("'-' sonrasý atama da aynýsýný yapar:", x)
+#---------------------------------------------------------------------------------------------------
+
+x = {"a", "b", "c", "d", "e"}
+# discard'la verili set elemaný (namevcutsa ikazsýz) silinir...
+# remove'la da verili set elemaný (namevcutsa KeyError'lu) silinir...
+
+print ("\nÖnce:", x)
+
+x.discard ("d")
+x.discard ("z")
+
+x.remove ("a")
+try: x.remove ("y")
+except Exception as ist: print ("Namevcut eleman:", ist)
+
+print ("discard ve remove sonrasý:", x)
+#---------------------------------------------------------------------------------------------------
+
+print ("\n'x.pop()' geliþigüzel x küme elemanýný çýkarýr ve gösterir:", x.pop() )
+print ("Tekrar 'x.pop()':", x.pop() ) # Kalan eleman yoksa KeyError hatasý fýrlatýr...
+print ("Kalan x küme elemanlarý::", x)
+
+
+"""Çýktý:
+>python p_11103.py
+difference'la 2 küme farký: {'e', 'a', 'd'}
+Çifte difference'la 3 küme farký: {'e', 'a'}
+
+'-'yle 2 küme farký: {'e', 'a', 'd'}
+Çift '-'yle 3 küme farký: {'e', 'a'}
+
+update'li difference fark sonucunu ilk kümeye günceller: {'a', 'e', 'd'}
+'-' sonrasý atama da aynýsýný yapar: {'e', 'a', 'd'}
+
+Önce: {'a', 'b', 'e', 'c', 'd'}
+Namevcut eleman: 'y'
+discard ve remove sonrasý: {'b', 'e', 'c'}
+
+'x.pop()' geliþigüzel x küme elemanýný çýkarýr ve gösterir: b
+Tekrar 'x.pop()': e
+Kalan x küme elemanlarý:: {'c'}
+"""

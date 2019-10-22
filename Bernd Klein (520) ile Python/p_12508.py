@@ -1,0 +1,70 @@
+# coding:iso-8859-9 Türkçe
+# p_12508.py: Çaðrýlan dekoratör fonksiyonun adý, açýklamasý ve modülü örneði.
+
+from p_12508x1 import selam
+
+@selam
+def f (x):
+    """ Bu, sadece girilen sayýya 4 ekleyen saçma-sapan bir fonksiyon iþte... """
+    print ("Argümanýnýza dört ekledim:", x + 4)
+
+f (1957)
+print ("Fonksiyon adý: " + f.__name__)
+print ("Döküman dizgesi: " + f.__doc__)
+print ("Modül adý: " + f.__module__)
+
+print ("-"*75, "\n")
+#-------------------------------------------------------------------------------------------------------
+from p_12508x2 import selam
+
+@selam
+def f (x):
+    """ Bu, sadece girilen sayýya 5 ekleyen saçma-sapan bir fonksiyon iþte... """
+    print ("Argümanýnýza beþ ekledim:", x + 5)
+
+
+f (1957)
+print ("Fonksiyon adý: " + f.__name__)
+print ("Döküman dizgesi: " + f.__doc__)
+print ("Modül adý: " + f.__module__)
+
+print ("-"*75, "\n")
+#-------------------------------------------------------------------------------------------------------
+
+from p_12508x3 import selam
+
+@selam
+def f (x):
+    """ Bu, sadece girilen sayýya 6 ekleyen saçma-sapan bir fonksiyon iþte... """
+    print ("Argümanýnýza altý ekledim:", x + 6)
+
+
+f (1957)
+print ("Fonksiyon adý: " + f.__name__)
+print ("Döküman dizgesi: " + f.__doc__)
+print ("Modül adý: " + f.__module__)
+
+
+
+"""Çýktý:
+** >python p_12508.py  ** TEKRAR **
+Merhaba, f mesajýnýz:
+Argümanýnýza dört ekledim: 1961
+Fonksiyon adý: ambalaj
+Döküman dizgesi:  Bu, selam dekoratörünün fonksiyon ambalajýdýr.
+Modül adý: p_12508x1
+---------------------------------------------------------------------------
+
+Merhaba, f mesajýnýz:
+Argümanýnýza beþ ekledim: 1962
+Fonksiyon adý: f
+Döküman dizgesi:  Bu, sadece girilen sayýya 5 ekleyen saçma-sapan bir fonksiyon iþte...
+Modül adý: __main__
+---------------------------------------------------------------------------
+
+Merhaba, f mesajýnýz:
+Argümanýnýza altý ekledim: 1963
+Fonksiyon adý: f
+Döküman dizgesi:  Bu, sadece girilen sayýya 6 ekleyen saçma-sapan bir fonksiyon iþte...
+Modül adý: __main__
+"""

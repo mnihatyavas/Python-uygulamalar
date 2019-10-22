@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+# p_12007.py: **parametrik veya **argümansal sözlük aktarýmlý fonksiyonlar örneði.
+
+def f (**parametreler):
+    # Anahtar kelimeli deðiþken sayýda ve tipte argümanlarý kabul eder...
+    print (parametreler)
+
+f() # Argümansýz...
+f (en="Ýngilizce", fr="Fransýzca", de="Almanca", ar="Arapça", ru="Rusça", zh="Çince", ja="Japonca", tr="Türkçe")
+f (yýl=1957, ay=4, gün=17, doðum_yeri="Yeþilyurt")
+#---------------------------------------------------------------------------------------------------------
+
+def f (e, d, s, h, f, ç): print (d, e, h, s, ç, f)
+
+# Parametrik isimle istenilen düzenlemede ve tipte argüman atanabilir...
+d = {'e':'ekle', "s":"sil", 'f':'fermuarla', 'ç':'çöz', 'h':'hayýr', "d": "dosya"}
+print()
+f (**d)
+f (4, 17, "Yeþilyurt", 1957, "M.Nihat Yavaþ", "Malatya")
+
+
+"""Çýktý:
+>python p_12007.py
+{}
+{'en': 'Ýngilizce', 'fr': 'Fransýzca', 'de': 'Almanca', 'ar': 'Arapça',
+'ru': 'Rusça', 'zh': 'Çince', 'ja': 'Japonca', 'tr': 'Türkçe'}
+{'yýl': 1957, 'ay': 4, 'gün': 17, 'doðum_yeri': 'Yeþilyurt'}
+
+dosya ekle hayýr sil çöz fermuarla
+17 4 1957 Yeþilyurt Malatya M.Nihat Yavaþ
+"""

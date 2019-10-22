@@ -1,0 +1,26 @@
+# coding:iso-8859-9 Türkçe
+# p_11003.py: Deðiþtirilemez sözlük anahtarý olarak hangi veri tiplerinin kullanýlabileceði örneði.
+
+try: S = {[1,2,3]:"abc"}
+except TypeError: print ("HATA: Mutable/deðiþtirilebilir liste'den anahtar olmaz!")
+
+S = { (1,2,3):"abc", 3.1415:"pi", 123:123, "pi":3.1415, True:"Doðru"}
+print ("\nDeðiþtirilemez/immutable tüple'den ve sabit karakterlerden anahtar olur:", S)
+print ("\nTüple deðiþmezi==> S[(1,2,3)]:", S[(1,2,3)], "\nKayannokta sabiti==> S[3.1415]:", S[3.1415],
+    "\nTamsayý sabiti==> S[123]:", S[123], "\nDizge sabiti==> S['pi']:", S["pi"],
+    "\nBoolean sabiti==> S[True]:", S[True] )
+
+
+"""Çýktý:
+>python p_11003.py
+HATA: Mutable/deðiþtirilebilir liste'den anahtar olmaz!
+
+Deðiþtirilemez/immutable tüple'den ve sabit karakterlerden anahtar olur:
+{(1, 2, 3): 'abc', 3.1415: 'pi', 123: 123, 'pi': 3.1415, True: 'Doðru'}
+
+Tüple deðiþmezi==> S[(1,2,3)]: abc
+Kayannokta sabiti==> S[3.1415]: pi
+Tamsayý sabiti==> S[123]: 123
+Dizge sabiti==> S['pi']: 3.1415
+Boolean sabiti==> S[True]: Doðru
+"""

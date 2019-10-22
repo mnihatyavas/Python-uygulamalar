@@ -1,0 +1,77 @@
+# coding:iso-8859-9 Türkçe
+# p_11501.py: while döngülü sayý toplamý, klavye veri giriþi ve gizli sayý tahmini örneði.
+
+son = 2019
+toplam = 0
+sayaç = 1957
+
+while sayaç <= son:
+    toplam = toplam + sayaç
+    sayaç +=1
+
+print ("1957'den {}'e kadar olan sayýlarýn toplamý: {}'dir." .format (son, toplam) )
+#-----------------------------------------------------------------------------------------------------
+
+import sys
+
+sys.stdout.write ("\nKlavyeden birþeyler girin: ")
+dizge = ""
+
+while 1: # True
+    krk = sys.stdin.read(1)
+    dizge = dizge + krk
+    if krk == '\n': break
+
+sys.stderr.write ("Girdiðiniz karakterler:" + dizge)
+#-----------------------------------------------------------------------------------------------------
+
+import random
+
+sayý = int (random.random()*1000) + 1
+tahmin = sayaç = 0
+
+while tahmin != sayý:
+    try: tahmin = int (input ("\nGizli sayý kaç [0-1000]? "))
+    except: tahmin = int (random.random()*1000) + 1
+    sayaç +=1
+    if tahmin > 0:
+        if tahmin > sayý: print ("Tahmininiz büyük oldu")
+        elif tahmin < sayý: print ("Tahmininiz küçük oldu")
+    else:
+        sys.stderr.write ("Maalesef oyunu sonlandýrmadan ayrýlýyorsunuz!")
+        break
+
+else: sys.stdout.write ("Tebrikler, gizli sayýyý "+ str (sayaç) + " kerede bildiniz!")
+
+
+"""Çýktý:
+>python p_11501.py
+1957'den 2019'e kadar olan sayýlarýn toplamý: 125244'dir.
+
+Klavyeden birþeyler girin: M.Nihat Yavaþ
+Girdiðiniz karakterler:M.Nihat Yavaþ
+
+Gizli sayý kaç [0-1000]? 500
+Tahmininiz küçük oldu
+
+Gizli sayý kaç [0-1000]? 750
+Tahmininiz büyük oldu
+
+Gizli sayý kaç [0-1000]? 625
+Tahmininiz küçük oldu
+
+Gizli sayý kaç [0-1000]? 690
+Tahmininiz küçük oldu
+
+Gizli sayý kaç [0-1000]? 720
+Tahmininiz büyük oldu
+
+Gizli sayý kaç [0-1000]? 700
+Tahmininiz büyük oldu
+
+Gizli sayý kaç [0-1000]? 694
+Tahmininiz küçük oldu
+
+Gizli sayý kaç [0-1000]? 698
+Tebrikler, gizli sayýyý 8 kerede bildiniz!
+"""

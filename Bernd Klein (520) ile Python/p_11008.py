@@ -1,0 +1,98 @@
+# coding:iso-8859-9 Türkçe
+# p_11008.py: Sözlüklerde update/güncelle, zip/tüplede-birleþtir ve tüple-liste-sözlük çevrimleri örneði.
+
+sözlük1 = {"Sevim":{"JS"}, "Hatice":{"Java", "Python", "CSS"}, "Zeliha":{"ACCESS"} }
+sözlük2 = {"Songül":{"HTML"}, "Hatice":{"WORD"}, "Nedim":{"MASM", "HTML", "JS", "CSS"}, "Sevim":{"HTML", "CSS"} }
+
+sözlük1.update (sözlük2)
+# Güncellemede 2.de de olan esas alýnýyor ve ilki atýlýyor, 2.yoksa ilki esas alýnýyor; karma ekleme yapmýyor (sakat!)...
+
+print ("Güncellenen sözlük:", sözlük1)
+#----------------------------------------------------------------------------------------------------
+
+print ("\nSadece anahtarlarýn dökümü:")
+for anahtar in sözlük1: print (anahtar, end=" ")
+print()
+for anahtar in sözlük1.keys(): print (anahtar, end=" ") # Ayný sonuç...
+#----------------------------------------------------------------------------------------------------
+
+print ("\n\nSadece deðerlerin dökümü:")
+for deðer in sözlük1.values(): print (deðer, end=" ")
+print()
+for anahtar in sözlük1.keys(): print (sözlük1[anahtar], end=" ") # Ayný sonuç, ancak ilki daha hýzlýdýr...
+#----------------------------------------------------------------------------------------------------
+
+print ("\n\nAnahtar-deðer çiftinin birlikte dökümü:")
+for çift in sözlük1.items(): print (çift, end=" ")
+#----------------------------------------------------------------------------------------------------
+
+print ("\n\nSözlükten listeye çevrim:")
+L = list (sözlük1.items() )
+print (L)
+#----------------------------------------------------------------------------------------------------
+
+print ("\nSözlük anahtar-deðer çiftini 2 ayrý listeye ayýrýp, " +
+    "sonra zip'le birleþik tüple liste yapýp, " +
+    "onu da dict'le tekrar sözlüðe çevirelim:\n", "-"*79, sep="")
+L1 = list (sözlük1.keys() )
+L2 = list (sözlük1.values() )
+L3 = list (zip (L1, L2) )
+S = dict (L3)
+print ("Anahtarlar listesi:\n", L1, "\n\nDeðerler listesi:\n", L2,
+    "\n\nBirleþik tüple listesi:\n", L3, "\n\nSözlük:\n", S, sep="")
+
+print ("\nL1 ve L2 listeleriyle direk zip'ten sözlüðe çevrim:\n", dict (zip (L1, L2)), sep="")
+# Zip'te listelerden kýsasý esas alýnýp, artýk kýrpýlýr...
+
+print ("\nListesiz direk zip'ten sözlüðe çevrim:\n", dict (zip (['Sevim', 'Hatice',
+     'Zeliha', 'Songül', 'Nedim'], [{'CSS', 'HTML'}, {'WORD'}, {'ACCESS'},
+    {'HTML'}, {'CSS', 'MASM', 'HTML', 'JS'}])), sep="")
+
+
+"""Çýktý:
+>python p_11008.py
+Güncellenen sözlük: {'Sevim': {'CSS', 'HTML'}, 'Hatice': {'WORD'},
+'Zeliha': {'ACCESS'}, 'Songül': {'HTML'}, 'Nedim': {'JS', 'CSS', 'HTML', 'MASM'}}
+
+Sadece anahtarlarýn dökümü:
+Sevim Hatice Zeliha Songül Nedim
+Sevim Hatice Zeliha Songül Nedim
+
+Sadece deðerlerin dökümü:
+{'CSS', 'HTML'} {'WORD'} {'ACCESS'} {'HTML'} {'JS', 'CSS', 'HTML', 'MASM'}
+{'CSS', 'HTML'} {'WORD'} {'ACCESS'} {'HTML'} {'JS', 'CSS', 'HTML', 'MASM'}
+
+Anahtar-deðer çiftinin birlikte dökümü:
+('Sevim', {'CSS', 'HTML'}) ('Hatice', {'WORD'}) ('Zeliha', {'ACCESS'})
+('Songül', {'HTML'}) ('Nedim', {'JS', 'CSS', 'HTML', 'MASM'})
+
+Sözlükten listeye çevrim:
+[('Sevim', {'CSS', 'HTML'}), ('Hatice', {'WORD'}), ('Zeliha', {'ACCESS'}),
+('Songül', {'HTML'}), ('Nedim', {'JS', 'CSS', 'HTML', 'MASM'})]
+
+Sözlük anahtar-deðer çiftini 2 ayrý listeye ayýrýp, sonra zip'le birleþik tüple
+liste yapýp, onu da dict'le tekrar sözlüðe çevirelim:
+-------------------------------------------------------------------------------
+Anahtarlar listesi:
+['Sevim', 'Hatice', 'Zeliha', 'Songül', 'Nedim']
+
+Deðerler listesi:
+[{'CSS', 'HTML'}, {'WORD'}, {'ACCESS'}, {'HTML'}, {'JS', 'CSS', 'HTML', 'MASM'}]
+
+
+Birleþik tüple listesi:
+[('Sevim', {'CSS', 'HTML'}), ('Hatice', {'WORD'}), ('Zeliha', {'ACCESS'}),
+('Songül', {'HTML'}), ('Nedim', {'JS', 'CSS', 'HTML', 'MASM'})]
+
+Sözlük:
+{'Sevim': {'CSS', 'HTML'}, 'Hatice': {'WORD'}, 'Zeliha': {'ACCESS'},
+'Songül': {'HTML'}, 'Nedim': {'JS', 'CSS', 'HTML', 'MASM'}}
+
+L1 ve L2 listeleriyle direk zip'ten sözlüðe çevrim:
+{'Sevim': {'CSS', 'HTML'}, 'Hatice': {'WORD'}, 'Zeliha': {'ACCESS'},
+'Songül': {'HTML'}, 'Nedim': {'JS', 'CSS', 'HTML', 'MASM'}}
+
+Listesiz direk zip'ten sözlüðe çevrim:
+{'Sevim': {'CSS', 'HTML'}, 'Hatice': {'WORD'}, 'Zeliha': {'ACCESS'},
+'Songül': {'HTML'}, 'Nedim': {'JS', 'CSS', 'HTML', 'MASM'}}
+"""

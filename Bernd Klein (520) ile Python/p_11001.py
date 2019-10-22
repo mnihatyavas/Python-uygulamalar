@@ -1,0 +1,46 @@
+# coding:iso-8859-9 Türkçe
+# p_11001.py: Anahtar:deðer çifti içerikli sözlük elemanýna eriþim ve yeni eleman ekleme örneði.
+
+þehirNüfusu = {}
+print ("Boþ sözlük:", þehirNüfusu, "\nEbatý:", len (þehirNüfusu) )
+
+þehirNüfusu = {"New York City":8550405, "Los Angeles":3971883, "Toronto":2731571, "Chicago":2720546, "Houston":2296224, "Montreal":1704694, "Calgary":1239220, "Vancouver":631486, "Boston":667137}
+print ("\nAmerika'da birkaç þehir ve nüfuslarý sözlüðü:", þehirNüfusu, "\nAnahtar-deðer çifti sayýsý:", len (þehirNüfusu))
+
+print ("\nNewYork, Toronto ve Boston'un nüfuslarý:", þehirNüfusu["New York City"], þehirNüfusu["Toronto"], þehirNüfusu["Boston"])
+
+print()
+try: print ("Detroit'in nüfusu:", þehirNüfusu["Detroit"])
+except KeyError: print ("HATA: Böyle bir þehir anahtarý þehirNüfusu sözlüðünde YOK!")
+
+print()
+try: print ("Los Angeles'ýn nüfusu:", þehirNüfusu[1])
+except KeyError: print ("HATA: Sözlüklerde endeks kullanýlmaz!")
+
+þehirNüfusu["Halifax"] = 390096 # Ayný anahtar sadece bir kez girilebilir...
+þehirNüfusu["Halifax"] = 390096 # Hata vermez, fakat kabul de etmez...
+print ("\nSona yeni ilave þehirle sözlük dökümü:", þehirNüfusu, "\nAnahtar-deðer çifti sayýsý:", len (þehirNüfusu))
+
+
+"""Çýktý:
+>python p_11001.py
+Boþ sözlük: {}
+Ebatý: 0
+
+Amerika'da birkaç þehir ve nüfuslarý sözlüðü: {'New York City': 8550405,
+'Los Angeles': 3971883, 'Toronto': 2731571, 'Chicago': 2720546, 'Houston': 2296224,
+'Montreal': 1704694, 'Calgary': 1239220, 'Vancouver': 631486, 'Boston': 667137}
+Anahtar-deðer çifti sayýsý: 9
+
+NewYork, Toronto ve Boston'un nüfuslarý: 8550405 2731571 667137
+
+HATA: Böyle bir þehir anahtarý þehirNüfusu sözlüðünde YOK!
+
+HATA: Sözlüklerde endeks kullanýlmaz!
+
+Sona yeni ilave þehirle sözlük dökümü: {'New York City': 8550405,
+'Los Angeles': 3971883, 'Toronto': 2731571, 'Chicago': 2720546,
+'Houston': 2296224, 'Montreal': 1704694, 'Calgary': 1239220,
+'Vancouver': 631486, 'Boston': 667137, 'Halifax': 390096}
+Anahtar-deðer çifti sayýsý: 10
+"""

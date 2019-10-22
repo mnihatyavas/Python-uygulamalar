@@ -1,0 +1,68 @@
+# coding:iso-8859-9 Türkçe
+# p_11006.py: Anahtarlý pop yerine anahtarsýz sondan popitem() ile silme örneði.
+
+baþkentler = {"Türkiye":"Ankara", "KKTC":"Lefkoþe", "Yunanistan":"Atina",
+    "Avusturya":"Viyana", "Almanya":"Berlin", "Hollanda":"Amsterdam",
+    "Ýngiltere":"Londra", "Bulgaristan":"Sofya", "Ýtalya":"Roma"}
+baþkentler["Arnavutluk"] = "Tiran" # Yeni anahtar-deðer çiftini sona ekler...
+
+print (baþkentler)
+
+# popitem() sözlüðün sonundaki anahtar-deðer (tüple-)çiftini çýkarýr; hiç kalmamýþsa KeyError istisnasý fýrlatýr...
+
+print()
+ülke, baþkent = baþkentler.popitem()
+print (baþkent, ", ", ülke, "'un baþþehridir\n", baþkentler, sep="")
+
+while True:
+    print()
+    try: print (baþkentler.popitem(), "\n", baþkentler, sep="")
+    except KeyError:
+        print ("Sözlükte popitem() çýkarýlacak anahtar-deðer çifti kalmamýþ!")
+        break
+
+
+"""Çýktý:
+>python p_11006.py
+{'Türkiye': 'Ankara', 'KKTC': 'Lefkoþe', 'Yunanistan': 'Atina', 'Avusturya': 'Viyana',
+'Almanya': 'Berlin', 'Hollanda': 'Amsterdam', 'Ýngiltere': 'Londra', 'Bulgaristan': 'Sofya',
+'Ýtalya': 'Roma', 'Arnavutluk': 'Tiran'}
+
+Tiran, Arnavutluk'un baþþehridir
+{'Türkiye': 'Ankara', 'KKTC': 'Lefkoþe', 'Yunanistan': 'Atina', 'Avusturya': 'Viyana',
+'Almanya': 'Berlin', 'Hollanda': 'Amsterdam', 'Ýngiltere': 'Londra', 'Bulgaristan': 'Sofya', 'Ýtalya': 'Roma'}
+
+('Ýtalya', 'Roma')
+{'Türkiye': 'Ankara', 'KKTC': 'Lefkoþe', 'Yunanistan': 'Atina', 'Avusturya': 'Viyana',
+'Almanya': 'Berlin', 'Hollanda': 'Amsterdam', 'Ýngiltere': 'Londra', 'Bulgaristan': 'Sofya'}
+
+('Bulgaristan', 'Sofya')
+{'Türkiye': 'Ankara', 'KKTC': 'Lefkoþe', 'Yunanistan': 'Atina', 'Avusturya': 'Viyana',
+'Almanya': 'Berlin', 'Hollanda': 'Amsterdam', 'Ýngiltere': 'Londra'}
+
+('Ýngiltere', 'Londra')
+{'Türkiye': 'Ankara', 'KKTC': 'Lefkoþe', 'Yunanistan': 'Atina', 'Avusturya': 'Viyana',
+'Almanya': 'Berlin', 'Hollanda': 'Amsterdam'}
+
+('Hollanda', 'Amsterdam')
+{'Türkiye': 'Ankara', 'KKTC': 'Lefkoþe', 'Yunanistan': 'Atina', 'Avusturya': 'Viyana',
+'Almanya': 'Berlin'}
+
+('Almanya', 'Berlin')
+{'Türkiye': 'Ankara', 'KKTC': 'Lefkoþe', 'Yunanistan': 'Atina', 'Avusturya': 'Vi
+yana'}
+
+('Avusturya', 'Viyana')
+{'Türkiye': 'Ankara', 'KKTC': 'Lefkoþe', 'Yunanistan': 'Atina'}
+
+('Yunanistan', 'Atina')
+{'Türkiye': 'Ankara', 'KKTC': 'Lefkoþe'}
+
+('KKTC', 'Lefkoþe')
+{'Türkiye': 'Ankara'}
+
+('Türkiye', 'Ankara')
+{}
+
+Sözlükte popitem() çýkarýlacak anahtar-deðer çifti kalmamýþ!
+"""

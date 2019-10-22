@@ -1,0 +1,224 @@
+# coding:iso-8859-9 Türkçe
+# p_12505.py: Ayný dekoratörde farklý fonksiyonlar, hazýr fonksiyonlar ve farklý sayýda argümanlar örneði.
+
+def dekoratörüm (fonksiyon):
+    def argümansal_fonksiyon_ambalajlayýcýsý (x):
+        print()
+        print (fonksiyon.__name__ + " adlý fonksiyonu çaðýrmadan önce")
+        sonuç = fonksiyon (x)
+        print (sonuç)
+        print (fonksiyon.__name__ + " adlý fonksiyonu çaðýrdýktan sonra")
+    return argümansal_fonksiyon_ambalajlayýcýsý
+
+# Artýk dekoratörüm her farklý adlý (argüman) fonksiyonla çaðrýlabilir...
+@dekoratörüm
+def bir_sonrasý (n): return str (n) + "+1=" + str (n + 1)
+
+@dekoratörüm
+def karesi (n): return str (n) + "^2=" + str (n**2)
+
+@dekoratörüm
+def karekökü (n): return str (n) + "^(1/2)=" + str (n**(1/2))
+
+bir_sonrasý (10)
+karesi (9)
+karekökü (88)
+print ("_"*75, "\n")
+#---------------------------------------------------------------------------------------------------
+
+from math import sin, cos, pi
+
+print ("import hazýr tanýmlý fonksiyonlar @'siz, ve atamayla çaðrýlmalýdýr!")
+sinüs = dekoratörüm (sin)
+#kosinüs = dekoratörüm (cos)
+
+for derece in range (0, 361, 15):
+    radyan = derece * pi / 180 
+    print ("\nsin(", derece, ")=", sep="", end="")
+    sinüs (radyan)
+print ("_"*75, "\n")
+#---------------------------------------------------------------------------------------------------
+
+from random import random, randint, choice
+
+def dekoratör (f):
+    def ambalajcý (*a, **b): # Argümansýz veya çoklu argümanlý olabilir...
+        print()
+        print (f.__name__ + " adlý deðiþken argümansal fonksiyon çaðrýlmadan önce")
+        sonuç = f (*a, **b)
+        print (sonuç)
+        print (f.__name__ + " adlý deðiþken argümansal fonksiyon çaðrýldýktan sonra")
+    return ambalajcý
+
+print ("\nArtýk ambalajcý deðiþken sayýlý argümanla da çaðrýlabilmektedir:")
+küsüratlý = dekoratör (random)
+tamsayýlý = dekoratör (randint)
+tercihli = dekoratör (choice)
+
+print ("[0->1] arasý tesadüfi sayý (argümansýz):", end=""); küsüratlý ()
+print ("\n[-100->100] arasý tesadüfi sayý (2 argümanlý):", end=""); tamsayýlý (-100, 100)
+print ("\n[-1000->1000] arasý 100 adet choice sayý (100 argümanlý):", end=""); tercihli ([randint (-1000, 1000) for i in range (100)] )
+
+
+
+"""Çýktý:
+>python p_12505.py
+
+bir_sonrasý adlý fonksiyonu çaðýrmadan önce
+10+1=11
+bir_sonrasý adlý fonksiyonu çaðýrdýktan sonra
+
+karesi adlý fonksiyonu çaðýrmadan önce
+9^2=81
+karesi adlý fonksiyonu çaðýrdýktan sonra
+
+karekökü adlý fonksiyonu çaðýrmadan önce
+88^(1/2)=9.38083151964686
+karekökü adlý fonksiyonu çaðýrdýktan sonra
+___________________________________________________________________________
+
+import hazýr tanýmlý fonksiyonlar @'siz, ve atamayla çaðrýlmalýdýr!
+
+sin(0)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.0
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(15)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.25881904510252074
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(30)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.49999999999999994
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(45)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.7071067811865475
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(60)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.8660254037844386
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(75)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.9659258262890683
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(90)=
+sin adlý fonksiyonu çaðýrmadan önce
+1.0
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(105)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.9659258262890683
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(120)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.8660254037844387
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(135)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.7071067811865476
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(150)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.49999999999999994
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(165)=
+sin adlý fonksiyonu çaðýrmadan önce
+0.258819045102521
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(180)=
+sin adlý fonksiyonu çaðýrmadan önce
+1.2246467991473532e-16
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(195)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.25881904510252035
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(210)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.5000000000000001
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(225)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.7071067811865475
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(240)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.8660254037844384
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(255)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.9659258262890683
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(270)=
+sin adlý fonksiyonu çaðýrmadan önce
+-1.0
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(285)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.9659258262890682
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(300)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.8660254037844386
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(315)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.7071067811865477
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(330)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.5000000000000004
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(345)=
+sin adlý fonksiyonu çaðýrmadan önce
+-0.2588190451025207
+sin adlý fonksiyonu çaðýrdýktan sonra
+
+sin(360)=
+sin adlý fonksiyonu çaðýrmadan önce
+-2.4492935982947064e-16
+sin adlý fonksiyonu çaðýrdýktan sonra
+___________________________________________________________________________
+
+
+Artýk ambalajcý deðiþken sayýlý argümanla da çaðrýlabilmektedir:
+[0->1] arasý tesadüfi sayý (argümansýz):
+random adlý deðiþken argümansal fonksiyon çaðrýlmadan önce
+0.8830365377014282
+random adlý deðiþken argümansal fonksiyon çaðrýldýktan sonra
+
+[-100->100] arasý tesadüfi sayý (2 argümanlý):
+randint adlý deðiþken argümansal fonksiyon çaðrýlmadan önce
+-73
+randint adlý deðiþken argümansal fonksiyon çaðrýldýktan sonra
+
+[-1000->1000] arasý 100 adet choice sayý (100 argümanlý):
+choice adlý deðiþken argümansal fonksiyon çaðrýlmadan önce
+-789
+choice adlý deðiþken argümansal fonksiyon çaðrýldýktan sonra
+"""

@@ -1,0 +1,58 @@
+# coding:iso-8859-9 Türkçe
+# p_11005.py: Sözlük items/birimler, keys/anahtarlar ve values/deðerler ile pop ve get iþlemleri örneði.
+
+baþkentler = {"Avusturya":"Viyana", "Almanya":"Berlin", "Hollanda":"Amsterdam"}
+print (baþkentler)
+print ("\n", baþkentler.items(), "\n", baþkentler.keys(), "\n", baþkentler.values(), sep="")
+
+# pop(..) için sözlükten çýkaracaðý mutlaka mevcut bir anahtar gereklidir...
+baþkent = baþkentler.pop ("Avusturya")
+print ("\n", baþkent, "\n", baþkentler, sep="")
+
+print()
+try: print (baþkentler.pop ("Ýsviçre") )
+except KeyError: print ("HATA: Sözlükte girdiðiniz anahtar YOK!")
+
+print()
+print (baþkentler.pop ("Ýsviçre", "Bern") ) # Sözlükte yoksa, varsayýlý "Bern" gösterilecek...
+
+print()
+print (baþkentler.pop ("Fransa", "Paris") )
+
+print()
+print (baþkentler.pop ("Almanya", "Münih") ) # Bulursa, cevabý; bulamazsa "Münih"i gösterecek...
+print (baþkentler)
+
+# "in" kontroluyla hata fýrlatma önlenir...
+if "Ýtalya" in baþkentler: print ("\n", baþkentler.pop ("Ýtalya"), "\n", baþkentler, sep="")
+
+print ("\n", baþkentler.get ("Ýtalya"), "\n", baþkentler, sep="") # Get yoksa, hata kýrmaz, None döndürür...
+print ("\n", baþkentler.get ("Hollanda"), "\n", baþkentler, sep="") # Get mevcudu çýkarmaz, gösterir...
+
+
+"""Çýktý:
+>python p_11005.py
+{'Avusturya': 'Viyana', 'Almanya': 'Berlin', 'Hollanda': 'Amsterdam'}
+
+dict_items([('Avusturya', 'Viyana'), ('Almanya', 'Berlin'), ('Hollanda', 'Amsterdam')])
+dict_keys(['Avusturya', 'Almanya', 'Hollanda'])
+dict_values(['Viyana', 'Berlin', 'Amsterdam'])
+
+Viyana
+{'Almanya': 'Berlin', 'Hollanda': 'Amsterdam'}
+
+HATA: Sözlükte girdiðiniz anahtar YOK!
+
+Bern
+
+Paris
+
+Berlin
+{'Hollanda': 'Amsterdam'}
+
+None
+{'Hollanda': 'Amsterdam'}
+
+Amsterdam
+{'Hollanda': 'Amsterdam'}
+"""

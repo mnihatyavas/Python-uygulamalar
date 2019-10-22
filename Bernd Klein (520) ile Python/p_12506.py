@@ -1,0 +1,100 @@
+# coding:iso-8859-9 Türkçe
+# p_12506.py: Özyinelelemeli ve deðiþken argümanlý dekoratör fonksiyonlarýnda sayaç örneði.
+
+def tamsayýlý_argüman_kontrolü (f):
+    def yardýmcý (x):
+        if type (x) == int and x >= 0: return f (x)
+        else:
+            print ("HATA: Argüman geçerli bir tamsayý deðildir!..")
+            return "***"
+    return yardýmcý
+
+@tamsayýlý_argüman_kontrolü
+def ardýlÇarp (n):
+    if n == 1 or n == 0: return 1
+    else: return n * ardýlÇarp (n-1)
+
+tüple = (10, 1, 10, 20, 3.8, -15, 9, 0)
+for (i, j) in enumerate (tüple): print (i+1, j, ardýlÇarp (j) )
+print ("-"*75, "\n")
+#------------------------------------------------------------------------------------------------------
+
+def sayalým (fonk):
+    def yardýmcý (x):
+        yardýmcý.sayaç += 1
+        return fonk (x)
+    yardýmcý.sayaç = 0
+    return yardýmcý
+
+@sayalým
+def birsonraki (x): return x+1
+
+print ("sayalým(..) dekoratörü kaç kez çaðrýldý:", birsonraki.sayaç)
+for i in range (10): birsonraki (i)
+print ("sayalým(..) dekoratörü kaç kez çaðrýldý:", birsonraki.sayaç)
+for i in range (15): birsonraki (i)
+print ("sayalým(..) dekoratörü toplamda kaç kez çaðrýldý:", birsonraki.sayaç)
+print ("-"*75, "\n")
+#------------------------------------------------------------------------------------------------------
+
+def sayalým2 (fonk):
+    def yardýmcý (*a, **b):
+        yardýmcý.sayaç += 1
+        return fonk (*a, **b)
+    yardýmcý.sayaç = 0
+    return yardýmcý
+
+@sayalým2
+def birsonraki (x): return x+1
+
+@sayalým2
+def çarp (x, y=1):
+    if y==1: return x*y + 1 # birsonraki(x)'yle ayný...
+    else: return x*y # Ýki sayýnýn çarpýmý...
+
+print ("birsonraki(..) kaç kez çaðrýldý:", birsonraki.sayaç)
+
+for i in range (10): birsonraki (i)
+çarp (3, 4)
+çarp (4)
+çarp (y=3, x=2)
+
+print ("birsonraki(..) kaç kez çaðrýldý:", birsonraki.sayaç)
+print ("çarp(..) kaç kez çaðrýldý:", çarp.sayaç)
+
+for i in range (15): birsonraki (i)
+çarp (5, 5)
+çarp (10)
+çarp (y=5, x=7.9)
+çarp (x=-3.5, y=0.59)
+
+print ("birsonraki(..) toplamda kaç kez çaðrýldý:", birsonraki.sayaç)
+print ("çarp(..) toplamda kaç kez çaðrýldý:", çarp.sayaç)
+
+
+
+"""Çýktý:
+>python p_12506.py
+1 10 3628800
+2 1 1
+3 10 3628800
+4 20 2432902008176640000
+HATA: Argüman geçerli bir tamsayý deðildir!..
+5 3.8 ***
+HATA: Argüman geçerli bir tamsayý deðildir!..
+6 -15 ***
+7 9 362880
+8 0 1
+---------------------------------------------------------------------------
+
+sayalým(..) dekoratörü kaç kez çaðrýldý: 0
+sayalým(..) dekoratörü kaç kez çaðrýldý: 10
+sayalým(..) dekoratörü toplamda kaç kez çaðrýldý: 25
+---------------------------------------------------------------------------
+
+birsonraki(..) kaç kez çaðrýldý: 0
+birsonraki(..) kaç kez çaðrýldý: 10
+çarp(..) kaç kez çaðrýldý: 3
+birsonraki(..) toplamda kaç kez çaðrýldý: 25
+çarp(..) toplamda kaç kez çaðrýldý: 7
+"""

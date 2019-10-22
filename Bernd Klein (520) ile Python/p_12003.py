@@ -1,0 +1,20 @@
+# coding:iso-8859-9 Türkçe
+# p_12003.py: Return'süz, deðer döndürmeyen ve döndüren return'lü fonksiyonlar örneði.
+
+from random import randint, random
+
+def selam1 (a, b): dizge = "Selam sana, " + str (2019-b) + " yaþýndaki " + a;
+def selam2 (a, b): dizge = "Selam sana, " + str (2019-b) + " yaþýndaki " + a; return;
+def selam3 (a, b): dizge = "Selam sana, " + str (2019-b) + " yaþýndaki " + a; return dizge;
+
+print ("Return'siz fonksiyon:", selam1 ("M.Nihat Yavaþ", 1957) )
+print ("Deðer göndermeyen return'lü fonksiyon:", selam2 ("M.Nihat Yavaþ", 1957) )
+print ("Deðer gönderen return'lü fonksiyon:", selam3 ("M.Nihat Yavaþ", 1957) )
+
+
+"""Çýktý:
+>python p_12003.py
+Return'siz fonksiyon: None
+Deðer göndermeyen return'lü fonksiyon: None
+Deðer gönderen return'lü fonksiyon: Selam sana, 62 yaþýndaki M.Nihat Yavaþ
+"""

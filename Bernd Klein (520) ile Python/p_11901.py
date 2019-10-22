@@ -1,0 +1,82 @@
+#coding:iso-8859-9 Türkçe
+# p_11901.py: Print'le virgüllü, artýlý, sep'li, %dizge biçimli deðer yazdýrma örneði.
+
+from random import random, randint
+
+a = randint (0, 10000)
+b= random()
+
+print ("Argümanlarýn virgüllerle ayrýldýðý print fonksiyonu:")
+print (a, b, a*b, a/b, a**b)
+print (a, b, a*b, a/b, a**b, sep=", ")
+print (a, b, a*b, a/b, a**b, sep=" :-) ")
+#--------------------------------------------------------------------------------------------
+
+print ("\nDeðerleri dizge birleþmeyle tek bir dizgeye dönüþen print:")
+print (str (a) + " " + str (b) + " " + str (a*b) + " " + str (a/b) + " " + str (a**b) )
+#--------------------------------------------------------------------------------------------
+
+print ("\n%sembol biçim dizgeli print:")
+print ("a=%d, b=%.4f, a*b=%.4f, a/b=%.4f, a^b=%.4f" % (a, b, a*b, a/b, a**b) )
+print ("\nTesadüfi ondalýk sayý: %10.3e" % (a+b) )
+print ("Tesadüfi ondalýk sayý: %10.3E" % (a+b) )
+print ("\nTesadüfi sekizlik sayý: %10o" % (a) )
+print ("Tesadüfi sekizlik sayý: %.10o" % (a) )
+print ("\nTesadüfi onaltýlýk sayý: %10x" % (a) )
+print ("Tesadüfi onaltýlýk sayý: %10.8X" % (a) )
+print ("\nSadece tek yüzde iþareti: %%" % () )
+
+print ("\n%#10d" % (a) )
+print ("%#10X" % (a) )
+print ("%10X" % (a) )
+print ("%10.8X" % (a) )
+print ("%#10.8X" % (a) )
+print ("%#10o" % (a) )
+print ("%+10d" % (a) )
+print ("%+10d" % (-a) )
+print ("%-10d" % (a) )
+print ("% 10d" % (a) )
+print ("%10.10d" % (a) )
+
+biçimliDizge = "a=%d, b=%.4f, a*b=%.4f, a/b=%.4f, a^b=%.4f" % (a, b, a*b, a/b, a**b) 
+print ("\nBiçimli dizge:", biçimliDizge)
+
+
+"""Çýktý:
+>python p_11901.py
+Argümanlarýn virgüllerle ayrýldýðý print fonksiyonu:
+5170 0.22836314917871736 1180.6374812539689 22639.379508442275 7.04732653573342
+5170, 0.22836314917871736, 1180.6374812539689, 22639.379508442275, 7.04732653573342
+5170 :-) 0.22836314917871736 :-) 1180.6374812539689 :-) 22639.379508442275 :-) 7.04732653573342
+
+Deðerleri dizge birleþmeyle tek bir dizgeye dönüþen print:
+5170 0.22836314917871736 1180.6374812539689 22639.379508442275 7.04732653573342
+
+%modulo/kalan sembollü biçimli dizgeli print:
+a=5170, b=0.2284, a*b=1180.6375, a/b=22639.3795, a^b=7.0473
+
+Tesadüfi ondalýk sayý:  5.170e+03
+Tesadüfi ondalýk sayý:  5.170E+03
+
+Tesadüfi sekizlik sayý:      12062
+Tesadüfi sekizlik sayý: 0000012062
+
+Tesadüfi onaltýlýk sayý:       1432
+Tesadüfi onaltýlýk sayý:   00001432
+
+Sadece tek yüzde iþareti: %
+
+      5170
+    0X1432
+      1432
+  00001432
+0X00001432
+   0o12062
+     +5170
+     -5170
+5170
+      5170
+0000005170
+
+Biçimli dizge: a=5170, b=0.2284, a*b=1180.6375, a/b=22639.3795, a^b=7.0473
+"""

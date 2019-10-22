@@ -1,0 +1,37 @@
+#coding:iso-8859-9 Türkçe
+# p_11906.py: f"{}" formatýyla alýþveriþ fiþi yazdýrma örneði.
+
+fiyat = 1957.83
+print (f"Euro cinsinden fiyatý: {fiyat:,}" )
+print (f"Ýsviçre Frank'ý cinsinden fiyatý: {fiyat * 1.086:,}" )
+print (f"Ýsviçre Frank'ý cinsinden fiyatý: {fiyat * 1.086:,.2f}" )
+print (f"ABD $'ý cinsinden fiyatý: {fiyat * 1.12:,.2f}" )
+#------------------------------------------------------------------------------------------------------
+
+print ("\nAlýþveriþ fiþi:")
+alýþveriþ = {"Ekmek":4, "Kola":12.75, "Çay":5.45, "Süt":8.65, "Sabun":4.5, "Þeker":19.65}
+yekun = 0
+for alýnan in alýþveriþ.keys():
+    yekun = yekun + alýþveriþ[alýnan]
+    print (f"{alýnan:>10}: {alýþveriþ[alýnan]:>5.2f}" )
+print ("    -------------" )
+print (f"    Toplam: {yekun:.2f}" )
+
+
+"""Çýktý:
+>python p_11906.py
+Euro cinsinden fiyatý: 1,957.83
+Ýsviçre Frank'ý cinsinden fiyatý: 2,126.20338
+Ýsviçre Frank'ý cinsinden fiyatý: 2,126.20
+ABD $'ý cinsinden fiyatý: 2,192.77
+
+Alýþveriþ fiþi:
+     Ekmek:  4.00
+      Kola: 12.75
+       Çay:  5.45
+       Süt:  8.65
+     Sabun:  4.50
+     Þeker: 19.65
+    -------------
+    Toplam: 55.00
+"""

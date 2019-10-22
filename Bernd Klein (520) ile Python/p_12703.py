@@ -1,0 +1,75 @@
+# coding:iso-8859-9 Türkçe
+# p_12703.py: Pickle/turþu açýlamaz dosyasýna pickle.dump ile yazma ve pickle.load ile okuma örneði.
+
+import pickle
+
+print ("'p-12701x.txt' þiir dosya içeriklerini yeni bir dosyaya 'pickling/serializable' cinste turþusunu kuralým, sonra da tekrar 'unpickling/unserialable' çözüp okuyalým==>")
+metin = open ("p_12701x.txt", "r").read()
+dosya = open ("örnek3.turþu", "wb")
+pickle.dump (metin, dosya)
+dosya.close()
+
+print ("\n-->Ýþlem tamam!\nÞimdi de tekrar çözüp okuyalým==>")
+dosya = open ("örnek3.turþu", "rb")
+metin = pickle.load (dosya); dosya.close()
+print (metin)
+
+import os
+os.remove ("örnek3.turþu")
+print ("_"*75, "\n")
+#----------------------------------------------------------------------------------------------------
+
+print ("2 liste ve 1 tüpleyi teke nesneleþtirip turþulayalým. Sonra da çözüp 2 liste ve tüple olarak görünteleyelim==>")
+ülkeler = ["Yunanistan", "Bulgaristan", "Bosna-Hersek", "Kazakistan", "Ukrayna", "Rusya", "Japonya", "Tayland", "Singapur", "Fas", "Brezilya", "Arjantin"]
+þehirler = ["Atina", "Sofya", "Saray-Bosna", "Astana", "Kiev", "Moskova", "Tokyo", "Bangkok", "Singapur", "Kazablanka", "Sao-Paola", "Rio-de-Jenerio"]
+biletlerTL = (200, 200, 700, 850, 500, 850, 1200, 1250, 1250, 1300, 1500, 1600)
+birleþik = (ülkeler, þehirler, biletlerTL)
+dosya = open ("örnek4.turþu", "wb")
+pickle.dump (birleþik, dosya); dosya.close()
+
+print ("\n-->Ýþlem tamam!\nÞimdi de tekrar çözüp okuyalým==>")
+dosya = open ("örnek4.turþu", "rb")
+(ülke, þehir, bilet) = pickle.load (dosya); dosya.close()
+print ("==>Gezilen ülkeler listesi:", ülke, "\n==>Görülen þehirler listesi:", þehir, "\n==>2012 çift-yön bilet fiyatlarý (TL):", bilet)
+
+os.remove ("örnek4.turþu")
+
+
+
+"""Çýktý:
+>python p_12703.py
+'p-12701x.txt' þiir dosya içeriklerini yeni bir dosyaya 'pickling/serializable'
+cinste turþusunu kuralým, sonra da tekrar 'unpickling/unserialable' çözüp okuyalým==>
+
+-->Ýþlem tamam!
+Þimdi de tekrar çözüp okuyalým==>
+V. ad Lesbiam
+
+VIVAMUS mea Lesbia, atque amemus,
+rumoresque senum severiorum
+omnes unius aestimemus assis!
+soles occidere et redire possunt:
+nobis cum semel occidit breuis lux,
+nox est perpetua una dormienda.
+da mi basia mille, deinde centum,
+dein mille altera, dein secunda centum,
+deinde usque altera mille, deinde centum.
+dein, cum milia multa fecerimus,
+conturbabimus illa, ne sciamus,
+aut ne quis malus inuidere possit,
+cum tantum sciat esse basiorum.
+(GAIUS VALERIUS CATULLUS)
+___________________________________________________________________________
+
+2 liste ve 1 tüpleyi teke nesneleþtirip turþulayalým. Sonra da çözüp 2 liste ve
+tüple olarak görünteleyelim==>
+
+-->Ýþlem tamam!
+Þimdi de tekrar çözüp okuyalým==>
+==>Gezilen ülkeler listesi: ['Yunanistan', 'Bulgaristan', 'Bosna-Hersek', 'Kazakistan',
+'Ukrayna', 'Rusya', 'Japonya', 'Tayland', 'Singapur', 'Fas', 'Brezilya', 'Arjantin']
+==>Görülen þehirler listesi: ['Atina', 'Sofya', 'Saray-Bosna', 'Astana', 'Kiev', 'Moskova',
+'Tokyo', 'Bangkok', 'Singapur', 'Kazablanka', 'Sao-Paola', 'Rio-de-Jenerio']
+==>2012 çift-yön bilet fiyatlarý (TL): (200, 200, 700, 850, 500, 850, 1200, 1250,
+1250, 1300, 1500, 1600)
+"""

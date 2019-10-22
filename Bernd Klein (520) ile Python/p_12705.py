@@ -1,0 +1,65 @@
+# coding:iso-8859-9 Türkçe
+# p_12705.py: Metin txt dosyadan okuma, turþu pickle dosyaya yazma ve ordan tekrar okuma örneði.
+
+import pickle
+
+satýrlar = open ("p_12705x.txt").readlines()
+satýrlar.sort()
+
+þehirler = []
+print ("Þehirler ve gün-saat:dakika zaman farklarý:")
+for satýr in satýrlar:
+    þehir, gün, saat, dakika = satýr.split (",")
+    print ("{}==>{}-{:d}:{:d}" .format (þehir, gün, int (saat), int (dakika)) )
+    þehirler.append (" ".join ((þehir, gün, str (saat), str (dakika)) ))
+
+dosya = open ("þehirlerdeZaman.turþu", "bw")
+pickle.dump (þehirler, dosya)
+dosya.close()
+print ("-"*75, "\n")
+#---------------------------------------------------------------------------------------------------------
+
+print ("þehirlerdeZaman.turþu dosyasý içerikleri:")
+dsy = open ("þehirlerdeZaman.turþu", "rb")
+liste = pickle.load (dsy)
+for satýr in liste: print (satýr, end="")
+
+
+
+"""Çýktý:
+>python p_12705.py
+Þehirler ve gün-saat:dakika zaman farklarý:
+'Amsterdam'==> 'Pazar'-8:52
+'Anchorage'==> 'Cumartesi'-23:52
+'Ankara'==> 'Pazar'-10:52
+'Athens'==> 'Pazar'-9:52
+'Atlanta'==> 'Pazar'-2:52
+'Auckland'==> 'Pazar'-20:52
+'Barcelona'==> 'Pazar'-8:52
+'Beirut'==> 'Pazar'-9:52
+'Toronto'==> 'Pazar'-2:52
+'Vancouver'==> 'Pazar'-0:52
+'Vienna'==> 'Pazar'-8:52
+'Warsaw'==> 'Pazar'-8:52
+'Washington DC'==> 'Pazar'-2:52
+'Winnipeg'==> 'Pazar'-1:52
+'Zurich'==> 'Pazar'-8:52
+---------------------------------------------------------------------------
+
+þehirlerdeZaman.turþu dosyasý içerikleri:
+'Amsterdam'  'Pazar'  8  52
+'Anchorage'  'Cumartesi'  23  52
+'Ankara'  'Pazar'  10  52
+'Athens'  'Pazar'  9  52
+'Atlanta'  'Pazar'  2  52
+'Auckland'  'Pazar'  20  52
+'Barcelona'  'Pazar'  8  52
+'Beirut'  'Pazar'  9  52
+'Toronto'  'Pazar'  2  52
+'Vancouver'  'Pazar'  0  52
+'Vienna'  'Pazar'  8  52
+'Warsaw'  'Pazar'  8  52
+'Washington DC'  'Pazar'  2  52
+'Winnipeg'  'Pazar'  1  52
+'Zurich'  'Pazar'  8  52
+"""

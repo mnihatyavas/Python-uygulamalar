@@ -1,0 +1,46 @@
+# coding:iso-8859-9 Türkçe
+# p_12402.py: Fonksiyonlardaki global ve nonlocal'in genel deðiþkeni aþmasý örneði.
+
+def fonk1():
+    x = 42
+    def fonk11():
+        global x # Ana program için global, fonk1() için deðil...
+        x = 43
+    print ("fonk11() çaðrýlmadan önce:", x)
+    print ("Þimdi fonk11() çaðrýlýyor...")
+    fonk11()
+    print ("fonk11() çaðrýldýktan sonra:", x)
+
+x = 3 # Global bunu aþar...
+fonk1()
+print ("Ana programda x:", x)
+#-------------------------------------------------------------------------------------------------------
+
+def fonk2():
+    x = 42
+    def fonk22():
+        nonlocal x # Sadece buraya lokal deðil, tam kapsamlý...
+        x = 43
+    print  ("fonk22() çaðrýlmadan önce:", x)
+    print ("Þimdi fonk22() çaðrýlýyor...")
+    fonk22()
+    print ("fonk22() çaðrýldýktan sonra:", x)
+
+print()
+x = 3 # nonlocal bunu aþmaz, bu yoksa nonlocal geçerlidir...
+fonk2()
+print ("Ana programda x:", x)
+
+
+"""Çýktý:
+>python p_12402.py
+fonk11() çaðrýlmadan önce: 42
+Þimdi fonk11() çaðrýlýyor...
+fonk11() çaðrýldýktan sonra: 42
+Ana programda x: 43
+
+fonk22() çaðrýlmadan önce: 42
+Þimdi fonk22() çaðrýlýyor...
+fonk22() çaðrýldýktan sonra: 43
+Ana programda x: 3
+"""

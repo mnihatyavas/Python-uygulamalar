@@ -1,0 +1,68 @@
+# coding:iso-8859-9 Türkçe
+# p_12201.py: Fonksiyon içi lokal ve genel deðiþkenlerin eklenmesinin yan etkilerini giderme örneði.
+
+def örnek (x):
+    print ("\nFonksiyon içi:\nx=", x, "id=", id (x) )
+    x = 1957
+    print ("x=", x, "id=", id (x) )
+
+x = 2019
+print ("Ana program:\nx=", x, "id(x)=", id (x) )
+
+örnek (x)
+
+print ("\nTekrar ana program:\nx=", x, "id(x)=", id (x) )
+#---------------------------------------------------------------------------------------------------------
+
+def yanEtkisiz (x):
+    print ("\nFonksiyon içinde, önce:", x)
+    x = x + ["Malatya", "Bursa"] # Ekleme ve atama iþlemi...
+    print ("Fonksiyon içinde, sonra:", x)
+
+þehirler = ["Ankara", "Ýstanbul", "Ýzmir", "Mersin"]
+print ("-"*70, "\nAna programda, önce:", þehirler)
+
+yanEtkisiz (þehirler)
+
+print ("\nAna programda, sonra:", þehirler)
+#---------------------------------------------------------------------------------------------------------
+
+def yanEtkili (x):
+    print ("\nFonksiyon içinde, önce:", x)
+    x += ["Malatya", "Bursa"] # Artýþ operatörlü iþlem...
+    print ("Fonksiyon içinde, sonra:", x)
+
+þehirler = ["Ankara", "Ýstanbul", "Ýzmir", "Mersin"]
+print ("-"*70, "\nAna programda, önce:", þehirler)
+
+yanEtkili (þehirler[:]) # Tek boyutlu listenin sýð kopyasý gönderilir...
+
+print ("\nAna programda, sonra:", þehirler)
+
+
+"""Çýktý:
+>python p_12201.py
+Ana program:
+x= 2019 id(x)= 27812848
+
+Fonksiyon içi:
+x= 2019 id= 27812848
+x= 1957 id= 6541872
+
+Tekrar ana program:
+x= 2019 id(x)= 27812848
+----------------------------------------------------------------------
+Ana programda, önce: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Mersin']
+
+Fonksiyon içinde, önce: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Mersin']
+Fonksiyon içinde, sonra: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Mersin', 'Malatya', 'Bursa']
+
+Ana programda, sonra: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Mersin']
+----------------------------------------------------------------------
+Ana programda, önce: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Mersin']
+
+Fonksiyon içinde, önce: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Mersin']
+Fonksiyon içinde, sonra: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Mersin', 'Malatya', 'Bursa']
+
+Ana programda, sonra: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Mersin']
+"""

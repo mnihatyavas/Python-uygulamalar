@@ -1,0 +1,73 @@
+# coding:iso-8859-9 Türkçe
+# p_12510.py: Dekoratörlü @ fonksiyon ve sýnýfýnýn karþýlaþtýrýlmasý örneði.
+
+def dekoratör1 (f):
+    def yardýmcý (x):
+        print (f.__name__ + " adlý fonksiyonu dekore ediyorum")
+        f (x)
+    return yardýmcý
+
+@dekoratör1
+def fonk (a): print (a, "mutlak sayýsýnýn karekökü:", abs (a**(1/2)) )
+
+print ("Karekök iþlemini olaðan dekoratör fonksiyonuyla yapýyorum==>")
+tüple = (-1.25, 2, -45.89, 9, 0)
+for (i, j) in enumerate (tüple):
+    print ("\n", i+1, ": ", sep="", end="")
+    fonk (j)
+print ("-"*75, "\n")
+#---------------------------------------------------------------------------------------------------------
+
+class dekoratör2:
+    def __init__ (self, f): self.f1 = f
+    def __call__ (self, b):
+        print (self.f1.__name__ + " adlý fonksiyonu dekore ediyorum")
+        self.f1 (b)
+
+@dekoratör2
+def fonk1 (a): print (a, "mutlak sayýsýnýn karekökü:", abs (a**(1/2)) )
+
+print ("Þimdi de ayný iþlemi dekoratör sýnýfýyla gerçekleþtiriyorum==>")
+for (i, j) in enumerate (tüple):
+    print ("\n", i+1, ": ", sep="", end="")
+    fonk1 (j)
+
+
+
+"""Çýktý:
+>python p_12510.py
+Karekök iþlemini olaðan dekoratör fonksiyonuyla yapýyorum==>
+
+1:fonk adlý fonksiyonu dekore ediyorum
+-1.25 mutlak sayýsýnýn karekökü: 1.118033988749895
+
+2:fonk adlý fonksiyonu dekore ediyorum
+2 mutlak sayýsýnýn karekökü: 1.4142135623730951
+
+3:fonk adlý fonksiyonu dekore ediyorum
+-45.89 mutlak sayýsýnýn karekökü: 6.774215821775979
+
+4:fonk adlý fonksiyonu dekore ediyorum
+9 mutlak sayýsýnýn karekökü: 3.0
+
+5:fonk adlý fonksiyonu dekore ediyorum
+0 mutlak sayýsýnýn karekökü: 0.0
+---------------------------------------------------------------------------
+
+Þimdi de ayný iþlemi dekoratör sýnýfýyla gerçekleþtiriyorum==>
+
+1:fonk1 adlý fonksiyonu dekore ediyorum
+-1.25 mutlak sayýsýnýn karekökü: 1.118033988749895
+
+2:fonk1 adlý fonksiyonu dekore ediyorum
+2 mutlak sayýsýnýn karekökü: 1.4142135623730951
+
+3:fonk1 adlý fonksiyonu dekore ediyorum
+-45.89 mutlak sayýsýnýn karekökü: 6.774215821775979
+
+4:fonk1 adlý fonksiyonu dekore ediyorum
+9 mutlak sayýsýnýn karekökü: 3.0
+
+5:fonk1 adlý fonksiyonu dekore ediyorum
+0 mutlak sayýsýnýn karekökü: 0.0
+"""

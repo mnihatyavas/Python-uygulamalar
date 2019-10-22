@@ -1,0 +1,33 @@
+# coding:iso-8859-9 Türkçe
+# p_12203.py: Komut satýrýndan girilen argümanlarýn yönetilmesi örneði.
+
+import sys                
+
+uz = len (sys.argv)
+if uz < 2:
+    print ("Bu program için ileti komutundan enaz 1 argüman deðeri girmelisiniz!..")
+    sys.exit (-1)
+
+for i in range (1, uz):
+    print ("Argüman no:", i, "==>Argüman deðeri:", sys.argv[i] )
+
+"""Çýktý:
+>python p_12203.py
+Bu program için ileti komutundan enaz 1 argüman deðeri girmelisiniz!..
+
+>python p_12203.py Nihat  ** TEKRAR ??
+Argüman no: 1 ==>Argüman deðeri: Nihat
+
+>python p_12203.py M.Nihat Yavaþ 17 Nisan 1957 Yeþilyurt-Malatya  ** TEKRAR **
+Argüman no: 1 ==>Argüman deðeri: M.Nihat
+Argüman no: 2 ==>Argüman deðeri: Yavaþ
+Argüman no: 3 ==>Argüman deðeri: 17
+Argüman no: 4 ==>Argüman deðeri: Nisan
+Argüman no: 5 ==>Argüman deðeri: 1957
+Argüman no: 6 ==>Argüman deðeri: Yeþilyurt-Malatya
+
+>python p_12203.py "M.Nihat Yavaþ" "17 Nisan 1957" Yeþilyurt-Malatya  ** TEKRAR **
+Argüman no: 1 ==>Argüman deðeri: M.Nihat Yavaþ
+Argüman no: 2 ==>Argüman deðeri: 17 Nisan 1957
+Argüman no: 3 ==>Argüman deðeri: Yeþilyurt-Malatya
+"""

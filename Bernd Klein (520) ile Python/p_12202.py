@@ -1,0 +1,28 @@
+# coding:iso-8859-9 Türkçe
+# p_12202.py: Komut satýrýndan argüman geçirme örneði.
+
+import sys                
+
+print ("TUI/TextUserInterface/MetinKullanýcýArayüzü argümanlarý:")
+for argüman in sys.argv: print (argüman)
+
+""" Çýktý:
+>python p_12202.py
+TUI/TextUserInterface/MetinKullanýcýArayüzü argümanlarý:
+p_12202.py
+
+ >python p_12202.py Ankara Ýstanbul Ýzmir Mersin  **TEKRAR**
+TUI/TextUserInterface/MetinKullanýcýArayüzü argümanlarý:
+p_12202.py
+Ankara
+Ýstanbul
+Ýzmir
+Mersin
+
+>python p_12202.py "M.Nihat Yavaþ" Yeþilyurt-Malatya 17/04/1957  **TEKRAR**
+TUI/TextUserInterface/MetinKullanýcýArayüzü argümanlarý:
+p_12202.py
+M.Nihat Yavaþ
+Yeþilyurt-Malatya
+17/04/1957
+"""

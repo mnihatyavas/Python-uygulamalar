@@ -1,0 +1,52 @@
+# coding:iso-8859-9 Türkçe
+# p_11301.py: input ile klavyeden girilen sayýsal veya dizgesel verilerin deðerlendirilmesi örneði.
+
+ad = input ("Adýnýzý öðrenebilir miyim?: ")
+if ad == "": ad = "Nihat"
+print ("Tanýþtýðýmýza memnun oldum, " + ad + "!")
+
+try: yaþ = abs (int (eval (input ("\nPeki yaþýnýz? "))))
+except: yaþ = 62
+print ("O halde, halihazýrda siz " + str (yaþ) + " yaþýndasýnýz ve " + str (2019-yaþ) + " doðumlusunuz, " + ad + "!")
+#-----------------------------------------------------------------------------------------------------
+
+þehirler = input ('\nTürkiyenin büyük birkaç þehrini girin: ')
+if þehirler == "": þehirler = "Ankara, Ýstanbul, Ýzmir"
+print ("Girilen þehirler: " + þehirler + "\nVeri tipi: " + str (type (þehirler)) )
+
+try: þehirler = eval (input ('\nTekrar birkaç þehir girin ["..", "..",..]: '))
+except: þehirler = ["Ankara", "Ýstanbul", "Ýzmir"]
+print ("Girilen þehirler:", þehirler, "\nVeri tipi: ", type (þehirler) )
+
+nüfus = input ('\nTürkiyenin yaklaþýk nüfusunu girin: ')
+if nüfus == "": nüfus = "80,000,000"
+print ("Türkiye'nin yaklaþýk nüfusu: " + nüfus + "\nVeri tipi: " + str (type (nüfus)) )
+
+try: nüfus = eval (input ('\nSayýsal nüfusu tekrar girin: '))
+except: nüfus = 80000000
+print ("Yaklaþýk nüfus:", nüfus, "\nVeri tipi: ", type (nüfus) )
+
+"""Çýktý
+>python p_11301.py
+Adýnýzý öðrenebilir miyim?:
+Tanýþtýðýmýza memnun oldum, Nihat!
+
+Peki yaþýnýz?
+O halde, halihazýrda siz 62 yaþýndasýnýz ve 1957 doðumlusunuz, Nihat!
+
+Türkiyenin büyük birkaç þehrini girin:
+Girilen þehirler: Ankara, Ýstanbul, Ýzmir
+Veri tipi: <class 'str'>
+
+Tekrar birkaç þehir girin ["..", "..",..]:
+Girilen þehirler: ['Ankara', 'Ýstanbul', 'Ýzmir']
+Veri tipi:  <class 'list'>
+
+Türkiyenin yaklaþýk nüfusunu girin:
+Türkiye'nin yaklaþýk nüfusu: 80,000,000
+Veri tipi: <class 'str'>
+
+Sayýsal nüfusu tekrar girin:
+Yaklaþýk nüfus: 80000000
+Veri tipi:  <class 'int'>
+"""

@@ -1,0 +1,9 @@
+# coding:iso-8859-9 Türkçe
+# p_12508x1.py: Dekoratör ve ambalajý ana-programa öncelleyen içiçe fonksiyon alt-örneði.
+
+def selam (fonk):
+    def ambalaj (x):
+        """ Bu, selam dekoratörünün fonksiyon ambalajýdýr. """
+        print ("Merhaba, " + fonk.__name__ + " mesajýnýz: ")
+        return fonk (x)
+    return ambalaj

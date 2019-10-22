@@ -1,0 +1,36 @@
+# coding:iso-8859-9 Türkçe
+# p_10803.py: Listelerle remove/sil ve insert/sok iþlemleri örneði.
+
+L =["Ankara", "Ýstanbul", "Ýzmir", "Adana", "Mersin"]
+
+try: print ("'Ýstanbul' listeden siliniyor:", L.remove ("Ýstanbul") )
+except Exception: pass
+
+try: L.remove ("Bursa")
+except ValueError: print ("Silmek istediðiniz 'Bursa' listede YOK")
+
+print ("Kalan liste:", L)
+
+try: print ("\nListede aranan 'Ýzmir'in endeksi:", L.index ("Ýzmir") )
+except ValueError: pass
+
+try: print (L.remove ("Bursa") )
+except ValueError: print ("Endeksini bulmak istediðiniz 'Bursa' listede YOK")
+
+from random import randint
+# append gibi insert(len(L)) de elemaný liste sonuna ekler...
+print ("'\nAntalya' listeye geliþigüzel sokuluyor:", L.insert (randint(0,len(L)), "Antalya") )
+print ("Listemiz:", L)
+
+
+"""Çýktý:
+>python p_10803.py
+'Ýstanbul' listeden siliniyor: None
+Silmek istediðiniz 'Bursa' listede YOK
+Kalan liste: ['Ankara', 'Ýzmir', 'Adana', 'Mersin']
+
+Listede aranan 'Ýzmir'in endeksi: 1
+Endeksini bulmak istediðiniz 'Bursa' listede YOK'
+Antalya' listeye geliþigüzel sokuluyor: None
+Listemiz: ['Ankara', 'Ýzmir', 'Antalya', 'Adana', 'Mersin']
+"""

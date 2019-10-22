@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+# p_10601.py: Python iþlemcileriyle yapýlan iþlem çýktýlarý örneði.
+
+print ("Toplama ve çýkarma (10+/-3):", 10+3, 10-3)
+print ("Çarpma, bölme ve kalan (27*/+7):", 27*7, 27/7, 27%7)
+print ("Küsüratsýz (-+//) zemin bölme ve -+int(10/3) kesik bölmesi:", 10//3, int (10/3), -10//3.0, int (-10/3) )
+print ("Çebirsel -+ iþareti:", -3, +3)
+print ("Bitvari negatifleme:", ~3-4, ~-4+3)
+print ("-+Üs (**):", -2.5**5.78, 2.5**(-5.78) )
+print ("Boolean or/veya, and/ve ve not/deðil:", not (True or (True and False)) )
+print ("Elemaný mý (True/False)?", 4 in [1957, 4, 17] )
+print ("Karþýlaþtýrma (2 ila 5) operatörleri (<, <=, >, >=, ==, !=):", 2<5, 2<=5, 2>5, 2>=5, 2==5, 2!=5)
+print ("Bitvari |/veya, &/ve, ^/farklýysa (6=110 ila 3=011):", 6|3, 6&3, 6^3)
+print ("Kaydýrma << ve >> operatörleri (6=110'yý 2 kez kaydýr):", 6<<2, 6>>2)
+
+
+"""Çýktý:
+>python p_10601.py
+Toplama ve çýkarma (10+/-3): 13 7
+Çarpma, bölme ve kalan (27*/+7): 189 3.857142857142857 6
+Küsüratsýz (-+//) zemin bölme ve -+int(10/3) kesik bölmesi: 3 3 -4.0 -3
+Çebirsel -+ iþareti: -3 3
+Bitvari negatifleme: -8 6
+-+Üs (**): -199.5690776400273 0.00501079632087968
+Boolean or/veya, and/ve ve not/deðil: False
+Elemaný mý (True/False)? True
+Karþýlaþtýrma (2 ila 5) operatörleri (<, <=, >, >=, ==, !=): True True False Fal
+se False True
+Bitvari |/veya, &/ve, ^/farklýysa (6=110 ila 3=011): 7 2 5
+Kaydýrma << ve >> operatörleri (6=110'yý 2 kez kaydýr): 24 1
+"""

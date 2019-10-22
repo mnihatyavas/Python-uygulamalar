@@ -1,0 +1,59 @@
+# coding:iso-8859-9 Türkçe
+# p_12501.py: Ýçiçe fonksiyonlarýn iþletilme kurallarý örneði.
+
+def sonrasý (x): return x+1
+
+sonraki = sonrasý # Fonksiyona baþka bir ad daha atayalým...
+
+print ("10'dan sonrasý:", sonrasý (10) )
+
+del sonrasý # Ýlk fonksiyon adýný silelim...
+try: print ("10'dan sonrasý:", sonrasý (10) ) # Fonksiyon 1.adla artýk çaðrýlamaz...
+except Exception as ist: print ("HATA:", ist)
+
+print ("\n10'dan sonrasý:", sonraki (10) ) # Fonksiyon 2.adla hala mevcuttur...
+print ("-"*70)
+#-----------------------------------------Ýçiçe fonksiyonlar--------------------------------------
+
+def fonk1():
+    def fonk2():
+        print ("\nMerhaba, ben fonk2()'yim")
+        print ("Beni çaðýrdýðýnýz için teþekkürler")
+    print ("\nSelam, ben fonk1()'im")
+    print ("Ve þimdi de fonk2()'yi çaðýrýyorum:")
+    fonk2()
+    print ("\nVe tekrar fonk1()'e çýktým")
+
+fonk1()
+print ("-"*70, "\n")
+#--------------------------------------------------------------------------------------------------------
+
+from random import random, randint
+
+def selsiyüs (d):
+    def selsiyüstenfahrenhayta (x): return 9 * x / 5 + 32
+    return str (d) + " selsiyüs = " + str (selsiyüstenfahrenhayta (d) ) + " fahrenhayt derecedir."
+
+ýsý = randint (-273, 1000) + random()
+print (selsiyüs (ýsý))
+
+
+"""Çýktý:
+>python p_12501.py
+10'dan sonrasý: 11
+HATA: name 'sonrasý' is not defined
+
+10'dan sonrasý: 11
+----------------------------------------------------------------------
+
+Selam, ben fonk1()'im
+Ve þimdi de fonk2()'yi çaðýrýyorum:
+
+Merhaba, ben fonk2()'yim
+Beni çaðýrdýðýnýz için teþekkürler
+
+Ve tekrar fonk1()'e çýktým
+----------------------------------------------------------------------
+
+-164.33449116905786 selsiyüs = -263.80208410430413 fahrenhayt derecedir.
+"""

@@ -1,0 +1,42 @@
+# coding:iso-8859-9 Türkçe
+# p_12602.py: Bellemeli dekoratör sýnýflý ve @ direktifli fibonaki serisi örneði.
+
+class Bellekle:
+    def __init__ (self, f):
+        self.f = f
+        self.bellek = {}
+    def __call__ (self, *a):
+        if a not in self.bellek: self.bellek [a] = self.f (*a)
+        return self.bellek[a]
+
+def fib (n):
+    if n == 0: return 0
+    elif n == 1: return 1
+    else: return fib (n-1) + fib (n-2)
+
+from random import randint
+adet = randint (0, 30)
+Sýnýf = Bellekle (fib)
+
+print (adet, "adet fibonaki seri açýlýmý: ")
+for i in range (adet): print (Sýnýf (i), end=", ")
+#-----------------------------------------------------------------------------------------------------
+
+@Bellekle
+def fib (n):
+    if n == 0: return 0
+    elif n == 1: return 1
+    else: return fib (n-1) + fib (n-2)
+
+print ("\n\n@Bellekle dekoratör sýnýf nesnesi tanýtýmlý fib serisi:")
+for i in range (adet): print (fib (i), end=", ")
+
+
+"""Çýktý:
+>python p_12602.py
+12 adet fibonaki seri açýlýmý:
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
+
+@Bellekle dekoratör sýnýf nesnesi tanýtýmlý fib serisi:
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
+"""

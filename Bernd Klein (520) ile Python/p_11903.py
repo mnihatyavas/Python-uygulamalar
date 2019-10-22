@@ -1,0 +1,67 @@
+#coding:iso-8859-9 Türkçe
+# p_11903.py: **sözlük formatýyla sözlük anahtar ve deðerlerinin yazdýrýlmasý örneði.
+
+print ("{1:s}'nin baþkenti {0:s}'dýr." .format ("Ankara", "Türkiye") )
+print ("{ülke:s}'nin baþkenti {þehir:s}'dýr." .format (þehir="Ankara", ülke="Türkiye") )
+
+sözlük = dict (þehir="Ankara", ülke="Türkiye")
+print ("\nSözlük =", sözlük)
+print ("{ülke:s}'nin baþkenti {þehir:s}'dýr." .format (**sözlük) )
+#-----------------------------------------------------------------------------------------------------------
+
+sözlük = {"Türkiye": "Ankara",
+    "Gürcistan": "Tiflis",
+    "Ermenistan": "Erivan",
+    "Naðcivan": "Naðcivan",
+    "Ýran": "Tahran",
+    "Irak": "Baðdat",
+    "Suriye": "Þam",
+    "KKTC": "Lefkoþe",
+    "Yunanistan": "Atina",
+    "Bulgaristan": "Sofya",
+    "Ukrayna": "Kiev"}
+
+print ("\nTürkiye'nin ve komþularýnýn baþþehirleri sözlük dökümü:")
+for ülke in sözlük.keys():
+    print ("{ülke:s}'nin baþkenti {þehir:s}'dýr." .format (þehir=sözlük[ülke], ülke=ülke) )
+
+print ("\nAyný sözlük dökümünün farklý yorumu:")
+for ülke in sözlük.keys():
+    dizge = ülke + ": {" + ülke + "}"
+    print (dizge .format (**sözlük) )
+
+
+"""Çýktý:
+>python p_11903.py
+Türkiye'nin baþkenti Ankara'dýr.
+Türkiye'nin baþkenti Ankara'dýr.
+
+Sözlük = {'þehir': 'Ankara', 'ülke': 'Türkiye'}
+Türkiye'nin baþkenti Ankara'dýr.
+
+Türkiye'nin ve komþularýnýn baþþehirleri sözlük dökümü:
+Türkiye'nin baþkenti Ankara'dýr.
+Gürcistan'nin baþkenti Tiflis'dýr.
+Ermenistan'nin baþkenti Erivan'dýr.
+Naðcivan'nin baþkenti Naðcivan'dýr.
+Ýran'nin baþkenti Tahran'dýr.
+Irak'nin baþkenti Baðdat'dýr.
+Suriye'nin baþkenti Þam'dýr.
+KKTC'nin baþkenti Lefkoþe'dýr.
+Yunanistan'nin baþkenti Atina'dýr.
+Bulgaristan'nin baþkenti Sofya'dýr.
+Ukrayna'nin baþkenti Kiev'dýr.
+
+Ayný sözlük dökümünün farklý yorumu:
+Türkiye: Ankara
+Gürcistan: Tiflis
+Ermenistan: Erivan
+Naðcivan: Naðcivan
+Ýran: Tahran
+Irak: Baðdat
+Suriye: Þam
+KKTC: Lefkoþe
+Yunanistan: Atina
+Bulgaristan: Sofya
+Ukrayna: Kiev
+"""

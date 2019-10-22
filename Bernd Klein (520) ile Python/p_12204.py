@@ -1,0 +1,84 @@
+# coding:iso-8859-9 Türkçe
+# p_12204.py: *parametre, *argüman, parametreler ve argümanlar çeþitlemesi örneði.
+
+def göster (*x): print (x)
+
+print (göster)
+print (göster())
+print ( göster ("M.Nihat Yavaþ", 2019-1957, "Yeþilyurt - Malatya", "TR") )
+#-------------------------------------------------------------------------------------------------------
+
+def þehirler (zaruri, *tercihi): print (zaruri, tercihi)
+
+print()
+print (þehirler)
+
+try: print (þehirler() )
+except Exception as ist: print (ist)
+
+print (þehirler ("Ankara") )
+print (þehirler ("Ankara", "Ýstanbul", "Ýzmir", "Mersin", "Adana", "Bursa") )
+#-------------------------------------------------------------------------------------------------------
+
+def ortalama1 (x, y): # Ýlk parametre float, ikincisi liste...
+    toplam = x
+    for i in y: toplam += i
+    return toplam / (1.0 + len (y))
+
+from random import randint
+
+uz = randint (0, 100)
+zaruri = randint (35, 100)
+liste = [randint (35, 100) for i in range (uz)]
+
+print ("\n[0->100] arasý toplam geliþigüzel {} notun ortalamasý = {:.2f}'dir." .format (len(liste)+1, ortalama1 (zaruri, liste)) )
+#-------------------------------------------------------------------------------------------------------
+
+def ortalama2 (x, *y): # Tüm parametreler float...
+    toplam = x
+    for i in y: toplam += i
+    return toplam / (1.0 + len (y))
+
+print ("\n3 adet notun ortalamasý:", ortalama2 (74.5, 67.35, 90.56) )
+print ("6 adet geliþigüzel +/- sayýnýn tamsayý ortalamasý:", int (ortalama2 (4, 7, 9, 45, -3.7, 99)) )
+
+uz = randint (1, 100)
+liste = [randint (45, 100) for i in range (uz)]
+# ortalama2 (*liste) çaðrýsý, zaruri float ve listeyi tümüyle deðiþken elemansal float argümanlara dönüþtürmektedir...
+print ("[0->100] arasý toplam geliþigüzel {} notun ortalamasý = {:.2f}'dir." .format (len(liste)+1, ortalama2 (*liste)) )
+#-------------------------------------------------------------------------------------------------------
+
+def fonk (x, y, z): print ("\nx=", x, ", y=", y, ", z=", z, sep="")
+
+liste = [87,71, 62.5]
+print ("Liste elemanlarý deðiþken argümana dönüþtürülür:", fonk (*liste) )
+print ("Liste elemanlarý tek-tek sabit argüman yapýlýr:",  fonk (liste[0], liste[1], liste[2]) )
+
+
+"""Çýktý:
+>python p_12204.py
+<function göster at 0x00BAC5D0>
+()
+None
+('M.Nihat Yavaþ', 62, 'Yeþilyurt - Malatya', 'TR')
+None
+
+<function þehirler at 0x00BAC4F8>
+þehirler() missing 1 required positional argument: 'zaruri'
+Ankara ()
+None
+Ankara ('Ýstanbul', 'Ýzmir', 'Mersin', 'Adana', 'Bursa')
+None
+
+[0->100] arasý toplam geliþigüzel 4 notun ortalamasý = 70.75'dir.
+
+3 adet notun ortalamasý: 77.47
+6 adet geliþigüzel +/- sayýnýn tamsayý ortalamasý: 26
+[0->100] arasý toplam geliþigüzel 92 notun ortalamasý = 73.29'dir.
+
+x=87, y=71, z=62.5
+Liste elemanlarý deðiþken argümana dönüþtürülür: None
+
+x=87, y=71, z=62.5
+Liste elemanlarý tek-tek sabit argüman yapýlýr: None
+"""

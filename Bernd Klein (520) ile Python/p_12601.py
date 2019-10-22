@@ -1,0 +1,49 @@
+# coding:iso-8859-9 Türkçe
+# p_12601.py: Olaðan, bellemeli dekoratör ve @ direktifli fibonaki fonksiyonu örneði.
+
+def fib (n):
+    if n == 0: return 0
+    elif n == 1: return 1
+    else: return fib (n-1) + fib (n-2)
+
+from random import randint
+
+a = randint (0, 30)
+print ("Olaðan fibonaki fonksiyonuyla", a, "adet seri açýlýmý:")
+for i in range (a): print (fib (i), end=", ")
+#-------------------------------------------------------------------------------------------------------
+
+def bellekle (f):
+    bellek = {}
+    def yardýmcý (x):
+        if x not in bellek: bellek[x] = f (x)
+        return bellek[x]
+    return yardýmcý
+
+print ("\n\nFibonaki serisinde birsonrakini hesaplamak için hep tekrar tekrar 0'dan baþlamak yerine önceki deðerler bellekte saklanabilir. Bu da iþlem süratini çok çok artýrýr. Ayný açýlýmý belleklemeli dekoratör fibonakiyle tekrarlayalým:")
+for i in range (a): print (bellekle (fib) (i), end=", ")
+#-------------------------------------------------------------------------------------------------------
+
+@bellekle
+def fib (n):
+    if n == 0: return 0
+    elif n == 1: return 1
+    else: return fib (n-1) + fib (n-2)
+
+print ("\n\nÇaðýrmayý 'bellekle (fib) (i)' yerine @ yöntemiyle pratikleþtirelim:")
+for i in range (a): print (fib (i), end=", ")
+
+
+"""Çýktý:
+>python p_12601.py
+Olaðan fibonaki fonksiyonuyla 18 adet seri açýlýmý:
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597,
+
+Fibonaki serisinde birsonrakini hesaplamak için hep tekrar tekrar 0'dan baþlamak
+ yerine önceki deðerler bellekte saklanabilir. Bu da iþlem süratini çok çok artý
+rýr. Ayný açýlýmý belleklemeli dekoratör fibonakiyle tekrarlayalým:
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597,
+
+Çaðýrmayý 'bellekle (fib) (i)' yerine @ yöntemiyle pratikleþtirelim:
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597,
+"""

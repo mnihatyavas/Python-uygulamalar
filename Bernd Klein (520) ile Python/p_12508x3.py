@@ -1,0 +1,12 @@
+# coding:iso-8859-9 Türkçe
+# p_12508x3.py: Dekoratör ve ambalajý @wraps'le ana-programa sonralayan içiçe fonksiyon alt-örneði.
+
+from functools import wraps
+
+def selam (fonk):
+    @wraps (fonk)
+    def ambalaj (x):
+        """ Bu, selam dekoratörünün fonksiyon ambalajýdýr. """
+        print ("Merhaba, " + fonk.__name__ + " mesajýnýz: ")
+        return fonk (x)
+    return ambalaj

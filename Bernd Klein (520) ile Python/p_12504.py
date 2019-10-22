@@ -1,0 +1,60 @@
+# coding:iso-8859-9 Türkçe
+# p_12504.py: Parametrik içiçe fonksiyonlarda @ direktifi örneði.
+
+def dekoratörüm (fonksiyon):
+    def sarmalayýcým (x):
+        print (fonksiyon.__name__ + " adlý fonksiyon çaðrýlmadan önce")
+        fonksiyon (x)
+        print (fonksiyon.__name__ + " adlý fonksiyon çaðrýldýktan sonra")
+    return sarmalayýcým
+
+def fonk (x): print ("Merhaba, fonk('" + str (x) + "') çaðrýldý!")
+
+print ("fonk('Selam') dekoratörsüz çaðrýlýyor:")
+fonk ("Selam")
+
+print ("\nÞimdi fonk(x) dekorlanýyor...")
+f = dekoratörüm (fonk)
+print ("Ve dekorlu fonk(1957) çaðrýlýyor:")
+f (1957)
+print ("-"*75, "\n")
+#------------------------------------------------------------------------------------------------------
+
+# f, son dekarötörlü isim için, argüman olan fonk fonksiyon adý kullanýlabilir...
+fonk = dekoratörüm (fonk)
+print ("Dekorlu fonk('17/04/1957') yeniden çaðrýlýyor:")
+fonk ("17/04/1957")
+print ("-"*75, "\n")
+#------------------------------------------------------------------------------------------------------
+
+# Hatta def fonk önüne @dekoratörüm tanýtýmýyla fonk=dekoratörüm(fonk) gereksizleþir...
+@dekoratörüm
+def fonk (x): print ("Merhaba, fonk('" + str (x) + "') çaðrýldý!")
+print ("@ dekorlu fonk('17 Nisan 1957') yeniden çaðrýlýyor:")
+fonk ("17 Nisan 1957")
+
+
+
+"""Çýktý:
+>python p_12504.py
+fonk('Selam') dekoratörsüz çaðrýlýyor:
+Merhaba, fonk('Selam') çaðrýldý!
+
+Þimdi fonk(x) dekorlanýyor...
+Ve dekorlu fonk(1957) çaðrýlýyor:
+fonk adlý fonksiyon çaðrýlmadan önce
+Merhaba, fonk('1957') çaðrýldý!
+fonk adlý fonksiyon çaðrýldýktan sonra
+---------------------------------------------------------------------------
+
+Dekorlu fonk('17/04/1957') yeniden çaðrýlýyor:
+fonk adlý fonksiyon çaðrýlmadan önce
+Merhaba, fonk('17/04/1957') çaðrýldý!
+fonk adlý fonksiyon çaðrýldýktan sonra
+---------------------------------------------------------------------------
+
+@ dekorlu fonk('17 Nisan 1957') yeniden çaðrýlýyor:
+fonk adlý fonksiyon çaðrýlmadan önce
+Merhaba, fonk('17 Nisan 1957') çaðrýldý!
+fonk adlý fonksiyon çaðrýldýktan sonra
+"""

@@ -1,0 +1,36 @@
+# coding:iso-8859-9 Türkçe
+# p_12205.py: **parametre'ye sözlük, (a,b,c,d) parametreye *liste ve **sözlük argümanlarý geçirme örneði.
+
+def fonk1 (**x): print (x) # Çift yýldýzlý deðiþken sözlük parametresi...
+
+print (fonk1)
+print ("Boþ argüman: ", end=""); fonk1()
+print ("Yabancý diller: ", end=""); fonk1 (de="Almanca", en="Ýngilizce", fr="Fransýzca", tr = "Türkçe")
+print ("Þehir plakalarý: ", end=""); fonk1 (tr_01="Adana", tr_06="Ankara", tr_16="Bursa", tr_33="Mersin", tr_34="Ýstanbul", tr_44="Malatya")
+#---------------------------------------------------------------------------------------------------------
+
+def fonk2 (a, b, c, d): print (a, b, c, d) # Anahtar kelimeli sözlük deðerleri...
+
+sözlük1 = {'a':'Almanca', 'c':'Ýngilizce', 'd':'Fransýzca', "b" : "Türkçe"}
+print ("Yabancý diller: ", end=""); fonk2 (**sözlük1)
+
+sözlük2 = {"a":"Adana", "b":"Ankara", "c":"Bursa", "d" : "Mersin"}
+print ("Þehir plakalarý: ", end=""); fonk2 (**sözlük2)
+#---------------------------------------------------------------------------------------------------------
+
+liste = [33, 44]
+sözlük = {"c":"Mersin", "d" : "Malatya"}
+
+print ("Plakalar listesi ve þehirler sözlüðü:", end= " "); fonk2 (*liste, **sözlük)
+
+
+"""Çýktý:
+>python p_12205.py
+<function fonk1 at 0x0132B5D0>
+Boþ argüman: {}
+Yabancý diller: {'de': 'Almanca', 'en': 'Ýngilizce', 'fr': 'Fransýzca', 'tr': 'Türkçe'}
+Þehir plakalarý: {'tr_01': 'Adana', 'tr_06': 'Ankara', 'tr_16': 'Bursa', 'tr_33': 'Mersin', 'tr_34': 'Ýstanbul', 'tr_44': 'Malatya'}
+Yabancý diller: Almanca Türkçe Ýngilizce Fransýzca
+Þehir plakalarý: Adana Ankara Bursa Mersin
+Plakalar listesi ve þehirler sözlüðü: 33 44 Mersin Malatya
+"""

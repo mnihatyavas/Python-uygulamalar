@@ -1,0 +1,26 @@
+# coding:iso-8859-9 Türkçe
+# p_11402.py: if-elif ile köpek ve insan yaþlarýnýn karþýlaþtýrýlmasý örneði.
+
+from random import randint
+
+try: yaþ = abs (int (eval (input ("Köpeðinizin yaþý kaç? "))))
+except: yaþ = randint (0, 15)
+
+print()
+if yaþ < 1: print ("Bir yýldan küçük köpek yaþý, yaklaþýk 5 insan yaþýna eþdeðerdir")
+elif yaþ == 1: print ("1 köpek yaþý yaklaþýk 14 insan yaþýna eþdeðerdir")
+elif yaþ == 2:print ("2 köpek yaþý yaklaþýk 22 insan yaþýna eþdeðerdir")
+elif yaþ > 2: print (yaþ, "köpek yaþý yaklaþýk", 22+(yaþ-2)*5, "insan yaþýna eþdeðerdir")
+
+
+"""Çýktý:
+>python p_11402.py
+Köpeðinizin yaþý kaç?
+
+6 köpek yaþý yaklaþýk 42 insan yaþýna eþdeðerdir
+
+>python p_11402.py  ** TEKRAR **
+Köpeðinizin yaþý kaç? 15
+
+15 köpek yaþý yaklaþýk 87 insan yaþýna eþdeðerdir
+"""

@@ -1,0 +1,35 @@
+# coding:iso-8859-9 Türkçe
+# p_11101.py: Set kümelerinin dizge, liste, tüple ve tüpleli tüpleden oluþturulmasý örneði.
+
+# Set küme elemanlarýnýn hash/kýyma sýralamasýna Java'da da Python'daki gibi bir türlü akýl erdiremedim!..
+# Saptanabilirliðine dair akýl erdiren varsa söylesin de biz de bilelim!..
+
+print ("Dizgeden dönüþen set tikel karakterler kümesi:",
+    set ("Bir set tikel matematiksel nesneler kümesidir.") )
+
+print ("\nListeden dönüþen set tikel elemanlar kümesi:",
+    set (["C++", "Python", "Java", "Java", "Java Script"]) )
+
+baþkentler = ["Ankara", "Atina", "Londra", "Berlin", "Paris", "Ankara", "Roma"]
+küme1 = set ((baþkentler))
+print ("\nTüpleden dönüþen set tikel elemanlar kümesi:",  küme1)
+
+print ("\nTüpleden dönüþen set tüpleli elemanlar kümesi:",
+    set ((("Python", "Perl"), ("Paris", "Berlin", "London", ("Python", "Perl")))) )
+
+# print ("\nDeðiþir listeli tüpleden DÖNÜÞEMEYEN set tüpleli elemanlar kümesi:", set((["Python","Perl"], ["Paris", "Berlin", "London"], ["Python","Perl"])) )
+
+
+"""Çýktý:
+>python p_11101.py
+Dizgeden dönüþen set tikel karakterler kümesi: {'m', 'l', 'n', '.', 'B', 'ü', 's',
+'t', 'i', 'k', 'a', 'r', 'e', ' ', 'd'}
+
+Listeden dönüþen set tikel elemanlar kümesi: {'Java Script', 'Python', 'C++', 'Java'}
+
+Tüpleden dönüþen set tikel elemanlar kümesi: {'Berlin', 'Londra', 'Ankara',
+'Atina', 'Roma', 'Paris'}
+
+Tüpleden dönüþen set tüpleli elemanlar kümesi: {('Python', 'Perl'), ('Paris',
+'Berlin', 'London', ('Python', 'Perl'))}
+"""

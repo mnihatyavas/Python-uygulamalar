@@ -1,0 +1,76 @@
+# coding:iso-8859-9 Türkçe
+# p_12401.py: Fonksiyonda ve ana programda lokal ve global deðiþkenler örneði.
+
+def fonk1(): print (dizge) 
+
+dizge = "Ben Paris'in yazýný severim!.."
+fonk1()
+#----------------------------------------------------------------------------------------------------------
+
+def fonk2():
+    try: print (dizge)
+    except Exception as ist: print ("HATA:", ist)
+    dizge = "Hayýr, ben esas Londra'nýn yazýný severim!"
+    print (dizge)
+
+print()
+fonk2()
+print (dizge)
+#----------------------------------------------------------------------------------------------------------
+
+def fonk3():
+    global dizge
+    print (dizge)
+    dizge = "Ama Londra'da Thames nehri boyunca trekking yapabilirim!.."
+    print (dizge)
+
+print()
+dizge = "Ben Paris'te uzun bir trekking/yürüyüþ yolu bulamadým!.." 
+fonk3()
+print (dizge)
+#----------------------------------------------------------------------------------------------------------
+
+def fonk4():
+    dizge2 = "Ben global olarak tanýnmýyorum, sadece bu fonksiyon için lokal'im."
+    print (dizge2) 
+
+print()
+fonk4()
+try: print (dizge2)
+except Exception as ist: print ("HATA:", ist)
+#----------------------------------------------------------------------------------------------------------
+
+def fonk5 (x, y):
+    global a
+    a = 42
+    x, y = y, x
+    b = 33
+    c = 100
+    print (a, b, x, y)
+
+print ("\na  b  x y\n", "-"*10, sep="")
+a, b, x, y = 1, 15, 3, 4
+fonk5 (17, 4)
+print (a, b, x, y)
+
+
+"""Çýktý:
+>python p_12401.py
+Ben Paris'in yazýný severim!..
+
+HATA: local variable 'dizge' referenced before assignment
+Hayýr, ben esas Londra'nýn yazýný severim!
+Ben Paris'in yazýný severim!..
+
+Ben Paris'te uzun bir trekking/yürüyüþ yolu bulamadým!..
+Ama Londra'da Thames nehri boyunca trekking yapabilirim!..
+Ama Londra'da Thames nehri boyunca trekking yapabilirim!..
+
+Ben global olarak tanýnmýyorum, sadece bu fonksiyon için lokal'im.
+HATA: name 'dizge2' is not defined
+
+a  b  x y
+----------
+42 33 4 17
+42 15 3 4
+"""

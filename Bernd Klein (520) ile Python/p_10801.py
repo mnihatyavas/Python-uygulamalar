@@ -1,0 +1,66 @@
+# coding:iso-8859-9 Türkçe
+# p_10801.py: Listelerle apend, extend ve pop iþlemleri örneði.
+
+L = ["Ankara", "Ýstanbul", "Ýzmir", "Mersin", "Antalya"]
+print ("Liste:", L, "\nEbatý:", len (L), "\nSon elemaný:", L[-1] )
+
+"""
+append listeyi "NoneType" nesneye çevirir, listelenmez, pop'lanmaz?..
+Bu yüzden = atamasýz append/extend yapýlmalýdýr.
+= atamalý ekleme yine ancak = ile yapýlýr...
+L = L.append ("Bursa")
+print ("append'li liste:", L)
+print (L.pop (0) )
+"""
+print ("\nÝlk ve son elemaný pop'lu liste:", L.pop (0), L.pop (-1), L )
+print ("pop() son elemaný alýr:", L.pop(), L) # pop() = pop (-1)
+
+L += ["Mersin", "Antalya"]
+print ("\nEklemeli liste:", L)
+
+L.append (["Ankara", "Bursa"])
+print ("2 append'li liste:", L)
+L.pop (-1)
+
+L.append ("Ankara")
+print ("Tek append'li liste:", L)
+
+L.extend (["Eskiþehir", "Bursa"])
+print ("2 extend'li liste:", L)
+
+L.extend ("Adana")
+print ("Tek extend'li liste:", L)
+for i in range (len ("Adana")): L.pop ()
+
+L.extend (["Adana"])
+print ("[Tek] extend'li liste:", L)
+
+for i in range (len (L)): L.pop () # Tüm listeyi pop()/siler...
+
+tüple = ("Ankara", "Ýstanbul")
+liste = ["Ýzmir", "Adana"]
+dizge = "Mersin"
+L.extend (tüple)
+L.extend (liste)
+L.extend ([dizge])
+print ("\nTüple, liste ve dizge extend'li liste:", L)
+
+
+"""Çýktý:
+>python p_10801.py
+Liste: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Mersin', 'Antalya']
+Ebatý: 5
+Son elemaný: Antalya
+
+Ýlk ve son elemaný pop'lu liste: Ankara Antalya ['Ýstanbul', 'Ýzmir', 'Mersin']
+pop() son elemaný alýr: Mersin ['Ýstanbul', 'Ýzmir']
+
+Eklemeli liste: ['Ýstanbul', 'Ýzmir', 'Mersin', 'Antalya']
+2 append'li liste: ['Ýstanbul', 'Ýzmir', 'Mersin', 'Antalya', ['Ankara', 'Bursa']]
+Tek append'li liste: ['Ýstanbul', 'Ýzmir', 'Mersin', 'Antalya', 'Ankara']
+2 extend'li liste: ['Ýstanbul', 'Ýzmir', 'Mersin', 'Antalya', 'Ankara', 'Eskiþehir', 'Bursa']
+Tek extend'li liste: ['Ýstanbul', 'Ýzmir', 'Mersin', 'Antalya', 'Ankara', 'Eskiþehir', 'Bursa', 'A', 'd', 'a', 'n', 'a']
+[Tek] extend'li liste: ['Ýstanbul', 'Ýzmir', 'Mersin', 'Antalya', 'Ankara', 'Eskiþehir', 'Bursa', 'Adana']
+
+Tüple, liste ve dizge extend'li liste: ['Ankara', 'Ýstanbul', 'Ýzmir', 'Adana','Mersin']
+"""

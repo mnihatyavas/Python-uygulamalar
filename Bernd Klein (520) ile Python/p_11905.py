@@ -1,0 +1,38 @@
+#coding:iso-8859-9 Türkçe
+# p_11905.py: center/ortala, ljust/solahizala, rjust/saðahizala ve zfill/sýfýrladoldur yazdýrma örneði.
+
+dizge1 = "Python"
+print ("center(..) ile ortalanan dizge:", dizge1.center (15) )
+print ("center(..) ile ortalanan dizge:", dizge1.center (15, "-") )
+print ("center(..) ile ortalanan dizge:", dizge1.center (15, "*") )
+
+print ("\nljust(..) ile sola hizalanan dizge:", dizge1.ljust (15) )
+print ("ljust(..) ile sola hizalanan dizge:", dizge1.ljust (15, ":") )
+print ("ljust(..) ile sola hizalanan dizge:", dizge1.ljust (15, "<") )
+
+print ("\nrjust(..) ile saða hizalanan dizge:", dizge1.rjust (15) )
+print ("rjust(..) ile saða hizalanan dizge:", dizge1.rjust (15, "~") )
+print ("rjust(..) ile saða hizalanan dizge:", dizge1.rjust (15, ">") )
+
+dizge2 = "1234567890"
+print ("\nzfill(..) ile 12 haneli su müþteri no'su:", dizge2.zfill (12) )
+print ("rjust(..) ile 12 haneli su müþteri no'su:", dizge2.rjust (12, "0") )
+
+
+"""Çýktý:
+>python p_11905.py
+center(..) ile ortalanan dizge:      Python
+center(..) ile ortalanan dizge: -----Python----
+center(..) ile ortalanan dizge: *****Python****
+
+ljust(..) ile sola hizalanan dizge: Python
+ljust(..) ile sola hizalanan dizge: Python:::::::::
+ljust(..) ile sola hizalanan dizge: Python<<<<<<<<<
+
+rjust(..) ile saða hizalanan dizge:          Python
+rjust(..) ile saða hizalanan dizge: ~~~~~~~~~Python
+rjust(..) ile saða hizalanan dizge: >>>>>>>>>Python
+
+zfill(..) ile 12 haneli su müþteri no'su: 001234567890
+rjust(..) ile 12 haneli su müþteri no'su: 001234567890
+"""

@@ -1,0 +1,25 @@
+# coding:iso-8859-9 Türkçe
+# p_11604.py: for-in-taranabilir'de deðiþmeyen taranabilir[:] örneði.
+
+renkler = ["kýrmýzý", "mavi"]
+for i in renkler: # renkler listesi her döngüde artarak deðiþti...
+    if i == "kýrmýzý": renkler += ["siyah"]
+    elif i == "mavi": renkler += ["sarý"]
+    elif i == "siyah": renkler += ["beyaz"]
+    elif i == "beyaz": renkler += ["yeþil"]
+print ("Renkler listesi:", renkler)
+
+renkler = ["kýrmýzý", "mavi"]
+for i in renkler[:]:  # renkler listesi ilk haliyle kaldý, her döngüde deðiþmedi...
+    if i == "kýrmýzý": renkler += ["siyah"]
+    elif i == "mavi": renkler += ["sarý"]
+    elif i == "siyah": renkler += ["beyaz"]
+    elif i == "beyaz": renkler += ["yeþil"]
+print ("Renkler listesi:", renkler)
+
+
+"""Çýktý:
+>python p_11604.py
+Renkler listesi: ['kýrmýzý', 'mavi', 'siyah', 'sarý', 'beyaz', 'yeþil']
+Renkler listesi: ['kýrmýzý', 'mavi', 'siyah', 'sarý']
+"""

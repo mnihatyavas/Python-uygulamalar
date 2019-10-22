@@ -1,0 +1,78 @@
+# coding:iso-8859-9 Türkçe
+# p_12507.py: Ýçiçe dekoratörlü ambalaja 3.dýþ selamlama fonksiyonu sarmalama örneði.
+
+def ikindiSelamý (fonk):
+    def ambalaj (x):
+        print ("\nTünaydýn, " + fonk.__name__ + " mesajýnýz: ")
+        fonk (x)
+    return ambalaj
+
+def sabahSelamý (fonk):
+    def ambalaj (x):
+        print ("Günaydýn, " + fonk.__name__ + " mesajýnýz: ")
+        fonk (x)
+    return ambalaj
+
+@sabahSelamý
+def doðum_günü (x): print (str (x) + " doðum gününüz kutlu olsun!..")
+
+doðum_günü (7.8)
+
+@ikindiSelamý
+def doðum_günü (x): print (str (x) + " doðum gününüz kutlu olsun!..")
+
+doðum_günü ("7 Aðustos")
+print ("-"*75, "\n")
+#--------------------------------------------------------------------------------------------------------
+
+def selam (ibare):
+    def dekoratör (fonk):
+        def ambalaj (x):
+            print ("\n" + ibare + ", " + fonk.__name__ + " mesajýnýz:")
+            fonk (x)
+        return ambalaj
+    return dekoratör
+
+def doðum_günü (x): print (str (x) + " doðum gününüz kutlu olsun!..")
+
+# En anlaþýlýr ve @'siz kullaným...
+selam ("Günaydýn") (doðum_günü) (7.8)
+selam ("Tünaydýn") (doðum_günü) ("7 Aðustos")
+selam ("Merhaba") (doðum_günü) ("14 Nisan")
+
+# Veya pratik @'li kullaným...
+@selam ("Ýyi akþamlar")
+def doðum_günü2 (x): print (str (x) + " doðum gününüz kutlu olsun!..")
+
+doðum_günü2 ("17 Nisan")
+
+# Veya dolaylamalý @'siz kullaným...
+kutlama = selam ("Selam") (doðum_günü)
+kutlama ("4 Mayýs")
+
+
+"""Çýktý:
+>python p_12507.py
+Günaydýn, doðum_günü mesajýnýz:
+7.8 doðum gününüz kutlu olsun!..
+
+Tünaydýn, doðum_günü mesajýnýz:
+7 Aðustos doðum gününüz kutlu olsun!..
+---------------------------------------------------------------------------
+
+
+Günaydýn, doðum_günü mesajýnýz:
+7.8 doðum gününüz kutlu olsun!..
+
+Tünaydýn, doðum_günü mesajýnýz:
+7 Aðustos doðum gününüz kutlu olsun!..
+
+Merhaba, doðum_günü mesajýnýz:
+14 Nisan doðum gününüz kutlu olsun!..
+
+Ýyi akþamlar, doðum_günü2 mesajýnýz:
+17 Nisan doðum gününüz kutlu olsun!..
+
+Selam, doðum_günü mesajýnýz:
+4 Mayýs doðum gününüz kutlu olsun!..
+"""

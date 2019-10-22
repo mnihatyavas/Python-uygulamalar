@@ -1,0 +1,58 @@
+# coding:iso-8859-9 Türkçe
+# p_11601.py: for-in döngüsüyle programlama dilleri ve yiyecekler listelerini tarama örneði.
+
+diller = ["Basic", "Fortran", "Cobol", "PL/I", "Pascal", "C", "Clipper", "Java", "Java Script", "Python", "Assembly"]
+print ("Programlama dilleri: ", end="")
+for dil in diller: print (dil, end=", ")
+#=========================================================
+
+print("\n")
+yiyecekler = ["jambon", "yumurta", "fýndýk", "tost", "peynir", "simit"] #, "pasta"
+for yiyecek in yiyecekler:
+    if yiyecek == "pasta":
+        print ("Lütfen kalsýn, daha fazla pasta istemiyorum!")
+        break
+    print ("Müthiþ lezzetli " + yiyecek +"'larýnýz var!")
+
+else: print ("\nYiyecekler çok hoþtu ama pastanýz da yok muydu?")
+
+print ("\nNihayet, ancak doyabildim!")
+#=========================================================
+
+print("\n")
+yiyecekler = ["jambon", "yumurta", "pasta", "fýndýk", "tost", "peynir", "simit"]
+for yiyecek in yiyecekler:
+    if yiyecek == "pasta":
+        print ("Lütfen kalsýn, pastayla aram pek iyi deðil!")
+        continue
+    print ("Müthiþ lezzetli " + yiyecek +"'larýnýz var!")
+
+print ("\nNihayet, ancak doyabildim!")
+
+
+"""Çýktý:
+>python p_11601.py
+Programlama dilleri: Basic, Fortran, Cobol, PL/I, Pascal, C, Clipper, Java, Java Script, Python, Assembly,
+
+Müthiþ lezzetli jambon'larýnýz var!
+Müthiþ lezzetli yumurta'larýnýz var!
+Müthiþ lezzetli fýndýk'larýnýz var!
+Müthiþ lezzetli tost'larýnýz var!
+Müthiþ lezzetli peynir'larýnýz var!
+Müthiþ lezzetli simit'larýnýz var!
+
+Yiyecekler çok hoþtu ama pastanýz da yok muydu?
+
+Nihayet, ancak doyabildim!
+
+
+Müthiþ lezzetli jambon'larýnýz var!
+Müthiþ lezzetli yumurta'larýnýz var!
+Lütfen kalsýn, pastayla aram pek iyi deðil!
+Müthiþ lezzetli fýndýk'larýnýz var!
+Müthiþ lezzetli tost'larýnýz var!
+Müthiþ lezzetli peynir'larýnýz var!
+Müthiþ lezzetli simit'larýnýz var!
+
+Nihayet, ancak doyabildim!
+"""

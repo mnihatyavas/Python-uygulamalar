@@ -1,0 +1,59 @@
+# coding:iso-8859-9 Türkçe
+# p_12005.py: Fonksiyonlarda lokal, genel ve global deðiþkenler örneði.
+
+def f():
+    # Aksi bir ifade yoksa, genel "s", lokal olarak kullanýlýr...
+    print (s)
+
+s = "Python"
+f()
+#---------------------------------------------------------------------------------------------------
+
+def f():
+    # Ayrýca lokal "s" tanýmlanýnca, öncelik lokaldedir...
+    s = "JavaScript"
+    print (s)
+
+print()
+s = "Python"
+f()
+print (s)
+#---------------------------------------------------------------------------------------------------
+"""
+def f():
+    # Program "s"in lokal mi genel mi olduðuna karar veremez, UnboundLocalError derleme hatasý verir...
+    print (s)
+    s = "JavaScript"
+    print (s)
+
+print()
+s = "Python"
+f()
+print (s)
+"""
+#---------------------------------------------------------------------------------------------------
+
+def f():
+    global s
+    # Artýk "s" global'dir, fonksiyondaki de dýþardaki de aynýdýr...
+    print (s)
+    s = "JavaScript"
+    print (s)
+
+print()
+s = "Python" 
+f()
+print (s)
+
+
+"""Çýktý:
+>python p_12005.py
+Python
+
+JavaScript
+Python
+
+Python
+JavaScript
+JavaScript
+"""

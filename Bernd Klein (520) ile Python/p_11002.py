@@ -1,0 +1,41 @@
+# coding:iso-8859-9 Türkçe
+# p_11002.py: Yabancý dil sözlükleri arasýnda aranan kelime iliþkileri örneði.
+
+# Sözlükler arasý iliþki mümkündür. Ýn_Fr veya Tr_Al ve Tr_Fr yokken
+# bu kelimelerin eþdeðerleri iliþkisel elde edilebilir...
+
+Ýn_Al = {"red" : "rot", "green" : "grün", "blue" : "blau", "yellow":"gelb"}
+Al_Fr = {"rot" : "rouge", "grün" : "vert", "blau" : "bleu", "gelb":"jaune"}
+Tr_Ýn = {"kýrmýzý" : "red", "yeþil" : "green", "mavi" : "blue", "sarý":"yellow"}
+
+print ("\nTürkçe('yeþil')->Ýngilizce:", Tr_Ýn["yeþil"], "\nÝngilizce('yeþil')->Almanca:", Ýn_Al["green"],
+    "\nAlmanca('yeþil')->Fransýzca:", Al_Fr["grün"], "\nÝngilizce('yeþil')->Fransýzca:", Al_Fr[Ýn_Al["green"] ],
+    "\nTürkçe('yeþil')->Fransýzca:", Al_Fr[Ýn_Al[Tr_Ýn["yeþil"] ] ] )
+
+print ("\nTürkçe('sarý')->Ýngilizce:", Tr_Ýn["sarý"], "\nÝngilizce('sarý')->Almanca:", Ýn_Al["yellow"],
+    "\nAlmanca('sarý')->Fransýzca:", Al_Fr["gelb"], "\nÝngilizce('sarý')->Fransýzca:", Al_Fr[Ýn_Al["yellow"] ],
+    "\nTürkçe('sarý')->Fransýzca:", Al_Fr[Ýn_Al[Tr_Ýn["sarý"] ] ] )
+
+print()
+# Sözlüklerin sözlükleri yapýlabilir...
+S = {"tr_in": Tr_Ýn, "in_al" : Ýn_Al, "al_fr" : Al_Fr}
+print ("Mavi->Fr->Alm->Ýng:", S["al_fr"]["blau"], S["in_al"]["blue"], S["tr_in"]["mavi"])
+
+
+"""Çýktý:
+>python p_11002.py
+
+Türkçe('yeþil')->Ýngilizce: green
+Ýngilizce('yeþil')->Almanca: grün
+Almanca('yeþil')->Fransýzca: vert
+Ýngilizce('yeþil')->Fransýzca: vert
+Türkçe('yeþil')->Fransýzca: vert
+
+Türkçe('sarý')->Ýngilizce: yellow
+Ýngilizce('sarý')->Almanca: gelb
+Almanca('sarý')->Fransýzca: jaune
+Ýngilizce('sarý')->Fransýzca: jaune
+Türkçe('sarý')->Fransýzca: jaune
+
+Mavi->Fr->Alm->Ýng: bleu blau blue
+"""

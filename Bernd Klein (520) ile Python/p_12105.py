@@ -1,0 +1,48 @@
+# coding:iso-8859-9 Türkçe
+# p_12105.py: Erasto kevgiri ve kapsamlý liste yöntemli asal sayýlar tesbiti örneði.
+
+from random import randint
+
+def ErastoKevgiri (n):
+    asalSayýlar = list (range (2, n+1))
+    sayaç = 2
+    while sayaç < n**0.5:
+        i = sayaç
+        while i <= n:
+            i += sayaç
+            if i in asalSayýlar: asalSayýlar.remove (i) # Bölünebilen katlý sayýlarý listeden siler...
+        for j in asalSayýlar:
+            if j > sayaç:
+                sayaç = j
+                break            
+    return asalSayýlar
+
+sayý = randint (2,1000)
+print ("Erastotenes kevgiri algoritmasýnýn tekrarlý döngüsüyle ilk ", sayý, "'e kadarki asal sayýlar listesi:", sep="")
+print (ErastoKevgiri (sayý))
+#-----------------------------------------------------------------------------------------------------------
+
+def asallar (n):
+    if n == 0 or n == 1: return []
+    else:
+        asal = asallar (int (n**0.5))
+        asalDeðil = [j for i in asal for j in range (i*2, n + 1, i)] # Katlý sayýlar listesi...
+        asal = [x for x in range (2, n + 1) if x not in asalDeðil] # Katlý hariç diðer sayýlar listesi...
+        return asal
+
+print ("\nKapsamlý liste yöntemiyle ilk ", sayý, "'e kadarki asallarýn listesi:", sep="")
+print (asallar (sayý))
+
+
+"""Çýktý:
+>python p_12105.py
+Erastotenes kevgiri algoritmasýnýn tekrarlý döngüsüyle ilk 195'e kadarki asal sayýlar listesi:
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73,
+ 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157,
+163, 167, 173, 179, 181, 191, 193]
+
+Kapsamlý liste yöntemiyle ilk 195'e kadarki asallarýn listesi:
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73,
+ 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157,
+163, 167, 173, 179, 181, 191, 193]
+"""

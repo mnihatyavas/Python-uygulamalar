@@ -1,0 +1,70 @@
+# coding:iso-8859-9 Türkçe
+# p_11007.py: Kompleks sözlüklerde kopyalamanýn birbirlerini etkilemesi örneði.
+
+kurslar = {"kurs1":{"konu":"Yeni baþlayanlar için Python programcýlýk kursu", 
+                         "þehir":"Malatya", 
+                         "eðitmen":"Songül Yavaþ Göktürk"},
+              "kurs2":{"konu":"Orta seviye Python eðitimi",
+                         "þehir":"Bursa",
+                         "eðitmen":"Sevim Yavaþ"},
+              "kurs3":{"konu":"Python metin iþleme kursu",
+                         "þehir":"Ýstanbul",
+                         "eðitmen":"M.Nihat Yavaþ"}
+              }
+
+print (kurslar)
+
+kurslar2 = kurslar.copy()
+
+kurslar["kurs2"]["konu"] = "Yeni baþlayanlar için Perl eðitim kursu"
+
+print()
+print (kurslar2) # Tek anahtar-deðer deðiþimi kurslar2'yi de deðiþtirdi!..
+
+kurslar["kurs2"] = {"konu":"Yeni baþlayanlar için Perl Semineri",
+                         "þehir":"Ýzmir",
+                         "eðitmen":"Talip Amanat"}
+print()
+print (kurslar)
+
+print()
+print (kurslar2["kurs2"]) # Tüm nesne deðiþimi kurslar2'yi etkilemedi!..
+
+# Çözüm deepcopy() kullanmak, ama o da liste'ler için geçerli,
+# sözlük'lerde kabul etmiyor; þimdilik salla gitsin...
+#---------------------------------------------------------------------------------------------------
+
+kurslar.clear()
+print ("\nÝlk sözlüðün silinmesi 2.yi deðiþtirmedi: ", kurslar, "\n", kurslar2, sep="")
+
+kurslar2.clear()
+print ("\nHer iki sözlük de silindi:", kurslar, kurslar2)
+
+
+"""Çýktý:
+>python p_11007.py
+{'kurs1': {'konu': 'Yeni baþlayanlar için Python programcýlýk kursu', 'þehir': '
+Malatya', 'eðitmen': 'Songül Yavaþ Göktürk'}, 'kurs2': {'konu': 'Orta seviye Python eðitimi',
+'þehir': 'Bursa', 'eðitmen': 'Sevim Yavaþ'}, 'kurs3': {'konu': 'Python metin iþleme kursu',
+'þehir': 'Ýstanbul', 'eðitmen': 'M.Nihat Yavaþ'}}
+
+{'kurs1': {'konu': 'Yeni baþlayanlar için Python programcýlýk kursu', 'þehir': '
+Malatya', 'eðitmen': 'Songül Yavaþ Göktürk'}, 'kurs2': {'konu': 'Yeni baþlayanlar için Perl eðitim kursu',
+'þehir': 'Bursa', 'eðitmen': 'Sevim Yavaþ'}, 'kurs3': {'konu': 'Python metin iþleme kursu',
+'þehir': 'Ýstanbul', 'eðitmen': 'M.Nihat Yavaþ'}}
+
+{'kurs1': {'konu': 'Yeni baþlayanlar için Python programcýlýk kursu', 'þehir': '
+Malatya', 'eðitmen': 'Songül Yavaþ Göktürk'}, 'kurs2': {'konu': 'Yeni baþlayanlar için Perl Semineri',
+'þehir': 'Ýzmir', 'eðitmen': 'Talip Amanat'}, 'kurs3': {'konu': 'Python metin iþleme kursu',
+'þehir': 'Ýstanbul', 'eðitmen': 'M.Nihat Yavaþ'}}
+
+{'konu': 'Yeni baþlayanlar için Perl eðitim kursu', 'þehir': 'Bursa', 'eðitmen': 'Sevim Yavaþ'}
+
+Ýlk sözlüðün silinmesi 2.yi deðiþtirmedi: {}
+{'kurs1': {'konu': 'Yeni baþlayanlar için Python programcýlýk kursu', 'þehir': '
+Malatya', 'eðitmen': 'Songül Yavaþ Göktürk'}, 'kurs2': {'konu': 'Yeni baþlayanlar için Perl eðitim kursu',
+'þehir': 'Bursa', 'eðitmen': 'Sevim Yavaþ'}, 'kurs3': {'konu': 'Python metin iþleme kursu',
+'þehir': 'Ýstanbul', 'eðitmen': 'M.Nihat Yavaþ'}}
+
+Her iki sözlük de silindi: {} {}
+"""

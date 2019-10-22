@@ -1,0 +1,30 @@
+#coding:iso-8859-9 Türkçe
+# p_11801.py: Print ile ekrana, dosyaya ve hataya yazdýrma örneði.
+
+import sys
+
+"""print(..) fonksiyonu argümanlarý:
+print (deðer1, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+"""
+print ("Künyem:\n", "-"*25, "\nMemet ve Haným Yavaþ oðlu", sep="", end="\n")
+print ("M.Nihat Yavaþ\n", 4, "/", 17, "/", 1957, "\nYeþilyurt-Malatya", sep="", file=sys.stdout)
+
+#-------------------------------------------------------------------------------------------------------
+
+dosya = open ("mny1.txt", "w")
+print ("Cevap tabi ki 42 olacaktýr; fakat affedersiniz unuttum, sorunuz neydi acaba?..", file=dosya, flush=True)
+dosya.close()
+print ("\nVeriler 'mny1.txt' dosyasýna yazýldý ve dosya da flush'lanýp kapatýldý.", file=sys.stderr, flush=False)
+
+
+"""Çýktý:
+>python p_11801.py
+Künyem:
+-------------------------
+Memet ve Haným Yavaþ oðlu
+M.Nihat Yavaþ
+4/17/1957
+Yeþilyurt-Malatya
+
+Veriler 'mny1.txt' dosyasýna yazýldý ve dosya da flush'lanýp kapatýldý.
+"""
