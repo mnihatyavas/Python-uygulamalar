@@ -1,0 +1,37 @@
+# coding:iso-8859-9 Türkçe
+
+from tkinter import *
+from tkinter.messagebox import *
+kök = Tk()
+kök.title ("Mesaj Kutularý")
+
+def kapatýlacak():
+    cevap = askquestion (title='Kapatýlsýn mý?', message='Programý kapatmak istediðinden emin misin?')
+    if cevap== 'yes': kök.destroy()
+
+def göster (dönen):
+    dönen = str (dönen).upper()
+    etiket.config (text="Mesajdan dönen cevap: ["+dönen+"]'dir.")
+
+etiket = Label (kök)
+etiket.pack()
+
+kök.protocol ('WM_DELETE_WINDOW', kapatýlacak) # WM: PencereYönetimi, sil pencereyi...
+
+mesaj1 = showinfo (title="Bilgi", message="Bu sadece bir enformasyon mesaj kutusudur!..")
+göster (mesaj1)
+mesaj2 = askquestion (title="SoruEH", message="Sorumuza cevabýn Evet mi, Hayýr mý?")
+göster (mesaj2)
+mesaj3 = showwarning (title="Ýkaz", message="Dikkat, bu biçimleme MS Windows tarafýndan desteklenmemektedir!..")
+göster (mesaj3)
+
+mesaj4 = askokcancel (title="SoruTÝ", message="Sorumuza cevabýn Tamam mý, Ýptal mi?")
+göster (mesaj4)
+mesaj5 = askretrycancel (title="SoruYÝ", message="Sorumuza cevabýn Yinele mi, Ýptal mi?")
+göster (mesaj5)
+mesaj6 = askyesnocancel (title="SoruEHÝ", message="Sorumuza cevabýn Evet mi, Hayýr mý, Ýptal mi?")
+göster (mesaj6)
+mesaj7 = showerror (title="Hata", message="Dikkat, yaptýðýnýz iþlem hatalýdýr!..")
+göster (mesaj7)
+
+mainloop()

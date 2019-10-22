@@ -1,0 +1,36 @@
+# coding:iso-8859-9 Türkçe
+
+s = {'köpek' : 'Kuyruklu hayvandýr ve havlar',
+    'kedi' : 'Köpekler tarafýndan kovalanýr ve miyavlar',
+    'fare' : 'Kediler tarafýndan yakalanýrsa yem olur',
+    "piliç":"Kedi ve köpeklerin en sevdiði yiyecek"}
+
+kelime = input ('Sözlük için bir kelime girin: ')
+try: print (kelime, 'kelimesinin sözlükteki açýklamasý:', s[kelime])
+except Exception: print (kelime, "kelimesi sözlükte bulunamadý!")
+
+print()
+puan = {'A':1, 'B':3, 'C':3, "Ç":3, 'D':2, 'E':1, 'F':4, 'G':2, "Ð":2,
+    'H':4, 'I':1, "Ý":1, 'J':8, 'K':5, 'L':1, 'M':3, 'N':1, 'O':1, "Ö":1, 'P':3, 'Q':10,
+    'R':1, 'S':1, "Þ":1, 'T':1, 'U':1, "Ü":1, 'V':4, 'W':4, 'X':8, 'Y':4, 'Z':10}
+print (kelime, "kelimesinin kazandýðý toplam puan:", sum([puan[h.upper()] for h in kelime]) )
+
+print()
+deste = [{'sayý':s, 'takým':t} for t in ['sinek', 'maça', 'kupa', 'karo'] for s in range (1,14)]
+from pprint import pprint
+pprint (deste)
+print()
+for i in range (len (deste)):
+    print (deste [i] ["takým"], deste [i] ["sayý"])
+    if (i+1) % 13 == 0: print()
+print (deste[0]["takým"], deste[0]["sayý"])
+print (deste[25]["takým"], deste[25]["sayý"])
+print (deste[26]["takým"], deste[26]["sayý"])
+print (deste[51]["takým"], deste[51]["sayý"])
+print()
+from random import shuffle
+shuffle (deste)
+pprint (deste)
+print()
+for i in range (len (deste)):
+    print (deste[i]["takým"], deste[i]["sayý"], end=" -->")

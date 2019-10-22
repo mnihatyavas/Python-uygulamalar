@@ -1,0 +1,15 @@
+# coding:iso-8859-9 Türkçe
+
+S = {"haným":"1931hnm", "memet":"1934mmt", "hatice":"1951htc", "süheyla":"1953shyl", "zeliha":"1955zlh", "nihat":"1957nht", "songül":"1959sngl", "nedim":"1961ndm", "sevim":"1963svm", "nur":"1972nr"}
+print (S)
+print()
+from pprint import pprint
+pprint (S)
+
+print()
+ad = input ("Kullanýcý adýný girin: ").lower()
+if ad not in S: print ("<<", ad, ">> adlý bir kullanýcý sistemimizde mevcut deðil!", sep="")
+else:
+    þifre = input ("Þifrenizi girin: ").lower()
+    if S[ad] != þifre: print ("Maalesef girdiðiniz þifre sistemimizdekiyle uyuþmuyor!")
+    else: print ("Sistemimize girmiþ bulunuyorsunuz. Hoþgeldiniz sayýn <<", ad.upper(), ">>", sep="")

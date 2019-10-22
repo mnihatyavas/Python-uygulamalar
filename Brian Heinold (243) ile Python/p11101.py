@@ -1,0 +1,21 @@
+# coding:iso-8859-9 Türkçe
+
+Günler = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+print ("Günler listesi:", Günler)
+
+Günler = {"Ocak":31, "Þubat":28, "Mart":31, "Nisan":30, "Mayýs":31, "Haziran":30, "Temmuz":31, "Aðustos":31, "Eylül":30, "Ekim":31, "Kasým":30, "Aralýk":31}
+print ("\nGünler sözlüðü:", Günler)
+
+print()
+s = {} # Boþ sözlük...
+print (s)
+s = {"A":100, "B":200} # key/anahtar ve value/deðer çifti...
+print (s)
+print (s["B"], s["A"])
+s["A"] = 400
+s["C"] = 500
+s["AB"] = 300 # Anahtar farklýysa sona ekler (ayrýca append veya += gerekmez)...
+s["C"] = 500 # Anahtar aynýysa eklemez, mevcudu (deðerini) deðiþtirir...
+print (s)
+del s["B"] # Anahtar-deðer çifti silinir...
+print (s)

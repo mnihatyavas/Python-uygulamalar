@@ -1,0 +1,69 @@
+# coding:iso-8859-9 Türkçe
+
+def dikdörtgen (a, b):
+    for i in range (a): print ("*" * b)
+
+def deðiþtirme (L1):
+    for k in L1:
+        k = k + "!.."
+        print (k)
+
+def deðiþtir (L1):
+    for i in range (len (L1)): L1[i] = L1[i] + "!.."
+    return L1
+
+def topla (k):
+    toplam = 0
+    for i in range (len (k)): toplam += int (k[i])
+    return toplam
+
+def kök (k):
+    while len (k) > 1: k = str (topla (k))
+    return k
+
+def faktöriyel (m):
+    çarpým = 1
+    for i in range (1, m+1): çarpým *=i
+    return çarpým
+
+try: x, y = eval (input ("Dikdörtgenin [satýr, kolon] adetlerini gir: "))
+except Exception: x = 10; y = 50
+
+yy = 41
+if y > yy: yy = y
+print (x, " satýr ve ", y, " kolonlu yýldýzlý dikdörtgen:\n", "-"*yy, sep="")
+dikdörtgen (x, y)
+
+print()
+L = [satýr.strip() for satýr in open ("sorular.txt")]
+from pprint import pprint
+print ("Orijinal liste:\n", "-"*45, sep="")
+pprint (L)
+
+print()
+print ("Sonlarý !.. ekli liste:\n", "-"*45, sep="")
+deðiþtirme (L)
+print ("\nDeðiþmeyen liste:\n", "-"*45, sep="")
+pprint (L)
+
+print()
+L = deðiþtir (L)
+print ("Deðiþen liste:\n", "-"*45, sep="")
+pprint (L)
+
+print()
+try: b = abs (int (eval (input ("Kaç basamaklý sayý olsun: "))))
+except Exception: b = 20
+print()
+if b == 0: b = 1
+from random import randint
+sayý = str (randint (10**(b-1), 10**b-1 ))
+print ("[", 10**(b-1), ", ", 10**b-1, "] arasý tesadüfi tamsayý: ", sayý, sep="")
+print ("Sayý basamaklarýnýn toplamý:", topla (sayý))
+print ("Sayý basamaklarýnýn toplam kökü (2 yöntemle):", int (sayý) % 9, "=", kök (sayý))
+
+print()
+# Binomiyal (n, k) = n! / (k! (n-k)!)
+k = randint (0, 100)
+n = randint (k, 100)
+print ("Binomial ({:d},{:d}) katsayýsý = {:d}" .format (n, k, int (faktöriyel (n) / (faktöriyel (k) * faktöriyel (n - k)))) )

@@ -1,0 +1,45 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+from random import shuffle
+cevap = input ("Yeni öðrenci dosyasý yaratacak mýsýn? ")
+if cevap == "E":
+    dosya = open ("öðrenci.txt", "w")
+    alfabe = "abcdefghijklmnoöprstuvyz"
+    sayý = 0
+    try:
+        while not (0 < sayý < 1001): sayý = int (eval (input ("Öðrenci sayýsýný gir [1->1000]: ")))
+    except Exception: sayý = randint (1, 1000)
+    for i in range (sayý):
+        L = list (alfabe)
+        shuffle (L)
+        ad = "".join (L)
+        ad = ad[0].upper() + "." + ad[1].upper() + ad[2:11]
+        print (ad, randint (0, 100), randint (0, 100), randint (0, 100), file = dosya)
+    dosya.close()
+
+print()
+L = [satýr.strip().split (" ") for satýr in open ("öðrenci.txt")]
+from pprint import pprint
+print (len (L), " kiþilik öðrenci listesinin dosyadan dökümü:\n", "="*45, sep="")
+pprint (L)
+
+print()
+L.sort()
+print (len (L), " kiþilik öðrenci listesinin A->Z dökümü:\n", "="*45, sep="")
+pprint (L)
+
+print()
+sayý = 1
+print (len (L), " kiþilik öðrenci listesinin A->Z formatlý dökümü:\n", "-"*53, sep="")
+print ("SýraNo Ad Soyad     Quiz  Ödev Final Ortalama\n", "="*44, sep="")
+for k in L:
+    print ("{:4d}   {:12s} {:3d}   {:3d}  {:3d}   {:6.2f}" .format (sayý, k[0], int(k[1]), int(k[2]), int(k[3]), (eval (k[1]) * 0.30 + eval (k[2]) * 0.10 + eval (k[3]) * 0.60)) )
+    sayý +=1
+print ("-"*44)
+print ("{:4d} Ortalamalar: {:6.2f}{:6.2f}{:6.2f} {:6.2f}" .format (
+    sum ([1 for i in range (len (L))]),
+    sum ([int (L[i][1]) for i in range (len (L))]) / len (L),
+    sum ([int (L[i][2]) for i in range (len (L))]) / len (L),
+    sum ([int (L[i][3]) for i in range (len (L))]) / len (L),
+    sum ([int (L[i][1]) for i in range (len (L))]) / len (L) * 0.30 + sum ([int (L[i][2]) for i in range (len (L))]) / len (L) * 0.10 + sum ([int (L[i][3]) for i in range (len (L))]) / len (L) * 0.60) )

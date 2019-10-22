@@ -1,0 +1,41 @@
+# coding:iso-8859-9 Türkçe
+
+from tkinter import *
+Tk()
+
+def kontrol1(a):
+    mesaj ("-"*30, 2)
+    if a.get() == 1: mesaj ("Çentikli kutu ÇENTÝKLENDÝ", 3)
+    else: mesaj ("Çentikli kutu ÇENTÝKSÝZLENDÝ", 3)
+
+def kontrol2 (a):
+    mesaj ("-"*30, 4)
+    if a.get() == 1: mesaj ("KIRMIZI radyo butonu seçildi", 5)
+    elif a.get() == 2: mesaj ("YEÞÝL radyo butonu seçildi", 5)
+    elif a.get() == 3: mesaj ("MAVÝ radyo butonu seçildi", 5)
+    else: mesaj ("Seçili radyo butonu YOK", 5)
+
+def mesaj (mesaj, satýr):
+    etiket = Label (text=mesaj)
+    etiket.grid (row=satýr, column=0, columnspan=3)
+
+toplamlarýnýGöster = IntVar()
+çentikliKutu = Checkbutton (text='Toplamlarýný göster', var=toplamlarýnýGöster,
+    command=lambda x=toplamlarýnýGöster: kontrol1(x) )
+çentikliKutu.grid (row=0, column=0, columnspan=3)
+
+toplamlarýnýGöster.set (1)
+
+hangiRenk = IntVar()
+kýrmýzýDüðme = Radiobutton (text='Kýrmýzý', var=hangiRenk, value=1,
+    command=lambda x=hangiRenk: kontrol2 (x))
+yeþilDüðme = Radiobutton (text='Yeþil', var=hangiRenk, value=2,
+    command=lambda x=hangiRenk: kontrol2 (x))
+maviDüðme = Radiobutton (text='Mavi', var=hangiRenk, value=3,
+    command=lambda x=hangiRenk: kontrol2 (x))
+kýrmýzýDüðme.grid (row=1, column=0)
+yeþilDüðme.grid (row=1, column=1)
+maviDüðme.grid (row=1, column=2)
+hangiRenk.set (2)
+
+mainloop()

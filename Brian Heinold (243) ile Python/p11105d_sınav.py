@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+sayý = 0
+while not (10 <= sayý <= 50):
+    try: sayý = int (eval (input ("Takým sayýsýný [10->50] girin: ")))
+    except Exception: sayý = randint (10, 50)
+
+S = {}
+for i in range (sayý):
+    kazandý = randint (0, 10)
+    kaybetti = randint (0, (10-kazandý))
+    berabere = 10 - (kazandý + kaybetti)
+    S["Takým" + str (i+1)] = (kazandý, kaybetti, berabere)
+
+print ("\nTakým adý Kazandý Kaybetti Berabere\n", "-"*35, sep="")
+for k in S.items(): print ("{:10s} {}" .format (k[0], k[1]) )
+
+print ("\nTakým adý Kazandý Kaybetti Berabere\n", "-"*35, sep="")
+for k in S.items(): print ("{:7s} {:6d} {:8d} {:8d}" .format (k[0], k[1][0], k[1][1], k[1][2]) )
+
+print ("\nTakým adý Baþarý %'si\n", "-"*21, sep="")
+for k in S.items(): print ("{:12s} {:5.1f}" .format (k[0], k[1][0]*100/10) )
+
+takým = ""
+while takým != "q":
+    takým = input ("\nSonuçlarýný görmek istediðiniz takým adýný girin [Çýk: q]: ")
+    if takým == "q": break
+    elif takým not in S: continue
+    print ("\nTakým adý Kazandý Kaybetti Berabere Baþarý %'si\n", "-"*47, sep="")
+    print ("{:7s} {:6d} {:8d} {:8d} {:10.1f}" .format (takým, S[takým][0], S[takým][1], S[takým][2], S[takým][0]*100/10) )

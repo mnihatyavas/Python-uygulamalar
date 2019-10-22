@@ -1,0 +1,64 @@
+# coding:iso-8859-9 Türkçe
+
+class Vanti:
+    def __init__ (self, takým, sayý):
+        self.takým = takým
+        self.sayý = sayý
+    def __str__ (self):
+        adlar = ['Oðlan', 'Kýz', 'Papaz', 'As']
+        if self.sayý <= 10: return '{} {}'.format (self.takým, self.sayý)
+        else: return '{} {}'.format (self.takým, adlar[self.sayý - 11])
+
+from random import shuffle
+
+class Vanti_grubu:
+    def __init__ (self, kartlar = []): self.kartlar = kartlar
+    def sonrakiKart (self): return self.kartlar.pop (0)
+    def kartKaldýMý (self): return len (self.kartlar) > 0
+    def ebat (self): return len (self.kartlar)
+    def karýþtýr (self): shuffle (self.kartlar)
+
+class Standart_deste (Vanti_grubu):
+    def __init__ (self):
+        self.kartlar = []
+        for takým in ['Kupa', 'Karo', 'Maça', 'Sinek']:
+            for sayý in range (2, 15): self.kartlar.append (Vanti (takým, sayý))
+
+"""
+class Pinochle_deste (Vanti_grubu):
+    def __init__ (self):
+        self.kartlar = []
+        for takým in ['Kupa', 'Karo', 'Maça', 'Sinek']:
+            for sayý in range (9, 15): self.kartlar.append (Vanti (takým, sayý))
+"""
+
+deste = Standart_deste()
+print ("Dizili Deste:\n","-"*20, sep="")
+for i in range (len (deste.kartlar) ): print ((i+1), ".kart: ", deste.kartlar[i], sep="")
+deste.karýþtýr()
+print ("\nKarýlý Deste:\n","-"*20, sep="")
+for i in range (len (deste.kartlar) ): print ((i+1), ".kart: ", deste.kartlar[i], sep="")
+
+yeniKart = deste.sonrakiKart()
+print()
+print ('==> ', yeniKart, sep="")
+tahmin = input ("Bir sonraki çekeceðin kart yüksek (y) mi, düþük (d) mü?: ").lower()
+ardýþýkTutturma = 0
+while (tahmin == 'y' or tahmin == 'd'):
+    if not deste.kartKaldýMý():
+        deste = Standart_deste()
+        deste.shuffle()
+    eskiKart = yeniKart
+    yeniKart = deste.sonrakiKart()
+    print ('==> ', yeniKart, sep="")
+    if (tahmin == 'y' and yeniKart.sayý > eskiKart.sayý or\
+            tahmin == 'd' and yeniKart.sayý < eskiKart.sayý):
+        ardýþýkTutturma = ardýþýkTutturma + 1
+        print ("Bravo! Arka arkaya ", ardýþýkTutturma, ".isabetli tahminin!", sep="")
+    elif (tahmin == 'y' and yeniKart.sayý < eskiKart.sayý or\
+            tahmin == 'd' and yeniKart.sayý > eskiKart.sayý):
+        ardýþýkTutturma = 0
+        print ('YANLIÞ, sýfýrlandýn!')
+    else: print ('Eþitlik var.')
+
+    tahmin = input ("\nBir sonraki çekeceðin kart yüksek (y) mi, düþük (d) mü?: ").lower()

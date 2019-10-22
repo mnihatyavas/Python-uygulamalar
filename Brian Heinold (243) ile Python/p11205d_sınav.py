@@ -1,0 +1,23 @@
+# coding:iso-8859-9 Türkçe
+
+L = [satýr.strip().split ("\t") for satýr in open ("öðrenci3.txt")]
+from pprint import pprint
+print (len (L), " kiþilik ÖÐRENCÝ listesinin dosyadan dökümü:\n", "="*48, sep="")
+pprint (L)
+
+from random import randint
+baþharfler = input ("\nGörmek istediðin öðrencinin ad ve soyad baþ harflerini bitiþik gir: ").upper()
+if len (baþharfler) != 2 or not baþharfler[0].isalpha() or not baþharfler[1].isalpha(): baþharfler = chr (randint (65, 90)) + chr (randint (65, 90))
+print ("\nAd ve soyad ilk harfleri: [", baþharfler[0], ",", baþharfler[1], "] olanlarýn listesi:\n", "-"*50, sep="")
+for k in L:
+    endeks = len (str (k[0])) - str (k[0])[::-1].index (".")
+    if k[0][0] == baþharfler[0] and k[0][endeks] == baþharfler[1]: print (k)
+
+try: telefon1, telefon2 = eval (input ("\nGörmek istediðin ilk, son 4 haneli telefon no'yu gir: "))
+except Exception:
+    telefon1 = randint (1000, 9999)
+    telefon2 = randint (telefon1+1, 9999)
+print ("\nÝlk  ve son telefonlarý: [", telefon1, ",", telefon2, "] olanlarýn listesi:\n", "-"*55, sep="")
+for k in L:
+    endeks = len (str (k[2])) - str (k[2])[::-1].index ("-")
+    if int (k[2] [endeks:]) >= telefon1 and int (k[2] [endeks:]) <= telefon2: print (k)

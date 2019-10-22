@@ -1,0 +1,28 @@
+# coding:iso-8859-9 Türkçe
+
+# Graphical User Interface: GUI (Grafiksel Kullanýcý Arayüzü: GKA)
+
+from tkinter import *
+from random import randint
+
+def fahrenhaytaÇevir():
+    try: ýsý = eval (içerik.get() )
+    except Exception: ýsý = randint (-273, 1000)
+    if ýsý < -273.15: ýsý = -273.15
+    f = 9 / 5 * ýsý + 32
+    çýktýEtiketi.configure (text = '{:.2f} santigrad derece = {:.2f} fahrenhayt derecedir.' .format (ýsý, f) )
+    içerik.delete (0, END)
+
+Tk()
+
+mesajEtiketi = Label (text = 'Santigrad derecesi girin', font = ('Verdana', 16) )
+çýktýEtiketi = Label (font = ('Verdana', 16) )
+içerik = Entry (font = ('Verdana', 16), width = 7)
+tamamDüðmesi = Button (text = 'Tamam', font = ('Verdana', 16), command = fahrenhaytaÇevir)
+
+mesajEtiketi.grid (row = 0, column = 0)
+içerik.grid (row = 0, column = 1)
+tamamDüðmesi.grid (row = 0, column = 2)
+çýktýEtiketi.grid (row = 1, column = 0, columnspan=3)
+
+mainloop() # Programý baþlatan döngü...

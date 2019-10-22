@@ -1,0 +1,22 @@
+# coding:iso-8859-9 Türkçe
+
+from tkinter import *
+Tk()
+
+def týklandýðýnýBildir (x):
+    global uz, L2, alfabe
+    L2[x] +=1
+    açýklama = Label (font=("Verdana", 20, "italic bold"), fg="green",\
+        text='"{}" düðmesini <{:d}>.kez týkladýnýz!' .format (alfabe[x], L2[x]))
+    açýklama.grid (row=1, column=0, columnspan=uz, pady=20)
+
+alfabe = 'ABCÇDEFGÐHIÝJKLMNOÖPRSÞTUÜVYZ'
+
+uz = len (alfabe)
+L1 = [0]*uz
+L2 = [0]*uz
+for i in range (uz):
+    L1[i] = Button (text=alfabe[i], command=lambda x=i: týklandýðýnýBildir (x) )
+    L1[i].grid (row=0, column=i, padx=1)
+
+mainloop()

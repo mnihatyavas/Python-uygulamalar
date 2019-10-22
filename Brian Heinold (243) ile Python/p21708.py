@@ -1,0 +1,41 @@
+# coding:iso-8859-9 Türkçe
+
+from tkinter import *
+from tkinter.scrolledtext import ScrolledText
+from tkinter.filedialog import *
+
+kök = Tk()
+kök.title ("Menü Oluþturma")
+
+def dosyaAç():
+    global metin
+    dosyaAdý=askopenfilename (initialdir='C:/Users/pc/Desktop/MyFiles/4. Dersler/python/')
+    kök.title (dosyaAdý)
+    metin = open (dosyaAdý).read()
+    metinKutusu.config (width=120, height=20)
+    if metinKutusu.get (1.0, END) != "": metinKutusu.delete (1.0, END)
+    metinKutusu.insert (1.0, metin)
+
+def yeniAdlaSakla():
+    global metin
+    dosyaAdý = asksaveasfilename (initialdir='C:/Users/pc/Desktop/MyFiles/4. Dersler/python/')
+    if dosyaAdý != '' and metin !="": open (dosyaAdý, "w").write (metin) # Ayný adlý dosya mevcutsa, üzerine yazacak...
+
+if __name__ == "__main__":
+    metin = ""
+
+    metinKutusu = ScrolledText (kök, width=20, height=5)
+    metinKutusu.pack()
+
+    menü = Menu (kök) # Menü yaratýldý...
+    kök.config (menu=menü) # kök menü çubuðuna kuruldu...
+
+    dosyaMenüsü = Menu (menü, tearoff=0) # Menü birimleri kuruluyor...
+    dosyaMenüsü.add_command (label='Dosya Aç', command=dosyaAç)
+    dosyaMenüsü.add_command (label='Yeni Adla Sakla', command=yeniAdlaSakla)
+    dosyaMenüsü.add_separator()
+    dosyaMenüsü.add_command (label='Çýk', command=kök.quit)
+
+    menü.add_cascade (label='Dosya', menu=dosyaMenüsü) # Menü birimleri menü'ye eklendi...
+
+mainloop()

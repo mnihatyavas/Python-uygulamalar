@@ -1,0 +1,25 @@
+# coding:iso-8859-9 Türkçe
+
+class Yatýrým:
+    def __init__ (self, a, b):
+        self.anapara = a
+        self.faiz = b
+
+    def dönüþ_deðeri (self, y):
+        return self.anapara * (1+self.faiz/100) ** y
+
+    def __str__ (self):
+        return "Anapara: ${:,d}, Yýllýk faiz oraný: {:.2f}%".format (self.anapara, self.faiz)
+
+from random import *
+try: para = abs (int (eval (input ("Yatýrým anaparasýný girin: "))))
+except Exception: para = randint (10000, 1000000)
+try: oran = abs (eval (input ("Bankanýn teklif ettiði yýllýk faiz oranýný girin: ")))
+except Exception: oran = randint (2, 25) + random()
+try: yýl = abs (int (eval (input ("Yatýrým yýl süresini girin: "))))
+except Exception: yýl = randint (1, 20)
+
+print()
+yatýr = Yatýrým (para, oran)
+print (yatýr.__str__()) # Veya kýsaca: print (yatýr)
+print ("{} yýllýk bileþik faizli dönen para: {:,.2f}" .format (yýl, yatýr.dönüþ_deðeri (yýl)) )

@@ -1,0 +1,28 @@
+# coding:iso-8859-9 Türkçe
+
+from tkinter import *
+from tkinter.filedialog import *
+from tkinter.scrolledtext import ScrolledText
+
+kök = Tk()
+kök.title ("askopenfilename")
+
+metinKutusu = ScrolledText (kök, width=110)
+metinKutusu.pack()
+metinKutusu.insert (1.0, "M.Nihat Yavaþ\n===================\n\n")
+
+dosyaAdý=askopenfilename (
+        initialdir='C:/Users/pc/Desktop/MyFiles/4. Dersler/python/',
+        filetypes=[('Python dosyalarý', '*.py'), ('Tüm dizinler', '*')] )
+
+metin = open (dosyaAdý).read()
+metinKutusu.insert (END, metin)
+
+mainloop()
+
+"""Birkaç diyalog örneði:
+askopenfilename: Dosya seçici diyaloðu açar, dönen seçilen dosya adýdýr.
+askopenfilenames: Birönceki gibidir, ancak çoklu dosya seçilebilir; dönen seçilen dosyalar listesidir.
+asksaveasfilename: Seçili dosyanýn saklanma dizin-dosyaadý diyaloðunu açar.
+askdirectory: Dizin seçici diyaloðu açar, dönen seçilen dizin adýdýr.
+"""

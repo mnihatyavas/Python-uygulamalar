@@ -1,0 +1,40 @@
+# coding:iso-8859-9 Türkçe
+
+class Ürün:
+    def __init__ (self):
+        self.ad = "Dolmakalem"
+        self.adet = 1000
+        self.fiyat = 5.75
+
+    def fiyat_al (self, miktar):
+        if miktar < 10: print ("{} adet ürün, tanesi {:.2f} TL'den toplam: {:,.2f} TL'dir" .format (miktar, self.fiyat, miktar*self.fiyat))
+        elif miktar < 100: print ("{} adet ürün, tanesi {:.2f} TL'den toplam: {:,.2f} TL'dir" .format (miktar, self.fiyat/1.10, miktar*self.fiyat/1.10))
+        else: print ("{} adet ürün, tanesi {:.2f} TL'den toplam: {:,.2f} TL'dir" .format (miktar, self.fiyat/1.25, miktar*self.fiyat/1.25))
+
+    def satýþ_gerçekleþtir (self, miktar):
+        if self.adet < miktar:
+            print ("Stoðumuzu güncelleyinceye dek en fazla alabileceðiniz miktar:", self.adet, "adettir.")
+            return
+        if miktar < 10: print ("{} adet ürünü, tanesi {:.2f} TL'den toplam: {:,.2f} TL'ye satýn aldýnýz" .format (miktar, self.fiyat, miktar*self.fiyat))
+        elif miktar < 100: print ("{} adet ürünü, tanesi {:.2f} TL'den toplam: {:,.2f} TL'ye satýn aldýnýz" .format (miktar, self.fiyat/1.10, miktar*self.fiyat/1.10))
+        else: print ("{} adet ürünü, tanesi {:.2f} TL'den toplam: {:,.2f} TL'ye satýn aldýnýz" .format (miktar, self.fiyat/1.25, miktar*self.fiyat/1.25))
+        self.adet -= miktar
+
+from random import randint
+alýþveriþ = Ürün()
+sayý = ""
+while sayý != 0:
+    try: sayý = abs (int (eval (input ("\nKaç adet dolmakalem almayý düþünüyorsunuz: "))))
+    except Exception:
+        if alýþveriþ.adet >= 1: sayý = randint (1, alýþveriþ.adet)
+        else: sayý = 0
+    print()
+    if sayý == 0:
+        print ("Güle güle, tekrar bekleriz efendim!")
+        break
+    alýþveriþ.fiyat_al (sayý)
+
+    cevap = ""
+    while not (cevap == "e" or cevap == "h"): cevap = input ("Peki bu fiyat teklifi üzerinden alýþ gerçekleþtirecek misiniz: ").lower()
+    print()
+    alýþveriþ.satýþ_gerçekleþtir (sayý)

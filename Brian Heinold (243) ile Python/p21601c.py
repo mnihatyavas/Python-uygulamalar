@@ -1,0 +1,33 @@
+# coding:iso-8859-9 Türkçe
+
+from tkinter import *
+Tk()
+
+def açýkla1 (k):
+    global düðmeler2
+    düðmeler2[k] +=1
+    açýkla = Label (text=alfabe[k]+" harfini " + str (düðmeler2[k]) + ".kere týkladýnýz")
+    açýkla.grid (row=2, column=0, pady=10)
+
+def açýkla2 (k):
+    global sayaç
+    sayaç +=1
+    açýkla = Label (text=k+" düðmesini " + str (sayaç) + ".kere týkladýnýz")
+    açýkla.grid (row=3, column=0, pady=10)
+#----------------------------------------------------------------------------------------
+alfabe = 'ABCÇDEFGÐHIÝJKLMNOÖPRSÞTUÜVYZ'
+uz = len (alfabe)
+düðmeler1 = [0]*uz
+düðmeler2 = [0]*uz
+
+çerçeve = Frame()
+for i in range (uz):
+    düðmeler1[i] = Button (çerçeve, text=alfabe[i], command=lambda x=i: açýkla1 (x))
+    düðmeler1[i].grid (row=0, column=i)
+çerçeve.grid (row=0, column=0)
+
+sayaç = 0
+tamam = Button (text='Tamam', font=('Verdana', 24), command=lambda: açýkla2 ("Tamam"))
+tamam.grid (row=1, column=0)
+
+mainloop()

@@ -1,0 +1,28 @@
+# coding:iso-8859-9 Türkçe
+
+from tkinter import *
+kök = Tk()
+
+def selam(): etiket.config (text="Merhaba Pythoncular")
+def göster(): etiket.config (text=str (düðme1.cget ("state") ) )
+
+def deðiþtir():
+    if düðme1.cget ("state") == DISABLED: düðme1.config (state=NORMAL)
+    else: düðme1.config (state=DISABLED)
+
+def baþlýk():
+    etiket.config (text="Þimdi 'Tkinter GUI' baþlýðýný pencere üstünde görebilirsiniz")
+    kök.title ("Tkinter GUI Baþlýðý")
+
+if __name__ == "__main__":
+    düðme1 = Button (kök, text="Selam Ver", state=DISABLED, command=selam)
+    düðme1.pack()
+    düðme2 = Button (kök, text="Durum Deðiþtir", command=deðiþtir).pack()
+    düðme3 = Button (kök, text="Durum Göster", command=göster).pack()
+    düðme4 = Button (kök, text="Baþlýk At", command=baþlýk).pack()
+    düðme5 = Button (kök, text="Çýk", command=kök.quit).pack()
+
+    etiket = Label (kök)
+    etiket.pack()
+
+mainloop()

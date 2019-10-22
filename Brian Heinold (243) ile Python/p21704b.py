@@ -1,0 +1,42 @@
+# coding:iso-8859-9 Türkçe
+
+from tkinter import *
+from tkinter.messagebox import *
+kök = Tk()
+kök.title ("Mesaj Kutularý")
+
+def kapatýlacak():
+    cevap = askquestion (title='Kapatýlsýn mý?', message='Programý kapatmak istediðinden emin misin?')
+    if cevap== 'yes': kök.quit() # veya "kök.destroy()"
+    else: göster (cevap)
+
+def göster (dönen):
+    dönen = str (dönen).upper()
+    etiket.config (text="\n\nMesajdan dönen cevap: ["+dönen+"]'dir.")
+
+def bilgi(): göster (showinfo (title="Bilgi", message="Bu sadece bir enformasyon mesaj kutusudur!..") )
+def ikaz(): göster (showwarning (title="Ýkaz", message="Dikkat, bu biçimleme MS Windows tarafýndan desteklenmemektedir!..") )
+def hata(): göster (showerror (title="Hata", message="Dikkat, yaptýðýnýz iþlem hatalýdýr!..") )
+def sorEH(): göster (askquestion (title="SoruEH", message="Sorumuza cevabýn Evet mi, Hayýr mý?") )
+def sorEHÝ(): göster (askyesnocancel (title="SoruEHÝ", message="Sorumuza cevabýn Evet mi, Hayýr mý, Ýptal mi?") )
+def sorTÝ(): göster (askokcancel (title="SoruTÝ", message="Sorumuza cevabýn Tamam mý, Ýptal mi?") )
+def sorYÝ(): göster (askretrycancel (title="SoruYÝ", message="Sorumuza cevabýn Yinele mi, Ýptal mi?") )
+
+
+if __name__ == "__main__":
+    çerçeve = Frame (kök)
+    çerçeve.pack()
+    Button (çerçeve, text="Bilgi", command=bilgi ).pack (side=LEFT)
+    Button (çerçeve, text="Ýkaz", command=ikaz ).pack (side=LEFT)
+    Button (çerçeve, text="Hata", command=hata ).pack (side=LEFT)
+    Button (çerçeve, text="Sor EH", command=sorEH ).pack (side=LEFT)
+    Button (çerçeve, text="Sor EHÝ", command=sorEHÝ ).pack (side=LEFT)
+    Button (çerçeve, text="Sor TÝ", command=sorTÝ ).pack (side=LEFT)
+    Button (çerçeve, text="Sor YÝ", command=sorYÝ ).pack (side=LEFT)
+
+    etiket = Label (kök)
+    etiket.pack()
+
+    kök.protocol ('WM_DELETE_WINDOW', kapatýlacak) # WM: PencereYönetimi, sil pencereyi...
+
+mainloop()

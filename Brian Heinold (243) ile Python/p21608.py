@@ -1,0 +1,55 @@
+# coding:iso-8859-9 Türkçe
+
+from math import *
+from tkinter import *
+kök = Tk()
+
+def hesapla (olay):
+    deðer = eval (gir.get() )
+    print ("Sonuç =", deðer)
+    etiket.config (text="Sonuç: "+str (deðer) )
+
+def göster (olay): print (olay.keysym, "tuþuna bastýnýz")
+
+Label (kök, text="Ýþlem gir ve [Ent] bas").pack()
+
+gir = Entry (kök, width=20)
+gir.pack() #Örn. [log(123)/sin(76)*1e-7**78] gir, dene...
+gir.focus_set()
+
+gir.bind ("<Key>", göster)
+gir.bind ("<Return>", hesapla)
+
+etiket = Label (kök, pady=10)
+etiket.pack()
+
+mainloop()
+
+"""
+1) Bazý baðlanabilecek olaylar:
+<Button-1> Fare sol düðmesi týklandý
+<Double-Button-1> Fare sol düðmesi çift-týklandý
+Farenin, 1:sol, 2:orta, 3:sað düðmesi...
+<Button-Release-1> Fare sol düðmesi býrakýldý
+<B1-Motion> Fare sol düðmesiyle týklanýp sürüklendi
+<MouseWheel> Fare tekeri oynadý
+<Motion> Fare oynadý
+<Enter> Fare bileþke üzerinde
+<Leave> Fare bileþkeden ayrýldý
+<Key> Bir tuþa basýldý
+<"tuþ adý"> Adý belirtilen tuþa basýldý
+
+2) Event olay nesne özellikleri:
+keysym: tuþ sembolleri
+x,y: farenin (x,y) kordinatý
+delta: fare teker deðeri
+
+3) Bazý bind olay yakalayýcý/baðlayýcý keysym: key symbol = tuþ sembolleri
+<Return>, <Tab>, <Space>, <F1>, . . . , <F12> F1, . . . , F12
+<Next>, <Prior> Page up, Page down
+<Up>, <Down>, <Left>, <Right> Arrow keys
+<Home>, <End>, <Insert>, <Delete>, <Caps_Lock>, <Num_Lock>
+<Control_L>, <Control_R>, <Alt_L>, <Alt_R>, <Shift_L>, <Shift_R>
+"a", "A", "-", <Space>, <Less>, <Greater>,
+<Shift-F5>, <Control-Next>, <Alt-2>, <Control-Shift-F1>.
+"""

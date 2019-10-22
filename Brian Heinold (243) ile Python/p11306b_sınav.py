@@ -1,0 +1,23 @@
+# coding:iso-8859-9 Türkçe
+
+def faktör1 (sayý):
+    L = []
+    i = 2
+    while 2 <= i < (sayý//2+1):
+        if sayý % i == 0:
+            L = L + [i]
+            sayý = sayý // i
+            i = 2
+        else: i +=1
+    return L + [sayý]
+
+def faktör2 (sayý, L=[]):
+    for i in range (2, sayý // 2 + 1):
+        if sayý % i == 0: return L + [i] + faktör2 (sayý // i)
+    return L + [sayý]
+
+print ("2 ayrý yöntemle [0,10000] arasý tesadüfi sayýnýn faktör listesi:")
+from random import randint
+n = randint (0, 10000)
+L = faktör1 (n)
+print ("Sayý: ", n, ", listeler: ", L, " ve ", faktör2 (n), ", faktör sayýsý: ", len (L), sep="")

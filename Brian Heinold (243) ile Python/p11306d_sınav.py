@@ -1,0 +1,32 @@
+# coding:iso-8859-9 Türkçe
+
+def taban20 (n):
+    L1 = []
+    if n == 0: return "A"
+    while n > 0:
+        L1 = L1 + [n % 20]
+        n = n//20
+    tt = çevir (L1)
+    return tt
+
+def çevir (L1):
+    dizge = "ABCDEFGHIJKLMNOPQRST"
+    t = ""
+    for i in range (len (L1)): t = dizge[L1[i]] + t
+    return t
+
+def taban10 (d):
+    dizge = "ABCDEFGHIJKLMNOPQRST"
+    n = 0
+    for i in range (len (d)): n += dizge.index (str (d[i])) * (20 ** (len (d) - i -1))
+    return n
+
+from random import randint
+try: sayý10 = abs (int (eval (input ("Bir pozitif tamsayý gir: "))))
+except Exception: sayý10 = randint (0, 10**14)
+
+sayý20 = taban20 (sayý10)
+print ("\n10 tabanlý: (", sayý10, ") sayýsý = 20 tabanlý: (", sayý20, ") A-T sembolüdür.", sep="")
+
+sayý_10 = taban10 (sayý20)
+print ("20 tabanlý: (", sayý20, ") sembolü = 10 tabanlý: (", sayý_10, ") sayýsýdýr.", sep="")

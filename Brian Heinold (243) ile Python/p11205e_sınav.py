@@ -1,0 +1,25 @@
+# coding:iso-8859-9 Türkçe
+
+L = [satýr.strip().split ("\t") for satýr in open ("öðrenci2.txt")]
+from pprint import pprint
+print (len (L), " kiþilik ÖÐRENCÝ listesinin dosyadan dökümü:\n", "="*48, sep="")
+pprint (L)
+
+sorgu = input ("\nGörmek istediðin öðrencinin herhangi ARDIÞIK isim içeriðini gir: ").lower()
+print ("\nÝsim içeriðinde ARDIÞIK [", sorgu, "] bulunan kayýtlarýn listesi:\n", "-"*60, sep="")
+for k in L:
+    if sorgu in str (k[0]).lower(): print (k)
+
+sorgu = input ("\nGörmek istediðin öðrencinin herhangi ardýþýk-SIZ isim içeriðini gir: ").lower()
+print ("\nÝsim içeriðinde ardýþýk-SIZ [", sorgu, "] bulunan kayýtlarýn listesi:\n", "-"*63, sep="")
+for k in L:
+    isim = str (k[0]).lower()
+    kontrol = 0
+    j = -1
+    for i in range (len (sorgu)):
+        while j < len (isim)-1:
+            j +=1
+            if sorgu[i] == isim[j]:
+                kontrol +=1
+                break
+    if kontrol == len (sorgu): print (k)

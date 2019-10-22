@@ -1,0 +1,27 @@
+# coding:iso-8859-9 Türkçe
+
+from tkinter import *
+from p21601 import Renk
+kök = Tk()
+kök.title ("Bileþen text deðiþikliði")
+
+def selamlaþma():
+    global sayaç
+    etiket.config (fg=Renk.renk(), bg=Renk.renk())
+    dizgeDeðiþkeni1.set ('Merhaba, sizle karþýlaþmak ne güzel bir tesadüf!..\n'\
+        if sayaç%2==0 else 'Hoþçakalýn, yakýn zamanda inþallah tekrar görüþmek dileðiyle!..\n')
+    dizgeDeðiþkeni2.set ('Selamlaþma' if sayaç%2==0 else 'Vedalaþma')
+    sayaç +=1
+
+if __name__ == "__main__":
+    sayaç = 0
+    dizgeDeðiþkeni1 = StringVar()
+    dizgeDeðiþkeni2 = StringVar()
+    dizgeDeðiþkeni2.set ("Týkla")
+
+    etiket = Label (textvariable=dizgeDeðiþkeni1, font=("segoe script", 25, "italic bold") )
+    etiket.pack()
+
+    Button (textvariable=dizgeDeðiþkeni2, font=("serif", 30), bg="black", fg="yellow", command = selamlaþma).pack(fill=X, expand=YES)
+
+mainloop()

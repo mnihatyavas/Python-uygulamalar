@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+
+class Zaman:
+    def __init__ (self, z): self.z = z
+
+    def gün (self):
+        gn = self.z//(60*60*24)
+        self.z = self.z % (60*60*24)
+        return gn
+
+    def saat (self):
+        st = self.z//(60*60)
+        self.z = self.z % (60*60)
+        return st
+
+    def dakika (self):
+        dk = self.z//60
+        self.z = self.z % 60
+        return dk
+
+from random import randint
+
+# input için (366*24*60*60-1) girebilirsiniz, fazlasýný deðil...
+try: sayý = abs (int (eval (input ("Saniye cinsinden bir sayý girin: "))))
+except Exception: sayý = randint (1, 366*24*60*60-1)
+if sayý > 31622399: sayý = 31622399
+
+zaman = Zaman (sayý)
+
+print ("\nGirdiðiniz {:,d} saniye = {} gün, {} saat, {} dakika ve {} saniye'dir."\
+    .format (sayý, zaman.gün(), zaman.saat(), zaman.dakika(), zaman.z) )

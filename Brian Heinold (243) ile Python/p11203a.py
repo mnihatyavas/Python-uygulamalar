@@ -1,0 +1,14 @@
+# coding:iso-8859-9 Türkçe
+
+sorular = [satýr.strip() for satýr in open ('sorular.txt')]
+cevaplar = [satýr.strip() for satýr in open ('cevaplar.txt')]
+
+doðru_sayýsý = 0
+for i in range (len (sorular)):
+    cevap = input (sorular[i] + " ")
+    if cevap.lower() == cevaplar[i].lower():
+        print ('Aferin, bildiniz!')
+        doðru_sayýsý=doðru_sayýsý+1
+    else:
+        print ('Maalesef yanlýþ! Doðrusu: [', cevaplar[i], '] olmalýydý.', sep="")
+print ('\n', len(sorular), " sorudan toplam ", doðru_sayýsý, "'unu doðru bildiniz.", sep="")

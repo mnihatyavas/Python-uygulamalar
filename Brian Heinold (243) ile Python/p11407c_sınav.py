@@ -1,0 +1,81 @@
+# coding:iso-8859-9 Türkçe
+""" Bu program biraz çetrefillidir.
+Ýlk giriþ için "þifreler.txt" dosyasý oluþturup içine de
+ilk þifrenizi yerleþtirmelisiniz...
+"""
+
+class Þifre_Yöneticisi:
+    def __init__ (self):
+        self.L = []
+
+    def hesap_yarat (self, kod):
+        dosya = open ("þifreler.txt", "w")
+        print (kod, file=dosya)
+
+    def þifre_doðruMu (self, kod):
+        self.L = [satýr.strip() for satýr in open ("þifreler.txt", "r")]
+        if kod == self.L[len (self.L)-1]: return True
+        print ("Aktüel þifreniz yanlýþ!")
+        return False
+
+    def oturum_aç (self):
+        print ("\nOturumunuz açýldý:\
+            \nOturum formuna katýlabilir,\
+            \nÞifrenizi deðiþtirebilir,\
+            \nÞifrenizi unuttuysanýz yeni hesap yaratabilir,\
+            \nMevcut önceki þifrelerinizi görebilirsiniz.")
+        input ("Ent:")
+
+    def þifreyi_deðiþtir (self):
+        while True:
+            print ("\nÞifre deðiþikliði==>"); kod = þifre_gir()
+            mevcut = 0
+            for i in range (len (self.L)):
+                if kod == self.L[i]: mevcut = 1
+            if mevcut == 1: input ("Bu þifreniz eskiden kullanýlmýþ, yeniden deneyin [Ent]")
+            else: break
+        dosya = open ("þifreler.txt", "a")
+        print (kod, file=dosya)
+        return kod
+
+    def þifreleri_gör (self):
+        self.L = [satýr.strip() for satýr in open ("þifreler.txt", "r")]
+        print (self.L); input ("Ent:")
+
+def ana_menü():
+    menü = "\n1. Yeni bir þifreli hesap yarat\
+        \n2. Mevcut þifreli oturumu aç\
+        \n3. Þifre deðiþikliði\
+        \n4. Önceki þifreleri görme\
+        \n5. Son\
+        \n\n   Seçiminiz==> "
+    seç = 0
+    while not (0 < seç < 6):
+        try: seç = abs (int (eval (input (menü))))
+        except Exception: seç = 0
+    return seç
+
+def þifre_gir():
+    while True:
+        þ = input ("\nÞifrenizi girin: ")
+        if len (þ) < 5 or not þ[0].isalpha() or þ.isalpha():
+            print ("Þifreniz enaz 5 karakter, ilki harf, enaz da 1 rakam içermeli")
+        else: return þ
+
+yönetim = Þifre_Yöneticisi()
+þifre = þifre_gir()
+
+while yönetim.þifre_doðruMu (þifre):
+    seçenek = ana_menü()
+    if seçenek == 5:
+        print ("\nOturumu sonlandýrdýnýz, görüþmek üzere!")
+        break
+
+    if seçenek == 1 and input ("\nÖnceki þifrelerin tamamen silinecek, emin misin ['e']: ").lower() == "e":
+        yönetim.hesap_yarat (þifre)
+    elif seçenek == 2:
+        if yönetim.þifre_doðruMu (þifre): yönetim.oturum_aç()
+    elif seçenek == 3:
+        if yönetim.þifre_doðruMu (þifre): þifre = yönetim.þifreyi_deðiþtir()
+    elif seçenek == 4:
+        if yönetim.þifre_doðruMu (þifre): yönetim.þifreleri_gör()

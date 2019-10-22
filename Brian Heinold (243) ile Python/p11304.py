@@ -1,0 +1,17 @@
+# coding:iso-8859-9 Türkçe
+
+def varsayýlý_selam (dizge, n=1): print (dizge * n)
+
+varsayýlý_selam ('Merhaba ', 5)
+varsayýlý_selam ('Merhaba ')
+
+print()
+def stilliYaz (metin="Merhaba", renk='siyah', zemin='beyaz', stil='normal', hizala='sol'):
+    print (metin, renk, zemin, stil, hizala)
+
+stilliYaz (metin='Hello', renk='yellow', zemin='black', stil='bold', hizala='left')
+stilliYaz (metin='Selam', stil='koyu', hizala='sola', zemin='kara', renk='sarý')
+stilliYaz ('Hi', stil='yatýk-italik')
+stilliYaz ('Merhaba', renk='yeþil', zemin='pembe')
+stilliYaz ('Selam')
+stilliYaz ()

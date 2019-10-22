@@ -1,0 +1,29 @@
+# coding:iso-8859-9 Türkçe
+
+# Metni dosyadan okuyup, küçük harfleþtirip, noktalamadan arýndýrýp kelimeler listesi yapalým...
+metin = open ('demo1.txt').read()
+metin = metin.lower()
+
+from string import punctuation
+for noktalama in punctuation: metin = metin.replace (noktalama, '')
+kelimelerListesi = metin.split() # Kelimeler listesi
+
+# Kelime ve tekrar sayýlý bir sözlük kuralým...
+sözlük = {}
+for kelime in kelimelerListesi:
+    if kelime in sözlük: sözlük[kelime] = sözlük[kelime] + 1 # Mevcut kelime sayýsý bir artýrýlýr...
+    else: sözlük[kelime] = 1 # Yeni kelime sözlüðe eklenir...
+print (sözlük)
+
+print()
+# Sözlüðü, anahtar kelimeye göre a->z sýralayalým...
+tupleListe1 = list (sözlük.items())
+tupleListe1.sort()
+for i in tupleListe1: print (i)
+
+print()
+# Sözlüðü tekrar sayýsýna göre artan sýralayalým...
+tupleListe2 = list (sözlük.items())
+tupleListe2 = [(i[1], i[0]) for i in tupleListe2]
+tupleListe2.sort()
+for i in tupleListe2: print (i)
