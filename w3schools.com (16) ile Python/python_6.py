@@ -1,0 +1,14 @@
+# coding: iso-8859-9 "Türkçe"
+import os, sys
+
+import pymongo
+
+müþterim = pymongo.MongoClient ('mongodb://localhost:27017/')
+
+veritabaný = müþterim['veritabaným']
+# python -m pip install --upgrade pip
+
+vtlistesi = müþterim.list_database_names()
+
+if "veritabaným" in vtlistesi:
+    print ("Yarattýðým veritabaným mevcutmuþ!")

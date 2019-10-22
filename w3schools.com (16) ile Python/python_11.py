@@ -1,0 +1,8 @@
+# coding:iso-8859-9 "Türkçe"
+
+import calendar
+
+yýl = int (input ("4 rakamlý yýlý girin: "))  
+ay = int (input ("1-12 ay rakamýný girin: "))  
+
+print ("AYLIK TAKVÝM\n=====================\n", calendar.month (yýl, ay))

@@ -1,0 +1,8 @@
+gitHUB_iþlenmiþÖrnekleri.ÝÞLÝ (6)
+===========================
+p01a.py: Komut iletisinden girilen tüm F dereceyi C dereceye çeviren örnek.
+p01b.py: Komut iletisinden girilen tüm Selsiyüs dereceyi Fahrenhayt dereceye çeviren örnek.
+p02.py: Turtle çerçeveli canvas'ýna içiçe farklý renkte daireler çizen örnek.
+p03.py: Yarýþmacý, rakip ve evsahipli Monty Hall hediyeli kapýyý çoklu bulma oyunu örneði.
+p04.py: Güneþ-venüs-dünya günlük/haftalýk yörünge dönüþlerini noktalarla çizen örnek.
+p05.py: Rasgele dolu pano hücrelerini tekli/çoklu týklayarak/otomatik silme oyun örneði.

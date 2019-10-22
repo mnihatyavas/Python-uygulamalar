@@ -1,0 +1,135 @@
+# coding:iso-8859-9 Türkçe
+
+# Monty Hall problemini simüle eder.
+
+import argparse, random
+
+def simüleEt (kapýSayýsý, yarýþmacýMý, izahat):
+    """bool (int, bool, bool)
+
+    Geçen argümanlardan yarýþmacýMý True ise yarýþmacý için, False ise
+    rakibi için iþletilir. Ayrýca izahat varsa (True) herbir etap sonucu
+    tek tek gösterilir. Kazanan varsa dönen True, yoksa False'dýr...
+    """
+
+    # Arkasýnda hediye bulunan kapý tesadüfi seçilir...
+    hediyeliKapý = random.randint (0, kapýSayýsý - 1)
+    if izahat: print ('Hediyeli kapý numarasý: {}' .format (hediyeliKapý + 1))
+
+    # Oyuncu da tesadüfi bir kapý seçer...
+    tercih = random.randint (0, kapýSayýsý-1)
+    if izahat: print ('Oyuncunun seçtiði kapý no: {}' .format (tercih + 1))
+
+    # Ev sahibi 2 kapý hariç diðer tümünü açabilir...
+    kapalýKapýlar = list (range (kapýSayýsý))
+    while len (kapalýKapýlar) > 2:
+        # Açýlacak kapý tesadüfi seçilir...
+        #silinecekKapý = random.randint (0, len (kapalýKapýlar) - 1)
+        silinecekKapý = random.choice (kapalýKapýlar)
+
+        # Evsahibi hediyeli kapýyý veya oyuncu kapýsýný silemez...
+        if (silinecekKapý == hediyeliKapý or silinecekKapý == tercih): continue
+
+        # Deðilse o kapý listeden silinir...
+        kapalýKapýlar.remove (silinecekKapý)
+        if izahat: print ('Ev sahibi {} numaralý kapýyý açtý' .format (silinecekKapý + 1))
+
+    # Geriye daima 2 kapý kalýr...
+    assert len (kapalýKapýlar) == 2
+
+    # Does the contestant want to yarýþmacýMý their tercih?
+    if yarýþmacýMý:
+        if izahat: print ('Oyuncu kapý no: {}"den ' .format (tercih+1), end='')
+
+        # Geriye kalan 2 kapýdan, oyuncununkini silelim...
+        mevcutKapýlar = list (kapalýKapýlar) # Bir kopyasýný alalým...
+        mevcutKapýlar.remove (tercih)
+
+        # Geriye kalaný oyuncunun yeni tercihi olacaktýr...
+        tercih = mevcutKapýlar.pop()
+        if izahat: print ('{}"e geçti' .format (tercih+1))
+
+    # Oyuncu kazandý mý?
+    kazandý = (tercih == hediyeliKapý)
+    if izahat:
+        if yarýþmacýMý:
+            if kazandý: print ('Yarýþmacý KAZANDI', end='\n\n')
+            else: print ('Yarýþmacý KAYBETTÝ', end='\n\n')
+        else:
+            if kazandý: print ('Rakip KAZANDI', end='\n\n')
+            else: print ('Rakip KAYBETTÝ', end='\n\n')
+
+    return kazandý
+
+def anaProgram():
+    # Komut-satýrý argümanlarýný alalým...
+    okuyucu = argparse.ArgumentParser (description='Monty Hall problemini simüle eder')
+    okuyucu.add_argument ('--kapýlar', default=3, type=int, metavar='int', help='Yarýþmacýya sunulan kapý sayýsý')
+    okuyucu.add_argument ('--denemeler', default=10000, type=int, metavar='int', help='Ýcra edilecek deneme sayýsý')
+    okuyucu.add_argument ('--izahat', default=False, action='store_true', help='Herbir deneme sonucunun gösterilmesi')
+    argümanlar = okuyucu.parse_args()
+
+    print ('Toplam {} deneme simüle ediliyor...' .format (argümanlar.denemeler))
+
+    # Denemeler iþletiliyor...
+    rakip_puaný = 0
+    yarýþmacý_puaný = 0
+    for i in range (argümanlar.denemeler):
+        # Öncelikle yarýþmacýnýn denemedikleri simüle edilecek...
+        kazandý = simüleEt (argümanlar.kapýlar, yarýþmacýMý=False, izahat=argümanlar.izahat)
+        if kazandý: rakip_puaný += 1
+
+        # Yarýþmacýnýn denedikleri simüle ediliyor...
+        kazandý = simüleEt (argümanlar.kapýlar, yarýþmacýMý=True, izahat=argümanlar.izahat)
+        if kazandý: yarýþmacý_puaný += 1
+
+    print ('==>Yarýþmacý kazandý: Toplam {1} denemede {0:5} kere [Yüzdesi: %{2}]' .format (
+            yarýþmacý_puaný, argümanlar.denemeler, round( (yarýþmacý_puaný / argümanlar.denemeler * 100), 2) ))
+    print ('==>Rakibi kazandý: Toplam {1} denemede {0:5} kere [Yüzdesi: %{2}]' .format (
+            rakip_puaný, argümanlar.denemeler, round( (rakip_puaný / argümanlar.denemeler * 100), 2) ))
+
+if __name__ == '__main__':
+    anaProgram()
+
+çýktý1="""
+**  >python p03.py -h  **
+usage: p03.py [-h] [--kapýlar int] [--denemeler int] [--izahat]
+
+Monty Hall problemini simüle eder
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --kapýlar int    Yarýþmacýya sunulan kapý sayýsý
+  --denemeler int  Ýcra edilecek deneme sayýsý
+  --izahat         Herbir deneme sonucunun gösterilmesi
+"""
+
+çýktý2="""
+**  >python p03.py  **
+Toplam 10000 deneme simüle ediliyor...
+==>Yarýþmacý kazandý: Toplam 10000 denemede  6685 kere [Yüzdesi: %66.85]
+==>Rakibi kazandý: Toplam 10000 denemede  3333 kere [Yüzdesi: %33.33]
+"""
+
+çýktý3="""
+**  >python p03.py --kapýlar 15 --denemeler 20000  **
+Toplam 20000 deneme simüle ediliyor...
+==>Yarýþmacý kazandý: Toplam 20000 denemede 18686 kere [Yüzdesi: %93.43]
+==>Rakibi kazandý: Toplam 20000 denemede  1337 kere [Yüzdesi: %6.69]
+"""
+
+çýktý4="""
+**  >python p03.py --kapýlar 2 --denemeler 1 --izahat  **
+Toplam 1 deneme simüle ediliyor...
+Hediyeli kapý numarasý: 2
+Oyuncunun seçtiði kapý no: 1
+Rakip KAYBETTÝ
+
+Hediyeli kapý numarasý: 2
+Oyuncunun seçtiði kapý no: 1
+Oyuncu kapý no: 1"den 2"e geçti
+Yarýþmacý KAZANDI
+
+==>Yarýþmacý kazandý: Toplam 1 denemede     1 kere [Yüzdesi: %100.0]
+==>Rakibi kazandý: Toplam 1 denemede     0 kere [Yüzdesi: %0.0]
+"""

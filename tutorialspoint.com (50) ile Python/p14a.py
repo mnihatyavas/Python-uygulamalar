@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+# Python 3 - Files I/O
+
+print ("Python gerçekten de büyük bir dil,", "deðil mi?")
+
+veri = input ("Bir veri girin: ")
+print ("Girdiðiniz veri: [" + veri + "]\n")
+
+dosya = open ("dosya1.txt", "a+")
+print ("Dosyanýn adý:", dosya.name)
+print ("Þuanda kapalý mý?", dosya.closed)
+print ("Dosya açýlma kipi:", dosya.mode)
+dosya.write (veri + "\nPython gerçekten de muhteþem bir dil, deðil mi?\nTabii ki!\n")
+dosya.close()
+print ("Peki þimdi kapalý mý?", dosya.closed)
+print()
+
+dosya1 = open ("dosya1.txt", "r+")
+dizge = dosya1.read()
+print ("Dosyadan okunanlar:", dizge)
+print ("Dosya konum göstergesi:", dosya1.tell())
+print ("Dosyadan okunanlar:", dosya1.read())
+print ("\nDosya konum göstergesi:", dosya1.seek (0, 0))
+print ("Dosyadan okunanlar:", dosya1.read())
+dosya1.close()
+
+import os
+try:os.remove ("dosya2.txt")
+except Exception: # Boþgeç...
+    print()
+os.rename ( "dosya1.txt", "dosya2.txt" )

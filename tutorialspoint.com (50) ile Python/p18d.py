@@ -1,0 +1,46 @@
+# coding:iso-8859-9 Türkçe
+# Python 3 - Multithreaded Programming
+# Yeni yöntemle sicim yaratma: Thread altsýnýfý, override __init__ ve run metodlarý,
+# sicim tip nesneleri yaratma, start ile run'ý koþturma, icabýnda join ile sicimlerin
+# çalýþmasý tamamlanmadan alttaki kodlamaya geçmemenin saðlanmasý,
+# lock ile bir sicim tamamlanmadan (senkronizasyon) diðerine geçilmemesi,
+# liste ile çoklu sicimlerde döngüyle iþlem kolaylýðý saðlanmasý
+
+import threading
+import time
+#import queue ==> Sorunlu, sadece son sicimi iþliyor, tüm sicimleri deðil...
+
+class sicimim (threading.Thread):
+    def __init__ (self, sicimNo, sicimAdý):
+        threading.Thread.__init__ (self)
+        self.sicimNo = sicimNo
+        self.sicimAdý = sicimAdý
+    def run (self):
+        print ("Baþlýyor: " + self.sicimAdý)
+        kilit.acquire()
+        veriÝþleme (self.sicimAdý)
+        print ("Sonlanýyor: " + self.sicimAdý)
+        kilit.release()
+
+def veriÝþleme (ipAdý):
+    for i in range (8):
+        print ("%s: (%s)inci kez iþleniyor [Zaman: %s]" % (ipAdý, iþlemAdý[i], time.ctime (time.time()) ))
+    time.sleep (2)
+
+sicimAdlarýListesi = ["Sicim-1", "Sicim-2", "Sicim-3", "Sicim-4", "Sicim-5"]
+iþlemAdý= ["Bir", "Ýki", "Üç", "Dört", "Beþ", "Altý", "Yedi", "Sekiz"]
+sicimler = []
+sicimNo = 1
+kilit = threading.Lock()
+
+# Sicimleri yaratýp baþlatalým...
+for ad in sicimAdlarýListesi:
+    sicim = sicimim (sicimNo, ad)
+    sicim.start()
+    sicimler.append (sicim)
+    sicimNo += 1
+
+# Tüm sicimler tamamlanýnca alt kodlamaya geçsin...
+for ip in sicimler: ip.join()
+
+print ("Sicimler tamamlandý; program sonlanýyor...")

@@ -1,0 +1,24 @@
+# coding:iso-8859-9 Türkçe
+# Python3 - Date & Time
+
+import calendar;
+import time;
+
+yýl = int (input ("Yýllýk takvim yýlýný girin: "))
+print (calendar.calendar (yýl, w = 2, l = 1, c = 6))
+
+input ("Devam için [Ent]:")
+calendar.setfirstweekday (5)
+print (calendar.calendar (yýl, w = 2, l = 1, c = 6))
+
+print (yýl, "artýk yýl mý?", calendar.isleap (yýl))
+
+print ("1970->2018 arasý artýk yýllarýn sayýsý:", calendar.leapdays (1970, 2018) )
+calendar.setfirstweekday (0)
+
+ay = int (input ("Takvim ayýný girin [1-12]: "))
+print (calendar.month (yýl, ay, w = 2, l = 1) )
+print ("Ayýn Haftalýk Listeleri:\n", calendar.monthcalendar (yýl, ay) )
+print ("\nAyýn ilk günü endeksi ve ayýn toplam gün sayýsý:", calendar.monthrange (yýl, ay) )
+print ("\nBugün (pazartesinden itibaren) haftanýn kaçýncý günü?",
+    calendar.weekday (time.localtime().tm_year, time.localtime().tm_mon, time.localtime().tm_wday) )

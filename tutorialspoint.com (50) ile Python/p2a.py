@@ -1,0 +1,17 @@
+# coding:iso-8859-9 Türkçe
+
+# 2) Python3 - Variable Types
+
+sayaç = 100 # Bir tamsayý deðer atamalý deðiþken...
+mesafe = 1000.0 # Bir kayan noktalý deðer atamalý deðiþken...
+isim = "M.Nihat Yavaþ" # Bir dizge deðiþkeni...
+
+print ("Sayaç:", sayaç)
+print ("Katedilen mesafe (km):", mesafe)
+print ("Ad ve soyad: " + isim)
+
+a = b = c = 18
+print ("\n", a, b, c)
+
+a, b, c = 12, 45, "M.Nihat Yavaþ"
+print ("\n", a, b, c)

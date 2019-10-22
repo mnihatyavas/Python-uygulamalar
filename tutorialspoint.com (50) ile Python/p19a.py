@@ -1,0 +1,108 @@
+# coding:iso8859-9 Türkçe
+# Python 3 - XML Processing
+# XML: Extensible Markup Language (Geniþletilebilir Ýþaret Dili)
+
+import xml.sax
+
+class FilmYönetimi (xml.sax.ContentHandler): # Alt-sýnýf yaratma...
+    def __init__ (self): # Sýnýf kurucusu...
+        self.AktüelVeri = ""
+        self.katagori = ""
+        self.bicim = ""
+        self.yil = ""
+        self.itibar = ""
+        self.yildizlar = ""
+        self.aciklama = ""
+
+    # Her yeni element baþladýðýnda çaðrýlýr...
+    def startElement (self, yafta, özellikler):
+        self.AktüelVeri = yafta
+        if yafta == "film":
+            print ("\n*****Film*****")
+            baslik = özellikler["baslik"]
+            print ("Baþlýðý:", baslik)
+
+    # Her element sonlandýðýnda çaðrýlýr...
+    def endElement (self, yafta):
+        if self.AktüelVeri == "katagori":
+            print ("Katagorisi:", self.katagori)
+        elif self.AktüelVeri == "bicim":
+            print ("Biçimi:", self.bicim)
+        elif self.AktüelVeri == "yil":
+            print ("Yýlý:", self.yil)
+        elif self.AktüelVeri == "itibar":
+            print ("Ýtibarý:", self.itibar)
+        elif self.AktüelVeri == "yildizlar":
+            print ("Yýldýzlarý:", self.yildizlar)
+        elif self.AktüelVeri == "aciklama":
+            print ("Açýklamasý:", self.aciklama)
+        self.AktüelVeri = ""
+
+    # Her bir karakter okunduðunda çaðrýlýr...
+    def characters (self, krk):
+        if self.AktüelVeri == "katagori": self.katagori = krk
+        elif self.AktüelVeri == "bicim": self.bicim = krk
+        elif self.AktüelVeri == "yil": self.yil = krk
+        elif self.AktüelVeri == "itibar": self.itibar = krk
+        elif self.AktüelVeri == "yildizlar": self.yildizlar = krk
+        elif self.AktüelVeri == "aciklama": self.aciklama = krk
+
+# Ana program baþlýyor...  
+if ( __name__ == "__main__"):
+    # Bir XML okuyucu yaratalým...
+    okuyucu = xml.sax.make_parser()
+    # Ýsim boþluklarýný kapatalým?..
+    #okuyucu.setFeature (xml.sax.handler.feature_namespaces, 0)
+
+    # Varsayýlý ContextHandler'i esgeçip kendi alt-sýnýf yöneticimizi kullanalým...
+    Yönetim = FilmYönetimi()
+    okuyucu.setContentHandler(Yönetim)
+
+     # DÝKKAT: XML dosyasýnda türkçe karakterleri kabul etmiyor...
+    okuyucu.parse ("xml_19a.xml")
+
+çýktý = """
+**  >python p19a.py  **
+
+*****Film*****
+Baþlýðý: Arkadaki Dusman
+Katagorisi: Savas, Heyecan
+Biçimi: DVD
+Yýlý: 2003
+Ýtibarý: PG
+Yýldýzlarý: 10
+Açýklamasý: Amerika-Japonya savasi hakkinda
+
+*****Film*****
+Baþlýðý: Donusenler
+Katagorisi: Canlandirma, Bilim Kurgu
+Biçimi: DVD
+Yýlý: 1989
+Ýtibarý: R
+Yýldýzlarý: 8
+Açýklamasý: Bir bilim kurgu filmi
+
+*****Film*****
+Baþlýðý: Uc Silahli
+Katagorisi: Canlandirma, Aksiyon
+Biçimi: DVD
+Ýtibarý: PG
+Yýldýzlarý: 10
+Açýklamasý: Korkmaya kendinizi hazirlayin!
+
+*****Film*****
+Baþlýðý: Istar
+Katagorisi: Komedi
+Biçimi: VHS
+Ýtibarý: PG
+Yýldýzlarý: 2
+Açýklamasý: Izlemesi sikici
+
+*****Film*****
+Baþlýðý: Kudurus
+Katagorisi: Bilim Kurgu
+Biçimi: VHS
+Ýtibarý: PG
+Yýldýzlarý: 8
+Açýklamasý: New York'ta canavarlar
+"""

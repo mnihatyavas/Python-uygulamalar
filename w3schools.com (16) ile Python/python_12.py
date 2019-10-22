@@ -1,0 +1,12 @@
+# coding:iso-8859-9 Türkçe
+
+import random # Geliþigüzel (0->1) sayý üreten modül
+
+print ("(100,500) arasý tesadüfi sayý:", random.randint (100,500))
+print ("(0,50000) arasý tesadüfi sayý:", random.randint (1,50000))
+print ("(-1000,+1000) arasý tesadüfi sayý:", random.randint (-1000,1000))
+print("\n\n")
+
+sayý = int (input ("Gireceðiniz sayýnýn 1->10 katlarý listenecektir: "))  
+for i in range (1,11): # Erime ilk dahil, son hariçtir...
+     print (sayý, 'x', i, '=', sayý * i) 

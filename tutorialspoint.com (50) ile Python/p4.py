@@ -1,0 +1,16 @@
+# coding:iso-8859-9 Türkçe
+# 4: Python3 - Decision Making
+
+sayý = 100
+if ( sayý  == 100 ) : print ("Deðiþkenin deðeri = 100")
+print ("Güle güle!\n")
+
+if (sayý == 90):
+    print ("Deðiþkenin deðeri = 90")
+elif (sayý == 80):
+    print ("Deðiþkenin deðeri 80 deðildir!")
+    print ("sayý=", sayý)
+else:
+    print ("Deðiþkenin deðeri 80 veya 90 deðildir!")
+    print ("sayý=", sayý)
+print ("Tekrar güle güle!")

@@ -1,0 +1,71 @@
+# coding:iso8859-9 Türkçe
+# Python 3 - XML Processing
+# XML: Extensible Markup Language (Geniþletilebilir Ýþaret Dili)
+# DOM: DocumentObjectModel (Döküman Nesnesi Modeli)
+
+import xml.dom.minidom
+
+# minidom okuyucusunu (parse) kullanarak XML dökümanýný açalým...
+# DÝKKAT: DOM da SAX gibi XML dökümanýndaki Türkçe karakterlere hata veriyor...
+DOMAðacý = xml.dom.minidom.parse ("p19aXML.xml")
+koleksiyoncu = DOMAðacý.documentElement # Ýlk kök elementi alýr...
+if koleksiyoncu.hasAttribute ("raf"):
+    print ("Kök element: [%s]" % koleksiyoncu.getAttribute ("raf"))
+
+# Koleksiyoncu'nun tüm filimlerini alalým...
+filimler = koleksiyoncu.getElementsByTagName ("film")
+
+# Herbir film elementi detaylarýný görüntüleyelim...
+for film in filimler:
+    print ("\n*****Film*****")
+    if film.hasAttribute ("baslik"):
+      print ("Baþlýk: %s" % film.getAttribute ("baslik"))
+
+    tip = film.getElementsByTagName ('katagori')[0]
+    print ("Katagori: %s" % tip.childNodes[0].data)
+    format = film.getElementsByTagName ('bicim')[0]
+    print ("Biçim: %s" % format.childNodes[0].data)
+    derece = film.getElementsByTagName ('itibar')[0]
+    print ("Ýtibar: %s" % derece.childNodes[0].data)
+    izahat = film.getElementsByTagName ('aciklama')[0]
+    print ("Açýklama: %s" % izahat.childNodes[0].data)
+
+çýktý = """
+**  >python p19b.py  **
+Kök element: [Yeni Gelenler]
+
+*****Film*****
+Baþlýk: Arkadaki Dusman
+Katagori: Savas, Heyecan
+Biçim: DVD
+Ýtibar: PG
+Açýklama: Amerika-Japonya savasi hakkinda
+
+*****Film*****
+Baþlýk: Donusenler
+Katagori: Canlandirma, Bilim Kurgu
+Biçim: DVD
+Ýtibar: R
+Açýklama: Bir bilim kurgu filmi
+
+*****Film*****
+Baþlýk: Uc Silahli
+Katagori: Canlandirma, Aksiyon
+Biçim: DVD
+Ýtibar: PG
+Açýklama: Korkmaya kendinizi hazirlayin!
+
+*****Film*****
+Baþlýk: Istar
+Katagori: Komedi
+Biçim: VHS
+Ýtibar: PG
+Açýklama: Izlemesi sikici
+
+*****Film*****
+Baþlýk: Kudurus
+Katagori: Bilim Kurgu
+Biçim: VHS
+Ýtibar: PG
+Açýklama: New York'ta canavarlar
+"""

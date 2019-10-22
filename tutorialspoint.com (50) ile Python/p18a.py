@@ -1,0 +1,27 @@
+# coding:iso-8859-9 Türkçe
+# Python 3 - Multithreaded Programming
+# Eski yöntemle sicim yaratma...
+
+import _thread
+import time
+
+# Sicim için bir fonksiyon tanýmlayalým...
+def zamanýYaz (sicimAdý, tehir):
+    sayaç = 0
+    while sayaç < 10:
+        time.sleep (tehir)
+        sayaç += 1
+        print ("[%s: Sayaç(%d) Tarih: %s]" % (sicimAdý, sayaç, time.ctime (time.time())))
+        if sayaç == 10:
+            print ("-->%s sonlandý" % sicimAdý)
+
+# 3 farklý sicim yaratalým...
+try:
+     _thread.start_new_thread (zamanýYaz, ("Sicim-1", 1, ))
+     _thread.start_new_thread (zamanýYaz, ("Sicim-2", 3, ))
+     _thread.start_new_thread (zamanýYaz, ("Sicim-3", 2, ))
+except:
+    print ("HATA: Sicim baþlatma hatasý")
+
+while True: # Sonsuz döngü; ^C ile çýkýn...
+    pass

@@ -1,0 +1,10 @@
+# coding:iso-8859-9 Türkçe
+
+ondalýk = int (input ("Bir ondalýk tamsayý girin: "))  
+  
+print ("Binary/Ýkili karþýlýðý =", bin (ondalýk))
+print ("Octal/Sekizlik karþýlýðý =", oct (ondalýk))
+print ("Hexal/Onaltýlýk karþýlýðý =", hex (ondalýk), "\n") 
+
+k = input ("Herhangibir klavye karakteri girin: ")  
+print ("[" + k + "]'nýn ASCII kod karþýlýðý = ", ord (k))

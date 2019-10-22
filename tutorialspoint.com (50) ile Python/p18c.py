@@ -1,0 +1,52 @@
+# coding:iso-8859-9 Türkçe
+# Python 3 - Multithreaded Programming
+# Yeni yöntemle sicim yaratma: Thread altsýnýfý, override __init__ ve run metodlarý,
+# sicim tip nesneleri yaratma, start ile run'ý koþturma, icabýnda join ile sicimlerin
+# çalýþmasý tamamlanmadan alttaki kodlamaya geçmemenin saðlanmasý ve
+# lock ile bir sicim tamamlanmadan (senkronizasyon) diðerine geçilmemesi
+
+import threading
+import time
+
+class sicimim (threading.Thread):
+    def __init__ (self, sicimNo, sicimAdý, tehir): # Kurucu metod...
+        threading.Thread.__init__ (self)
+        self.sicimNo = sicimNo
+        self.sicimAdý = sicimAdý
+        self.tehir = tehir
+    def run (self):
+        print ("Baþlatýlýyor: " + self.sicimAdý)
+        # Sicim kilidi kapatýlýp, sicimin tamamlanma bütünlüðü saðlanýyor...
+        sicimKilidi.acquire()
+        zamanýGöster (self.sicimAdý, self.tehir, 5)
+        print ("Sonlandýrýlýyor: " + self.sicimAdý)
+        # Kilidi açýp birsonraki sicime geçiþ veriliyor...
+        sicimKilidi.release()
+
+def zamanýGöster (ipAdý, beklet, tekrarla):
+    while tekrarla:
+        time.sleep (beklet)
+        print ("%s: Sayaç(%d) Zaman: %s" % (ipAdý, tekrarla, time.ctime (time.time())))
+        tekrarla -= 1
+
+sicimKilidi = threading.Lock()
+sicimler = []
+
+# Yeni sicimlerimizi yaratalým...
+sicim1 = sicimim (1001, "Sicim-1", 2)
+sicim2 = sicimim (250, "Sicim-2", 3)
+sicim3 = sicimim (1957, "Sicim-3", 1)
+
+# Sicimleri run için baþlatalým...
+sicim3.start()
+sicim1.start()
+sicim2.start()
+
+# Sicim listesi yapýp birlikte join (alt koda geçiþ bekletmesi) edelim...
+sicimler.append (sicim1)
+sicimler.append (sicim3)
+sicimler.append (sicim2)
+
+for ip in sicimler: ip.join()
+
+print ("\nSicimler tamamlandý; alt kodlamalara geçilebilir...")

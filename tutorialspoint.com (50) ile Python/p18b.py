@@ -1,0 +1,46 @@
+# coding:iso-8859-9 Türkçe
+# Python 3 - Multithreaded Programming
+# Yeni yöntemle sicim yaratma: Thread altsýnýfý, override __init__ ve run metodlarý,
+# sicim tip nesneleri yaratma, start ile run'ý koþturma, ve  icabýnda join ile sicimlerin
+# çalýþmasý tamamlanmadan alttaki kodlamaya geçmemenin saðlanmasý
+
+import threading
+import time
+
+çýkýþBayraðý = 0 # Zamaný göstererek (0=False) sicimleri tamamlar...
+
+class sicimim (threading.Thread):
+    def __init__ (self, sicimNo, sicimAdý, geciktir): #Sicim kurucu metodu...
+        threading.Thread.__init__ (self)
+        self.sicimNo = sicimNo
+        self.sicimAdý = sicimAdý
+        self.geciktir = geciktir
+    def run (self):
+        print ("Baþlatýlýyor: " + self.sicimAdý)
+        zamanýYaz (self.sicimAdý, self.geciktir, 10)
+        print ("Sonlandýrýlýyor: " + self.sicimAdý)
+
+def zamanýYaz (ipAdý, tehir, sayaç):
+    while sayaç: # sayaç sayýsý kadar döngü tekrarý...
+        if çýkýþBayraðý: # Zamaný göstermeden (1=True) sicimleri tamamlar...
+            break
+        time.sleep (tehir)
+        print ("[%s: Sayaç(%d) Tarih: %s]" % (ipAdý, sayaç, time.ctime (time.time())))
+        sayaç -= 1
+
+# 3 adet sicim tip nesnesi yaratalým...
+sicim1 = sicimim (10, "Sicim-1", 3) # Tehir ençok, sonuncu olur...
+sicim2 = sicimim (25, "Sicim-2", 1) # Tehir enaz, önce tamamlanýr...
+sicim3 = sicimim (15, "Sicim-3", 2)
+
+# Sicimleri baþlatalým...
+sicim1.start()
+sicim2.start()
+sicim3.start()
+
+# Sicimleri tamamlamadan alttaki kodlamaya geçmesin...
+sicim1.join()
+sicim2.join()
+sicim3.join()
+
+print ("\nSicimler tamamlandý. Programdan çýkýlýyor!")

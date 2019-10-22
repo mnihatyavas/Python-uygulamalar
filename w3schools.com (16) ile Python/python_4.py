@@ -1,0 +1,14 @@
+# coding:iso-8859-9 "Türkçe"
+
+sözlüðüm = dict (elma="yeþil", muz="sarý", kiraz="kýrmýzý")
+print ("Sözlüðümdeki element sayýsý:", len (sözlüðüm))
+print ("Sözlüðümdeki elementler:", sözlüðüm)
+
+sözlüðüm["elma"] = "pembe"
+print ("Deðiþen sözlüðüm içeriði:", sözlüðüm)
+
+sözlüðüm["mürmüreriði"] = "mor"
+print ("Ýlaveli sözlüðüm içeriði:", sözlüðüm)
+
+del (sözlüðüm["muz"])
+print ("Eksiltilen sözlüðüm içeriði:", sözlüðüm)

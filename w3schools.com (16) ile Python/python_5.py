@@ -1,0 +1,31 @@
+# coding:iso-8859-9 "Türkçe"
+import os, sys
+
+def fonksiyonum1():
+    print ("Bir fonksiyon tanýmýndan herkese selamlar!")
+
+fonksiyonum1()
+print()
+
+def fonksiyonum2 (ad):
+    print (ad + " Yavaþ")
+
+fonksiyonum2 ("Mahmut Nihat")
+fonksiyonum2 ("Sevim")
+fonksiyonum2 ("Mustafa Nedim")
+print()
+
+def fonksiyonum3 (ülke = "Türkiye"): # Varsayýlý deðer atama...
+    print ("Memleketim:" + ülke)
+
+fonksiyonum3 ("Amerika")
+fonksiyonum3() # Varsayýlý deðer görüntülenecek...
+fonksiyonum3 ("Almanya")
+print()
+
+def fonksiyonum4 (sayý):
+    return 5 * pow (sayý, 0.37)
+
+print ("5 * 3^0.37 =", fonksiyonum4 (3))
+print ("5 * 5^0.37 =", fonksiyonum4 (5))
+print ("5 * 9.7862^0.37 =", fonksiyonum4 (9.7862))

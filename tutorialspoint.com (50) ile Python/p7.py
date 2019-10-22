@@ -1,0 +1,38 @@
+# coding:iso-8859-9 Türkçe
+# Python3 - Strings
+
+dizge1 = 'Merhaba, Dünya!'
+dizge2 = "Python ile Programcýlýk Örnekleri"
+
+print (dizge1 + "\n" + dizge2)
+print ("dizge1[0]: ", dizge1[0])
+print ("dizge2[1:5]: ", dizge2[1:5])
+print ("Dizge güncelleme: ", dizge1[:7] + ' Python!')
+
+del dizge1, dizge2
+a = 'Selam'
+b = "Python"
+
+print (a+b)
+print (a*3)
+print (a[0])
+print (a[1:4])
+print ("S" in a)
+print ("M" not in a)
+print (r'\n')
+print (R"\r")
+
+print ("Ýsmim %s'dýr ve kilom %d kg'dýr!\n" % ('M.Nihat Yavaþ', 58))
+
+paragraf = """Bu, üçlü tek/çift týrnaklar içerisinde girilen
+çok satýrlý bir dizge olup, bazý esc/kaç
+karakterlerini de içinde barýndýrmaktadýr.
+Bu özel karakterler yansýmayýp, sadece etkisi görünecektir.
+Örneðin TAB/KERTÝK (\t) veya NEWLINE/YENÝSATIR [ \n ]
+ekranda sonucu itibarýyla etkili olacaktýr.
+"""
+print (paragraf)
+print()
+
+print ('C:\\hiçbiryer')
+print (r'C:\\hiçbiryer')

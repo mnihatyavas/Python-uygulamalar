@@ -1,0 +1,20 @@
+# coding:iso-8859-9 Türkçe
+
+import os
+
+print ("Þimdiki dizinimiz: [" + os.getcwd() + "]")
+
+try:
+    print ("'deneme' adlý bir dizin yaratalým==>")
+    os.mkdir ("deneme")
+except Exception:
+    print()
+
+print ("Yarattýðýmýz 'deneme' dizini açalým==>")
+os.chdir ("deneme")
+print ("Þimdiki dizinimiz: [" + os.getcwd() + "]")
+
+os.chdir ("..")
+print ("Þimdiki dizinimiz: [" + os.getcwd() + "]")
+print ("Yarattýðýmýz 'deneme' adlý dizini silelim==>")
+os.rmdir ("deneme")

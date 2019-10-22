@@ -1,0 +1,11 @@
+# coding:iso-8859-9 Türkçe
+# 3: Python3 - Basic Operators
+# Python Identity Operators
+
+a=10; b=10
+doðru=True; yanlýþ=doðru
+
+print ("a=10 ve b=20")
+print ("a is b:", a is b)
+print ("doðru is yanlýþ:", doðru is yanlýþ)
+print ("a is not doðru:", a is not doðru)

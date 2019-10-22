@@ -1,0 +1,13 @@
+# coding:iso-8859-9 Türkçe
+
+class Sayaç:
+    __gizliTipDeðiþkeni = 0 # Dýþardan eriþilemez gizli sýnýf tip deðiþkeni...
+
+    def sayacýArtýr (self):
+        self.__gizliTipDeðiþkeni += 1
+        print ("Sayaç deðeri:", self.__gizliTipDeðiþkeni)
+
+sayaç = Sayaç()
+for i in range (10): sayaç.sayacýArtýr()
+# print ("Sayacýmýzýn son deðeri:", sayaç__gizliTipDeðiþkeni)==> Hata verir...
+print ("\nSayacýmýzýn son deðeri:", sayaç._Sayaç__gizliTipDeðiþkeni)

@@ -1,0 +1,29 @@
+# coding:iso-8859-9 Türkçe
+# Komut iletisinden girilen tüm F dereceyi C dereceye çevirir...
+
+import sys
+
+def çevir (S):
+    """(dizge): float
+    Komut iletisinden argüman olarak girilen Fahrenhayt float dizgesini
+    aþaðýdaki formülle bir Selsiyüs derecesine çevirir. Argüman girilmez
+    yada yanlýþ girilirse kullanýcýya bildirilir...
+    """
+    fahrenhayt = float (S)
+    selsiyüs = (fahrenhayt - 32) * 5 / 9
+    return selsiyüs
+
+def anaProgram():
+    # Þayet F argv unutulmuþsa hatýrlatýlmalýdýr...
+    if len (sys.argv) == 1:
+        print ("{} ..[Unutulan argümanlar: F1 F2 ...]" .format (sys.argv[0]))
+        sys.exit (0)
+
+    # Argüman sayýsý kadar döngü tekrarý...
+    for argüman in sys.argv[1:]:
+        try: selsiyüs = çevir (argüman)
+        except ValueError: print ("{!r} bir sayýsal veri deðildir!" .format (argüman), file=sys.stderr)
+        else: print ("{} \N{DEGREE SIGN}F = {} \N{DEGREE SIGN}C" .format (argüman, round (selsiyüs, 2)))
+
+if __name__ == '__main__':
+    anaProgram()

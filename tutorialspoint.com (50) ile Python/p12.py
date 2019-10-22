@@ -1,0 +1,73 @@
+# coding:iso-8859-9 Türkçe
+# Python3 - Functions
+
+# Fonksiyonlarýmýzýn tanýmlanmasý...
+def yaz (dizge):
+    "Bu fonksiyona aktarýlan dizgeyi ekrana yazdýrýr."
+    print (dizge)
+    return
+
+def deðiþtirBeni1 (listem):
+    "Bu fonksiyona geçirilen listenin bir elemanýný deðiþtirir."
+    print ("Fonksiyon içinde, deðiþiklik öncesi liste içerikleri:", listem)
+    listem[1]=1957
+    print ("Fonksiyon içinde, deðiþiklik sonrasý liste içerikleri:", listem)
+    return
+
+def deðiþtirBeni2 (listem):
+    "Bu fonksiyon listem'e silbaþtan deðerler atar."
+    print ("Fonksiyon içinde, deðiþiklik öncesi liste içerikleri:", listem)
+    listem = [45, 67, 93]
+    print ("Fonksiyon içinde, deðiþiklik sonrasý liste içerikleri:", listem)
+    return
+
+def kimlik (isim, yaþ, doðumYeri, ülkesi = "Türkiye", *deðiþken):
+    "Bu fonksiyona aktarýlan bilgileri ekrana yazdýrýr."
+    print ("Adý ve soyadý:", isim)
+    print ("Yaþý:", yaþ)
+    print ("Doðum yeri:", doðumYeri)
+    print ("Memleketi:", ülkesi)
+    for x in deðiþken:
+        print (x, end=" ")
+    return
+
+def toplam1 (*a):
+    "Olasý tüm deðerleri toplar ve çaðýrana döndürür."
+    b = 0
+    for x in a: b += x
+    return b
+
+toplam = lambda a1,a2,a3: a1 + a2 + a3
+
+#
+# Tanýmlý yaz(..) fonksiyonumuzun kullanýlmasý...
+yaz ("Bu, kullanýcý tanýmlý fonksiyonumuza ilk çaðýrýdýr!")
+yaz ("Ayný fonksiyona tekrar ikinci çaðrýmýzý yapýyoruz.\n")
+
+# Tanýmlý deðiþtirBeni1(..) fonksiyonumuzun kullanýlmasý...
+liste1 = [10,20,30]
+deðiþtirBeni1 (liste1)
+print ("Fonksiyon dýþýnda, liste içerikleri:", liste1)
+
+print()
+# Tanýmlý deðiþtirBeni2(..) fonksiyonumuzun kullanýlmasý...
+liste2 = [30,10,20]
+deðiþtirBeni2 (liste2)
+print ("Fonksiyon dýþýnda, liste içerikleri:", liste2)
+
+print()
+# Tanýmlý kimlik(..) fonksiyonumuzun kullanýlmasý...
+kimlik (ülkesi="TR", yaþ = 60, doðumYeri = "Yeþilyurt", isim="M.Nihat Yavaþ")
+print()
+kimlik (yaþ = 60, doðumYeri = "Yeþilyurt", isim="M.Nihat Yavaþ")
+print()
+kimlik ("M.Nihat Yavaþ", 62, "Malatya", "TR", "Hobileri:", "Gezinti", "Okuma", "Bisiklet", "Yüzme")
+
+print("\n")
+print ("Toplam(5, 10, 15):", toplam (5, 10, 15))
+print ("Toplam(1.5, 2.13, 15):", toplam (1.5, 2.13, 15))
+
+print("\n")
+print ("Toplam():", toplam1 ())
+print ("Toplam(5):", toplam1 (5))
+print ("Toplam(5, 10, 2, 3.75):", toplam1 (5, 10, 2, 3.75))

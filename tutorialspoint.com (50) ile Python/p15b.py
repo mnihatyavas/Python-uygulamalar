@@ -1,0 +1,33 @@
+# coding:iso-8859-9 türkçe
+
+def sayý (a):
+    try: return int (a)
+    except Exception as istisna:
+       print ("Tamsayý dönüþümünde hata oluþtu: ", istisna)
+
+print (sayý ("dizge"))
+print (sayý ("1957"))
+print (sayý (1957))
+print()
+
+def seviye (a):
+    if a <1:
+        raise Exception (a)
+    # Eðer bir istisna kalkmýþsa
+    # sonraki kodlamalar iþletilmeyecektir...
+    return a
+
+try:
+    sayý = seviye (-10)
+    # Fonksiyonda istisna kaldýrýlmýþsa alttaki print atlanacaktýr...
+    print ("seviye = ", sayý)
+except Exception as ist:
+    print ("Seviye fonksiyonunda kaldýrýlan hata:", ist)
+
+print()
+# Kullanýcý tanýmlý istisnalar...
+class Aðhatasý (RuntimeError):
+    def __init__ (self, arg): self.args = arg
+
+try: raise Aðhatasý ("Yanlýþ sunucu ismi")
+except Aðhatasý as ist: print ("HATA:", ist.args)

@@ -1,0 +1,18 @@
+w3_iþlenmiþÖrnekleri.ÝÞLÝ (16)
+========================
+python_1.py: "print" ile python'dan ilk mesajý yazdýrma örneði.
+python_2.py: "import datetime" modülüyle günün tarih ve zamaný örneði.
+python_3.py: "open/write/read/close" ile metin dosyasýna veri giriþi/okumasý örneði.
+python_4.py: "dict(..)" ile sözlüðe element ekleme/silme/deðiþtirme örneði.
+python_5.py: "def" ile parametreli/-siz/varsayýlý fonksiyon tanýmlama ve çaðýrma örneði.
+python_6.py: "import pymongo" modülüyle veri tabaný dosyasýný kullanma örneði.
+python_7.py: pymongo veritabanýna özel veriler girme örneði.
+python_8.py: "import mysql.connector" modülüyle mysql veritabanýný kullanma örneði.
+python_9.py: "lambda ve def" fonksiyonlarýný kullanma örneði.
+python_10.py: "import camelcase" modülüyle cümle kelimeleri ilkharflerini büyütme örneði.
+python_11.py: "import calendar" takvim modülüyle aylýk takvim dökümü örneði.
+python_12.py: "import random" modülüyle tesadüfi sayýlar üretme örneði.
+python_13.py: ondalýk tamsayýyý bin/ikili, oct/sekizli ve hex/onaltýlý'ya çevirme örneði.
+python_14.py: tanýmlý fonksiyonlarla toplama/çýkarma/çarpma/bölme/yüzde/kalan örneði.
+python_15.py: faktöriyel kendini çaðýran fonksiyonu tanýmlama ve kullanma örneði.
+python_16.py: matris toplama/çarpma ve noktalamasýz kelime artan sýralama örneði.

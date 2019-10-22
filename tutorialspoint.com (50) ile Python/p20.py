@@ -1,0 +1,22 @@
+# coding:iso8859-9 Türkçe
+# Python 3 - GUI Programming (Tkinter)
+
+import tkinter
+
+# Ana program kodlamasý buraya eklenmeli...
+pencere = tkinter.Tk()
+pencere.mainloop()
+
+
+çýktý = """
+Pencere aletleri -araç, komponent, parça- (Button, Canvas, Checkbutton, Entry,
+Frame, Label, Listbox, Menubutton, Menu, Message, Radiobutton, Scale, Scrollbar,
+Text, Toplevel, Spinbox, PanedWindow, LabelFrame, tkMessageBox)
+
+Bazý komponent özellikleri: Dimension, Color, Font, Anchor, Relief stilleri, Bitmap, Cursor vb...
+
+Komponentleri pencereye serimleme yöntemleri:
+   1. pack(): Komponentleri blok olarak kurar
+   2. grid(): Parçalar tablo hücreleri benzeri ýzgaraya yerleþtirilir
+   3. place(): Parçalarýn mutlak konumlarý belirlenir
+"""

@@ -1,0 +1,38 @@
+# coding:iso-8859-9 Türkçe
+# Python3 - Dictionary
+
+sözlük1 = {'Adý': 'M.Nihat', 'soyadý': 'Yavaþ', 'Yaþý': 62, 'doðum yeri': 'Yeþilyurt'}
+sözlük2 = {1: "Bir", 2:"Ýki", "Üç":"Üç"}
+sözlük3 = {}
+
+print ("sözlük1['Adý']:", sözlük1['Adý'])
+print ("sözlük1['Yaþý']:", sözlük1['Yaþý'])
+print ("sözlük1['doðum yeri']:", sözlük1['doðum yeri'])
+
+sözlük1 ['Yaþý'] = 65; # güncelleme...
+sözlük1['Doðum Yýlý'] = 1957 # Yeni içerik giriþi...
+
+print ("sözlük1['Yaþý']: ", sözlük1['Yaþý'])
+print ("sözlük1['Doðum Yýlý']: ", sözlük1['Doðum Yýlý'])
+
+del sözlük1['Adý'] # Tek içerik silinmesi...
+print (sözlük1)
+sözlük1.clear() # Tüm içeriklerin silinmesi...
+print (sözlük1)
+del sözlük1 # Sözlüðün silinmesi...
+# print (sözlük1) ==> NameError: name 'sözlük1' is not defined
+
+sözlük1 = {'Adý': 'Mahmut', 'soyadý': 'Yavaþ', 'Yaþý': 62, 'doðum yeri': 'Yeþilyurt', 'Adý': 'Nihat'}
+print (sözlük1)
+print (len (sözlük1))
+
+print (sözlük2)
+
+print (type (sözlük3))
+
+print (sözlük1.keys())
+print (sözlük1.values())
+print (sözlük1.items())
+
+sözlük1.update (sözlük2)
+print (sözlük1)

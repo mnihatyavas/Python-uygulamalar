@@ -1,0 +1,22 @@
+# coding:iso-8859-9 Türkçe
+
+kelime = 'kelime'
+cümle = "Bu, büyükharfle baþlayýp noktayla biten tek satýrlýk bir cümledir."
+paragraf = """Bu ise bir paragraftýr.
+Bir cümle 2 týrnak arasýndaki tek satýrlýk metinken,
+bir paragraf birden çok satýrlýk metinden oluþabilir.
+Paragraf baþlangýcý 3 týrnakla baþlar ve
+bitiþi de yine 3 týrnakla olmalýdýr."""
+
+# Tek satýrlýk yorumumuz...
+print (kelime, "\n") # Bu da bir yorumdur...
+print (cümle, "\n")
+print (paragraf)
+
+# Python'da çoklu yorum satýrý sembolü yoktur.
+# Çoklu yorum satýrý gireceksek,
+# herbir yorum satýrýný teker teker yazmalýyýz.
+
+input ("\n\nDevam için Ent tuþuna basýn: ")
+
+import sys; x = 'çoklu ifade satýrý'; sys.stdout.write (x + '\n') # print(..) ile aynýdýr...

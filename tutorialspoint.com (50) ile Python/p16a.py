@@ -1,0 +1,35 @@
+# coding:iso-8859-9 Türkçe
+# Python 3 - Object Oriented
+
+class Ýþgören:
+    elemanSayýsý = 0
+
+    def __init__ (self, isim, maaþ):
+        self.isim = isim
+        self.maaþ = maaþ
+        Ýþgören.elemanSayýsý += 1
+
+    def iþgöreniGöster (self):
+        print ("Ýsim: ", self.isim,  "\n---Maaþ: ", self.maaþ)
+
+# Ýþgören sýnýfýnýn 5 nesnesini yaratalým...
+iþgören1 = Ýþgören ("M.Nihat Yavaþ", 2000)
+iþgören2 = Ýþgören ("M.Nedim Yavaþ", 3000)
+iþgören3 = Ýþgören ("Nihal Yavaþ Candan", 1000)
+iþgören4 = Ýþgören ("Hatice Yavaþ Kaçar", 4000)
+iþgören5 = Ýþgören ("Songül Yavaþ Göktürk", 7000)
+
+iþgören1.iþgöreniGöster()
+iþgören2.iþgöreniGöster()
+iþgören3.iþgöreniGöster()
+iþgören4.iþgöreniGöster()
+iþgören5.iþgöreniGöster()
+
+print ("\nToplam Ýþgören Sayýsý: %d" % Ýþgören.elemanSayýsý)
+
+print()
+print ("Ýþgören.__doc__:", Ýþgören.__doc__)
+print ("Ýþgören.__name__:", Ýþgören.__name__)
+print ("Ýþgören.__module__:", Ýþgören.__module__)
+print ("Ýþgören.__bases__:", Ýþgören.__bases__)
+print ("Ýþgören.__dict__:", Ýþgören.__dict__ )

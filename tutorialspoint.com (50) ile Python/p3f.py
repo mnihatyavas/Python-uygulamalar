@@ -1,0 +1,11 @@
+# coding:iso-8859-9 Türkçe
+# 3: Python3 - Basic Operators
+# Python Membership Operators
+
+liste = ["kýrmýzý", "yeþil", "mavi", "sarý", "siyah", "beyaz"]
+üye = "sarý"
+
+print ("liste=", liste)
+print ("üye=", üye)
+print ("üye in liste=", üye in liste)
+print ("not(üye in liste)=", not(üye in liste))

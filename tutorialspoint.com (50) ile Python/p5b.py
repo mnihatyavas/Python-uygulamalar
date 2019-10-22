@@ -1,0 +1,17 @@
+# coding:iso-8859-9 Türkçe
+import sys
+
+def fibonacci_serisi (n): # yield üreteç fonksiyonu...
+    a, b, sayaç = 0, 1, 0
+    while True:
+        if (sayaç > n): return
+        yield a # a üretir ve seriyi hafýzasýnda saklar...
+        a, b = b, a + b
+        sayaç += 1
+
+sayý = int (input ("Fibonacci sayýsý girin: "))
+tara = fibonacci_serisi (sayý) # tara bir Iterator nesnesidir...
+print (sayý, "sayýsýnýn Fibonacci seri açýlýmý==>")
+while True:
+    try:print (next (tara), end=" ")
+    except StopIteration: sys.exit()

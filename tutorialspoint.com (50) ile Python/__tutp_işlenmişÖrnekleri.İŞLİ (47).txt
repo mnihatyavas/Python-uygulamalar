@@ -1,0 +1,92 @@
+tutorialspoint.com Python Örnekleri Kodlamasý (50 adet)
+============================================
+
+1: Python3 - Basic Syntax
+    p1a.py: Python'la dünyaya merhaba örneði.
+    p1b.py: "# coding:iso-8859-8" Türkçe karakterler örneði.
+    p1c.py: "open/close/write/read" ile sýralý disk dosyasý örneði.
+    p1d.py: Kelime, cümle, çok satýrlý paragraf tanýmlarý ve yorumlar örneði.
+
+2: Python3 - Variable Types
+    p2a.py: Sayýsal ve dizgesel veri tipleri örneði.
+    p2b.py: Dizge, liste, tüple ve sözlük veri tipleri örneði.
+
+3: Python3 - Basic Operators
+    p3a.py: Aritmetik iþlemciler örneði.
+    p3b.py: Karþýlaþtýrma iþlemcileri örneði.
+    p3c.py: Atama iþlemcileri örneði.
+    p3d.py: Ýkili iþlemciler örneði.
+    p3e.py: Mantýksal iþlemciler örneði.
+    p3f.py: Üyelik iþlemcileri örneði.
+    p3g.py: Kimlik iþlemcileri örneði.
+
+4: Python3 - Decision Making
+    p4.py: if-elif-else karar takýmý örneði.
+
+5: Python 3 - Loops
+    p5a.py: Döngülü iter() ve next() Iterator/Tarayýcý fonksiyonlarý örneði.
+    p5b.py: Fibonacci serisini yield üreteci ve döngülü tarayýcýyla kullanma örneði.
+
+6: Python3 - Numbers
+    p6.py: Sayý çeþitleri (int, float, kompleks) ve birkaç sayýsal fonksiyon örneði.
+
+7: Python3 - Strings
+    p7.py: Dizge, paragraf, esc karakterleri, % formatlama örneði.
+
+8: Python3 - Lists
+    p8.py: Deðiþtirilebilir []'li listelerle eleman ekleme, silme, deðiþtirme, sýralama örneði.
+
+9. Python3 - Tuples
+    p9.py: Deðiþtirilemez ()'li tüplelerle eleman tanýmlama, silme, birleþtirme, görüntüleme örneði.
+
+10. Python3 - Dictionary
+    p10.py: Deðiþtirilebilir {}'li sözlüklerle anahtar-deðer çifti girme, güncelleme, ekleme, silme örneði.
+
+11. Python3 - Date & Time
+    p11a.py: "import time" modülüyle anýn saniye, tarih-zamaný ve saat dilimini görme örneði.
+    p11b.py: "import calendar" modülüyle girilen yýlýn/ayýn takvimi, artýk yýl, tek tek yýl, ay, gün bilgileri örneði.
+
+12. Python3 - Functions
+    p12.py: Argümansýz, sabit ve deðiþken argümanlý ve lambda fonksiyonlarý örneði.
+
+13. Python 3 - Modules
+    p13a.py: Ýki modülü import'layýp metodlarýný kullanma örneði.
+    p13a_modül1.py: "selam" fonksiyonu alt-örneði.
+    p13a_modül2.py: "fib" fonksiyonu örneði.
+    p13b.py: Bir import modülünün içerdiði isimleri dir(modül) ile görüntüleme örneði.
+
+14. Python 3 - Files I/O
+    p14a.py: Bir disk dosyasýna "a+" ile kayýt ekleyip "r+" ile okuma, açma-kapama-silme-addeðiþtirme örneði.
+    p14b.py: Bir dizin yaratma, açma ve silme örneði.
+
+15. Python 3 - Exceptions Handling
+    p15a.py: "assert" ile iddia edilenin tersi/istisna durumunda hata verdirilmesi örneði.
+    p15b.py: try-except ile hatalarýn yakalanmasý ve yönetilmesi örneði.
+
+16. Python 3 - Object Oriented
+    p16a.py: Bir iþgören sýnýfýnýn kurucusu ve eleman görünteleme metodu örneði.
+    p16b.py: Program sonlandýðýnda tanýmlý sýnýf nesnesinin otomatikmen silinmesi örneði.
+    p16c.py: Harici sýnýfýn import'la çaðrýlýp metod ve tip deðiþkenlerinin kullanýlmasý örneði.
+    p16c_sýnýf.py: "Sýnýf" sýnýfý alt-örneði.
+    p16d.py: Alt sýnýfýn ana sýnýfý miraslamasý ve override/esgeçme örneði.
+    p16e.py: Sýnýf yöntemiyle çift deðerli vektörel toplam ve görüntülenmesi örneði.
+    p16f.py: Sýnýf gizli tip deðiþkenini nesne._Sýnýf__tipDeðiþkeni yöntemiyle kullanabilme örneði.
+
+17. Python 3 - Regular Expressions
+    p17a.py: re: regular expression ile dizgede kalýba uyan gruplarý görüntüleme örneði.
+    p17b.py: re.match ve re.search arasýndaki farka örnek.
+    p17c.py: re.sub ile istenmeyen karakterli deðiþtirilen telefon no örneði.
+
+18. Python 3 - Multithreaded Programming
+    p18a.py: import _thread eski yöntemle çoklu sicim çalýþtýrma örneði.
+    p18b.py: import threading ile yeni yöntemle çoklu sicim yaratma ve koþturma örneði.
+    p18c.py: Sicim kilidi alma-býrakma senkronizasyonu ve join sicimleri tamamlama örneði.
+    p18d.py: Çoklu sicimlerde iþlemleri listeler ve döngülerle kolaylaþtýrma örneði.
+
+19. Python 3 - XML Processing
+    p19a.py: "import xml.sax" ile XML dosya verilerini element ve karakter bazýnda okuma örneði.
+    p19aXML.xml: XML: ExtensibleMarkupLanguage/GeniþletilebilirÝþaretDili veri dosyasý örneði.
+    p19b.py: "import xml.dom.minidom" ile XML dosya verilerini "getElementsByTagName" bazýnda okuma örneði.
+
+20. Python 3 - GUI Programming
+    p20.py: "import tkinter" ile bir GUI penceresi yaratma örneði.

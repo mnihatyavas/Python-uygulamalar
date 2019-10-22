@@ -1,0 +1,132 @@
+# coding:iso-8859-9 Türkçe
+# güneþ->merkür->venüs->dünya->mars->uranüs->jüpiter->neptün->satürn..
+
+import math
+from turtle import * # Turtle dahil tüm sýnýflarý...
+
+# Evrensel kütle çekim/gravitational sabitesi G
+G = 6.67428e-11
+
+# Bu programda kullanýlan birim: 100 pixels = 1ADIM.
+ADIM = (149.6e6 * 1000)     # 149.6 million km, in meters.
+ÖLÇEK = 250 / ADIM
+
+class Gezegen (Turtle):
+    """Turtle'ýn altsýnýfý bir yerçekimsel gezegeni temsil etmektedir...
+    Deðiþken tanýmlarý:
+    kütlesi : aðýrlýk->kg
+    vx, vy: x-yatay ve y-dikey hýz->m/s
+    px, py: x-yatay ve y-d,key konum/uzaklýk->m
+    """
+
+    adý = 'Gezegen'
+    kütlesi = None
+    vx = vy = 0.0
+    px = py = 0.0
+
+    def çekim (self, diðeri):
+        """(Gezegen): (fx, fy)
+        Diðer gezegenin bu gezegen üzerindeki çekim gücünü dönderir...
+        """
+        # Eðer diðeriyle bu yanlýþlýkla ayný gezegense hata mesajý verir...
+        if self is diðeri: raise ValueError ("%r gezegeninin kendi üzerindeki çekimi soruluyor!" % self.adý)
+
+        # Ýki gezegen arasý mesafe hesaplanýyor...
+        sx, sy = self.px, self.py
+        ox, oy = diðeri.px, diðeri.py
+        dx = (ox - sx)
+        dy = (oy - sy)
+        d = math.sqrt (dx**2 + dy**2)
+
+        # Mesafe sýfýrsa hata bildir, yoksa birazdan sýfýra bölüm oluþacak...
+        # get a ZeroDivisionError exception further down.
+        if d == 0: raise ValueError ("%r ve %r gezegenlerde çarpýþma var!" % (self.adý, diðeri.adý))
+
+        # Çekim gücü hesaplanýyor...
+        f = G * self.kütlesi * diðeri.kütlesi / (d**2)
+
+        # Çekim gücünün yönü hesaplanýyor...
+        theta = math.atan2 (dy, dx)
+        fx = math.cos (theta) * f
+        fy = math.sin (theta) * f
+        return fx, fy
+
+def bilgileriGüncelle (adým, gezegenler):
+    """(int, [Gezegen])
+    Simülasyonun son durumu hakkýndaki bilgileri gösterir...
+    """
+    print ('Adým #{}' .format (adým))
+    for gezegen in gezegenler:
+        dizge = '{:<8}  Konum={:>6.2f} {:>6.2f} Hýz={:>10.3f} {:>10.3f}' .format (
+                gezegen.adý, gezegen.px / ADIM, gezegen.py / ADIM, gezegen.vx, gezegen.vy)
+        print (dizge)
+    print()
+
+def döngüyüBaþlat (gezegenler):
+    """([Gezegen])
+    Sonsuz döngü, çýkmak için ^C bas. Verili gezegen konum bilgileri sürekli
+    güncellenip turtle çizimi süregider...
+    """
+    zamanAralýðý = 7 * 24 * 3600 # Bir hafta...
+
+    for gezegen in gezegenler:
+        gezegen.penup()
+        #gezegen.hideturtle() #Çizim kalemimiz görünedursun...
+
+    adým = 1
+    while True:
+        bilgileriGüncelle (adým, gezegenler)
+        adým += 1
+
+        kuvvet = {}
+        for gezegen in gezegenler:
+            # Verili 'gezegen' üzerine uygulanan tüm yatay ve dikey kuvvetler hesaplanýr...
+            toplam_fx = toplam_fy = 0.0
+            for diðeri in gezegenler:
+                # Bir gezegenin kendi üzerine olan çekimi hesaplanmamalý...
+                if gezegen is diðeri: continue
+                fx, fy = gezegen.çekim (diðeri)
+                toplam_fx += fx
+                toplam_fy += fy
+
+            # Toplam uygulanan kuvvet kaydedilir...
+            kuvvet [gezegen] = (toplam_fx, toplam_fy)
+
+        # Kuvvete temelli dönüþ hýzlarý güncellenir...
+        for gezegen in gezegenler:
+            fx, fy = kuvvet [gezegen]
+            gezegen.vx += fx / gezegen.kütlesi * zamanAralýðý
+            gezegen.vy += fy / gezegen.kütlesi * zamanAralýðý
+
+            # Yeni gezegen konumlarý güncellenir...
+            gezegen.px += gezegen.vx * zamanAralýðý
+            gezegen.py += gezegen.vy * zamanAralýðý
+            gezegen.goto (gezegen.px * ÖLÇEK, gezegen.py * ÖLÇEK)
+            gezegen.dot (5) # 5 derece kalýnlýklý noktalama konulur...
+
+
+def anaProgram():
+    güneþ = Gezegen() # Sýnýf nesnesi...
+    güneþ.adý = 'GÜNEÞ'
+    güneþ.kütlesi = 1.98892 * 10**30
+    güneþ.pencolor ('RED')
+
+    dünya = Gezegen() # Sýnýf nesnesi...
+    dünya.adý = 'DÜNYA'
+    dünya.kütlesi = 5.9742 * 10**24 # Dünya ile venüs'ün kütleleri yakýn...
+    dünya.px = -1*ADIM # Dünya yarýçapý: 1 Adým=149.6 milyon-km...
+    dünya.vy = 29.783 * 1000 # Dünya'nýn güneþ çevresindeki dönüþ hýzý=29.78 km/sn
+    dünya.pencolor ('BLUE')
+
+    # http://nssdc.gsfc.nasa.gov/planetary/factsheet/venüsfact.html
+    venüs = Gezegen() # Sýnýf nesnesi...
+    venüs.adý = 'VENÜS'
+    venüs.kütlesi = 4.8685 * 10**24
+    venüs.px = 0.723 * ADIM # Venüs yarýçapý=149.6 * 0.723=108.16 milyon-km...
+    venüs.vy = -35.02 * 1000 # Venüs'ün hýzý=35.02 km/sn
+    venüs.pencolor ('ORANGE')
+
+    döngüyüBaþlat ([güneþ, dünya, venüs])
+
+if __name__ == '__main__':
+    anaProgram()

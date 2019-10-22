@@ -1,0 +1,13 @@
+# coding:iso-8859-9 "Türkçe"
+
+import mysql.connector
+
+# Eðer bu program hata vermezse "mysql.connector" modülü kurulmuþ demektir...
+
+veriTabaným = mysql.connector.connect (
+    host="localhost",
+    user="myusername",
+    passwd="mypassword"
+)
+
+print (veriTabaným)

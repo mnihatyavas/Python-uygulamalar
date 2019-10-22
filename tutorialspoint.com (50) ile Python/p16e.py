@@ -1,0 +1,17 @@
+# coding:iso-8859-9 Türkçe
+
+class Vektör:
+    def __init__ (self, a, b): # Kurucu...
+        self.a = a
+        self.b = b
+
+    def __str__ (self): # Vektör print 'lerinin otomatik dizge dönüþtürücü metodu...
+        return 'Vektör (%.2f, %.2f)' % (self.a, self.b)
+
+    def __add__ (self, diðer): # Vektör toplamýnýn otomatik iþleme metodu...
+        return Vektör (self.a + diðer.a, self.b + diðer.b)
+
+v1 = Vektör (2,10)
+v2 = Vektör (5, -2)
+print ("Ýki vektörün toplamý:", (v1 + v2))
+print ("Ýki vektörün toplamý:", (Vektör (3, -21)  + Vektör (-35.76, 42.98)))

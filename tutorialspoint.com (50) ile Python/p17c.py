@@ -1,0 +1,15 @@
+# coding:iso-8859-9 Türkçe
+# Python 3 - Regular Expressions
+
+import re
+
+telefon = "+90-551-555-94-64 # Bu benim numaramdýr..."
+print ("Orijinal telefon numaram:", telefon)
+
+# Önce yorumu silelim...
+sonuç = re.sub (r'#.*$', "", telefon) # sub-->substitute: ile deðiþtir...
+print ("Yorumsuz telefon numaram:", sonuç)
+
+# -/+'ler yerine boþluk býrakalým...
+sonuç = re.sub (r'\D', " ", telefon)    
+print ("-/+'lardan arýnýk telefon numaram:", sonuç)

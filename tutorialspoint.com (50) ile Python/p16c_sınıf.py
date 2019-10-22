@@ -1,0 +1,10 @@
+# coding:iso-8859-9 Türkçe
+
+class Sýnýf:
+    def __init__ (self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __del__ (self): # Program sonlanýrken otomatik olarak çalýþtýrýlýr...
+        sýnýf_adý = self.__class__.__name__
+        print (sýnýf_adý, "Ýmha edildi.")

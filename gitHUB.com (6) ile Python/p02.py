@@ -1,0 +1,65 @@
+# coding:iso-8859-9 Türkçe
+
+import sys
+import turtle
+
+def sýnýr (t, ekran_x, ekran_y):
+    """(Turtle, int, int)
+    Canvas'ýn çevresine kalýn bir yeþil sýnýr çizer...
+    """
+    # Kalemi kaldýr ve tosbaðanýn ortasýna git...
+    t.penup()
+    t.home()
+
+    t.forward (ekran_x / 2) # Ortadan ileri (saða) tosbaða ekran geniþliði yarýsý kadar git...
+    t.right (90) # Saða yani aþaðýya dön...
+    t.forward (ekran_y / 2) # (Aþaðýya doðru) tosbaða yarý yüksekliði in...
+    t.setheading (180) # 180 derece konuma dön veya t.right (90) da aynýsýný yapar...
+
+    # Sýnýrý çizmeye baþlayalým...
+    t.pencolor ("MAROON")
+    t.pendown()
+    t.pensize (10)
+    for mesafe in (ekran_x, ekran_y, ekran_x, ekran_y):
+        t.forward (mesafe)
+        t.right (90)
+
+    # Kalemi kaldýr tosbaða ortasýna getir ki baþlangýç konumu bilinsin...
+    t.penup()
+    t.home()
+
+def kare (t, uzunluk, renk):
+    """(Turtle, int, str)
+    Verili kenar ve renkle bir kare çizer...
+    """
+    t.pencolor (renk)
+    t.pendown()
+    for i in range (4):
+        t.forward (uzunluk)
+        t.right (90)
+
+def anaProgram():
+    # Ekraný ve tosbaðayý yaratalým...
+    ekran = turtle.Screen()
+    ekran.title ("Kare Gösterisi")
+    ekran_x, ekran_y = ekran.screensize()
+    t = turtle.Turtle()
+
+    # Grafiðin daha süratli/yavaþ çizilmesini istiyorsanýz alttakine deðer deðiþtirin...
+    t.speed (0)
+
+    # Canvas komponenti çevresini kalýn bir kýrmýzý sýnýrla çizelim...
+    sýnýr (t, ekran_x, ekran_y)
+
+    # Ortadan itibaren, herbiri ekran yüksekliðinin %10, %20.., %50 uzunlukta farklý renkte kareler çizelim...
+    renkler = ['olive', 'navy', 'fuchsia', 'aqua', 'teal', 'pink', 'lime', 'silver']
+    t.pensize (3)
+    for i, renk in enumerate (renkler):
+        kare (t, (ekran_y / 2) / 10 * (i+1), renk)
+
+    print ("Programý sonlandýrmak için Ent bas:")
+    tuþ = input()
+    sys.exit (0)
+
+if __name__ == '__main__':
+    anaProgram()

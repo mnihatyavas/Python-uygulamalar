@@ -1,0 +1,42 @@
+# coding:iso-8859-9 Türkçe
+
+class AnaSýnýf:
+    anaDeðer = 100
+
+    def __init__ (self):
+        print ("Ana sýnýf kurucusu çaðrýlýyor...")
+
+    def anaMetod (self):
+        print ('Ana metod çaðrýlýyor...')
+
+    def metodum (self):
+        print ("Bu 'metodum' ana sýnýfýn bir metodudur...")
+
+    def deðerKoy (self, deðer):
+        AnaSýnýf.anaDeðer = deðer
+
+    def deðerAl (self):
+        print ("AnaSýnýf deðeri:", AnaSýnýf.anaDeðer)
+
+class YavruSýnýf (AnaSýnýf):
+    def __init__ (self):
+        print ("Yavru sýnýf kurucusu çaðrýlýyor...")
+
+    def yavruMetod (self):
+        print ('Yavru metod çaðrýlýyor')
+
+    def metodum (self):
+        print ("Bu 'metodum' yavru sýnýfýn override/esgeçme metodudur...")
+
+
+nesne = YavruSýnýf() # Yavru sýnýfýn bir tiplemesi...
+nesne.yavruMetod() # Yavru sýnýf metodu çaðrýlýyor...
+nesne.anaMetod() # Mirasla ana sýnýf metodu da yavru tipleme nesnesiyle çaðrýlýyor...
+nesne.deðerKoy (200) # Mirasla ana sýnýf tip deðiþkenine deðer konuluyor...
+nesne.deðerAl() # Mirasla ana sýnýf tip deðiþkeni deðeri alýnýyor...
+print()
+print ("Yavru sýnýf ana sýnýfýn bir alt sýnýfý mý?", issubclass (YavruSýnýf, AnaSýnýf))
+print ("'nesne' ana sýnýfýn bir tiplemesi midir?", isinstance (nesne, AnaSýnýf))
+print ("'nesne' yavru sýnýfýn bir tiplemesi midir?", isinstance (nesne, YavruSýnýf))
+print()
+nesne.metodum()

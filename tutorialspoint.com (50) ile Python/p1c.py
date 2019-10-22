@@ -1,0 +1,39 @@
+# -*- coding: iso-8859-9 -*-
+# Türkçe karakterlerinin tanýtýmý
+
+import sys
+
+dosyaAdý = input("Veri eklenecek/yaratýlacak dosya adý: ")
+
+try:
+    # Dosya sistemini açalým...
+    dosya = open (dosyaAdý, "a")
+except IOError:
+    print ("[", dosyaAdý, "] dosyasýna yazma problemi var!")
+    sys.exit()
+
+dosyaVerisi = input ("Veri girin [çýk:son]: ")
+while dosyaVerisi != "çýk":
+    if dosyaVerisi == "çýk":
+        break
+    dosya.write (dosyaVerisi)
+    dosya.write ("\n") # Bir alt satýra geçer...
+    dosyaVerisi = input ("Veri girin [çýk:son]: ")
+
+dosya.close()
+print()
+
+dosyaAdý = input ("Ýçeriði okunacak dosya adý: ")
+if len (dosyaAdý) == 0:
+    print ("Dosya adýný girmeden Enter'ýrladýn!")
+    sys.exit()
+
+try:
+    dosya = open (dosyaAdý, "r")
+except IOError:
+    print ("Dosya okuma hatasý oluþtu!")
+    sys.exit()
+dosyaVerisi = dosya.read() # Tüm dosya içeriðini okur...
+dosya.close()
+
+print (dosyaVerisi)

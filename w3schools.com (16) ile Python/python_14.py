@@ -1,0 +1,32 @@
+# coding:iso-8859-9 Türkçe
+
+# 4 iþlem fonksiyonlarýný tanýmlayalým...
+def topla (x, y): return x + y 
+def çýkar (x, y): return x - y 
+def çarp (x, y): return x * y 
+def böl (x, y): return x / y  
+def kalan (x, y): return x % y  
+def yüzde (x, y):
+    if x >= y: return (x-y) / y * 100
+    else: return -(y-x) / x * 100
+
+print ("4 Ýþlem Menü Seçenekleri\n======================")  
+print ("1. Toplama")  
+print ("2. Çýkarma")  
+print ("3. Çarpma")  
+print ("4. Bölme")  
+print ("5. Yüzde")
+print ("6. Kalan")
+
+tercih = input ("Tercihiniz (1/2/3/4/5/6): ")  
+
+sayý1 = float (input ("Ýlk sayýnýzý girin: "))  
+sayý2 = float (input ("Ýkinci sayýnýzý girin: "))  
+
+if tercih == '1': print (sayý1, "+", sayý2, "=", topla (sayý1, sayý2))
+elif tercih == '2': print (sayý1, "-", sayý2, "=", çýkar (sayý1, sayý2))  
+elif tercih == '3': print (sayý1, "*", sayý2, "=", çarp (sayý1, sayý2))  
+elif tercih == '4': print (sayý1, "/", sayý2, "=", böl (sayý1, sayý2))  
+elif tercih == '5': print (sayý1, "%", sayý2, "= %", yüzde (sayý1, sayý2))  
+elif tercih == '6': print (sayý1, "%%", sayý2, "=", kalan (sayý1, sayý2))  
+else: print ("Geçersiz tercih yaptýnýz!") 
