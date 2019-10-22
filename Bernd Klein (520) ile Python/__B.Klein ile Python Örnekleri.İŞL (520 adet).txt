@@ -1,0 +1,647 @@
+B.Klein ile Python Örnekleri (520 adet)
+=================================
+
+1. Python-3 (205 adet)
+    1.0 Python-3 Anasayfa
+    1.1. Python Tarih ve Felsefesi
+    1.2. Karþýlýklýetkileþim Kipi
+    1.3. Bir Program Taslaðýnýn Ýþletilmesi
+        1.3.1. p_10301.py: Ýlk basit python kodlama taslaðý örneði.
+    1.4. Kertiklemeli Yapýsalcýlýk
+        p_10401.pt: Girilen sayý altýndaki iki tamsayý kareleri karekökünü diðerbir tamsayýya eþitleme örneði.
+    1.5. Veri Tipleri ve Deðiþkenler
+        p_10501.py: Veri tipleri, deðiþken adlarý, hazýr anahtarkelimeler ve etkileþim kabuðu örneði.
+        p_10502.py: 2-8-10-16 tabanlý sayýlar, sýnýrsýz tamsayý, kompleks sayýlar, / ve // ile bölme örneði.
+        p_10503.py: Tek, çift ve üç týrnaklý dizgeler ve endeksli dizge iþlemleri örneði.
+    1.6. Ýþlemciler
+        p_10601.py: Python iþlemcileriyle yapýlan iþlem çýktýlarý örneði.
+    1.7. Ardýþýk Veri Tipleri
+        p_10701.py: Dizge, liste, tüple ve byte dizilerle endeksli iþlemler örneði.
+        p_10702.py: Dizgelerle çeþitli endeksli iþlemler örneði.
+    1.8. Listeler
+        p_10801.py: Listelerle apend, extend ve pop iþlemleri örneði.
+        p_10802.py: Listelerde =atamalý, +=toplamalý, append'li ve extend'li iþlem süreleri kýyaslamasý örneði.
+        p_10803.py: Listelerle remove/sil ve insert/sok iþlemleri örneði.
+    1.9. Sýð ve Derin Kopyalama
+        p_10901.py: =atama, =[:]atama ve =deepcopy[:]atama'lardaki id bellek adresi durumlarý örneði.
+    1.10. Sözlükler
+        p_11001.py: Anahtar:deðer çifti içerikli sözlük elemanýna eriþim ve yeni eleman ekleme örneði.
+        p_11002.py: Yabancý dil sözlükleri arasýnda aranan kelime iliþkileri örneði.
+        p_11003.py: Deðiþtirilemez sözlük anahtarý olarak hangi veri tiplerinin kullanýlabileceði örneði.
+        p_11004.py: Kýsa(.) ve uzun(-) sinyallerle A->Z ve 0->9 mors alfabesi sözlüðü örneði.
+        p_11005.py: Sözlük items/birimler, keys/anahtarlar ve values/deðerler ile pop ve get iþlemleri örneði.
+        p_11006.py: Anahtarlý pop yerine anahtarsýz sondan popitem ile silme örneði.
+        p_11007.py: Kompleks sözlüklerde kopyalamanýn birbirlerini etkilemesi örneði.
+        p_11008.py: Sözlüklerde update/güncelle, zip/tüplede-birleþtir ve tüple-liste-sözlük çevrimleri örneði.
+    1.11. Kümeler ve Donuk Kümeler
+        p_11101.py: Set kümelerinin dizge, liste, tüple ve tüpleli tüpleden oluþturulmasý örneði.
+        p_11102.py: Deðiþir ve deðiþmez küme, silme ve kopyalama örneði.
+        p_11103.py: Kümelerde difference, - ve difference_update ile discard, remove ve pop silme farklarý örneði.
+        p_11104.py: Kümelerde birleþim, kesiþim, kesiþimsiz, altküme ve üstküme örneði.
+    1.12. Kapsamlý Python Örneði
+        p_11201.py: 11 ayrý Alis kitabýndaki ortak, farklý, sýk kullanýlan vb kelimelerin tesbiti örneði.
+    1.13. Klavyeden Verigiriþi
+        p_11301.py: input ile klavyeden girilen sayýsal veya dizgesel verilerin deðerlendirilmesi örneði.
+    1.14. Þartlý Ýfadeler
+        p_11401.py: if-elif-else ile farklý dillerde konuþma tercihi örneði.
+        p_11402.py: if-elif ile köpek ve insan yaþlarýnýn karþýlaþtýrýlmasý örneði.
+        p_11403.py: if-else, if-elif-else, max ve for ile çoklu sayýlarýn enbüyüðünün bulunmasý örneði.
+    1.15. while/iken Döngüleri
+        p_11501.py: while döngülü sayý toplamý, klavye veri giriþi ve gizli sayý tahmini örneði.
+    1.16. for/için Döngüleri
+        p_11601.py: for-in döngüsüyle programlama dilleri ve yiyecekler listelerini tarama örneði.
+        p_11602.py: for-range ile ardýþýk erimler taratarak toplamlar ve pisagor eþitliði örneði.
+        p_11603.py: for-range erimiyle önceki 2 sayýyý toplayan fibonaki sayýlarýnýn örneði.
+        p_11604.py: for-in-taranabilir'de deðiþmeyen taranabilir[:] örneði.
+    1.17. Tarayýcýlar ve Taranabilenler
+        p_11701.py: for-in-taranabilir(liste, tüple ve dizge), next(iter(taranabilir)) ve taranabilirin Tersten dökümü örneði.
+    1.18. print/yaz ile Çýktý
+        p_11801.py: Print ile ekrana, dosyaya ve hataya yazdýrma örneði.
+    1.19. Biçimli Çýktý
+        p_11901.py: Print'le virgüllü, artýlý, sep'li, %dizge biçimli deðer yazdýrma örneði.
+        p_11902.py: Dizge.format() þablonlu biçimli yazdýrma örneði.
+        p_11903.py: **sözlük formatýyla sözlük anahtar ve deðerlerinin yazdýrýlmasý örneði.
+        p_11904.py: þablon.format(**locals()) ile lokal deðiþken deðerlerinin biçimli yazdýrýlmasý örneði.
+        p_11905.py: center/ortala, ljust/solahizala, rjust/saðahizala ve zfill/sýfýrladoldur yazdýrma örneði.
+        p_11906.py: f"{}" formatýyla alýþveriþ fiþi yazdýrma örneði.
+    1.20. def-ine/tanýmla ile Fonksiyonlar
+        p_12001.py: def-ine ile C->F ve C->K ýsý çevrim fonksiyonlarý örneði.
+        p_12002.py: Çoklu ve ilk deðerli fonksiyon parametrelerine argümanlar aktarma örneði.
+        p_12003.py: Return'süz, deðer döndürmeyen ve döndüren return'lü fonksiyonlar örneði.
+        p_12004.py: Fibonaki fonksiyonunun serideki son iki deðeri döndürmesi örneði.
+        p_12005.py: Fonksiyonlarda lokal, genel ve global deðiþkenler örneði.
+        p_12006.py: Fonksiyon çoklu parametre ve argümanlarýnda *liste kullanýlmasý örneði.
+        p_12007.py: **parametrik veya **argümansal sözlük aktarýmlý fonksiyonlar örneði.
+    1.21. Özyinelemeli/Kendiniçaðýran Fonksiyonlar
+        p_12101.py: Faktöryel fonksiyonunun nihai ve arasonuçlu özyinelemeli ile for döngülü örneði.
+        p_12102.py: For-döngülü ve özyinelemeli ayrýca da bellekli fibonaki kýyaslamalarý örneði.
+        p_12103.py: Fibonaki sýnýflý caðrýlabilir bellekli fibonaki ve lukas sayýlarý dökümü örneði.
+        p_12104.py: Hanoi kule açýlýmý, paskal kulesi, fibonakinin paskal çýkarýmý örneði.
+        p_12105.py: Erasto kevgiri ve kapsamlý liste yöntemli asal sayýlar tesbiti örneði.
+        p_12106.py: Fibonaki sayýlarý, kareleri ve endeksleri örneði.
+    1.22. Argüman-lar Geçirme
+        p_12201.py: Fonksiyon içi lokal ve genel deðiþkenlerin eklenmesinin yan etkilerini giderme örneði.
+        p_12202.py: Komut satýrýndan argüman geçirme örneði.
+        p_12203.py: Komut satýrýndan girilen argümanlarýn yönetilmesi örneði.
+        p_12204.py: *parametre, *argüman, parametreler ve argümanlar çeþitlemesi örneði.
+        p_12205.py: **parametre'ye sözlük, (a,b,c,d) parametreye *liste ve **sözlük argümanlarý geçirme örneði.
+    1.23. Ýsimler/Deðiþkenler
+    1.24. Global ve Lokal Deðiþkenler ve Ýsimler
+        p_12401.py: Fonksiyonda ve ana programda lokal ve global deðiþkenler örneði.
+        p_12402.py: Fonksiyonlardaki global ve nonlocal'in genel deðiþkeni aþmasý örneði.
+    1.25. Dekoratör/Süs ve Süslemeyle Ýlk Tanýþma
+        p_12501.py: Ýçiçe fonksiyonlarýn iþletilme kurallarý örneði.
+        p_12502.py: Parametrik ve içiçe fonksiyonlarýn birlikte iþletilmesi örneði.
+        p_12503.py: Ýçiçe polinom katsayýlarý ve deðiþkenine argüman aktarma örneði.
+        p_12504.py: Parametrik içiçe fonksiyonlarda @ direktifi örneði.
+        p_12505.py: Ayný dekoratörde farklý fonksiyonlar, hazýr fonksiyonlar ve farklý sayýda argümanlar örneði.
+        p_12506.py: Özyinelelemeli ve deðiþken argümanlý dekoratör fonksiyonlarýnda sayaç örneði.
+        p_12507.py: Ýçiçe dekoratörlü ambalaja 3.dýþ selamlama fonksiyonu sarmalama örneði.
+        p_12508.py: Çaðrýlan dekoratör fonksiyonun adý, açýklamasý ve modülü örneði.
+        p_12508x1.py: Dekoratör ve ambalajý ana-programa öncelleyen içiçe fonksiyon alt-örneði.
+        p_12508x2.py: Dekoratör ve ambalajý ana programa sonralayan içiçe fonksiyon alt-örneði.
+        p_12508x3.py: Dekoratör ve ambalajý @wraps'le ana-programa sonralayan içiçe fonksiyon alt-örneði.
+        p_12509.py: Deðiþken liste ve sözlük argümanlý callable sýnýf fonksiyonu örneði.
+        p_12510.py: Dekoratörlü @ fonksiyon ve sýnýfýnýn karþýlaþtýrýlmasý örneði.
+    1.26. Belleme ve Süsler
+        p_12601.py: Olaðan, bellemeli dekoratör ve @ direktifli fibonaki fonksiyonu örneði.
+        p_12602.py: Bellemeli dekoratör sýnýflý ve @ direktifli fibonaki serisi örneði.
+        p_12603.py: Elde (1,3,9,27) kilolarla 40 çeþit sol-sað kefeleri eþitleme örneði.
+    1.27. Dosya Yönetimi
+        p_12701.py: Metin dosyasýndan okuma ve yazma çeþitlemesi örneði.
+        p_12701x.txt: Metin dosyasý, latince þiir alt-örneði.
+        p_12702.py: Metin dosyasýný seek, tell, read'le kontrollü okuma, yazma ve silme örneði.
+        p_12703.py: Pickle/turþu açýlamaz dosyasýna pickle.dump ile yazma ve pickle.load ile okuma örneði.
+        p_12704.py: Shelve ile sözlük dosyalarý yazma, okuma ve görüntüleme örneði.
+        p_12705.py: Metin txt dosyadan okuma, turþu pickle dosyaya yazma ve ordan tekrar okuma örneði.
+        p_12705x.txt: Þehirlerde gün ve saat-dakika farklarý metin dosyasý alt-örneði.
+    1.28. Modüler/Kalýpsal Programlama ve Kalýplar
+        p_12801.py: Python ve kendi modülümüzü import'lama çeþitleri örneði.
+        p_12801x.py: Özyineleme ve for döngülü fibonaki fonksiyonlarý alt-örneði.
+        p_12802.py: Hazýr random, math ve builtins modüllerinin incelenmesi örneði.
+    1.29. Python'da Paketler
+        p_12901.py: Ýçiçe klasörlerdeki py modüllerini __init__.py vasýtasýyla çaðýrma örneði.
+        p_12902.py: Ýçiçe klasörlerdeki modül-içi fonksiyonlarý __init__.py vasýtasýyla doðrudan çaðýrma örneði.
+    1.30. Düzenli/re Ýfade
+        p_13001.py: in ve re.search ile bir dizgede ibare aranmasý örneði.
+        p_13002.py: Disk ve internet dosyasýndan re.search aramasý örneði.
+        p_13002x.txt: Telefon rehberi bilgileri metin dosyasý alt-örneði.
+        p_13003.py: re.search ve re.match ile tek/çok satýrlý dizge baþýnda/sonunda arama örneði.
+        p_13004.py: re.search ile hiç/tek/çok rakam veya karakterle baþlayan/sonra-gelen arama örneði.
+        p_13005.py: re.search ile grup rakamlar ve ":" sonrasýný arama örneði.
+        p_13006.py: Bir XML html dosyasýndan film gruplarýný re.search'le arayýp dökme örneði.
+        p_13006x.html: Toplam 5 film detaylarýný tanýtan bir XML html dosyasý alt-örneði.
+        p_13007.py: re.search'le listeden telno-soyad-göbekadlýad gruplarýný arayýp dökme örneði.
+        p_13008.py: Güncel tarihten re.search'le SS:dd:ss bulma, verileri ve endekslerini yansýtma örneði.
+        p_13009.py: 2 ayrý dosyadan re.search'le verili alman þehirlerinin tüm PK arama ve dökme örneði.
+        p_13009x1.txt: Tüm alman þehirleri PK listesi alt-örneði.
+        p_13009x2.txt: 19  alman þehri ve PK'sý listesi alt-örneði.
+        p_13010.py: Ýngiliz harfle-rakamla baþlayan ikili grup PK'yý re.search'le uygunluk testi örneði.
+    1.31. Ýleri Kullanýcýlar Ýçin Düzenli Ýfade
+        p_13101.py: re.findall ile çoklu sonuçlarý bulma örneði.
+        p_13102.py: re.compile(kalýp).findall(dizge) ile Ýngiliz doðru PK'larý bulma örneði.
+        p_13103.py: dizge.split(ayraç, adet) ile dizge kelimelerini listeye çevirme örneði.
+        p_13104.py: re.split'le seçici ayrýþtýrma ve re.sub'la kelimeleri deðiþtirme örneði.
+    1.32. Lambda Ýþlemcisi, Süzgeçleme, Ýndirgeme ve Haritalama
+        p_13201.py: Normal def ve anonim lambda fonksiyonlarla ayný iþlem sonuçlarý örneði.
+        p_13202.py: C, F, ve K dereceleri normal def ve anonim lambda ile map haritalamayala çevirme örneði.
+        p_13203.py: list(map(lambda fonk, argüman))'la argümanlarý fonksiyonda haritalandýrýp listeleme örneði.
+        p_13204.py: Kapsamlý listemeli def fonksiyonla pi radyan derecelerin sin, cos, tan, cotan sonuçlarý örneði.
+        p_13205.py: Fibonaki serisinin lambda fonksiyonla tek ve çift olarak ayrýþtýrýlmasý örneði.
+        p_13206.py: reduce(lambda fonk, liste) ile liste elemanlarýnýn toplamý, çarpýmý min-max'ý örneði.
+        p_13207.py: Sipariþ kitap adet*fiyat*1.05 < €100 ise faturaya €10 ekle list(map(lambda...)) örneði.
+        p_13208.py: Günlük ve haftalýk fiþno, adet*tutar+%12 kdv, 100€ < 10€ ekle fatura toplamlarý örneði.
+    1.33. Kapsamlý Liste
+        p_13301.py: For döngülü liste iþlemlerinin tek satýrlýk kapsamlý listelenmesi örneði.
+        p_13302.py: Kapsamlý liste ve tüple'yle 1->20 kareler, 1->100 asalsýz ve asal sayýlar örneði.
+        p_13303.py: Kapsamlý ve özyinelemeli fonksiyonlu küme'yle 1->100 asallar ve tekrarsýz asalsýzlar örneði.
+    1.34. Üreticiler
+        p_13401.py: Liste, iter-next tarayýcý ve sözlük dökümleri örneði.
+        p_13402.py: Þehirli yield-next, dahili sayaçlý fibonaki yield ve harici sayaçlý fib yield üreteç örneði.
+        p_13403.py: yield-next fonksiyonda raise veya return istisna yönetimi örneði.
+        p_13404.py: Argümansýz send-yield deðer geçirme, print üreteç ve istisnasý örneði.
+        p_13405.py: next(x) ile birsonraki karakteri, x.send(n) ile n.nci karakteri döndürme örneði.
+        p_13406.py: döngü.throw(ÜretecinDurumu) ile son sayaç kontrollü yield üreteci örneði.
+        p_13407.py: Dekoratörlü sonsuz döngülü üreteçle mesaj ve karakter çýktýlarý örneði.
+        p_13408.py: for-yield ve yield-from'la ayný üretimi örneði.
+        p_13409.py: Hazýr itertools.permutations ve özel permütasyon fonksiyonu örneði.
+        p_13410.py: Permütasyon(n,m) ile kýsa ve tam permütasyon örneði.
+        p_13411.py: Sonsuz fibonaki üretecini n'le sýnýrlayan üreteç örneði.
+        p_13412a.py: send-yield ile 1->10 öðrenci notlarý ortalamasý üreteci örneði.
+        p_13412b.py: 0->24 arasý 15dk-25sn aralarla tüpleli sonsuz zaman üreteci örneði.
+        p_13412c.py: Tüpleli ve formatlý 0->24 sonrasý yenibaþtanlý zaman üreteci örneði.
+        p_13412d.py: 6.30dk adýmlý 0->24 zaman ve 0->40 geliþigüzel sýcaklýk üreteci örneði.
+        p_13412dx.txt: 0->24 saatlarý arasý sýcaklýk deðerleri çýktý dosyasý alt-örneði.
+        p_13412e.py: 50 adet farklý ihtimal aðýrlýklý 0-1'ler serisi üreteci örneði.
+    1.35. Ýstisna Yönetimi
+        p_13501.py: try-except ve fonksiyon içi raise ile hata yönetimi örneði.
+        p_13502.py: try-raise ile hazýr veya özel istisna fýrlatýp except Exception'la yakalama örneði.
+        p_13503.py: try-except-except...finally ile hata yönetimi örneði.
+        p_13504.py: try-except-else ile hata yönetimli dosya okuma örneði.
+    1.36. Testler, DökümanTestleri, Birim Testleri
+        p_13601a.py: Bilinen sonuçlarla fib fonksiyonunun doðruluk testi örneði.
+        p_13601b.py: name-main import kontrollü fonksiyon tanýmlarý modülü örneði.
+        p_13601c.py: name-main olmayan ve olan modül ve fonksiyonlarýn import'u örneði.
+        p_13602a.py: doctest.testmod()'la fonksiyonlarýn verili ve gerçek sonuçlarýnýn testi örneði.
+        p_13602b.py: doctest.testmod()'la iþlevsiz return'lü fonksiyon testi örneði.
+        p_13603a.py: unittest.main()'le 3 fib fonksiyonun verili sonuçlarla testi örneði.
+        p_13603b.py: unittest.main()'le verili setUp deðerleriyle fib fonksiyonu ve sonucunu test örneði.
+        p_13603x.py: Test amaçlý 3 adet fib sayýsý döndüren fonksiyon alt-örneði.
+        p_13604.py: doctest.testmod()'la hýzlý ve özyinelemeli yavaþ fib fonksiyonlarý testi örneði.
+    1.37. Nesneye Yönelik Programcýlýk
+        p_13701.py: Çeþitli sýnýf nesneleri tipi (int, float, str, function, module, list, tuple, dict, class) örneði.
+        p_13702.py: Sýnýf nesnesi, deðiþkene atama, özellik kazandýrma, dict vasýflarý örneði.
+        p_13703.py: Fonksiyon nesnesinin özelliði, parametresi ve return'ü örneði.
+        p_13704.py: Sýnýf argümanlý fonksiyon, sýnýfýn init tipleri ve fonksiyon metodlarý örneði.
+        p_13705.py: Sýnýf nesnesi metodu, tip deðiþkenine deðer koyma ve alma örneði.
+        p_13706.py: Sýnýf nesnesi metodlarý, çoklu tip deðiþkenlerine deðer atama ve okuma örneði.
+        p_13707.py: Sýnýf nesnesinin özelleþtirilebilen str ve repr hazýr dizge arþiv metodlarý örneði.
+        p_13708a.py: Sýnýf nesnesi repr ve str metod tiplemesi eval yapýlamamasý örneði.
+        p_13708b.py: Sýnýf nesnesi repr ve str metodlu tiplemelerin eval'le çevrilebilmesi örneði.
+        p_13709.py: Genel, korunaklý ve özel tip deðiþkenlerinin eriþilebilme ve deðiþtirilebilme farklýlýðý örneði.
+        p_13709x.py: genel, _korunaklý ve __özel tip deðiþkenli sýnýf nesnesi alt-örneði.
+        p_13710.py: Sýnýf-içi al-koy metodlarla özel özelliklerinin deðerlerini deðiþtirme örneði.
+        p_13711.py: Sýnýf nesnesinin init kurucu ve del imhacý hazýr metodlarý örneði.
+    1.38. Sýnýf ve Tipleme Vasýflarý
+        p_13801.py: Sýnýf özelliði ve deðiþtirilmesinin kopyalarýyla iliþkisi örneði.
+        p_13802.py: Tüpleli sýnýf tip özelliði ve init kuruculu tip deðiþken özellikleri örneði.
+        p_13803.py: Sýnýf tip özelliðinin init kurucu ve del imhacý hazý metodlarda kullanýmý örneði.
+        p_13804a.py: @staticmethod'la sýnýf nesnesi kopyalarýna tip özelliði deðerini aktarma örneði.
+        p_13804b.py: @classmethod'la sýnýf metodunun ilk parametresine otomatikmen sýnýf tipini aktarma örneði.
+        p_13805.py: @class/static metodlarla ebob'li pay/payda üreten sýnýf nesnesi örneði.
+        p_13806a.py: @staticmethod'la kopya sýnýf nesnelerin deðiþen tip özelliklerinin aktarýlamamasý örneði.
+        p_13806b.py: @classmethod'la kopya sýnýf nesnelerin deðiþen tip özelliklerinin aktarýlabilmesi örneði.
+    1.39. Özellikler ve Alýcý ile Koyucular
+        p_13901.py: Private/özel init deðiþkenlerine al/koy metodu gerekirken, genel'le sýnýf.özellik iþlemi örneði.
+        p_13902.py: Genel init deðiþkenini normal, @dekoratörlü ve mutator'la özel yapma örneði.
+        p_13903.py: Sýnýf init genel özellikleri ve metod-içi kullanýlan özel deðiþkenleri örneði.
+    1.40. Kalýtsallýk
+        p_14001.py: Bir sýnýfýn diðer bir sýnýfa ait özellik ve metodlarý miraslamasý örneði.
+        p_14002.py: Miraslayan metodlarýnýn miras metodlarýný override/esgeçme örneði.
+        p_14003.py: Fonksiyon argümanlarýnda overload/taþma örneði.
+    1.41. Çoklu Kalýtsallýk
+        p_14101.py: Saat ve artýkyýl çift miras kontrollü saniyenin bir ilerletilmesi örneði.
+        p_14101x1.py: Saat sýnýfý metoduyla saniyenin bir artýeýlmasý ana/alt-örneði.
+        p_14101x2.py: Takvim sýnýfý metodlarýyla günün artýkyýl kontrollü bir ilerletilmesi ana/alt-örneði.
+        p_14102a.py: Çoklu mirasta miraslananlarýn öncelikli sýrasý ve esgeçen metod mevcudiyeti örneði.
+        p_1402b.py: Miraslayanýn mirasladýklarý metodlarý sýra ve super() önceliðiyle esgeçmesi örneði.
+        p_14103.py: Pyyhon fonksiyonlarýnýn çokbiçimli argüman tiplemesi örneði.
+    1.42. Sihirli Yöntemler
+        p_14201.py: Python iþlemcileri ve karþýlýk arþiv metodlarý özeti örneði.
+        p_14202.py: Ýþlemciler doðrultusunda add, iadd, radd metodlarýyla toplayýp metreye çevirme örneði.
+        p_14202x.py: Farklý birim (mm, sm, m, km, inç, feet, yarda ve mil) uzunluklarýn toplanmasý ana/alt-örneði.
+        p_14203.py: Polinom sýnýfýnýn otomatik ve klasik çaðrýlan callable fonksiyonu örneði.
+        p_14204.py: Listeye null, tüple, aritmetik iþlem, dizge, liste ve küme ekleme örneði.
+        p_14205.py: Eklemeli çarpmalý iþlemlerle farklý paralarý baþtaki birime çevirme örneði.
+        p_14205x.py: Farklý para birimlerini belirtilen birime yada yuroya çevirme ana/alt-örneði.
+    1.43. Çoklu Kalýtsallýk Örneði
+        p_14301.py: Önceki saat ve takvim çoklu kalýtsal modüllerle bir yýl ve bir gün sonrasý örneði.
+    1.44. Yarýklar ve Dinamiksel Yaratýlan Vasýflardan Kaçýnma
+        p_14401.py: Sýnýf init deðiþken ve sýnýrsýz özellikleri slot/yarýk'la sýnýrlama örneði.
+    1.45. Tipli Dinamiksel Yaratýlan Sýnýflar
+        p_14501.py: Sýnýflarýn sýnýfadý, miras listesi ve özellikler sözlüðü tipli yaratýlabilmesi örneði.
+        p_14502.py: Birbiriyle ayný normal ve tipli sýnýf karþýlaþtýrmasý örneði.
+    1.46. Ötesýnýflara Yolayrýmý
+        p_14601.py: Argümansýz ve argümaný sýnýf olan sýnýf nesneleri örneði.
+        p_14602.py: Harici fonksiyonu sýnýf özelliði metodu yapma örneði.
+        p_14603.py: Harici fonksiyonu sýnýfa yönetici fonksiyon vasýtasýyla metod vasfý yapma örneði.
+        p_14604.py: Fonksiyonu sýnýfa dekoratörlü yönetici fonksiyonla vasýf yapma örneði.
+    1.47. Ötesýnýflar Eðitimi
+        p_14701.py: Argümaný normal ve meta sýnýf olan sýnýf nesnesi örneði.
+        p_14702.py: Ayný tip dönüþlü metasýnýf ve normal sýnýf nesnelerinin eþitliði karþýlaþtýþmasý örneði.
+    1.48. Ötesýnýf Yardýmýyla Sayaç Fonksiyon Çaðrýlarý
+        p_14801.py: Bir modülün korunaklý çaðrýlamaz ve genel çaðrýlabilir vasýflarýnýn listelenmesi örneði.
+        p_14802.py: @Dekoratörlü ve atamalý fonksiyonla çaðrý sayýsý tesbiti örneði.
+        p_14803.py: Metasýnýf argümanlý sýnýf nesnesi metodlarýnýn çaðrý sayýlarý tesbiti örneði.
+    1.49. Soyut Temel Sýnýflarýn ABC'si
+        p_14901.py: Enaz bir pass metodlu soyut sýnýfý argümanlayan somut sýnýf nesnesi örneði.
+        p_14902.py: Soyut sýnýfýn tüm soyut metodlarýný esgeçen somut sýnýf nesneleri örneði.
+        p_14903.py: Soyut sýnýfý argümanlayan somut sýnýfýn esgeçme metodlarý ve ekstra somut metodu örneði.
+
+2. Ýleri Python (64 adet)
+    2.0. Ýleri Konular Anasayfasý
+    2.1. sys/sistem Modülüyle Tanýþma
+        p20101.py: Sistem sürüm ve sürüm bilgisi örneði.
+        p_20102.py: Komut iletisinden girilen argümanlarýn yönetilmesi örneði.
+        p_20103.py: Veri çýkýþ ve giriþlerinde print ile sys.stdout.write ve input ile sys.stdin.readline() örneði.
+        p_20104.py: Kontrollü try-except-else sonsuz döngülü sayýsal veri giriþi örneði.
+        p_20105.py: print çýktýsýný sys.stdout'la ekrana ve dosyaya yönlendirme örneði.
+        p_20106.py: Hatalarýn sys.stderr'le ekrana ve dosyaya yönlendirilmesi örneði.
+        p_20107.py: sys modülünün muhtelif metod ve vasýflarý dökümü örneði.
+    2.2. Python ve Kabuk
+        p_20201a.py: Dizgesel input'a karþýlýk tek karakterlik getch() giriþi örneði.
+        p_20201b.py: Platforman baðýmsýz tek karakterlik veri giriþi örneði.
+        p_20202.py: Veri giriþ input'la .exe programlarý iþletme örneði.
+        p_20203.py: Dizin deðiþtirme, içeriklerini dökme, dizin yaratma, adýný deðiþtirme ve silme örneði.
+    2.3. Çatallama ve Ýþlemler
+        p_20301.py: Linux'la çatallama yöntemli klonlama/kopyalama örneði.
+        p_20302.py: os.execv ile belirtilen yoldaki .exe programý yürütme örneði.
+    2.4. (Çoklu) Ýpler ve Ýpleme
+        p_20401a.py: Ýp/thread modülüyle 3 ayrý sayýnýn eniyilemeli kareköklerinin bulunmasý örneði.
+        p_20401b.py: Sicimlerin tamamlanmasýný Ent deðil while döngü kontrolüyle saðlama örneði.
+        p_20402.py: 10 ayrý sicimi baþlatýp, 5 sn duraksatýp, sonra sürdürme örneði.
+        p_20403a.py: Girilen sayýnýn asal sayýlýðýnýn ip kontrolüyle testi örneði.
+        p_20403b.py: Asal sayý tespitini herbir ipi tamamlayarak gerçekleþtirme örneði.
+        p_20404a.py: Ýnternet ip adresleriyle iletiþim kontrolü örneði.
+        p_20404b.py: Ýnternet ip adresleriyle haberleþme kontrolü örneði.
+    2.5. Python'da Borulama
+        p_20501a.py: Linus fork/çatallamayla bira þiþeleri oyunu örneði.
+        p_20501b: Linux fork/çatallamayla ebeveyn-yavru klonlamalý bira oyunu örneði.
+        p_20502.py: Linux fork'la tutulan sayýnýn tahmini oyunu örneði.
+        p_20503.py: Linux fork'la ebeveyn/yavru klonlamalý borulama örneði.
+    2.6. Python'da Að Tarayýcýsý
+    2.7. Grafikleme Teorisi ve Python'da Grafikler
+        p_20701.py: Baðlantýlý ve izole yumrularýn iliþkilerinin listelenmesi örneði.
+        p_20702.py: Grafik sýnýfýyla, yumru, baðlantý, izole, yeni yumru ve baðlantý ekleme örneði.
+        p_20703.py: Grafik modülüyle yumru, baðlantý ve yumrular arasýndaki enkýsa patika örneði.
+        p_20704.py: Grafik modülüyle, bir yumrunun derecesi, azami-asgari dereceler, dereceler tüplesi örneði.
+        p_20705.py: Grafik modülüyle verili grafiklerin baðlantýlar listesi ve yoðunluklarý örneði.
+        p_20706.py: Verili grafiklerin yumrularý, baðlantýlarý ve izolelelerinin tespiti örneði.
+        p_20707.py: Verili grafiklerin yumrularý, baðlantýlarý ve çaplarý örneði.
+        p_20708.py: Grafiðin yumrularý, baðlantýlarý, dereceleri, yumru ve baðlantý ekleme, izole yumrular örneði.
+        p_20708x.py: Orijinal Grafik sýnýfý ve metodlarýnýn alt-örneði.
+    2.8. PyGraph ile Grafikleme
+    2.9. NetworkX ile Grafikleme
+        p_20901.py: Networkx grafik modülüne yumru ve baðlantý ekleme, mathplotlib'le grafik çýktýsý örneði.
+        p_20901x.png: Mathplotlib.pyplot'la yumru ve baðlantýlarýn grafik resmi alt-örneði.
+        p_20902.py: Grafik yumrularý ve baðlantýlarý, doðrusal ve dairesel grafik çýktýlarý örneði.
+        p_20902x1.png: Doðrusal baðlantýlý yumrular grafik resmi alt-örneði.
+        p_20902x2.png: Dairesel baðlantýlý yumrular grafik resmi alt-örneði.
+    2.10. Polinom Sýnýfý
+        p_21001.py: x^4-4x^2+3x polinomun (-3,4) arasý 100 noktalamalý grafik resmi örneði.
+        p_21001x.png: x^4-4x^2+3x polinomun (-3,4) arasý 100 noktalamalý grafik resmi alt-örneði.
+        p_21002.py: Polinom sýnýfýyla katsayýlar, toplama ve çýkarma sonucu grafiðin çizilmesi örneði.
+        p_21003.py: Rakamlarla ve grafiklerle 2 ayrý polinom, toplamlarý ve farklarý örneði.
+        p_21003x.png: 2 ayrý polinom, toplamlarý ve farklarý grafiði alt-örneði.
+        p_21004.py: 2 farklý polinom ve türevlerinin rakamsal ve grafiksel sonuçlarý örneði.
+        p_21004x.png: 2 farklý polinom ve türevlerinin grafiði alt-örneði.
+    2.11. Python'da Yumurtlama
+        p_21101.py: Ýçiçe 2 fonksiyonun sýralarýnýn deðiþtirilmesinin farklý sonuçlarý örneði.
+        p_21102.py: Genelleþtirilen içiçe 2 fonksiyonla aðýrlýk-boy kritiði örneði.
+        p_21103.py: Aritmetik ortalamanýn yalýn ve içiçe fonksiyonlu sonuçlarý örneði.
+    2.12. Python'da Sonlu Durum Makinesi
+        p_21201.py: Girilen (Ýng.) cümlenin olumlu, olumsuz ve hatalý anlam içerdiðinin tespiti örneði.
+        p_21201x.py: StateMachine/DurumMakinesi sýnýf ve modüllerinin orijinal alt-örneði.
+    2.13. Python'da A.Turing'in Ardýþýklýk Makinesi
+        p_21301.py: Teypten okunan bit verilerini tümleyen Tape ve TuringMachine örneði.
+        p_21301x.py: Orijinal Tape/Teyp ve TuringMachine/TümlemeMakinesi sýnýf ve metotlarý alt-örneði.
+    2.14. Özyinelemeli ve Taramalý Yürütümler
+        p_21401.py: Anahtar-deðer çiftli sözlük verilerinde anahtar hatasý istisnasý örneði.
+        p_21402.py: LevenshteinDistance düzeltme mesafesi metoduyla kelimenin hata aðýrlýðý örneði.
+        p_21403a.py: Dekoratörlü LM'le hatalý kelime aðýrlýðý ve tespit çaðrý sayýsý örneði.
+        p_21403b.py: Dekoratör sayaçlý LM süratinin belleklemeyle verimlileþtirilmesi örneði.
+        p_21403c.py: Dekoratör sayaçlý LM'in bellekle'mesini de dekoratörleme örneði.
+        p_21404.py: LM farkýný 2 kelime matrisinin son elemaný olarak bulma örneði.
+        p_21405.py: Karþýlaþtýrmalý kelime matrisi varsayýlý 1-1-1 sil-sok-deðiþtir maliyetini deðiþtirme örneði.
+        p_21406.py: Karþýlaþtýrýlan kelimelerin herbir harf maliyetini belirleme örneði.
+    2.15. Hanoi Kuleleri
+        p_21501.py: Büyüyen 10 diski çivi1'den çivi2 aracýlýðýyla çivi3'e aktarma hamle sayýsý örneði.
+        p_21502.py: 3 büyüyen diski 7 hamlede çivi1'den çivi3'e aktarmayý resmetme örneði.
+    2.16. Usta'kýl veya Boðalar ve Ýnekler Oyunu
+        p_21601.py: Tutulan renk dizilimini isabet ve yakýnsý adediyle tahminleme oyunu örneði.
+        p_21601x.py: Martermind usta'kýl oyununda gerekli fonksiyonlar alt-örneði.
+    2.17. Dinamik Aðsiteleri WYSWYG
+    2.18. mod-python'la HTML Aðsayfalarý ve WSGI
+    2.19. Python ve Pilon'lar
+    2.20. Python ve SQL Sorgulama
+    2.21. Otomatik Müzik Besteleri Yaratma
+
+3. Sayýsal Python (214 adet)
+    3.0. Python'la Sayýsal Programcýlýk Anasayfasý
+    3.1. NumPy ve SciPy Modülleriyle Tanýþma
+        p_30101.py: Derece fahrenhayt çevrimlerinin numpy dizisi ve mathplotlib grafiði örneði.
+        p_30101x.png: Selsiyüs derecelerin mathplotlib grafiði alt-örneði.
+        p_30102a.py: Bir listenin elemansýz, herbir eleman ve eleman referans ebatlarý örneði.
+        p_30102b.py: Bir numpy dizisinin elemansýz, herbir eleman ve eleman referans ebatlarý örneði.
+        p_30102c.py: Bir numpy float16 tipli dizisinin elemansýz, herbir eleman ve eleman referans ebatlarý örneði.
+        p_30103a.py: Ayný dizisel toplamýn python ve numpy iþlem süratlerinin time modülüyle karþýlaþtýrýlmasý örneði.
+        p_30103b.py: Ayný dizisel toplamýn python ve numpy iþlem süratlerinin timeit modülüyle karþýlaþtýrýlmasý örneði.
+    3.2. NumPy Dizileri Yaratma Fonksiyonlarý
+        p_30201.py: Python range dizilerine karþýlýk numpy arange dizileri örneði.
+        p_30202.py: numpy.linspace ile numpy.arange benzeri ardýþýk deðerler üretme örneði.
+        p_30203.py: numpy.arange kapsamý ve numpy.array dizisi özellikleri örneði.
+        p_30204.py: numpy.array ile 0-1-2-3 boyut ve ()-(5,)-(1,5)-(3,4)-(6,3)-(3,2,4) þekil örneði.
+        p_30205.py: numpy.array ile çeþitli 2-3 boyutlu þekiller örneði.
+        p_30206.py: numpy.array ile tek boyutlu D[0]-D[-1] ve iki boyutlu D[0][0]-D[-1][-1] dizi ilk ve son elemanlarý örneði.
+        p_30207.py: numpy.array ile 2 boyutlu dizi [satýr,kolon]'larýn tümü [:], ters tümü [::-1], öncesi [:s] ve sonrasý [k:] örneði.
+        p_30208.py: numpy.array ile 2 boyutluda atlama [::m, ::n], 3 boyutluda ara dilim [n1:n2, m1:m2, :] örneði.
+        p_30209.py: Dizi kopyalarýndaki deðiþiklik python'da aslýný deðiþtirmezken, numpy.array'de deðiþtirir örneði.
+        p_30210.py: numpy.ones/birler, zeros/sýfýrlar, _like/gibi ve empty/kayannoktalýsýfýrlar örneði.
+        p_30211.py: numpy.array asýl ve kopya diziler arasýnda order/sýralama F-C-A-K çeþitleri örneði.
+        p_30212.py: numpy.identity ve numpy.eye ile kayannoktalý veya tamsayý birler matrisi örneði.
+        p_30213.py: numpy.array'de kopyadaki deðiþikliðin aslýnda yansýmasý, satýr ve/veya kolon tersten [::-1, ::-1] örneði.
+    3.3. dtype Veri Tipi Nesneleri
+        p_30301.py: Python liste'nin varsayýlý kayannoktalý ve dtype tamsayýlý numpy.array(liste)'si örneði.
+        p_30302.py: numpy.dtype'ýn tamsayý ve kayannoktalý çeþitleri örneði.
+        p_30303a.py: numpy.dtype ile ülkeler tablosunun herbir kolonunu ayrý tipleyebilme örneði.
+        p_30303b.py: numpy.unicode ile Türkçe karakterli formatlý tabloyu ekrana ve dosyaya yazdýrma örneði.
+        p_30303bx.csv: numpy.unicode ile Türkçe karakterli ve formatlý ülkeler tablosu dosyasý alt-örneði.
+        p_30303c.py: numpy.genfromtxt/loadtxt ile disk csv dosyasýndan ülkeler tablosunu ekrana yansýtma örneði.
+        p_30304.py: numpy.array ve dtype ile stok malzemelerin takibi örneði.
+        p_30305.py: 3 verili tüpleyi SS:dd:ss zaman tipine dönüþtüren dtype örneði.
+        p_30306.py: Güniçi zaman-sýcaklýk tüpleli deðerlerin dtype ile biçimlendirilmesi örneði.
+        p_30307.py: Bazý dünya þehirlerinde zaman farklarýný dosyadan okuma yazma gösterme örneði.
+        p_30307x.py: Bazý dünya þehirlerinde zaman farklarý girdi dosyasý alt-örneði.
+    3.4. NumPy'de Ýþlemler ve Ýþlemciler
+        p_30401.py: Python listesi ve numpy.array ile toplama çýkarma çarpma bölme ve üs örneði.
+        p_30402.py: Python ve numpy iþlem süratlerinin timeit.Timer() ve time.time() ile tespiti örneði.
+        p_30403.py: Numpy.array iki matrisin toplamasý, sayýl ve yönel çarpýmlarý örneði.
+        p_30404.py: 2 matrisin numpy.dot ile vektörel/yönel çarpým uygunluðu örneði.
+        p_30405.py: Ýki (3,3,3,) þekilli matrisin numpy.dot çarpýmýnýn (3,3,3,3) þekilli sonucu örneði.
+        p_30406.py: Çok boyutlu matris çarpýmlarýnda, ilkinin son ve ikincinin sondan birönceki boyut eþitliði örneði.
+        p_30407.py: Numpy.dot(a,b) ve numpy.mat(a)*numpy.mat(b) matris çarpýmlarýnýn aynýlýðý örneði.
+        p_30408.py: numpy.array_equal(a,b), numpy.logical_or(a,b) ve numpy.logical_and(a,b) örneði.
+        p_30409a.py: Skalar/sayýsal çarpma ve toplamada küçük matrisin büyüðe otomatik yayýlmasý örneði.
+        p_30409b.py: Sayýsal matris iþlemlerinde kýsa satýr veya kolonun yayýlmasý örneði.
+        p_30409c.py: Kolon ve sütun matrislerinin sayýsal çarpýmda birlikte yayýlmalarý örneði.
+        p_30409d.py: Satýr matrisinin numpy.concatenate'le çok boyutlu matrise uyarlanmasý örneði.
+        p_30409e.py: Satýr matrisinin numpy.tile ile çok boyutluya eklenmesi örneði.
+        p_30410.py: Bir þehrin diðerlerine uzaklýðý listesini her þehrin diðer her þehre uzaklýðý matrisine çevirme örneði.
+        p_30411a.py: Sayýsal çarpýmda (1,3,4) matrisin otomatik (3,3,4) matrise yayýlmasý örneði.
+        p_30411b.py: Sayýsal çarpýmda (3,4) matrisin (3,3,4) matrise yayýlmasý örneði.
+    3.5. Dizilerin Boyutlarýný Deðiþtirme
+        p_30501.py: Çok boyutlu matrisin flatten() ile C/F/A düzenli tek boyutluya çevrilmesi örneði.
+        p_30502.py: 3 boyutlu (3,4,2) þekilli matrisin varsayýlý, C-satýr, F-sütun, hafýzada A ve K düzende sökülmesi örneði. 
+        p_30503.py: Sýfýr boyutlu (24,) þekilli matrisi 3 boyutlu (3,4,2) þekilli varsayýlý C-düzene çevirme örneði.
+        p_30504.py: Sýfýr boyut (24,) 2 diziyi (3,4,2) þekilden axis concatenate ile (6,4,2)-(3,8,2)-(3,4,4) þekillere çevirme örneði.
+        p_30505.py: Sýfýr boyut (6,) diziyi newaxis, transpose ve concatenate ile 2 boyut ve (6,4)-(4,6) þekillere çevirme örneði.
+        p_30506.py: Bir matrisin çeþitli numpy.row_stack/column_stack/dstack yýðýn matrislere çevrilmesi örneði.
+        p_30507.py: Bir matrisi numpy.tile(M,(s,k)) ile s-satýr ve k-kolonlu þekle tuðlalama örneði.
+    3.6. Pyton, Numpy ve Olasýlýk
+        p_30601.py: random.random() ve random.SystemRandom().random() ile normal ve güvenli tesadüfi (0,1) sayý üretme örneði.
+        p_30602.py: 10bin adet normal, güvenli ve numpy tesadüfi sayý üretim 400/15/1 mS zamanlamalarý örneði.
+        p_30603.py: 1000 adet numpy tesadüfi sayýnýn ardýþýk toplamý ve birlemeli normalleþtirilmiþ toplamý örneði.
+        p_30604.py: SystemRandom() ile istenilen uzunlukta verili tesadüfi karakter seçimli þifre üretme örneði.
+        p_30606.py: Numpy.random.randint(1,6,size=(5, 4)) ile tesadüfi zar atýþlý (5,4) þekilli matris örneði.
+        p_30606.py: Numpy.random.choise(dizi,size(s,k),replace=False) ile þehirler dizisinden tesadüfi yegane (s,k) þekilli matris seçimi örneði.
+        p_30607.py: (b-a)*numpy.random.random_sample((s,k))+a ile [a,b) arasý (s,k) þekilli tesadüfi kayannoktalý matris örneði.
+    3.7. Aðýrlýklý Tercih ve Örnekleme
+        p_30701.py: random.choise(..) ile dizge, liste ve tüpleden tesadüfi eleman seçme örneði.
+        p_30702.py: Deðerler listesinin mesafeler listesinde hangi aralýklara uyduðunun tespiti örneði.
+        p_30703.py: Hileli aðýrlýklý zarlarla 10Bin atýþta [1,6] gelme yüzdeleri örneði.
+        p_30704.py: Verili aðýrlýklý meslek tercihlerinin uygulamalýyla kýyasý örneði.
+        p_30705.py: 9 farklý renk ve aðýrlýklý misketlerin tekli ve üçlü seçim sonuçlarýný aðýrlýklarýyla kýyaslama örneði.
+        p_30706.py: Farklý sayýda özne, sýfat, nesne ne fiillerden çeþitli tesadüfi cümle kurma örneði.
+        p_30707a.py: Farklý aðýrlýklý zamir, sýfat, isim, tümleç ve fiillerden tesadüfi cümleler kurma örneði.
+        p_30707b.py: Farklý aðýrlýklý çoklu cümleleden tümleçlerin verili ve uygulamalý aðýrlýklarý kýyasý örneði.
+        p_30708.py: Ayný numaralý tesadüfi tohumla hep ayný geliþigüzel sayýlarýn üretilmesi örneði.
+        p_30709a.py: Gauss tesadüfi frekans üretici ve matplotlib grafiði örneði.
+        p_30709ax.png: Gauss tesadüfi frekans matplotlib grafiði alt-örneði.
+        p_30709b.py: Normalvariate tesadüfi frekans üretici ve matplotlib grafiði örneði.
+        p_30709bx.png: Normalvariate tesadüfi frekans matplotlib grafiði alt-örneði.
+        p_30710a.py: Aðýrlýk nisbetinde tesadüfi sýfýr ve bir üretme örneði.
+        p_30710b.py: Jeneratör üreteçle aðýrlýk nisbetinde tesadüfi sýfýr ve bir üretme örneði.
+        p_30710c.py: Jeneratör üreteçle tesadüfilerin aðýrlýðýný yüzde ellileme örneði.
+        p_30711a.py: Firmanýn 12 þehirdeki ayný büyümeoranlý 19 yýllýk satýþ rakamlarý örneði.
+        p_30711b.py: Firmanýn 12 þehirdeki farklý büyümeoranlý 19 yýllýk satýþ rakamlarý örneði.
+        p_30711bx.txt: Firmanýn 12 þehirdeki farklý büyümeoranlý 19 yýllýk satýþ rakamlarý çýktý dosyasý alt-örneði.
+        p_30712a.py: Zar atýþlarýnda çift, ikiden büyük ve birleþik etkili gelme oranlarý örneði.
+        p_30712ax.txt: Zar atýþlarýnda çift, ikiden büyük ve birleþik etkili gelme oranlarý örneði.
+        p_30712b.py: Ýngilteredeki üniversitelere öðrenci kayýtlarý örneði.
+        p_30712bx.txt: Ýngilteredeki üniversitelere öðrenci kayýtlarý girdi dosyasý alt-örneði.
+        p_30712c.py: 4 prensin son 4'ü favori 11 amazon kýz adayla günbegün deðiþen aðýrlýkla evlilik ihtimali örneði.
+    3.8. Python'la Sentetik Test Verisi Yaratma
+        p_30801.py: Ad ve soyad listelerinden karþýlýklý aðýrlýksýz seçimi örneði.
+        p_30802.py: Ad ve soyadlarýn karþýlýklý aðýrlýksýz yegane biçimli seçim dökümü örneði.
+        p_30803.py: Aðýrlýklý karþýlýklý seçilen yegane elemanlarýn biçimli dökümü örneði.
+        p_30804.py: 4 ibareler listesini biçimli yegane ve aðýrlýksýz bireþimleme örneði.
+        p_30805.py: Çoklu ülkelerden depremzedelere aðýrlýklý, yegane ve biçimli yardým listesi örneði.
+        p_30805x.txt: Çoklu ülkelerden depremzedelere aðýrlýklý, yegane ve biçimli yardým listesi çýktý dosyasý alt-örneði.
+    3.9. Dizilerin Ýkili Maskelenmesi
+        p_30901.py: Numpy dizi elemanlarýný Boolean True/False'e çevirme örneði.
+        p_30902.py: Numpy dizi elemanlarýný boolean ve randint'le süzgeçleme örneði.
+        p_30903.py: Numpy dizi elemanlarýný süzgeçleme ve deðiþtirme örneði.
+        p_30904.py: Numpy dizi elemanlarýnýn sýfýrsýz veya True olanlarý örneði.
+        p_30905.py: Boolean dizisi kullanarak asal sayýlarýn bulunmasý örneði.
+    3.10. Numpy'de Matris Aritmetiði
+        p_31001.py: Numpy matris tüm aritmetik iþlemleri örneði.
+        p_31002.py: Numpy dizi ve matris nokta ürünü, radyan ve derece açýlarý örneði.
+        p_31003a.py: Numpy dizisel bire-bir veya matrissel çarpým örneði.
+        p_31003b.py: Numpy dizisel veya matrissel bire-bir bölüm örneði.
+        p_31004.py: Numpy matrissel çarpýmlý alýþveriþ örneði.
+        p_31005.py: Numpy 3 boyutlu cross/çapraz vektörel çarpým örneði.
+    3.11. ndarray Dizilerini Okuma ve Yazma
+        p_31101.py: Numpy dizisini disk dosyasýna savetxt ve loadtxt ile saklama ve okuma örneði.
+        p_31102.py: Günlük zaman ve sýcaklýk verileri dosyasýný okuyup görüntüleme örneði.
+        p_31102x.txt: Günlük zaman ve sýcaklýk verileri girdi dosyasý alt-örneði.
+        p_31103a.py: Zaman-ýsý np.dtye tesadüfi kayýtlarýný tofile ve fromfile ile dosyaya yazma ve okuma örneði.
+        p_31103b.py: Numpy tamsayý dizi dtype ardýþýk verilerini tofile ve fromfile ile dosyaya yazma ve okuma örneði.
+        p_31104.py: Numpy tamsayý ardýþýk diziyi save ve load ile geçici dosyaya yazma ve okuma örneði.
+    3.12. Matplotlib Modülüyle Tanýþma
+        p_31201.py: Python mathplotlib.pyplot altmodüllü grafik çizim örneði.
+        p_31202.py: mathplotlib.pyplot etiket adlarý, eksen limitleri ve çift grafik çizimi örneði.
+        p_31203a.py: linspace() ile x-ekseninin tanýmlandýðý mathplotlib.pyplot örneði.
+        p_31203b.py: Ayný linspace() ile 4 farklý mathplotlib.pyplot örneði.
+        p_31203c.py: Ayný linspace() ile 4 farklý sin, cos ve tan mathplotlib.pyplot örneði.
+        p_31204a.py: Ýç-alaný gölgeli sinüs mathplotlib.pyplot örneði.
+        p_31204a.py: Karma-alan gölgeli kosinüs mathplotlib.pyplot örneði.
+    3.13. Omurga Taþýma ve Kertikleri Deðiþtirme
+        p_31301.py: Üst'le sað omurganýn iptali ve sýfýr eksenli grafik örneði.
+        p_31302.py: Yatay ve dikey çentikleri alma veya deðiþtirme örneði.
+        p_31303.py: Omurgayý ortalama ve eksen deðerlerini tanýmlama örneði.
+        p_31304.py: Omurgayý ortalama ve LaTeX'le eksen deðerlerini tanýmlama örneði.
+        p_31305.py: Dikey ve yatay etiketleri ve baþlýðý tasarlama örneði.
+    3.14. Baþlýklar ve Þerhler
+        p_31401.py:  Legend söylencelerle grafiklerde fonksiyonlarýn baþlýk kutularý örneði.
+        p_31402.py: Grafik üzerine scatter/daire ve annotate/þerhle odaklanma örneði.
+    3.15. Matplotlib'le subplot/altgrafik Yaratma
+        p_31501.py: Bir grafik penceresini 4 altpencereye bölme örneði.
+        p_31502.py: Þekle farklý fonksiyonlu 4 altþekil ekleme örneði.
+        p_31503.py: Çoklu farklý ebatlý altþekiller örneði.
+        p_31505.py: 4x2 matrisle toplam 6 altþekil üretme örneði.
+        p_31504.py: 3x2 matrisle toplam 6 altþekil üretme örneði.
+        p_31506.py: Izgaralýk/GridSpec ile altþekli ölçekleme ve konumlandýrma örneði.
+        p_31507.py: Izgaralýk ile çoklu altþekilleri konumlandýrma ve renklendirme örneði.
+        p_31508.py: Izgaralar ile çoklu fonksiyonlarý çizme örneði.
+        p_31509.py: Eksenlerle þekil ebatlarýný deðiþtirme örneði.
+        p_31510.py: Eksenlerle ana þekil içinde altþekil örneði.
+        p_31511.py: Eksenlerin dikey-yatay kapsamlarýný belirleme örneði.
+        p_31512.py: Logaritmik dikey ve yatay eksenli ölçek örneði.
+        p_31513.py: Ayný yatay eksenli ve iki farklý dikey grafik örneði.
+        p_31514.py: Grafik tabanýný ýzgaralama örneði.
+    3.16. Python'la Histogram'lar
+        p_31601.py: Sýfýr yoðuþmalý -3/+3 daðýlýmlý tesadüfi gauss histogramý örneði.
+        p_31602.py: Çoklu kutulu, normalleþtirilmiþ ve kümülatif gauss histogramý örneði.
+        p_31603.py: Çoklu çubuklu ve çoklu þekilli grafikler örneði.
+        p_31604.py: Çubuk grafiklerle yýllara daðýnýk turist sayýsý örneði.
+    3.17. plt.contour'la Eþhatlý Grafikler
+        p_31701.py: Izgara kesiþim eþhatlar haritalama grafiði örneði.
+        p_31702.py: Izgara kesiþim eþhatlar renk dolgulu haritalama grafiði örneði.
+        p_31703.py: Seviyeli renk dolgulu eþhatlý haritalama grafiði örneði.
+        p_31704.py: Sevgi sembolü kalbin topografik grafiði örneði.
+    3.18. Resim Ýþleme
+        p_31801.py: Scipy misc ascent veri dosyasýndan merdiven týrmanýþ resmi tarama örneði.
+        p_31802.py: Scipy misc face veri dosyasýndan rakun resmi tarama örneði.
+        p_31803.py: Herhangi bir jpg png gif resmini görüntüleme örneði.
+        p_31804.py: Bir resmi tümden veya kademeli aðartma ve karartma örneði.
+        p_31805.py: Bir resmi çeþitli renk karmalarýyla tonlama örneði.
+        p_31806.py: Bir resmi çeþitli renk karmalarýyla tonlama örneði.
+    3.19. Resim Ýþleme: Kes, Birleþtir, Karýþtýr, Gölgele, Sulandýr
+        p_31901.py: Resmi çoklu satýr sütunlu örüntü kalýbý olarak kullanma örneði.
+        p_31902.py: Resmin herhangibir dikdörtgen dilimini görüntüleme örneði.
+        p_31903.py: Ýki resmi þeklen eþleþtirip üstüste bindirme örneði.
+        p_31904.py: Üç farklý resmi karmalaþtýrýp üstüste gösterme örneði.
+        p_31905.py: PIL resmini þekillendirilebilire dönüþtürme örneði.
+    3.20. Pandas Modülü'yle Yaygýnsayfa Eðitimi
+        p_32001.py: Basit bir pandas serisiyle numpy dizisinin karþýlaþtýrýlmasý örneði.
+        p_32002.py: Panda serilerinin toplanmasý ve aritmetik iþlemler örneði.
+        p_32003.py: Sözlükten pandas serisi yapma ve fonksiyon uygulama örneði.
+        p_32004.py: Pandas serisinde aranan mevcut ve namevcutlar örneði.
+        p_32005.py: Pandas serisinde None-null deðerlerin idaresi örneði.
+    3.21. Pandas Veriçerçevesi
+        p_32101.py: Pandas'la excel tablolarý DataFrame oluþturma örneði.
+        p_32102a.py: Ad, nüfus ve ülke içerikli þehirler veri çerçevesi index, reindex, rename örneði.
+        p_32102b.py: Süzgeçleme, sütun ekleme ve artan-azalan sýralama örneði.
+        p_32103a.py: Veri çerçevelerinin yeniden-endekslenmesi örneði.
+        p_32103b.py: Türetilen veri çerçevelerinin yeniden-endekslenmesi örneði.
+        p_32103c.py Veri çerçeveleri satýr ve sütunlarýnýn na/mevcutlarla yeniden endekslenmesi örneði.
+        p_32104.py: Ýç-içe sözlükten veri çerçevesinin satýr ve sütunlarýný yerdeðiþtirme örneði.
+        p_32105.py: Geliþigüzel (12x11) sayýlý veri çerçevesinin endeks-kolon-yenidenEndeks örneði.
+    3.22. Pandas Veridosyalarýný Okuma ve Yazma
+        p_32201.py: Pandas'la veri dosyalarýný okuma örneði.
+        p_32201x.txt: Pandas'la okunan girdi veri dosyasý alt-örneði.
+        p_32202a.py: Pandas'la dünya erkek ve kadýn nüfuslarýný okuma, çýkarma ve yazdýrma örneði.
+        p_32202b.py: Erkek, kadýn ve toplam nüfuslarýn ardýþýk ve birleþik dökümü örneði.
+        p_32202x1.txt: Pandas'la dünya erkek nüfuslarý girdi dosyasý alt-örneði.
+        p_32202x2.txt: Pandas'la dünya toplam nüfuslar girdi dosyasý alt-örneði.
+        p_32202x3.txt: Pandas'la dünya hesaplanan kadýn nüfuslarý çýktý dosyasý alt-örneði.
+        p_32203.py: Marketlerin yýl ve aylýk satýþ birleþik veri çerçevesi örneði.
+        p_32204.py: Veri-çerçevesi yaygýn-sayfaya kolon ekleme ve süzgeçli çýktý alma örneði.
+        p_32204x.txt: Þehirlerin alanlarý, kadýn ve erkek nüfuslarý girdi dosyasý alt-örneði.
+        p_32205a.py: Filimler excel yaygýn-sayfa örneði.
+        p_32205ax1.xls: Filimler excel yaygýn-sayfa girdi dosyasý alt-örneði.
+        p_32205ax2.xls: Filimler excel yaygýn-sayfa çýktý dosyasý alt-örneði.
+        p_32205b.py: Baþkanlar excel yaygýn-sayfa örneði.
+        p_32205bx.py: Baþkanlar excel yaygýn-sayfa girdi dosyasý alt-örneði.
+    3.23. NaN/NotANumber BirSayýDeðil
+        p_32301.py: Farklý sensörlerin günlük sýcaklýk veri çerçevesi örneði.
+        p_32301x.txt: Farklý sensörlerin günlük sýcaklýk verileri cvs girdi dosyasý alt-örneði.
+        p_32302.py: Veri çerçevesinde NaN eksik bilgi yönetimi örneði.
+        p_32303.py: Sýcaklýk veri çerçevesinde NaN eksik bilgi yönetimi örneði.
+        p_32303x.txt: Farklý sensörlerin günlük sýcaklýk eksik verileri cvs girdi dosyasý alt-örneði.
+        p_32304.py: Sýcaklýk veri çerçevesinde NaN'larýn düþürülmesi ve ortalama örneði.
+    3.24. Pandas'la Verilerin Katagorileþtirilmesi
+        p_32401.py: Gruplandýrma ve verili deðerlerin gruplarýný bulma örneði.
+        p_32402.py: Pandas kategorik nesneyle gruplandýrma örneði.
+        p_32403.py: Pandas kategorik nesnesinin detaylarý örneði.
+        p_32404.py: Pandas'la öðrenci derecelerinin etiketli kategorilendirilmesi örneði.
+    3.25. Pandas Verilerinin Görüntülenmesi
+        p_32501.py: Pandas serilerinin çizgi grafik olarak kullanýlmasý örneði.
+        p_32502a.py: Pandas veri çerçevesinin çizgi grafik olarak kullanýlmasý örneði.
+        p_32502b.py: Pandas veri çerçevesi grafiðinde çift eksen kullanýlmasý örneði.
+        p_32502c.py: Pandas veri çerçevesi grafiðinde üç/çoklu eksen kullanýlmasý örneði.
+        p_32503.py: Yýllara yaygýn python kurs ziyaretçilerinin grafiklenmesi örneði.
+        p_32503x.txt: Yýllara yaygýn python kurs ziyaretçi verilerinin cvs girdi dosyasý alt-örneði.
+        p_32504.py: Dünya programlama dilleri kullaným yüzdeleri vç grafiði örneði.
+        p_32504x.txt: Dünya programlama dilleri kullaným yüzdeleri cvs girdi dosyasý alt-örneði.
+        p_32505a.py: Pandas serisiyle çizgi, çubuk ve börek grafikler kind/çeþitlemesi örneði.
+        p_32505b.py: Meyveler ve aðýrlýklarý serisinin bütün ve parçalý börek grafiði örneði.
+        p_32505c.py: Programlama dilleri kullaným yüzdesi vç börek grafiði örneði.
+    3.26. Pandas'la Çok Seviyeli Endeksleme
+        p_32601.py: Pandas serisinde çoklu endeks ve sýralama örneði.
+    3.27. Python Tarih ve Zamaný
+        p_32701.py: Modül datetime'ýn date sýnýfý örneði.
+        p_32702.py: Modül datetime'ýn time sýnýfý örneði.
+        p_32703.py: Modül datetime'ýn datetime ve timedelta sýnýfý örneði.
+        p_32704.py: Dizgeyi strftime, strptime ve parse ile biçemleme örneði.
+    3.28. Python, Pandas ve Zaman Serileri
+        p_32801.py: Pandas ve datetime ile zaman serileri türetme örneði.
+        p_32802.py: Pandas date_range tarih_erimi'yle seri deðerlerine tarih endeksi türetme örneði.
+        p_32803.py: Zaman serilerinin grafiklenmesi örneði.
+    3.29. Doðrusal Birleþtirme
+        p_32901.py: Numpy ile doðrusal birleþtirme örneði.
+        p_32901.py: Kendi türettiðimiz doðrusal birleþtirme örneði.
+
+4. Tkinter GUI (37 adet)
+    4.1. Merhaba Etiketi
+        p_40101a.py: Python tkinter'le etiket, resim, buton, çerçeve ve sayaç örneði.
+        p_40101b.py: Python tkinter'le etiket, resim, buton, çerçeve ve sayaç tek-ekran örneði.
+    4.2. Mesaj Bileþeni
+        p_40201.py: Message bileþeni ve parametrik içerikleri örneði.
+        p_40202.py: Message bileþeni ve parametrelerinin geliþigüzel deðiþtirilmesi örneði.
+    4.3. Düðmeler
+        p_40301a.py: Tkinter Button ile slogan yazdýrma ve saniye sayacý örneði.
+        p_40301b.py: Butonlarla slogan, sayaç ve program sonlandýrma örneði.
+    4.4. Deðiþken Sýnýflarý
+    4.5. Radyo Düðmeleri
+        p_40501a.py: Radyo düðmeleri ve onlara variable-value ile deðiþken-deðer atanmasý örneði.
+        p_40501b.py: Radyo düðmeleri ve seçilenin deðerini koyma/alma örneði.
+    4.6. Çentik Kutularý
+        p_40601.py: Çentik kutusuyla cinsiyet, yaþ ve medeni durum çoklu seçenek örneði.
+        p_40602.py: Programlama ve yabancý diller çokseçmeli çentik kutularý örneði.
+        p_40603.py: Çoklu çentik kutularý ve deðerlerine pratik yöntemler örneði.
+    4.7. Giriþ Bileþeni
+        p_40701a.py: Tek satýrlýk entry dizgesel veri giriþi örneði.
+        p_40701b.py: Çoklu kolonlarla veri giriþi, silme ve gösterme örneði.
+        p_40702.py: Form doldurma ve görüntüleme örneði.
+        p_40703.py: Normal ve kompleks sayýlarýn hesap makinesi örneði.
+        p_40704.py: Alýnan faizli borcun aylýk eþit geri ödeme hesabý örneði.
+    4.8. Tuval Bileþeni
+        p_40801.py: Canvas tuvalinde çoklu çizgiler örneði.
+        p_40802.py: Canvas tuvalinde çizgi, dikdörtgen ve metin örneði.
+        p_40803.py: Canvas tuvalinde dairemsi ve yumurtamsý oval çizimi örneði.
+        p_40804.py: Canvas tuvalinde iri noktayla yazý yazma örneði.
+        p_40805.py: Canvas tuvalinde üçgen ve yýldýzlar poligonu çizme örneði.
+        p_40806.py: Canvas tuvalinde hazýr ikiliharaitalama þekilleri örneði.
+        p_40807.py: Canvas tuvalinde resmin ortalanmasý örneði.
+        p_40808.py: Canvas tuvalinde eþit aralýklý yatay-dikey ýzgara hatlarý çizimi örneði.
+        p_40809.py: Canvas tuvalinde toplu þekiller örneði
+    4.9. Ölçekli Sürgü
+        p_40901.py: Yatay ve dikey ölçekli sürgüler ve deðerlerinin gösterimi örneði
+    4.10. Metin Bileþeni
+        p_41001.py: Metin bileþeninin sade, kaydýraçlý ve resimli örneði
+    4.11. Diyaloglar
+        p_41101.py: Python messagebox ile tüm mesaj kutularý örneði.
+        p_41102.py: Python filedialog ile dosya önizleme ve açma örneði.
+        p_41103.py: Python colorchooser ile renk seçme diyaloðu örneði.
+    4.12. Serilim Yönetimi
+        p_41201.py: Tkinter serilim yönetiminde pack kullanýmý örneði.
+        p_41202.py: Tkinter serilim yönetiminde place kullanýmý örneði.
+        p_41203.py: Tkinter serilim yönetiminde grid kullanýmý örneði.
+    4.13. Menüler Yaratma
+        p_41301.py: Aþaðý-açýlan menü ve altseçenekleri örneði.
+    4.14. Olaylar ve Baðlar
+        p_41401.py: Bileþene (düðme) baðlý olay gerçekleþtiðinde fonksiyon yürütme örneði.
+        p_41402.py: Farenin bileþen üzerindeki hareketli konumunun yansýtýlmasý örneði.
+    4.15. Usta'lýk veya Boðalar ve Ýnekler Oyunu
+        p_41501.py: Mastermind usta'kýl çoklu renk dizilimini tahmin oyunu örneði.
