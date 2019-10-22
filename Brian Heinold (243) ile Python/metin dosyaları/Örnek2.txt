@@ -1,0 +1,11 @@
+0 derece = 32.0 fahrenhayt
+10 derece = 50.0 fahrenhayt
+20 derece = 68.0 fahrenhayt
+30 derece = 86.0 fahrenhayt
+40 derece = 104.0 fahrenhayt
+50 derece = 122.0 fahrenhayt
+60 derece = 140.0 fahrenhayt
+70 derece = 158.0 fahrenhayt
+80 derece = 176.0 fahrenhayt
+90 derece = 194.0 fahrenhayt
+100 derece = 212.0 fahrenhayt

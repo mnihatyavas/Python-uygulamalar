@@ -1,0 +1,10 @@
+Merhaba! demo1.txt metin dosyasýna hoþgeldiniz.
+Bu dosya sadece deneme amaçlýdýr.
+Ýyi þanslar!
+Ýyi þanslar!
+Ýyi þanslar!
+Ýyi þanslar!
+Ýyi þanslar!
+Þimdi dosyamýza bir satýr daha eklendi!
+Þimdi dosyamýza bir satýr daha eklendi!
+Þimdi dosyamýza bir satýr daha eklendi!
