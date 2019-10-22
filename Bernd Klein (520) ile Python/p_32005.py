@@ -1,0 +1,65 @@
+# coding:iso-8859-9 Türkçe
+# p_32005.py: Pandas serisinde None-null deðerlerin idaresi örneði.
+
+import pandas as pd
+
+sözlük = {"a":23, "b":45, "c":None, "d":0, "e":None}
+seri = pd.Series (sözlük)
+
+print ("None deðerli float seri:\n", seri, sep="")
+print ("\nSeri deðerleri null mu?:\n", pd.isnull (seri), sep="")
+print ("\nSeri deðerleri null deðil mi?:\n", pd.notnull (seri), sep="")
+print ("\nNone deðerlileri seriden ele:\n", seri.dropna(), sep="")
+print ("\nNone deðerlileri sýfýrla:\n", seri.fillna (0), sep="")
+print ("\nNone deðerlilere deðer ata ve tamsayýla:\n", seri.fillna ({"c":15, "e":29}).astype (int), sep="")
+
+
+
+"""Çýktý:
+>python p_32005.py
+None deðerli float seri:
+a    23.0
+b    45.0
+c     NaN
+d     0.0
+e     NaN
+dtype: float64
+
+Seri deðerleri null mu?:
+a    False
+b    False
+c     True
+d    False
+e     True
+dtype: bool
+
+Seri deðerleri null deðil mi?:
+a     True
+b     True
+c    False
+d     True
+e    False
+dtype: bool
+
+None deðerlileri seriden ele:
+a    23.0
+b    45.0
+d     0.0
+dtype: float64
+
+None deðerlileri sýfýrla:
+a    23.0
+b    45.0
+c     0.0
+d     0.0
+e     0.0
+dtype: float64
+
+None deðerlilere deðer ata ve tamsayýla:
+a    23
+b    45
+c    15
+d     0
+e    29
+dtype: int32
+"""

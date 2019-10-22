@@ -1,0 +1,102 @@
+# coding:iso-8859-9 Türkçe
+# p_32101.py: Pandas'la excel tablolarý DataFrame oluþturma örneði.
+
+import pandas as pd
+
+yýllar = range (2014, 2018)
+
+maðaza1 = pd.Series ([2409.14, 2941.01, 3496.83, 3119.55], index=yýllar)
+maðaza2 = pd.Series ([1203.45, 3441.62, 3007.83, 3619.53], index=yýllar)
+maðaza3 = pd.Series ([3412.12, 3491.16, 3457.19, 1963.10], index=yýllar)
+
+print ("1.Maðazanýn yýllýk satýþ cirosu:\n", maðaza1, sep="")
+print ("\n2.Maðazanýn yýllýk satýþ cirosu:\n", maðaza2, sep="")
+print ("\n3.Maðazanýn yýllýk satýþ cirosu:\n", maðaza3, sep="")
+print ("-"*45)
+#------------------------------------------------------------------------------------------------------
+
+print ("\nHer üç maðazanýn DÝKEY yýllýk satýþ cirosu:\n", pd.concat ([maðaza1, maðaza2, maðaza3]), sep="") # axis=0
+
+maðazalar1= pd.concat ([maðaza1, maðaza2, maðaza3], axis=1)
+print ("\nHer üç maðazanýn YATAY yýllýk satýþ cirosu:\n", maðazalar1, sep="")
+
+maðazalar1.columns = ["Ankara", "Ýstanbul", "Ýzmir"]
+print ("\nHer üç ÞEHÝR maðazanýn YATAY yýllýk satýþ cirosu:\n", maðazalar1, sep="")
+print ("-"*45)
+#------------------------------------------------------------------------------------------------------
+
+maðaza1.name = "Bursa"
+maðaza2.name = "Balýkesir"
+maðaza3.name = "Bandýrma"
+maðazalar2 = pd.concat ([maðaza1, maðaza2, maðaza3], axis=1)
+print ("\nHer üç ÞEHÝR maðazanýn YATAY yýllýk satýþ cirosu:\n", maðazalar2, sep="")
+
+print ("\nmaðaza1'in veri tipi:", type (maðaza1))
+print ("maðazalar1'in veri tipi:", type (maðazalar1))
+
+
+
+"""Çýktý:
+>python p_32101.py
+1.Maðazanýn yýllýk satýþ cirosu:
+2014    2409.14
+2015    2941.01
+2016    3496.83
+2017    3119.55
+dtype: float64
+
+2.Maðazanýn yýllýk satýþ cirosu:
+2014    1203.45
+2015    3441.62
+2016    3007.83
+2017    3619.53
+dtype: float64
+
+3.Maðazanýn yýllýk satýþ cirosu:
+2014    3412.12
+2015    3491.16
+2016    3457.19
+2017    1963.10
+dtype: float64
+---------------------------------------------
+
+Her üç maðazanýn DÝKEY yýllýk satýþ cirosu:
+2014    2409.14
+2015    2941.01
+2016    3496.83
+2017    3119.55
+2014    1203.45
+2015    3441.62
+2016    3007.83
+2017    3619.53
+2014    3412.12
+2015    3491.16
+2016    3457.19
+2017    1963.10
+dtype: float64
+
+Her üç maðazanýn YATAY yýllýk satýþ cirosu:
+            0        1        2
+2014  2409.14  1203.45  3412.12
+2015  2941.01  3441.62  3491.16
+2016  3496.83  3007.83  3457.19
+2017  3119.55  3619.53  1963.10
+
+Her üç ÞEHÝR maðazanýn YATAY yýllýk satýþ cirosu:
+       Ankara  Ýstanbul    Ýzmir
+2014  2409.14   1203.45  3412.12
+2015  2941.01   3441.62  3491.16
+2016  3496.83   3007.83  3457.19
+2017  3119.55   3619.53  1963.10
+---------------------------------------------
+
+Her üç ÞEHÝR maðazanýn YATAY yýllýk satýþ cirosu:
+        Bursa  Balýkesir  Bandýrma
+2014  2409.14    1203.45   3412.12
+2015  2941.01    3441.62   3491.16
+2016  3496.83    3007.83   3457.19
+2017  3119.55    3619.53   1963.10
+
+maðaza1'in veri tipi: <class 'pandas.core.series.Series'>
+maðazalar1'in veri tipi: <class 'pandas.core.frame.DataFrame'>
+"""

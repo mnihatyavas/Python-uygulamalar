@@ -1,0 +1,289 @@
+# coding:iso-8859-9 Türkçe
+# p_32102b.py: Süzgeçleme, sütun ekleme ve artan-azalan sýralama örneði.
+
+import pandas as pd
+
+þehirler = {
+    "ad": ["Londra", "Berlin", "Madrid", "Roma", "Paris",
+        "Viyana", "Buçarest", "Hamburg", "Budapeþte", "Varþova",
+        "Barselona", "Münih", "Milano", "Ýstanbul", "Ankara"],
+    "nüfus": [8615246, 3562166, 3165235, 2874038, 2273305,
+        1805681, 1803425, 1760433, 1754000, 1740119,
+        1602386, 1493900, 1350680, 14657321, 5731256],
+    "ülke": ["Ýngiltere", "Almanya", "Ýspanya", "Ýtalya", "Fransa",
+        "Avusturya", "Romanya", "Almanya", "Macaristan", "Polonya",
+        "Ýspanya", "Almanya", "Ýtalya", "Türkiye", "Türkiye"] }
+
+vç1 = pd.DataFrame (þehirler, columns=["ad", "nüfus"], index=þehirler ["ülke"] )
+print ("Ülke endeksli þehirler veri çerçevesi:\n", vç1, sep="")
+
+# Satýr süzgeci...
+print ("\nAlmanya'nýn veri çerçevesi:\n", vç1.loc ["Almanya"], sep="")
+print ("\nAlmanya ve Türkiye'nin veri çerçevesi:\n", vç1.loc [["Almanya", "Türkiye"]], sep="")
+print ("\nNüfusu 2M'dan fazla þehirlerin veri çerçevesi:\n", vç1.loc [vç1.nüfus >= 2000000], sep="")
+print ("-"*79)
+#------------------------------------------------------------------------------------------------------
+
+print ("\nÜlke endeksli toplam veriler:\n", vç1.sum(), sep="")
+print ("\nVeri çerçevesi nüfus toplamý:", vç1 ["nüfus"].sum() )
+x = vç1 ["nüfus"].cumsum()
+print ("\nÜlke endeksli þehirlerin ardýþýk eklemeli kümülatif toplamý:\n", x, sep="")
+print ("-"*79)
+#------------------------------------------------------------------------------------------------------
+
+vç1 ["nüfus"] = x
+print ("\nNüfus=kümülatif þehir çerçevesi:\n", vç1, sep="")
+
+vç2 = pd.DataFrame (þehirler, columns=["ad", "nüfus", "eklemeliNüfus"], index=þehirler ["ülke"])
+# eklemeliNüfus=NaN
+vç2 ["eklemeliNüfus"] = x
+print ("\nEklemeli nüfus sütunlu ve ülke endeksli veri çerçevesi:\n", vç2, sep="")
+print ("-"*79)
+#------------------------------------------------------------------------------------------------------
+
+alan = [1572, 891.85, 605.77, 1285, 105.4, 414.6, 228, 755, 525.2, 517,
+    101.9, 310.4, 181.8, 2314, 3267.92]
+vç3 = pd.DataFrame (þehirler, columns=["ülke", "alan", "nüfus"], index=þehirler ["ad"])
+# alan=NaN
+vç3 ["alan"] = alan
+print ("\nÞehir km^2 alan sütunlu ve þehir endeksli veri çerçevesi:\n", vç3, sep="")
+
+# Sütun süzgeci...
+#print ("\nSadece nüfus sütunlu veri çerçevesi:\n", vç3 ["nüfus"], sep="")
+print ("\nSadece nüfus sütunlu veri çerçevesi:\n", vç3.nüfus, sep="")
+print ("\nNüfus ve alan sütunlu veri çerçevesi:\n", vç3 [["nüfus", "alan"]], sep="")
+print ("-"*79)
+#------------------------------------------------------------------------------------------------------
+
+print ("\nNüfusa göre artan sýralý veri çerçevesi:\n", vç3.sort_values (by="nüfus"), sep="")
+print ("\nAlana göre azalan sýralý veri çerçevesi:\n", vç3.sort_values (by="alan", ascending=False), sep="")
+print ("-"*79)
+#------------------------------------------------------------------------------------------------------
+
+kiþi = [0 for _ in range (len (alan))]
+for i in range (len (alan)): kiþi [i] = þehirler ["nüfus"] [i] / alan [i]
+
+vç3.insert (loc=3, column='kiþi/km^2', value=kiþi)
+print ("\nKm^2'deki kiþi sayýsýna göre artan sýralý sütun eklemeli veri çerçevesi:\n",
+    vç3.sort_values (by="kiþi/km^2"), sep="")
+
+
+
+"""Çýktý:
+>python p_32102b.py
+Ülke endeksli þehirler veri çerçevesi:
+                   ad     nüfus
+Ýngiltere      Londra   8615246
+Almanya        Berlin   3562166
+Ýspanya        Madrid   3165235
+Ýtalya           Roma   2874038
+Fransa          Paris   2273305
+Avusturya      Viyana   1805681
+Romanya      Buçarest   1803425
+Almanya       Hamburg   1760433
+Macaristan  Budapeþte   1754000
+Polonya       Varþova   1740119
+Ýspanya     Barselona   1602386
+Almanya         Münih   1493900
+Ýtalya         Milano   1350680
+Türkiye      Ýstanbul  14657321
+Türkiye        Ankara   5731256
+
+Almanya'nýn veri çerçevesi:
+              ad    nüfus
+Almanya   Berlin  3562166
+Almanya  Hamburg  1760433
+Almanya    Münih  1493900
+
+Almanya ve Türkiye'nin veri çerçevesi:
+               ad     nüfus
+Almanya    Berlin   3562166
+Almanya   Hamburg   1760433
+Almanya     Münih   1493900
+Türkiye  Ýstanbul  14657321
+Türkiye    Ankara   5731256
+
+Nüfusu 2M'dan fazla þehirlerin veri çerçevesi:
+                 ad     nüfus
+Ýngiltere    Londra   8615246
+Almanya      Berlin   3562166
+Ýspanya      Madrid   3165235
+Ýtalya         Roma   2874038
+Fransa        Paris   2273305
+Türkiye    Ýstanbul  14657321
+Türkiye      Ankara   5731256
+-------------------------------------------------------------------------------
+
+Ülke endeksli toplam veriler:
+ad       LondraBerlinMadridRomaParisViyanaBuçarestHambu...
+nüfus                                             54189191
+dtype: object
+
+Veri çerçevesi nüfus toplamý: 54189191
+
+Ülke endeksli þehirlerin ardýþýk eklemeli kümülatif toplamý:
+Ýngiltere      8615246
+Almanya       12177412
+Ýspanya       15342647
+Ýtalya        18216685
+Fransa        20489990
+Avusturya     22295671
+Romanya       24099096
+Almanya       25859529
+Macaristan    27613529
+Polonya       29353648
+Ýspanya       30956034
+Almanya       32449934
+Ýtalya        33800614
+Türkiye       48457935
+Türkiye       54189191
+Name: nüfus, dtype: int64
+-------------------------------------------------------------------------------
+
+Nüfus=kümülatif þehir çerçevesi:
+                   ad     nüfus
+Ýngiltere      Londra   8615246
+Almanya        Berlin  12177412
+Ýspanya        Madrid  15342647
+Ýtalya           Roma  18216685
+Fransa          Paris  20489990
+Avusturya      Viyana  22295671
+Romanya      Buçarest  24099096
+Almanya       Hamburg  25859529
+Macaristan  Budapeþte  27613529
+Polonya       Varþova  29353648
+Ýspanya     Barselona  30956034
+Almanya         Münih  32449934
+Ýtalya         Milano  33800614
+Türkiye      Ýstanbul  48457935
+Türkiye        Ankara  54189191
+
+Eklemeli nüfus sütunlu ve ülke endeksli veri çerçevesi:
+                   ad     nüfus  eklemeliNüfus
+Ýngiltere      Londra   8615246        8615246
+Almanya        Berlin   3562166       12177412
+Ýspanya        Madrid   3165235       15342647
+Ýtalya           Roma   2874038       18216685
+Fransa          Paris   2273305       20489990
+Avusturya      Viyana   1805681       22295671
+Romanya      Buçarest   1803425       24099096
+Almanya       Hamburg   1760433       25859529
+Macaristan  Budapeþte   1754000       27613529
+Polonya       Varþova   1740119       29353648
+Ýspanya     Barselona   1602386       30956034
+Almanya         Münih   1493900       32449934
+Ýtalya         Milano   1350680       33800614
+Türkiye      Ýstanbul  14657321       48457935
+Türkiye        Ankara   5731256       54189191
+-------------------------------------------------------------------------------
+
+Þehir km^2 alan sütunlu ve þehir endeksli veri çerçevesi:
+                 ülke     alan     nüfus
+Londra      Ýngiltere  1572.00   8615246
+Berlin        Almanya   891.85   3562166
+Madrid        Ýspanya   605.77   3165235
+Roma           Ýtalya  1285.00   2874038
+Paris          Fransa   105.40   2273305
+Viyana      Avusturya   414.60   1805681
+Buçarest      Romanya   228.00   1803425
+Hamburg       Almanya   755.00   1760433
+Budapeþte  Macaristan   525.20   1754000
+Varþova       Polonya   517.00   1740119
+Barselona     Ýspanya   101.90   1602386
+Münih         Almanya   310.40   1493900
+Milano         Ýtalya   181.80   1350680
+Ýstanbul      Türkiye  2314.00  14657321
+Ankara        Türkiye  3267.92   5731256
+
+Sadece nüfus sütunlu veri çerçevesi:
+Londra        8615246
+Berlin        3562166
+Madrid        3165235
+Roma          2874038
+Paris         2273305
+Viyana        1805681
+Buçarest      1803425
+Hamburg       1760433
+Budapeþte     1754000
+Varþova       1740119
+Barselona     1602386
+Münih         1493900
+Milano        1350680
+Ýstanbul     14657321
+Ankara        5731256
+Name: nüfus, dtype: int64
+
+Nüfus ve alan sütunlu veri çerçevesi:
+              nüfus     alan
+Londra      8615246  1572.00
+Berlin      3562166   891.85
+Madrid      3165235   605.77
+Roma        2874038  1285.00
+Paris       2273305   105.40
+Viyana      1805681   414.60
+Buçarest    1803425   228.00
+Hamburg     1760433   755.00
+Budapeþte   1754000   525.20
+Varþova     1740119   517.00
+Barselona   1602386   101.90
+Münih       1493900   310.40
+Milano      1350680   181.80
+Ýstanbul   14657321  2314.00
+Ankara      5731256  3267.92
+-------------------------------------------------------------------------------
+
+Nüfusa göre artan sýralý veri çerçevesi:
+                 ülke     alan     nüfus
+Milano         Ýtalya   181.80   1350680
+Münih         Almanya   310.40   1493900
+Barselona     Ýspanya   101.90   1602386
+Varþova       Polonya   517.00   1740119
+Budapeþte  Macaristan   525.20   1754000
+Hamburg       Almanya   755.00   1760433
+Buçarest      Romanya   228.00   1803425
+Viyana      Avusturya   414.60   1805681
+Paris          Fransa   105.40   2273305
+Roma           Ýtalya  1285.00   2874038
+Madrid        Ýspanya   605.77   3165235
+Berlin        Almanya   891.85   3562166
+Ankara        Türkiye  3267.92   5731256
+Londra      Ýngiltere  1572.00   8615246
+Ýstanbul      Türkiye  2314.00  14657321
+
+Alana göre azalan sýralý veri çerçevesi:
+                 ülke     alan     nüfus
+Ankara        Türkiye  3267.92   5731256
+Ýstanbul      Türkiye  2314.00  14657321
+Londra      Ýngiltere  1572.00   8615246
+Roma           Ýtalya  1285.00   2874038
+Berlin        Almanya   891.85   3562166
+Hamburg       Almanya   755.00   1760433
+Madrid        Ýspanya   605.77   3165235
+Budapeþte  Macaristan   525.20   1754000
+Varþova       Polonya   517.00   1740119
+Viyana      Avusturya   414.60   1805681
+Münih         Almanya   310.40   1493900
+Buçarest      Romanya   228.00   1803425
+Milano         Ýtalya   181.80   1350680
+Paris          Fransa   105.40   2273305
+Barselona     Ýspanya   101.90   1602386
+-------------------------------------------------------------------------------
+
+Km^2'deki kiþi sayýsýna göre artan sýralý sütun eklemeli veri çerçevesi:
+                 ülke     alan     nüfus     kiþi/km^2
+Ankara        Türkiye  3267.92   5731256   1753.793239
+Roma           Ýtalya  1285.00   2874038   2236.605447
+Hamburg       Almanya   755.00   1760433   2331.699338
+Budapeþte  Macaristan   525.20   1754000   3339.680122
+Varþova       Polonya   517.00   1740119   3365.800774
+Berlin        Almanya   891.85   3562166   3994.131300
+Viyana      Avusturya   414.60   1805681   4355.236372
+Münih         Almanya   310.40   1493900   4812.822165
+Madrid        Ýspanya   605.77   3165235   5225.143206
+Londra      Ýngiltere  1572.00   8615246   5480.436387
+Ýstanbul      Türkiye  2314.00  14657321   6334.192308
+Milano         Ýtalya   181.80   1350680   7429.482948
+Buçarest      Romanya   228.00   1803425   7909.758772
+Barselona     Ýspanya   101.90   1602386  15725.083415
+Paris          Fransa   105.40   2273305  21568.358634
+"""

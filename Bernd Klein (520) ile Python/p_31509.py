@@ -1,0 +1,58 @@
+# coding:iso-8859-9 Türkçe
+# p_31509.py: Eksenlerle þekil ebatlarýný deðiþtirme örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+mp.figure (figsize=(10, 4))
+X = np.arange (0,20)
+Y = np.random.randint (1, 20, size=20)
+mp.plot (X, Y, "Green")
+mp.show()
+#-------------------------------------------------------------------------------------------------------
+
+mp.style.use ("dark_background")
+þekil = mp.figure()
+X = np.arange (0,20)
+Y = np.random.randint (1, 20, size=20)
+
+sol, alt, sað, üst = 0.15, 0.15, 0.75, 0.75
+eksenler = þekil.add_axes ([sol, alt, sað, üst])
+eksenler.set_xlabel ('X=(Yatay Eksen)')
+eksenler.set_ylabel ('Y=(Dikey Eksen)')
+eksenler.set_title ('Geliþigüzel 20 Çakýþma');
+
+eksenler.plot (X, Y, 'r--o')
+mp.show ()
+#-------------------------------------------------------------------------------------------------------
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk())
+
+sol, alt, sað, üst = 0.1, 0.1, 0.8, 0.3
+eksenler = þekil.add_axes ([sol, alt, sað, üst])
+eksenler.set_xlabel ('X=(Yatay Eksen)')
+eksenler.set_ylabel ('Y=(Dikey Eksen)')
+eksenler.set_title ('Geliþigüzel 20 Çakýþma');
+
+eksenler.plot (X, Y, 'r--o')
+mp.show ()
+#-------------------------------------------------------------------------------------------------------
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk())
+
+sol, alt, sað, üst = 0.1, 0.1, 0.3, 0.8
+eksenler = þekil.add_axes ([sol, alt, sað, üst])
+eksenler.set_xlabel ('X=(Yatay Eksen)')
+eksenler.set_ylabel ('Y=(Dikey Eksen)')
+eksenler.set_title ('Geliþigüzel 20 Çakýþma');
+
+eksenler.set_facecolor (Renk.renk())
+eksenler.plot (X, Y, "--o", color=Renk.renk())
+mp.show ()
+
+
+
+

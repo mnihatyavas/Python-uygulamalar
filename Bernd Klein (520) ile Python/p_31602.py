@@ -1,0 +1,81 @@
+# coding:iso-8859-9 Türkçe
+# p_31602.py: Çoklu kutulu, normalleþtirilmiþ ve kümülatif gauss histogramý örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+gaussSayýlarý = np.random.normal (size=10000)
+mp.title ("100 kutulu Gauss Histogram'ý", color="b")
+#mp.hist (gaussSayýlarý) = mp.hist (gaussSayýlarý, bins=10)
+mp.hist (gaussSayýlarý, bins=100) # Varsayýlý 10 deðil 100 adet kutu...
+mp.show()
+#----------------------------------------------------------------------------------------------------
+
+mp.title ("Kutu/10000 Gauss Histogram'ý", color="g")
+mp.hist (gaussSayýlarý, bins=100, density=True)
+# Yoðunluk: Herbir kutu için, (n / (len (x) ) = n/10000)...
+# Ýntegrali=1, yani herbir kutu en*boy toplamý = 1...
+mp.show()
+#----------------------------------------------------------------------------------------------------
+
+mp.style.use ("dark_background")
+mp.title ("Toplam 1'e Normalleþtirilmiþ Gauss Histogram'ý", color="Cyan")
+mp.hist (
+    gaussSayýlarý,
+    bins=100, # kutu sayýsý = 100
+    density=True, # integrali = 1
+    stacked=True, # Normalleþtirilmiþ toplamý = 1
+    edgecolor="#FA4662", # Kutu kenarlarý rengi
+    color="#DDFFDD") # kutu içi rengi
+mp.show()
+#----------------------------------------------------------------------------------------------------
+
+þekil = mp.figure (figsize=(7,4))
+þekil.set_facecolor (Renk.renk())
+
+altþekil1 = mp.subplot (211)
+altþekil1.set_title ("100 Kutuluk Kümülatif Gauss Histogram'ý", color=Renk.renk())
+altþekil1.set_facecolor (Renk.renk())
+altþekil1.hist (
+    gaussSayýlarý,
+    bins=100,
+    density=True,
+    stacked=True,
+    edgecolor=Renk.renk(),
+    color=Renk.renk(),
+    cumulative=True) # Normalleþtirilmiþ kutularýn soldan-sað toplamý
+
+altþekil2 = mp.subplot (212)
+altþekil2.set_title ("50 Kutuluk Kümülatif Gauss Histogram'ý", color=Renk.renk())
+altþekil2.set_facecolor (Renk.renk())
+altþekil2.hist (gaussSayýlarý, bins=50, density=True, stacked=True,
+    edgecolor=Renk.renk(), color=Renk.renk(), cumulative=True)
+
+mp.tight_layout()
+mp.show()
+#----------------------------------------------------------------------------------------------------
+
+þekil = mp.figure (figsize=(10,5))
+þekil.set_facecolor (Renk.renk())
+
+altþekil1 = mp.subplot (121)
+altþekil1.set_title ("50 Kutuluk Kümülatif Gauss Histogram'ý", color=Renk.renk())
+altþekil1.set_facecolor (Renk.renk())
+altþekil1.hist (
+    gaussSayýlarý,
+    bins=50,
+    density=True,
+    stacked=True,
+    edgecolor=Renk.renk(),
+    color=Renk.renk(),
+    cumulative=True)
+
+altþekil2 = mp.subplot (122)
+altþekil2.set_title ("100 Kutuluk Kümülatif Gauss Histogram'ý", color=Renk.renk())
+altþekil2.set_facecolor (Renk.renk())
+altþekil2.hist (gaussSayýlarý, bins=100, density=True, stacked=True,
+    edgecolor=Renk.renk(), color=Renk.renk(), cumulative=True)
+
+mp.tight_layout()
+mp.show()

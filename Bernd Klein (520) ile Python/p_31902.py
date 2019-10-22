@@ -1,0 +1,23 @@
+# coding:iso-8859-9 Türkçe
+# p_31902.py: Resmin herhangibir dikdörtgen dilimini görüntüleme örneði.
+
+import matplotlib.pyplot as mp
+import matplotlib.image as mi
+from p_315 import Renk
+
+mp.style.use ("dark_background")
+boyacýlarKalýbý = mi.imread ('resim/boyacýlarKalýbý.png')
+dilim = boyacýlarKalýbý [90:150, 50:120] # dikdörtgen [satýr1:satýr2, sütun1:sütun2]
+
+mp.title ("Resmin [satýrlar, sütunlar]=[90:150, 50:120] Dilimi")
+mp.axis ("off")
+mp.imshow (dilim)
+mp.show()
+#-----------------------------------------------------------------------------------------------------
+
+mp.figure().set_facecolor (Renk.renk())
+dilim = boyacýlarKalýbý [190:300, 150:240]
+mp.title ("Resmin [satýrlar, sütunlar]=[190:300, 150:240] Dilimi", color=Renk.renk())
+mp.axis ("off")
+mp.imshow (dilim)
+mp.show()

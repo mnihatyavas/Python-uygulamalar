@@ -1,0 +1,39 @@
+# coding:iso-8859-9 Türkçe
+# p_31801.py: Scipy misc ascent veri dosyasýndan merdiven týrmanýþ resmi tarama örneði.
+
+#pip install scipy #scipy-1.3.0
+
+from scipy import misc as spm
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+týrmanýþ = spm.ascent() # Data dosyasý verileri...
+mp.imshow (týrmanýþ)
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Merdiven Týrmanýþý Data Resmi", fontsize=17)
+mp.gray()
+mp.show()
+#---------------------------------------------------------------------------------------------------
+
+týrmanýþ = spm.ascent()
+mp.imshow (týrmanýþ)
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Merdiven Týrmanýþý Data Resmi", color=Renk.renk(), fontsize=17)
+mp.gray()
+mp.axis ("off")
+mp.tight_layout()
+mp.show()
+#---------------------------------------------------------------------------------------------------
+
+print ("'ascent' veri dosyasý tipi:", týrmanýþ.dtype)
+print ("'ascent' veri dosyasý þekli:", týrmanýþ.shape)
+
+
+
+"""Çýktý:
+>python p_31801.py
+'ascent' veri dosyasý tipi: int32
+'ascent' veri dosyasý þekli: (512, 512)
+"""

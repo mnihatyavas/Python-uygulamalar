@@ -1,0 +1,217 @@
+# coding:iso-8859-9 Türkçe
+# p_32102a.py: Ad, nüfus ve ülke içerikli þehirler veri çerçevesi index, reindex, rename örneði.
+
+import pandas as pd
+
+þehirler = {
+    "ad": ["Londra", "Berlin", "Madrid", "Roma", "Paris",
+        "Viyana", "Buçarest", "Hamburg", "Budapeþte", "Varþova",
+        "Barselona", "Münih", "Milano", "Ýstanbul", "Ankara"],
+    "nüfus": [8615246, 3562166, 3165235, 2874038, 2273305,
+        1805681, 1803425, 1760433, 1754000, 1740119,
+        1602386, 1493900, 1350680, 14657321, 5731256],
+    "ülke": ["Ýngiltere", "Almanya", "Ýspanya", "Ýtalya", "Fransa",
+        "Avusturya", "Romanya", "Almanya", "Macaristan", "Polonya",
+        "Ýspanya", "Almanya", "ÝItalya", "Türkiye", "Türkiye"] }
+
+vç1 = pd.DataFrame (þehirler)
+print ("Pandas'la yaratýlan ÞEHÝRLER DataFrame/VeriÇerçevesi:\n", vç1, sep="")
+print ("\nÞehirler tablolama çerçevesinin kolon adlarý: ", vç1.columns.values, sep="")
+#---------------------------------------------------------------------------------------------
+
+sýralama = ["birinci","ikinci","üçüncü","dördüncü","beþinci",
+    "altýncý","yedinci","sekizinci","dokuzuncu","onuncu",
+    "onbirinci","onikinci","onüçüncü","ondördüncü","onbeþinci"]
+vç2 = pd.DataFrame (þehirler, index=sýralama)
+print ("\nÖzel endeksli þehirler çerçevesi:\n", vç2, sep="")
+#---------------------------------------------------------------------------------------------
+
+vç3 = vç2.reindex (index=sýralama, columns=["nüfus", "ad", "ülke"])
+print ("\nKolonlarý deðiþtirilen özel endeksli þehirler çerçevesi:\n", vç3, sep="")
+#---------------------------------------------------------------------------------------------
+
+print ("\nKolonlarý tekrar deðiþtirilen özel endeksli þehirler çerçevesi:\n",
+    vç3.reindex (columns=["nüfus", "ülke", "ad"]), sep="")
+#---------------------------------------------------------------------------------------------
+
+vç4 = vç1.rename (columns={"ad":"Nume", "ülke":"Tara", "nüfus":"Populatie"}, inplace=False)
+# inplace=False ==> vç1 deðiþmedi...
+print ("\nKolon adlarý Rumenceye deðiþtirilen þehirler çerçevesi:\n", vç4, sep="")
+#---------------------------------------------------------------------------------------------
+
+print ("\nÜlke endeksli þehirler çerçevesi:\n", vç1.set_index ("ülke"), sep="") # inplace=True ile vç1 deðiþir...
+print ("\nÞehir endeksli þehirler çerçevesi:\n", vç1.set_index ("ad"), sep="")
+print ("\nNüfus endeksli þehirler çerçevesi:\n", vç1.set_index ("nüfus"), sep="")
+print ("\nTekrar þehir endeksli þehirler çerçevesi:\n", pd.DataFrame (þehirler, columns=["nüfus", "ülke"], index=þehirler["ad"]), sep="")
+
+
+
+"""Çýktý:
+>python p_32102.py
+Pandas'la yaratýlan ÞEHÝRLER DataFrame/VeriÇerçevesi:
+           ad     nüfus        ülke
+0      Londra   8615246   Ýngiltere
+1      Berlin   3562166     Almanya
+2      Madrid   3165235     Ýspanya
+3        Roma   2874038      Ýtalya
+4       Paris   2273305      Fransa
+5      Viyana   1805681   Avusturya
+6    Buçarest   1803425     Romanya
+7     Hamburg   1760433     Almanya
+8   Budapeþte   1754000  Macaristan
+9     Varþova   1740119     Polonya
+10  Barselona   1602386     Ýspanya
+11      Münih   1493900     Almanya
+12     Milano   1350680     ÝItalya
+13   Ýstanbul  14657321     Türkiye
+14     Ankara   5731256     Türkiye
+
+Þehirler tablolama çerçevesinin kolon adlarý: ['ad' 'nüfus' 'ülke']
+
+Özel endeksli þehirler çerçevesi:
+                   ad     nüfus        ülke
+birinci        Londra   8615246   Ýngiltere
+ikinci         Berlin   3562166     Almanya
+üçüncü         Madrid   3165235     Ýspanya
+dördüncü         Roma   2874038      Ýtalya
+beþinci         Paris   2273305      Fransa
+altýncý        Viyana   1805681   Avusturya
+yedinci      Buçarest   1803425     Romanya
+sekizinci     Hamburg   1760433     Almanya
+dokuzuncu   Budapeþte   1754000  Macaristan
+onuncu        Varþova   1740119     Polonya
+onbirinci   Barselona   1602386     Ýspanya
+onikinci        Münih   1493900     Almanya
+onüçüncü       Milano   1350680     ÝItalya
+ondördüncü   Ýstanbul  14657321     Türkiye
+onbeþinci      Ankara   5731256     Türkiye
+
+Kolonlarý deðiþtirilen özel endeksli þehirler çerçevesi:
+               nüfus         ad        ülke
+birinci      8615246     Londra   Ýngiltere
+ikinci       3562166     Berlin     Almanya
+üçüncü       3165235     Madrid     Ýspanya
+dördüncü     2874038       Roma      Ýtalya
+beþinci      2273305      Paris      Fransa
+altýncý      1805681     Viyana   Avusturya
+yedinci      1803425   Buçarest     Romanya
+sekizinci    1760433    Hamburg     Almanya
+dokuzuncu    1754000  Budapeþte  Macaristan
+onuncu       1740119    Varþova     Polonya
+onbirinci    1602386  Barselona     Ýspanya
+onikinci     1493900      Münih     Almanya
+onüçüncü     1350680     Milano     ÝItalya
+ondördüncü  14657321   Ýstanbul     Türkiye
+onbeþinci    5731256     Ankara     Türkiye
+
+Kolonlarý tekrar deðiþtirilen özel endeksli þehirler çerçevesi:
+               nüfus        ülke         ad
+birinci      8615246   Ýngiltere     Londra
+ikinci       3562166     Almanya     Berlin
+üçüncü       3165235     Ýspanya     Madrid
+dördüncü     2874038      Ýtalya       Roma
+beþinci      2273305      Fransa      Paris
+altýncý      1805681   Avusturya     Viyana
+yedinci      1803425     Romanya   Buçarest
+sekizinci    1760433     Almanya    Hamburg
+dokuzuncu    1754000  Macaristan  Budapeþte
+onuncu       1740119     Polonya    Varþova
+onbirinci    1602386     Ýspanya  Barselona
+onikinci     1493900     Almanya      Münih
+onüçüncü     1350680     ÝItalya     Milano
+ondördüncü  14657321     Türkiye   Ýstanbul
+onbeþinci    5731256     Türkiye     Ankara
+
+Kolon adlarý Rumenceye deðiþtirilen þehirler çerçevesi:
+         Nume  Populatie        Tara
+0      Londra    8615246   Ýngiltere
+1      Berlin    3562166     Almanya
+2      Madrid    3165235     Ýspanya
+3        Roma    2874038      Ýtalya
+4       Paris    2273305      Fransa
+5      Viyana    1805681   Avusturya
+6    Buçarest    1803425     Romanya
+7     Hamburg    1760433     Almanya
+8   Budapeþte    1754000  Macaristan
+9     Varþova    1740119     Polonya
+10  Barselona    1602386     Ýspanya
+11      Münih    1493900     Almanya
+12     Milano    1350680     ÝItalya
+13   Ýstanbul   14657321     Türkiye
+14     Ankara    5731256     Türkiye
+
+Ülke endeksli þehirler çerçevesi:
+                   ad     nüfus
+ülke
+Ýngiltere      Londra   8615246
+Almanya        Berlin   3562166
+Ýspanya        Madrid   3165235
+Ýtalya           Roma   2874038
+Fransa          Paris   2273305
+Avusturya      Viyana   1805681
+Romanya      Buçarest   1803425
+Almanya       Hamburg   1760433
+Macaristan  Budapeþte   1754000
+Polonya       Varþova   1740119
+Ýspanya     Barselona   1602386
+Almanya         Münih   1493900
+ÝItalya        Milano   1350680
+Türkiye      Ýstanbul  14657321
+Türkiye        Ankara   5731256
+
+Þehir endeksli þehirler çerçevesi:
+              nüfus        ülke
+ad
+Londra      8615246   Ýngiltere
+Berlin      3562166     Almanya
+Madrid      3165235     Ýspanya
+Roma        2874038      Ýtalya
+Paris       2273305      Fransa
+Viyana      1805681   Avusturya
+Buçarest    1803425     Romanya
+Hamburg     1760433     Almanya
+Budapeþte   1754000  Macaristan
+Varþova     1740119     Polonya
+Barselona   1602386     Ýspanya
+Münih       1493900     Almanya
+Milano      1350680     ÝItalya
+Ýstanbul   14657321     Türkiye
+Ankara      5731256     Türkiye
+
+Nüfus endeksli þehirler çerçevesi:
+                 ad        ülke
+nüfus
+8615246      Londra   Ýngiltere
+3562166      Berlin     Almanya
+3165235      Madrid     Ýspanya
+2874038        Roma      Ýtalya
+2273305       Paris      Fransa
+1805681      Viyana   Avusturya
+1803425    Buçarest     Romanya
+1760433     Hamburg     Almanya
+1754000   Budapeþte  Macaristan
+1740119     Varþova     Polonya
+1602386   Barselona     Ýspanya
+1493900       Münih     Almanya
+1350680      Milano     ÝItalya
+14657321   Ýstanbul     Türkiye
+5731256      Ankara     Türkiye
+
+Tekrar þehir endeksli þehirler çerçevesi:
+              nüfus        ülke
+Londra      8615246   Ýngiltere
+Berlin      3562166     Almanya
+Madrid      3165235     Ýspanya
+Roma        2874038      Ýtalya
+Paris       2273305      Fransa
+Viyana      1805681   Avusturya
+Buçarest    1803425     Romanya
+Hamburg     1760433     Almanya
+Budapeþte   1754000  Macaristan
+Varþova     1740119     Polonya
+Barselona   1602386     Ýspanya
+Münih       1493900     Almanya
+Milano      1350680     ÝItalya
+Ýstanbul   14657321     Türkiye
+Ankara      5731256     Türkiye
+"""

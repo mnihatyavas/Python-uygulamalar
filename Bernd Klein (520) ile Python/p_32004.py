@@ -1,0 +1,120 @@
+# coding:iso-8859-9 Türkçe
+# p_32004.py: Pandas serisinde aranan mevcut ve namevcutlar örneði.
+
+import pandas as pd
+
+sözlük = {
+    "Berlin":3562166,
+    "Ýstanbul":7167203,
+    "Madrid":3165235,
+    "Roma":2874038,
+    "Paris":2273305,
+    "Vienna":1805681,
+    "Buçarest":1803425,
+    "Hamburg":1760433,
+    "Budapeþte":1754000,
+    "Varþova":1740119,
+    "Barselona":1602386,
+    "Münih":1493900,
+    "Londra":8615246,
+    "Milano":1350680}
+
+seri = pd.Series (sözlük)
+
+print ("Þehirler ve merkez nüfuslarýný göster:\n", seri, sep="")
+print ("\n2 milyon ve üzeri þehirleri göster:\n", seri [seri >= 2000000], sep="")
+print ("\nListede 'Ýstanbul' var mý?", ("Ýstanbul" in seri) )
+print ("Listede 'Ankara' yok mu?", ("Ankara" not in seri) )
+print ("-"*40)
+#-----------------------------------------------------------------------------------------------------
+
+print ("\nAranan hepsi listede mevcutsa dype=int64:\n", pd.Series (sözlük, index=["Londra", "Ýstanbul", "Hamburg", "Milano", "Paris"]), sep="")
+
+aranan = pd.Series (sözlük, index=["Londra", "Ýstanbul", "Zürih", "Milano", "Þututgard"])
+
+print ("\nListede namevcutsa dype=float64:\n", aranan, sep="")
+print ("\nNamevcutlarý listeden ayýkla:\n", aranan.dropna(), sep="")
+print ("\nNamevcutsa NaN yerine sýfýrla:\n", aranan.fillna (0), sep="")
+print ("\nEksikleri tamamla:\n", aranan.fillna ({"Þututgard":597939, "Zürih":378884}), sep="")
+print ("\nEksikleri tamamla ve dtype=int32 yap:\n", aranan.fillna ({"Þututgard":597939, "Zürih":378884}).astype (int), sep="")
+
+
+
+"""Çýktý:
+>python p_32004.py
+Þehirler ve merkez nüfuslarýný göster:
+Berlin       3562166
+Ýstanbul     7167203
+Madrid       3165235
+Roma         2874038
+Paris        2273305
+Vienna       1805681
+Buçarest     1803425
+Hamburg      1760433
+Budapeþte    1754000
+Varþova      1740119
+Barselona    1602386
+Münih        1493900
+Londra       8615246
+Milano       1350680
+dtype: int64
+
+2 milyon ve üzeri þehirleri göster:
+Berlin      3562166
+Ýstanbul    7167203
+Madrid      3165235
+Roma        2874038
+Paris       2273305
+Londra      8615246
+dtype: int64
+
+Listede 'Ýstanbul' var mý? True
+Listede 'Ankara' yok mu? True
+----------------------------------------
+
+Aranan hepsi listede mevcutsa dype=int64:
+Londra      8615246
+Ýstanbul    7167203
+Hamburg     1760433
+Milano      1350680
+Paris       2273305
+dtype: int64
+
+Listede namevcutsa dype=float64:
+Londra       8615246.0
+Ýstanbul     7167203.0
+Zürih              NaN
+Milano       1350680.0
+Þututgard          NaN
+dtype: float64
+
+Namevcutlarý listeden ayýkla:
+Londra      8615246.0
+Ýstanbul    7167203.0
+Milano      1350680.0
+dtype: float64
+
+Namevcutsa NaN yerine sýfýrla:
+Londra       8615246.0
+Ýstanbul     7167203.0
+Zürih              0.0
+Milano       1350680.0
+Þututgard          0.0
+dtype: float64
+
+Eksikleri tamamla:
+Londra       8615246.0
+Ýstanbul     7167203.0
+Zürih         378884.0
+Milano       1350680.0
+Þututgard     597939.0
+dtype: float64
+
+Eksikleri tamamla ve dtype=int32 yap:
+Londra       8615246
+Ýstanbul     7167203
+Zürih         378884
+Milano       1350680
+Þututgard     597939
+dtype: int32
+"""

@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+# p_31506.py: Izgaralýk/GridSpec ile altþekli ölçekleme ve konumlandýrma örneði.
+
+import matplotlib.pyplot as mp
+from matplotlib.gridspec import GridSpec
+from p_315 import Renk
+
+þekil = mp.figure()
+ýzgara = GridSpec (1, 1) # Tek satýr ve tek sütun...
+þekil.add_subplot (ýzgara [0, 0] ) # altþekil...
+mp.show()
+#-------------------------------------------------------------------------------------------------
+
+mp.style.use ("dark_background")
+þekil = mp.figure()
+ýzgara = GridSpec (1, 1,
+    bottom=0.25, # [0,0]'dan uzaklýðý=%25
+    left=0.15, # %15
+    top=0.99) # %99
+þekil.add_subplot (ýzgara [0, 0] ) # altþekil...
+mp.show()
+#-------------------------------------------------------------------------------------------------
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk())
+ýzgara = GridSpec (1, 1,
+    bottom=0.3, # [0,0]'dan uzaklýðý=%30
+    left=0.099, # %9.9
+    top=0.7) # %70
+þekil.add_subplot (ýzgara [0, 0] ).set_facecolor (Renk.renk())
+mp.show()

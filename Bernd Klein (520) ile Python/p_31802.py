@@ -1,0 +1,29 @@
+# coding:iso-8859-9 Türkçe
+# p_31802.py: Scipy misc face veri dosyasýndan rakun resmi tarama örneði.
+
+from scipy import misc as spm
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Rakun Sansarý Data Resmi", color=Renk.renk(), fontsize=18)
+rakunSansarý = spm.face()
+mp.axis ("off")
+#mp.gray()
+mp.imshow (rakunSansarý)
+mp.tight_layout()
+mp.show()
+#-----------------------------------------------------------------------------------------------------
+
+print ("Rakun sansarý matris þekli:", rakunSansarý.shape)
+print ("Matris azami:", rakunSansarý.max)
+print ("Matris tipi:", rakunSansarý.dtype)
+
+
+
+"""Çýktý:
+>python p_31802.py
+Rakun sansarý matris þekli: (768, 1024, 3)
+Matris azami: <built-in method max of numpy.ndarray object at 0x0532ECF0>
+Matris tipi: uint8
+"""

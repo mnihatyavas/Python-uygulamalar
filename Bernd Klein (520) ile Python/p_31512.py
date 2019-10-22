@@ -1,0 +1,59 @@
+# coding:iso-8859-9 Türkçe
+# p_31512.py: Logaritmik dikey ve yatay eksenli ölçek örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+þekil = mp.figure()
+x = np.arange (0, 5, 0.2)
+
+altþekil1 = þekil.add_subplot (1, 2, 1)
+altþekil1.set_yscale ("log")
+altþekil1.set_title ("Logaritmik Y kapsam")
+altþekil1.plot (x,x**0.5,"r--o", x,x**2,"y--^", x,x**3,"b--.")
+
+altþekil2 = þekil.add_subplot (1, 2, 2)
+altþekil2.axis ("tight")
+altþekil2.set_title ("Sýký/tight Y kapsam")
+altþekil2.plot (x,x**0.5,"r--o", x,x**2,"y--^", x,x**3,"b--.")
+
+mp.show()
+#-----------------------------------------------------------------------------------------------------
+
+mp.style.use ("dark_background")
+þekil = mp.figure()
+x = np.arange (0, 5, 0.2)
+
+altþekil1 = þekil.add_subplot (1, 2, 1)
+altþekil1.set_yscale ("log")
+altþekil1.set_title ("Logaritmik Y kapsam")
+altþekil1.plot (x,x**0.5,"r--o", x,x**2,"y--^", x,x**3,"b--.")
+
+altþekil2 = þekil.add_subplot (1, 2, 2)
+altþekil2.axis ("tight")
+altþekil2.set_title ("Sýký/tight Y kapsam")
+altþekil2.plot (x,x**0.5,"r--o", x,x**2,"y--^", x,x**3,"b--.")
+
+mp.show()
+#-----------------------------------------------------------------------------------------------------
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk())
+x = np.arange (0, 5, 0.2)
+
+altþekil1 = þekil.add_subplot (1, 2, 1)
+altþekil1.set_yscale ("log")
+altþekil1.set_title ("Logaritmik Y kapsam")
+altþekil1.set_facecolor (Renk.renk())
+altþekil1.plot (x,x**0.5,"r--o", x,x**2,"y--^", x,x**3,"b--.")
+
+altþekil2 = þekil.add_subplot (1, 2, 2)
+altþekil2.set_xscale ("log")
+altþekil1.set_yscale ("log")
+altþekil2.set_title ("Logaritmik X kapsam")
+altþekil2.set_facecolor (Renk.renk())
+altþekil2.plot (x,x**0.5,"r--o", x,x**2,"y--^", x,x**3,"b--.")
+
+mp.show()
+

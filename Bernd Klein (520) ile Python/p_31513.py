@@ -1,0 +1,59 @@
+# coding:iso-8859-9 Türkçe
+# p_31513.py: Ayný yatay eksenli ve iki farklý dikey grafik örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+þekil, altþekil1 = mp.subplots()
+x = np.arange (1, 7, 0.5)
+
+altþekil1.set_ylabel (r"Dairenin çevresi $(sm)$", fontsize=16, color="blue")
+for çentik in altþekil1.get_yticklabels(): çentik.set_color ("blue")
+altþekil1.plot (x, 2 * np.pi * x, "--o", LineWidth=0.8, color="blue")
+    
+altþekil2 = altþekil1.twinx()
+altþekil2.set_ylabel (r"Dairenin alaný $(sm^2)$", fontsize=16, color="Red")
+for çentik in altþekil2.get_yticklabels(): çentik.set_color ("Red")
+altþekil2.plot (x, np.pi * x ** 2, "--*", linewidth=0.5, color="Red")
+
+mp.tight_layout()
+mp.show()
+#---------------------------------------------------------------------------------------------------------
+
+mp.style.use ("dark_background")
+þekil = mp.figure()
+x = np.arange (1, 7, 0.5)
+
+altþekil1 = þekil.subplots()
+altþekil1.set_ylabel (r"Dairenin çevresi $(sm)$", fontsize=16, color="blue")
+for label in altþekil1.get_yticklabels(): label.set_color ("blue")
+altþekil1.plot (x, 2 * np.pi * x, "--o", lw=.8, color="blue")
+    
+altþekil2 = altþekil1.twinx()
+altþekil2.set_ylabel (r"Dairenin alaný $(sm^2)$", fontsize=16, color="Red")
+for label in altþekil2.get_yticklabels(): label.set_color ("Red")
+altþekil2.plot (x, np.pi * x ** 2, "--*", lw=.5, color="Red")
+
+mp.tight_layout()
+mp.show()
+#---------------------------------------------------------------------------------------------------------
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk())
+x = np.arange (1, 7, 0.5)
+
+altþekil1 = þekil.subplots()
+altþekil1.set_facecolor (Renk.renk())
+altþekil1.set_ylabel (r"Dairenin çevresi $(sm)$", fontsize=16, color="blue")
+for label in altþekil1.get_yticklabels(): label.set_color ("blue")
+altþekil1.plot (x, 2 * np.pi * x, "--o", lw=.8, color="blue")
+    
+altþekil2 = altþekil1.twinx()
+altþekil2.set_facecolor (Renk.renk())
+altþekil2.set_ylabel (r"Dairenin alaný $(sm^2)$", fontsize=16, color="Red")
+for label in altþekil2.get_yticklabels(): label.set_color ("Red")
+altþekil2.plot (x, np.pi * x ** 2, "--*", lw=.5, color="Red")
+
+mp.tight_layout()
+mp.show()

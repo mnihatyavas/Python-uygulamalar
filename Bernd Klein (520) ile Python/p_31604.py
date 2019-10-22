@@ -1,0 +1,27 @@
+# coding:iso-8859-9 Türkçe
+# p_31604.py: Çubuk grafiklerle yýllara daðýnýk turist sayýsý örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+yýllar = ("2012", "2013", "2014", "2015", "2016", "2017", "2018")
+Y = (1241, 50927, 162242, 222093, 296665 / 8 * 12, 65782, 65782 * 4.55)
+X = np.arange (len (Y))
+çubukEni = 0.95
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk())
+mp.title ("Yýllara Göre Kuþadasýný Ziyaret Eden Yabancý Turist Sayýsý", color=Renk.renk())
+
+altþekil1 = þekil.add_subplot (111)
+altþekil1.set_facecolor (Renk.renk())
+mp.xticks (X, yýllar) # altþekil.set_xticks yýllarý yansýtmadý...
+altþekil1.set_xlabel ("Yýllar", color=Renk.renk())
+altþekil1.set_ylabel ("Kuþadasý'na Turist Sayýsý", color=Renk.renk())
+altþekil1.set_xlim (-0.5, 6.5)
+çubuklar = altþekil1.bar (X, Y, çubukEni,  color=Renk.renk())
+for çubuk in çubuklar: çubuk.set_color (Renk.renk())
+
+mp.tight_layout()
+mp.show()

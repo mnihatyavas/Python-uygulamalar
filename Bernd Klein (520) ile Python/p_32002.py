@@ -1,0 +1,156 @@
+# coding:iso-8859-9 Türkçe
+# p_32002.py: Panda serilerinin toplanmasý ve aritmetik iþlemler örneði.
+
+import pandas as pd
+import numpy as np
+
+meyveler = ['Elma', 'Portakal', 'Kiraz', "Armut", 'Þeftali']
+kilolarý = [20, 33, 52, 10, 19]
+
+seri1 = pd.Series (kilolarý, index=meyveler)
+print ("Meyve adlarý endeksli kilolarý (seri1):\n", seri1, sep="")
+print ("\nMeyvelerin kilo deðerleri:", seri1.values)
+print ("Meyvelerin isim endeksleri:", seri1.index)
+print ("Endeksle ilk ve son meyve kilolarý:", seri1 [0], seri1 [len (seri1) - 1])
+print ("Anahtarkelimeyle ilk ve son meyve kilolarý:", seri1 ["Elma"], seri1 ["Þeftali"])
+print ("-"*70)
+#-----------------------------------------------------------------------------------------------------
+
+seri2 = pd.Series ([17, 13, 31, 32, 9], index=meyveler)
+print ("\nMeyve adlarý endeksli kilolarý (seri2):\n", seri2, sep="")
+
+seriA = seri1 + seri2
+print ("\nHer iki serinin toplamý (seriA):\n", seriA, sep="")
+print ("\nTüm meyvelerin toplam kilosu:", sum (seriA) )
+print ("-"*70)
+#-----------------------------------------------------------------------------------------------------
+
+seri3 = pd.Series ([17, 13, 31, 32, 9], index=['Ahududu', 'Portakal', 'Kiraz', "Armut", 'Þeftali'])
+print ("\nMeyve adlarý endeksli kilolarý (seri3):\n", seri3, sep="")
+
+seriB = seri1 + seri3
+print ("\nHer iki serinin (A->Z) toplamý (seriB):\n", seriB, sep="")
+print ("-"*70)
+#-----------------------------------------------------------------------------------------------------
+
+seri4 = pd.Series ([17, 13, 31, 32, 9], index=['Mere', 'Portokale', 'Cireþe', "Pere", 'Çefteli']) #Romanya...
+print ("\nRoman meyve adlarý endeksli kilolarý (seri4):\n", seri4, sep="")
+
+seriC = seri1 + seri4
+print ("\nHer iki serinin (A->Z) toplamý (seriC):\n", seriC, sep="")
+print ("-"*70)
+#-----------------------------------------------------------------------------------------------------
+
+print ("\nTek elemana eriþim:", seri1 ["Armut"])
+print ("Üç elemana tek-tek eriþim:", seri1 ["Armut"], seri1 ["Elma"], seri1 ["Kiraz"])
+print ("\nÜç elemana toplu eriþim:\n", seri1 [ ["Armut", "Elma", "Kiraz"] ], sep="")
+print ("-"*70)
+#-----------------------------------------------------------------------------------------------------
+
+print ("\n(seri1*3-9)**0.5:\n", ( (seri1 * 3 - 9) ** (0.75) ), sep="")
+print ("\nnp.sin(seri1):\n", np.sin (seri1), sep="")
+
+
+
+"""Çýktý:
+>python p_32002.py
+Meyve adlarý endeksli kilolarý (seri1):
+Elma        20
+Portakal    33
+Kiraz       52
+Armut       10
+Þeftali     19
+dtype: int64
+
+Meyvelerin kilo deðerleri: [20 33 52 10 19]
+Meyvelerin isim endeksleri: Index(['Elma', 'Portakal', 'Kiraz', 'Armut', 'Þeftal
+i'], dtype='object')
+Endeksle ilk ve son meyve kilolarý: 20 19
+Anahtarkelimeyle ilk ve son meyve kilolarý: 20 19
+----------------------------------------------------------------------
+
+Meyve adlarý endeksli kilolarý (seri2):
+Elma        17
+Portakal    13
+Kiraz       31
+Armut       32
+Þeftali      9
+dtype: int64
+
+Her iki serinin toplamý (seriA):
+Elma        37
+Portakal    46
+Kiraz       83
+Armut       42
+Þeftali     28
+dtype: int64
+
+Tüm meyvelerin toplam kilosu: 236
+----------------------------------------------------------------------
+
+Meyve adlarý endeksli kilolarý (seri3):
+Ahududu     17
+Portakal    13
+Kiraz       31
+Armut       32
+Þeftali      9
+dtype: int64
+
+Her iki serinin (A->Z) toplamý (seriB):
+Ahududu      NaN
+Armut       42.0
+Elma         NaN
+Kiraz       83.0
+Portakal    46.0
+Þeftali     28.0
+dtype: float64
+----------------------------------------------------------------------
+
+Roman meyve adlarý endeksli kilolarý (seri4):
+Mere         17
+Portokale    13
+Cireþe       31
+Pere         32
+Çefteli       9
+dtype: int64
+
+Her iki serinin (A->Z) toplamý (seriC):
+Armut       NaN
+Cireþe      NaN
+Elma        NaN
+Kiraz       NaN
+Mere        NaN
+Pere        NaN
+Portakal    NaN
+Portokale   NaN
+Çefteli     NaN
+Þeftali     NaN
+dtype: float64
+----------------------------------------------------------------------
+
+Tek elemana eriþim: 10
+Üç elemana tek-tek eriþim: 10 20 52
+
+Üç elemana toplu eriþim:
+Armut    10
+Elma     20
+Kiraz    52
+dtype: int64
+----------------------------------------------------------------------
+
+(seri1*3-9)**0.5:
+Elma        19.084361
+Portakal    29.220112
+Kiraz       42.217061
+Armut        9.809898
+Þeftali     18.236056
+dtype: float64
+
+np.sin(seri1):
+Elma        0.912945
+Portakal    0.999912
+Kiraz       0.986628
+Armut      -0.544021
+Þeftali     0.149877
+dtype: float64
+"""

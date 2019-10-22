@@ -1,0 +1,85 @@
+# coding:iso-8859-9 Türkçe
+# p_31804.py: Bir resmi tümden veya kademeli aðartma ve karartma örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+mp.style.use ("dark_background")
+mp.title ("Hollanda Roterdam'da bir Yeldeðirmeni", color="r", fontsize=15)
+mp.axis ("off")
+Resim = mp.imread ('resim/yelDeðirmeni.png')
+mp.imshow (Resim)
+mp.tight_layout()
+mp.show()
+#------------------------------------------------------------------------------------------------------
+
+def aðart (resim, oran): return resim + (np.ones (resim.shape) - resim) * oran
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Roterdam'da %60 Aðartýlan bir Yeldeðirmeni", color=Renk.renk(), fontsize=15)
+mp.axis ("off")
+
+aðaranResim = aðart (Resim, 0.6)
+mp.imshow (aðaranResim)
+mp.show()
+#------------------------------------------------------------------------------------------------------
+
+def karart (resim, oran): return resim * (1 - oran)
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Roterdam'da %55 Karartýlan bir Yeldeðirmeni", color=Renk.renk(), fontsize=15)
+mp.axis ("off")
+
+kararanResim = karart (Resim, 0.55)
+mp.imshow (kararanResim)
+mp.show()
+#------------------------------------------------------------------------------------------------------
+
+def yatayKademeleme (resim, reverse=False):
+    kolonAdedi = resim.shape [1] # 384...
+    if reverse: X = np.linspace (1, 0, kolonAdedi) # Aðartma saðdan sola artar...
+    else: X = np.linspace (0, 1, kolonAdedi) #==> Aðartma soldan saða artar...
+    X = np.dstack ((X, X, X, X))
+    return X
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Roterdam'da Soldan-saða Aðaran bir Yeldeðirmeni", color=Renk.renk(), fontsize=15)
+mp.axis ("off")
+
+saðaAðaranResim =  yatayKademeleme (Resim) * Resim
+mp.imshow (saðaAðaranResim)
+mp.show()
+#------------------------------------------------------------------------------------------------------
+
+def yatayKademeleme (resim, reverse=False):
+    kolonAdedi = resim.shape [1] # 384...
+    if reverse: X = np.linspace (1, 0, kolonAdedi) #==> Aðartma saðdan sola artar...
+    else: X = np.linspace (0, 1, kolonAdedi) # Aðartma soldan saða artar...
+    X = np.dstack ((X, X, X, X))
+    return X
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Roterdam'da Saðdan-sola Aðaran bir Yeldeðirmeni", color=Renk.renk(), fontsize=15)
+mp.axis ("off")
+
+solaAðaranResim =  Resim * yatayKademeleme (Resim, reverse=True)
+mp.imshow (solaAðaranResim)
+mp.show()
+#------------------------------------------------------------------------------------------------------
+
+def yatayKademeleme (resim):
+    satýrSayýsý, sütunSayýsý = resim.shape [0], resim.shape [1]
+    X = np.linspace (1, 0, satýrSayýsý)
+    X = X [np.newaxis, :]
+    X = np.concatenate ((X, X, X, X)).transpose()
+    X = X [:, np.newaxis]
+    return X
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Roterdam'da Alttan-üste Aðaran bir Yeldeðirmeni", color=Renk.renk(), fontsize=15)
+mp.axis ("off")
+
+üsteAðaranResim =  yatayKademeleme (Resim) * Resim
+mp.imshow (üsteAðaranResim)
+mp.show()

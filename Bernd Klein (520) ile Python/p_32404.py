@@ -1,0 +1,86 @@
+#coding:iso-8859-9 Türkçe
+# p_32404.py: Pandas'la öðrenci derecelerinin etiketli kategorilendirilmesi örneði.
+
+from random import random
+import pandas as pd
+
+dereceler = ["Baþarýsýz öðrenci", "Normal öðrenci", "Baþarýlý öðrenci", "Onur öðrencisi", "Yüksek onur öðrencisi", "Süper onur öðrencisi"]
+öðrenciNotlarý = [int ((random() * 2.6 + 1.5) * 100) / 100 for _ in range (30)]
+öðrenciNotKategorisi = pd.cut (öðrenciNotlarý, [0, 2.0, 2.75, 3.5, 3.75, 3.85, 4.0], labels=dereceler)
+
+print ("30 adet geliþigüzel öðrenci notlarý listesi:\n", öðrenciNotlarý, sep="")
+print ("\nHerbir baþarý derecesine düþen öðrenci sayýsý:\n", pd.value_counts (öðrenciNotKategorisi), sep="")
+print ("-"*79)
+#--------------------------------------------------------------------------------------------------------
+
+endeksler = öðrenciNotKategorisi.codes
+print ("\nHerbir notun kategori endeksi:\n", endeksler)
+
+kategoriler = öðrenciNotKategorisi.categories
+print ("\n6 adet Pandas kategorik derece sýnýflandýrmasý varsayýlý sað-kapalý aralýklarý:\n", kategoriler, sep="")
+
+print ("\n30 adet not, endeksi ve kategorik sýnýfý dökümü:\n", "-"*49, sep="")
+for i in range (len (öðrenciNotlarý)):
+    endeks = endeksler [i]
+    print ((i+1), öðrenciNotlarý [i], endeks, kategoriler [endeks])
+
+
+
+"""Çýktý:
+>python p_32404.py
+30 adet geliþigüzel öðrenci notlarý listesi:
+[1.62, 1.58, 2.05, 3.95, 3.03, 3.74, 1.69, 3.45, 2.43, 1.58, 2.8, 3.79, 1.6, 2.24,
+ 3.81, 3.13, 2.15, 3.98, 3.84, 2.26, 2.48, 3.27, 3.87, 2.93, 3.12, 3.14, 2.55,
+ 2.87, 2.05, 2.87]
+
+Herbir baþarý derecesine düþen öðrenci sayýsý:
+Baþarýlý öðrenci         10
+Normal öðrenci            8
+Baþarýsýz öðrenci         5
+Süper onur öðrencisi      3
+Yüksek onur öðrencisi     3
+Onur öðrencisi            1
+dtype: int64
+-------------------------------------------------------------------------------
+
+Herbir notun kategori endeksi:
+ [0 0 1 5 2 3 0 2 1 0 2 4 0 1 4 2 1 5 4 1 1 2 5 2 2 2 1 2 1 2]
+
+6 adet Pandas kategorik derece sýnýflandýrmasý varsayýlý sað-kapalý aralýklarý:
+Index(['Baþarýsýz öðrenci', 'Normal öðrenci', 'Baþarýlý öðrenci',
+       'Onur öðrencisi', 'Yüksek onur öðrencisi', 'Süper onur öðrencisi'],
+      dtype='object')
+
+30 adet not, endeksi ve kategorik sýnýfý dökümü:
+-------------------------------------------------
+1 1.62 0 Baþarýsýz öðrenci
+2 1.58 0 Baþarýsýz öðrenci
+3 2.05 1 Normal öðrenci
+4 3.95 5 Süper onur öðrencisi
+5 3.03 2 Baþarýlý öðrenci
+6 3.74 3 Onur öðrencisi
+7 1.69 0 Baþarýsýz öðrenci
+8 3.45 2 Baþarýlý öðrenci
+9 2.43 1 Normal öðrenci
+10 1.58 0 Baþarýsýz öðrenci
+11 2.8 2 Baþarýlý öðrenci
+12 3.79 4 Yüksek onur öðrencisi
+13 1.6 0 Baþarýsýz öðrenci
+14 2.24 1 Normal öðrenci
+15 3.81 4 Yüksek onur öðrencisi
+16 3.13 2 Baþarýlý öðrenci
+17 2.15 1 Normal öðrenci
+18 3.98 5 Süper onur öðrencisi
+19 3.84 4 Yüksek onur öðrencisi
+20 2.26 1 Normal öðrenci
+21 2.48 1 Normal öðrenci
+22 3.27 2 Baþarýlý öðrenci
+23 3.87 5 Süper onur öðrencisi
+24 2.93 2 Baþarýlý öðrenci
+25 3.12 2 Baþarýlý öðrenci
+26 3.14 2 Baþarýlý öðrenci
+27 2.55 1 Normal öðrenci
+28 2.87 2 Baþarýlý öðrenci
+29 2.05 1 Normal öðrenci
+30 2.87 2 Baþarýlý öðrenci
+"""

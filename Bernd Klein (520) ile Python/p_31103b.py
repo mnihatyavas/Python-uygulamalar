@@ -1,0 +1,22 @@
+# coding:iso-8859-9 Türkçe
+# p_31103b.py: Numpy tamsayý dizi dtype ardýþýk verilerini tofile ve fromfile ile dosyaya yazma ve okuma örneði.
+
+import numpy as np
+import os
+
+try: n1 = abs (int (input ("Tamsayý dizi eleman sayýsý [50]? ")))
+except: n1 = 50
+
+try: n2 = abs (int (input ("Kaçýncý elemandan sonrasýný dosyadan okusun [son %20]? ")))
+except: n2 = n1 - int (n1 / 5)
+
+veriler = np.arange (n1, dtype=np.int32)
+print ("\nDosyaya yazýlacak veriler:\n", veriler, sep="")
+veriler.tofile ("p_31103bx.txt") # Varsayýlý "bw" olarak yazar...
+#---------------------------------------------------------------------------------------------
+
+dosya = open ("p_31103bx.txt", "rb")
+ilk = 4 * n2
+dosya.seek (ilk, os.SEEK_SET)
+x = np.fromfile (dosya, dtype=np.int32)
+print ("\n", n2, ".inci kayýttan sonrasýnýn dökümü:\n", x, sep="")

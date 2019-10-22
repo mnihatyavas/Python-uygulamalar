@@ -1,0 +1,54 @@
+# coding:iso-8859-9 Türkçe
+# p_31905.py: PIL resmini þekillendirilebilire dönüþtürme örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+import matplotlib.image as mi
+from PIL import Image as R
+from p_315 import Renk
+
+resim = R.open ("resim/sandalye.png") # .jpg'de piksel data kaybý oluyor...
+try: print ("PIL open resim þekli:", resim.shape)
+except Exception as ist: print (ist)
+
+resim = resim.resize ((1028, 1077)) # Yeniden þekillendirme: (atResmi.shape[1], arResmi.shape[0])
+resim = np.asarray (resim)
+print ("PIL'den dönüþtürülen sandalye resminin þekli:", resim.shape)
+print ("Sandalye'nin (200,300) piksel'deki data'sý ():", resim [200, 300])
+
+mp.style.use ("dark_background")
+mp.title ("PIL'den dönüþtürülen Sandalye", color="r")
+mp.axis ("off")
+mp.imshow (resim)
+mp.show()
+#------------------------------------------------------------------------------------------------------
+
+
+resim = np.asarray (resim, np.float)
+resim = resim / 255  
+print ("\nSandalye'nin (200,300) piksel'deki normalleþen data'sý ():", resim [200, 300])
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("0:255-->0:1'e normalleþtirilen Sandalye", color=Renk.renk())
+mp.axis ("off")
+mp.imshow (resim [:,:, 0], cmap="jet")
+mp.show()
+#--------------
+
+resim = mi.imread ("resim/sandalye.png")
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("matplotlib.image'le okunan Sandalye", color=Renk.renk())
+mp.axis ("off")
+mp.imshow (resim [:,:, 0], cmap="YlGnBu_r")
+mp.show()
+
+
+
+"""Çýktý:
+>python p_31905.py
+'PngImageFile' object has no attribute 'shape'
+PIL'den dönüþtürülen sandalye resminin þekli: (1077, 1028, 4)
+Sandalye'nin (200,300) piksel'deki data'sý (): [ 27  27  27 255]
+
+Sandalye'nin (200,300) piksel'deki normalleþen data'sý (): [0.10588235 0.10588235 0.10588235 1.        ]
+"""

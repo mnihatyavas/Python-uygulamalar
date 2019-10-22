@@ -1,0 +1,41 @@
+# coding:iso-8859-9 Türkçe
+# p_31502.py: Þekle farklý fonksiyonlu 4 altþekil ekleme örneði.
+
+import numpy as np
+from numpy import e, pi, sin, exp, cos
+import matplotlib.pyplot as mp
+
+def f (t): return exp (-t) * cos (2 * pi * t)
+def ft (t): return -2 * pi * exp (-t) * sin (2 * pi * t) - e**(-t) * cos (2 * pi * t) # Türev...
+def g (t): return sin (t) * cos (1 / (t) )
+
+mp.style.use ("dark_background")
+þekil = mp.figure (figsize=(6, 4)) # (en, boy)...
+
+t = np.arange (-5.0, 1.0, 0.1)
+altþekil1 = þekil.add_subplot (221)
+altþekil1.set_facecolor ("Gold")
+altþekil1.set_title ('y=f(t)=e(-t)*cos(2*pi*t)')
+altþekil1.plot (t, f (t) )
+
+altþekil2 = þekil.add_subplot (222)
+altþekil2.set_facecolor ("Blue")
+altþekil2.set_title ('y=df(t)=-2*pi*exp(-t)*sin(2*pi*t)\n-e**(-t)*cos(2*pi*t) türev')
+altþekil2.plot (t, ft (t), color="y")
+
+t = np.arange (-3.0, 2.0, 0.02)
+altþekil3 = þekil.add_subplot (223)
+altþekil3.set_facecolor ("Pink")
+altþekil3.set_title ('y=g(t)=sin(t)*cos(1/(t+0.1))')
+altþekil3.plot (t, g (t), color="g")
+
+t = np.arange (-0.2, 0.2, 0.001)
+altþekil4 = þekil.add_subplot (224)
+altþekil4.set_facecolor ("Green")
+altþekil4.set_title ("y=g(t) detay zoom'u")
+altþekil4.set_xticks ([-0.2, -0.1, 0, 0.1, 0.2])
+altþekil4.set_yticks ([-0.15, -0.1, 0, 0.1, 0.15])
+altþekil4.plot (t, g (t), color="r")
+
+mp.tight_layout()
+mp.show()

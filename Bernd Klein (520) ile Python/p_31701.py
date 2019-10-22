@@ -1,0 +1,93 @@
+# coding:iso-8859-9 Türkçe
+# p_31701.py: Izgara kesiþim eþhatlar haritalama grafiði örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+xlistesi = np.linspace (-3.0, 3.0, 3)
+ylistesi = np.linspace (-3.0, 3.0, 4)
+X, Y = np.meshgrid (xlistesi, ylistesi)
+
+print ("Liste x:\n", xlistesi, sep="")
+print ("\nListe y:\n", ylistesi, sep="")
+print ("\nÜretilen ýzgaranýn x deðerleri:\n", X, sep="")
+print ("\nÜretilen ýzgaranýn y deðerleri:\n", Y, sep="")
+print ("-"*50)
+#--------------------------------------------------------------------------------------------------------
+
+Z = np.sqrt (X**2 + Y**2)
+#Z = np.abs (X) + np.abs (Y)
+
+print ("\nIzgara kesiþim kare toplamý karekök deðerleri:\n", Z, sep="")
+#--------------------------------------------------------------------------------------------------------
+
+#mp.style.use ("dark_background")
+mp.figure()
+
+eþhatlar = mp.contour (X, Y, Z)
+mp.clabel (eþhatlar, inline=True, fontsize=10)
+mp.title ('Eþhatlar Grafiði')
+mp.xlabel ('x (sm)')
+mp.ylabel ('y (sm)')
+
+mp.show()
+#--------------------------------------------------------------------------------------------------------
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk())
+
+eþhatlar = þekil.add_subplot()
+eþhatlar.set_facecolor (Renk.renk())
+eþhatlar = mp.contour (X, Y, Z)
+mp.clabel (eþhatlar, inline=True, fontsize=10)
+mp.title ('Eþhatlar Grafiði', color=Renk.renk())
+mp.xlabel ('x (sm)', color=Renk.renk())
+mp.ylabel ('y (sm)', color=Renk.renk())
+
+mp.show()
+#--------------------------------------------------------------------------------------------------------
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk())
+
+eþhatlar = þekil.add_subplot()
+eþhatlar.set_facecolor (Renk.renk())
+renkler = [Renk.renk() for _ in range (len (Z))]
+kontur = mp.contour (X, Y, Z, colors=renkler, linestyles="dashed")
+mp.clabel (kontur, inline=True, fontsize=10, colors=renkler)
+mp.title ('Eþhatlar Grafiði', color=Renk.renk())
+mp.xlabel ('x (sm)', color=Renk.renk())
+mp.ylabel ('y (sm)', color=Renk.renk())
+
+mp.show()
+
+
+
+"""Çýktý:
+>python p_31701.py
+Liste x:
+[-3.  0.  3.]
+
+Liste y:
+[-3. -1.  1.  3.]
+
+Üretilen ýzgaranýn x deðerleri:
+[[-3.  0.  3.]
+ [-3.  0.  3.]
+ [-3.  0.  3.]
+ [-3.  0.  3.]]
+
+Üretilen ýzgaranýn y deðerleri:
+[[-3. -3. -3.]
+ [-1. -1. -1.]
+ [ 1.  1.  1.]
+ [ 3.  3.  3.]]
+--------------------------------------------------
+
+Izgara kesiþim kare toplamý karekök deðerleri:
+[[4.24264069 3.         4.24264069]
+ [3.16227766 1.         3.16227766]
+ [3.16227766 1.         3.16227766]
+ [4.24264069 3.         4.24264069]]
+"""

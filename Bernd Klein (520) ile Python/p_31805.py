@@ -1,0 +1,104 @@
+# coding:iso-8859-9 Türkçe
+# p_31805.py: Bir resmi çeþitli renk karmalarýyla tonlama örneði.
+
+#import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Çarli Çaplin", fontsize=15, color="r")
+mp.axis ("off")
+
+Çarli= mp.imread ('resim/çaplin.png')
+mp.gray()
+mp.imshow (Çarli)
+mp.show()
+
+print ("Çarli çaplin'in .png dosya datalarý:\n", Çarli, sep="")
+print ("\nÇarli çaplin'in .png dosya þekli: ", Çarli.shape, sep="")
+#-------------------------------------------------------------------------------------------------------
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Negatif-tonlu Çarli Çaplin", fontsize=15, color=Renk.renk())
+mp.axis ("off")
+
+mp.imshow (Çarli [:, :, 0] * -1)
+mp.show()
+#-------------------------------------------------------------------------------------------------------
+
+renkler = {'afmhot', 'autumn', 'bone', 'binary', 'bwr', 'brg', 
+         'CMRmap', 'cool', 'copper', 'cubehelix', 'Greens'}
+X = [  (4,3,1, (1, 0, 0)), (4,3,2, (0.5, 0.5, 0)), (4,3,3, (0, 1, 0)), 
+       (4,3,4, (0, 0.5, 0.5)),  (4,3,(5,8), (0, 0, 1)), (4,3,6, (1, 1, 0)), 
+       (4,3,7, (0.5, 1, 0) ),               (4,3,9, (0, 0.5, 0.5)),
+       (4,3,10, (0, 0.5, 1)), (4,3,11, (0, 1, 1)),    (4,3,12, (0.5, 1, 1))]
+
+þekil = mp.figure (figsize=(6, 5))
+þekil.set_facecolor (Renk.renk())
+mp.title ("Çeþitli Çarli Çaplin Profilleri", fontsize=15, color=Renk.renk())
+mp.axis ("off")
+
+for i, j, n, factor in X:
+    altþekil = þekil.add_subplot (i, j, n)
+    altþekil.axis ("off")
+    altþekil.imshow (Çarli [:,:,0], cmap=renkler.pop())
+
+mp.show()
+
+
+
+"""Çýktý:
+>python p_31805.py
+Çarli çaplin'in .png dosya datalarý:
+[[[0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  ...
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]]
+
+ [[0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  ...
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]]
+
+ [[0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  ...
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]]
+
+ ...
+
+ [[0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  ...
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]]
+
+ [[0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  ...
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]]
+
+ [[0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  ...
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]
+  [0. 0. 0. 1.]]]
+
+Çarli çaplin'in .png dosya þekli: (210, 184, 4)
+"""

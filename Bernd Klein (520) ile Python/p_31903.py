@@ -1,0 +1,88 @@
+# coding:iso-8859-9 Türkçe
+# p_31903.py: Ýki resmi þeklen eþleþtirip üstüste bindirme örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+import matplotlib.image as mi
+from p_315 import Renk
+
+def resimÖrüntüsü (resim, n, m=1):
+    if n == 1: örüntüResimler = resim
+    else:
+        dikeyÖrüntü = []
+        for i in range (n): dikeyÖrüntü.append (resim)  
+        örüntüResimler = np.concatenate (dikeyÖrüntü, axis=0) # Dikey y-ekseni...
+    if m > 1:
+        yatayÖrüntü = []
+        for i in range (m): yatayÖrüntü.append (örüntüResimler)
+        örüntüResimler = np.concatenate (yatayÖrüntü, axis=1) # Yatay x-ekseni
+    return örüntüResimler
+
+atResmi = mi.imread ('resim/atÝkonu.png')
+# atResmi ve duvarDekorasyonu/dd ayný ebatta olacak...
+bk = mi.imread ('resim/boyacýlarKalýbý.png')
+dd = resimÖrüntüsü (bk, 3, 4)
+
+mp.style.use ("dark_background")
+mp.axis ("off")
+mp.title ("(3x4) Ebatlý DuvarDekorasyonu", color=Renk.renk())
+mp.imshow (dd)
+mp.show()
+#-------------------------------------------------------------------------------------------------
+
+ddÞekli = dd.shape
+arÞekli = atResmi.shape
+boy, en, renkler = [min (x) for x in  zip (*(ddÞekli, arÞekli))]
+atResmi = atResmi [0:boy, 0:en]
+
+mp.style.use ("dark_background")
+mp.title ("DuvarDekorasyonu (3x4) ebatlý at-@ Ýkonu Resmi", color=Renk.renk())
+mp.axis ("off")
+mp.imshow (atResmi)
+mp.show()
+#-------------------------------------------------------------------------------------------------
+
+karartýlanDD = dd * (1 - 0.6)
+
+mp.style.use ("dark_background")
+mp.title ("%60 Karartýlan DuvarDekorasyonu", color=Renk.renk())
+mp.axis ("off")
+mp.imshow (karartýlanDD)
+mp.show()
+#-------------------------------------------------------------------------------------------------
+
+karmaResim1 = np.where (atResmi [:,:, 0:3] > [0.9, 0.9, 0.9], karartýlanDD, dd)
+
+mp.style.use ("dark_background")
+mp.title ("Karartýlan Dekor üstü dekorlu @ Resmi", color=Renk.renk())
+mp.axis ("off")
+mp.imshow (karmaResim1)
+mp.show()
+#-------------------------------------------------------------------------------------------------
+
+karmaResim2 = np.where (atResmi [:,:, 0:3] > [0.8, 0.8, 0.8], dd, karartýlanDD)
+
+mp.figure().set_facecolor (Renk.renk())
+mp.title ("Dekor üstü karartýlý dekorlu @ Resmi", color=Renk.renk())
+mp.axis ("off")
+mp.imshow (karmaResim2)
+mp.show()
+#-------------------------------------------------------------------------------------------------
+
+print ("@ resmi þekli: ", atResmi.shape,
+    "\nDuvar dekorasyonu þekli: ", ddÞekli,
+    "\nKarartýlan duvar dekorasyonu þekli: ", karartýlanDD.shape,
+    "\nKarma resim þekli: ", karmaResim1.shape, sep="")
+#mi.imsave ('dekorluAt1.png', karmaResim1)
+#mi.imsave ('dekorluAt2.png', karmaResim2)
+
+
+
+"""Çýktý:
+>python p_31903.py
+@ resmi þekli: (1077, 1028, 4)
+Duvar dekorasyonu þekli: (1077, 1028, 3)
+Karartýlan duvar dekorasyonu þekli: (1077, 1028, 3)
+Karma resim þekli: (1077, 1028, 3)
+
+"""

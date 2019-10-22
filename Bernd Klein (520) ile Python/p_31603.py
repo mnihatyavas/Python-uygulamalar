@@ -1,0 +1,41 @@
+# coding:iso-8859-9 Türkçe
+# p_31603.py: Çoklu çubuklu ve çoklu þekilli grafikler örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+X = [1, 2, 3, 4, 6]
+Y = [1, 4, 9, 16, 10]
+
+ayrýkÇubuklar = mp.bar (X, Y)
+ayrýkÇubuklar [0].set_color ('Tomato') # Varsayýlý mavi...
+ayrýkÇubuklar [-1].set_color (Renk.renk())
+
+mp.show()
+#---------------------------------------------------------------------------------------------------
+
+mp.style.use ("dark_background")
+þekil = mp.figure()
+altþekil = þekil.add_subplot (111)
+altþekil.bar (X, Y)
+yavrular = altþekil.get_children()
+yavrular [3].set_color ('g')
+
+mp.show()
+#---------------------------------------------------------------------------------------------------
+
+þekil = mp.figure (figsize=(10,5))
+þekil.set_facecolor (Renk.renk())
+
+altþekil1 = þekil.add_subplot (121)
+altþekil1.set_facecolor (Renk.renk())
+çubuklar1 = altþekil1.bar (X, Y)
+for çubuk in çubuklar1: çubuk.set_color (Renk.renk())
+
+altþekil2 = þekil.add_subplot (122)
+altþekil2.set_facecolor (Renk.renk())
+çubuklar2 = altþekil2.bar (X, Y)
+for çubuk in çubuklar2: çubuk.set_color (Renk.renk())
+
+mp.show()

@@ -1,0 +1,66 @@
+# coding:iso-8859-9 Türkçe
+# p_31508.py: Izgaralar ile çoklu fonksiyonlarý çizme örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+import matplotlib.gridspec as mg
+from p_315 import Renk
+
+mp.style.use ("dark_background")
+mp.figure (figsize=(7, 4))
+ýzgara = mg.GridSpec (3, 3)
+X = np.linspace (0, 2 * np.pi, 200, endpoint=True)
+F1 = 2.8 * np.cos (X)
+F2 = 5 * np.sin (X)
+F3 = 0.3 * np.sin (X)
+
+altþekil1 = mp.subplot (ýzgara [0, :])
+altþekil1.plot (X, F1, 'r-', X, F2)
+
+altþekil2 = mp.subplot (ýzgara [1, :-1])
+altþekil2.plot (X, F3)
+
+altþekil3 = mp.subplot (ýzgara [1:, -1])
+altþekil3.plot ([0,1,2,3,4], [0,1,10,100,1000], 'b-')
+
+altþekil4 = mp.subplot (ýzgara [-1, 0])
+altþekil4.plot ([0,1,2,3,4], [51, 48, 0, 42, 60], 'r-')
+
+altþekil5 = mp.subplot (ýzgara [-1, -2])
+altþekil5.plot ([0,1,2,3,4], [7.5, 7, 2, 1, 0])
+
+mp.tight_layout()
+mp.show()
+#-------------------------------------------------------------------------------------------------
+
+
+þekil = mp.figure (figsize=(7, 4))
+þekil.set_facecolor (Renk.renk())
+ýzgara = mg.GridSpec (3, 3)
+X = np.linspace (0, 2 * np.pi, 200, endpoint=True)
+F1 = 2.8 * np.cos (X)
+F2 = 5 * np.sin (X)
+F3 = 0.3 * np.sin (X)
+
+altþekil1 = þekil.add_subplot (ýzgara [0, 0:3])
+altþekil1.set_facecolor (Renk.renk())
+altþekil1.plot (X, F1, 'r-', X, F2, "y-")
+
+altþekil2 = þekil.add_subplot (ýzgara [1, 0:2])
+altþekil2.set_facecolor (Renk.renk())
+altþekil2.plot (X, F3, "g")
+
+altþekil3 = þekil.add_subplot (ýzgara [1:3, 2])
+altþekil3.set_facecolor (Renk.renk())
+altþekil3.plot ([0,1,2,3,4], [0,1,10,100,1000], 'b-')
+
+altþekil4 = þekil.add_subplot (ýzgara [2, 0])
+altþekil4.set_facecolor (Renk.renk())
+altþekil4.plot ([0,1,2,3,4], [51, 48, 0, 42, 60], 'r-')
+
+altþekil5 = þekil.add_subplot (ýzgara [2, 1])
+altþekil5.set_facecolor (Renk.renk())
+altþekil5.plot ([0,1,2,3,4], [7.5, 7, 2, 1, 0], "m")
+
+þekil.tight_layout()
+mp.show()

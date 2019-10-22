@@ -1,0 +1,58 @@
+# coding:iso-8859-9 Türkçe
+# p_31511.py: Eksenlerin dikey-yatay kapsamlarýný belirleme örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+mp.style.use ("dark_background")
+þekil = mp.figure (figsize=(10,3)) # en,boy
+altþekiller = þekil.subplots (1, 4)
+x = np.arange (0, 5, 0.2)
+
+altþekiller [0].set_title ("Varsayýlý x-y kapsamý")
+altþekiller [0].plot (x,x**0.5, x,x**2, x,x**3)
+
+altþekiller[1].axis ("tight")
+altþekiller[1].set_title ("Sýký [0,1] x-y kapsamý")
+altþekiller[1].plot (x,x**0.5,"r--o", x,x**2,"y--*", x,x**3,"b--^")
+
+altþekiller[2].axis ("off")
+altþekiller[2].set_title ("Kapalý/off x-y kapsamý")
+altþekiller[2].plot (x,x**0.5,Renk.renk(), x,x**2,Renk.renk(), x,x**3,Renk.renk())
+
+altþekiller[3].set_xlim ([1, 5])
+altþekiller[3].set_ylim ([0, 60])
+altþekiller[3].set_title ("Özel x-y kapsamý");
+altþekiller[3].plot (x,x**0.5,"r-", x, x**2,"y--o", x, x**3,"b--*")
+
+mp.tight_layout()
+mp.show()
+#---------------------------------------------------------------------------------------------------------
+
+þekil, altþekiller = mp.subplots (1, 4, figsize=(10, 3))
+þekil.set_facecolor (Renk.renk())
+x = np.arange (0, 5, 0.2)
+
+altþekiller [0].set_title ("Varsayýlý x-y kapsamý")
+altþekiller [0].set_facecolor (Renk.renk())
+altþekiller [0].plot (x,x**0.5, x,x**2, x,x**3)
+
+altþekiller[1].axis ("tight")
+altþekiller[1].set_title ("Sýký [0,1] x-y kapsamý")
+altþekiller [1].set_facecolor (Renk.renk())
+altþekiller[1].plot (x,x**0.5,"r--o", x,x**2,"y--*", x,x**3,"b--^")
+
+altþekiller[2].axis ("off")
+altþekiller[2].set_title ("Kapalý/off x-y kapsamý")
+altþekiller [2].set_facecolor (Renk.renk())
+altþekiller[2].plot (x,x**0.5,Renk.renk(), x,x**2,Renk.renk(), x,x**3,Renk.renk())
+
+altþekiller[3].set_xlim ([1, 5])
+altþekiller[3].set_ylim ([0, 60])
+altþekiller[3].set_title ("Özel x-y kapsamý");
+altþekiller [3].set_facecolor (Renk.renk())
+altþekiller[3].plot (x,x**0.5,"r-", x, x**2,"y--o", x, x**3,"b--*")
+
+mp.tight_layout()
+mp.show()

@@ -1,0 +1,57 @@
+#coding:iso-8859-9 Türkçe
+# p_32402.py: Pandas kategorik nesneyle gruplandýrma örneði.
+
+from random import random
+
+def gruplarýYarat (altSýnýr, artýþ, adet):
+    gruplar = []
+    for alt in range (altSýnýr, (altSýnýr + adet * artýþ + 1), artýþ):
+        gruplar.append ( (alt, alt + artýþ) )
+    return gruplar
+
+gruplar = gruplarýYarat (altSýnýr=50, artýþ=4, adet=15)
+insanKilolarý = [int ((random() * 60 + 51) * 10) / 10.0 for _ in range (30)]
+print ("Ýnsan kilolarý sýnýflandýrmasý:\n", gruplar,
+    "\n\n30 adet geliþigüzel insan aðýrlýklarý:\n", insanKilolarý, sep="")
+print ("-"*79)
+#--------------------------------------------------------------------------------------------------------
+
+import pandas as pd
+
+gruplar2 = pd.IntervalIndex.from_tuples (gruplar)
+kategorikNesne = pd.cut (insanKilolarý, gruplar2)
+print ("\nVerili insan kilolarý ve sað-kapalý sýnýflandýrmasýnýn Pandas kategorik nesnesi:", kategorikNesne, sep="")
+print ("-"*79)
+#--------------------------------------------------------------------------------------------------------
+
+gruplar3 = pd.IntervalIndex.from_tuples (gruplar, closed="left") # right/default, left, both, neither
+kategorikNesne = pd.cut (insanKilolarý, gruplar3)
+print ("\nVerili insan kilolarý ve sol-kapalý sýnýflandýrmasýnýn Pandas kategorik nesnesi:", kategorikNesne, sep="")
+
+
+
+"""Çýktý:
+>python p_32402.py
+Ýnsan kilolarý sýnýflandýrmasý:
+[(50, 54), (54, 58), (58, 62), (62, 66), (66, 70), (70, 74), (74, 78), (78, 82),
+ (82, 86), (86, 90), (90, 94), (94, 98), (98, 102), (102, 106), (106, 110), (110, 114)]
+
+30 adet geliþigüzel insan aðýrlýklarý:
+[51.8, 52.4, 87.8, 59.1, 77.9, 91.3, 59.2, 93.3, 102.6, 79.4, 107.3, 77.3, 61.4,
+ 83.6, 99.8, 97.8, 100.9, 92.1, 87.3, 103.5, 70.1, 93.9, 92.9, 87.5, 79.3, 75.5,
+ 103.2, 88.6, 110.5, 90.2]
+-------------------------------------------------------------------------------
+
+Verili insan kilolarý ve sað-kapalý sýnýflandýrmasýnýn Pandas kategorik nesnesi:
+[(50, 54], (50, 54], (86, 90], (58, 62], (74, 78], ..., (74, 78], (102, 106], (86, 90], (110, 114], (90, 94]]
+Length: 30
+Categories (16, interval[int64]): [(50, 54] < (54, 58] < (58, 62] < (62, 66] ... (98, 102] <
+    (102, 106] < (106, 110] < (110, 114]]
+-------------------------------------------------------------------------------
+
+Verili insan kilolarý ve sol-kapalý sýnýflandýrmasýnýn Pandas kategorik nesnesi:
+[[50, 54), [50, 54), [86, 90), [58, 62), [74, 78), ..., [74, 78), [102, 106), [86, 90), [110, 114), [90, 94)]
+Length: 30
+Categories (16, interval[int64]): [[50, 54) < [54, 58) < [58, 62) < [62, 66) ...[98, 102) <
+    [102, 106) < [106, 110) < [110, 114)]
+"""

@@ -1,0 +1,162 @@
+# coding:iso-8859-9 Türkçe
+# p_31507.py: Izgaralýk ile çoklu altþekilleri konumlandýrma ve renklendirme örneði.
+
+import matplotlib.pyplot as mp
+import matplotlib.gridspec as mg
+from p_315 import Renk
+
+mp.figure (figsize=(6, 4))
+ýzgara = mg.GridSpec (3, 3) # 3 satýr ve 3 sütunluk...
+
+altþekil1 = mp.subplot (ýzgara [0, :])
+mp.xticks(())
+mp.yticks(())
+mp.text (0.5, 0.5, 'Altþekil 1', ha='center', va='center', size=24, alpha=.5)
+
+altþekil2 = mp.subplot (ýzgara [1, :-1])
+mp.xticks(())
+mp.yticks(())
+mp.text (0.5, 0.5, 'Altþekil 2', ha='center', va='center', size=24, alpha=.5)
+
+altþekil3 = mp.subplot (ýzgara [1:, -1])
+mp.xticks(())
+mp.yticks(())
+mp.text (0.5, 0.5, 'Altþekil 3', ha='center', va='center', size=24, alpha=.5)
+
+altþekil4 = mp.subplot (ýzgara [-1, 0])
+mp.xticks(())
+mp.yticks(())
+mp.text (0.5, 0.5, 'Altþekil 4', ha='center', va='center', size=24, alpha=.5)
+
+altþekil5 = mp.subplot (ýzgara [-1, -2])
+mp.xticks(())
+mp.yticks(())
+mp.text (0.5, 0.5, 'Altþekil 5', ha='center', va='center', size=24, alpha=.5)
+
+mp.tight_layout()
+mp.show()
+#-------------------------------------------------------------------------------------------------------
+
+mp.style.use ("dark_background")
+þekil = mp.figure (figsize=(7, 4))
+ýzgara = mg.GridSpec (3, 3) # 3 satýr ve 3 sütunluk...
+
+altþekil1 = þekil.add_subplot (ýzgara [0, :])
+altþekil1.text (0.5, 0.5, 'Altþekil 1', ha='center', va='center', size=24, alpha=.5)
+
+altþekil2 = þekil.add_subplot (ýzgara [1, :-1])
+altþekil2.text (0.5, 0.5, 'Altþekil 2', ha='center', va='center', size=24, alpha=.5)
+
+altþekil3 = þekil.add_subplot (ýzgara [1:, -1])
+altþekil3.text (0.5, 0.5, 'Altþekil 3', ha='center', va='center', size=24, alpha=.5)
+
+altþekil4 = þekil.add_subplot (ýzgara [-1, 0])
+altþekil4.text (0.5, 0.5, 'Altþekil 4', ha='center', va='center', size=24, alpha=.5)
+
+altþekil5 = þekil.add_subplot (ýzgara [-1, -2])
+altþekil5.text (0.5, 0.5, 'Altþekil 5', ha='center', va='center', size=24, alpha=.5)
+
+þekil.tight_layout()
+mp.show()
+#-------------------------------------------------------------------------------------------------------
+
+þekil = mp.figure (figsize=(7, 4))
+þekil.set_facecolor (Renk.renk())
+ýzgara = mg.GridSpec (3, 3) # 3 satýr ve 3 sütunluk...
+
+altþekil1 = þekil.add_subplot (ýzgara [0, :])
+altþekil1.text (0.5, 0.5, 'Altþekil 1', ha='center', va='center', size=24, alpha=.5)
+altþekil1.set_facecolor (Renk.renk())
+
+altþekil2 = þekil.add_subplot (ýzgara [1, :-1])
+altþekil2.text (0.5, 0.5, 'Altþekil 2', ha='center', va='center', size=24, alpha=.5)
+altþekil2.set_facecolor (Renk.renk())
+
+altþekil3 = þekil.add_subplot (ýzgara [1:, -1])
+altþekil3.text (0.5, 0.5, 'Altþekil 3', ha='center', va='center', size=24, alpha=.5)
+altþekil3.set_facecolor (Renk.renk())
+
+altþekil4 = þekil.add_subplot (ýzgara [-1, 0])
+altþekil4.text (0.5, 0.5, 'Altþekil 4', ha='center', va='center', size=24, alpha=.5)
+altþekil4.set_facecolor (Renk.renk())
+
+altþekil5 = þekil.add_subplot (ýzgara [-1, -2])
+altþekil5.text (0.5, 0.5, 'Altþekil 5', ha='center', va='center', size=24, alpha=.5)
+altþekil5.set_facecolor (Renk.renk())
+
+þekil.tight_layout()
+mp.show()
+#-------------------------------------------------------------------------------------------------------
+
+þekil = mp.figure (figsize=(7, 4))
+þekil.set_facecolor (Renk.renk())
+ýzgara = mg.GridSpec (3, 3) # 3 satýr ve 3 sütunluk...
+
+altþekil1 = þekil.add_subplot (ýzgara [0, :])
+altþekil1.text (0.5, 0.5, 'Altþekil 1', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk(), alpha=.2)
+altþekil1.set_facecolor (Renk.renk())
+altþekil1.set_xticks(())
+altþekil1.set_yticks(())
+
+altþekil2 = þekil.add_subplot (ýzgara [1, :-1])
+altþekil2.text (0.5, 0.5, 'Altþekil 2', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk(), alpha=.4)
+altþekil2.set_facecolor (Renk.renk())
+altþekil2.set_xticks(())
+altþekil2.set_yticks(())
+
+altþekil3 = þekil.add_subplot (ýzgara [1:, -1])
+altþekil3.text (0.5, 0.5, 'Altþekil 3', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk(), alpha=.6)
+altþekil3.set_facecolor (Renk.renk())
+
+altþekil4 = þekil.add_subplot (ýzgara [-1, 0])
+altþekil4.text (0.5, 0.5, 'Altþekil 4', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk(), alpha=.8)
+altþekil4.set_facecolor (Renk.renk())
+altþekil4.set_xticks(())
+altþekil4.set_yticks(())
+
+altþekil5 = þekil.add_subplot (ýzgara [-1, -2])
+altþekil5.text (0.5, 0.5, 'Altþekil 5', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk(), alpha=.99)
+altþekil5.set_facecolor (Renk.renk())
+altþekil5.set_xticks(())
+altþekil5.set_yticks(())
+
+þekil.tight_layout()
+mp.show()
+#-------------------------------------------------------------------------------------------------------
+
+þekil = mp.figure (figsize=(7, 4))
+þekil.set_facecolor (Renk.renk())
+ýzgara = mg.GridSpec (3, 3) # 3 satýr ve 3 sütunluk...
+
+altþekil1 = þekil.add_subplot (ýzgara [0, 0:3]) # Farklý konumlandýrma yöntemi...
+altþekil1.text (0.5, 0.5, 'Altþekil 1', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk())
+altþekil1.set_facecolor (Renk.renk())
+altþekil1.set_xticks(())
+altþekil1.set_yticks(())
+
+altþekil2 = þekil.add_subplot (ýzgara [1, 0:2])
+altþekil2.text (0.5, 0.5, 'Altþekil 2', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk())
+altþekil2.set_facecolor (Renk.renk())
+altþekil2.set_xticks(())
+altþekil2.set_yticks(())
+
+altþekil3 = þekil.add_subplot (ýzgara [1:3, 2])
+altþekil3.text (0.5, 0.5, 'Altþekil 3', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk())
+altþekil3.set_facecolor (Renk.renk())
+altþekil3.set_xticks(())
+altþekil3.set_yticks(())
+
+altþekil4 = þekil.add_subplot (ýzgara [2, 0])
+altþekil4.text (0.5, 0.5, 'Altþekil 4', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk())
+altþekil4.set_facecolor (Renk.renk())
+altþekil4.set_xticks(())
+altþekil4.set_yticks(())
+
+altþekil5 = þekil.add_subplot (ýzgara [2, 1])
+altþekil5.text (0.5, 0.5, 'Altþekil 5', ha='center', va='center', size=24, color=Renk.renk(), backgroundcolor=Renk.renk())
+altþekil5.set_facecolor (Renk.renk())
+altþekil5.set_xticks(())
+altþekil5.set_yticks(())
+
+þekil.tight_layout()
+mp.show()

@@ -1,0 +1,40 @@
+# coding:iso-8859-9 Türkçe
+# p_31503.py: Çoklu farklý ebatlý altþekiller örneði.
+
+#import numpy as np
+import matplotlib.pyplot as mp
+
+mp.style.use ("dark_background")
+X = [ (3,1,1), (3,3,4), (3,3,5), (3,3,6), (3,1,3)]
+for satýr, sütun, aktifNo in X:
+    mp.subplot (satýr, sütun, aktifNo).set_facecolor ("Tan")
+
+mp.tight_layout()
+mp.show()
+#----------------------------------------------------------------------------------------------------
+
+þekil =mp.figure (figsize=(6,4))
+þekil.subplots_adjust (bottom=0, left=0, top = 1, right=1)
+þekil.set_facecolor ("LightSlateGray")
+
+for i, j, n in X:
+    altþekil = þekil.add_subplot (i, j, n)
+    altþekil.set_xticks ([])
+    altþekil.set_yticks ([])
+mp.show()
+#----------------------------------------------------------------------------------------------------
+
+X = [ (3,3,(1,3)), (3,3,4), (3,3,5), (3,3,6), (3,3,(7,9))] # 3 satýr 3 kolon ve 9 aktifNo'lar...
+þekil =mp.figure (figsize=(6,4))
+þekil.subplots_adjust (bottom=0.05, left=0.05, top = 0.95, right=0.95)
+þekil.set_facecolor('OliveDrab')
+
+for i, j, n in X:
+    altþekil = þekil.add_subplot (i, j, n)
+    mp.fill_between ([0,1], [0,1], 0, color='Navy', alpha=.9)
+    mp.fill_between ([0,1], [0,1],1, color='Brown', alpha=.7)
+    mp.xlim (0,1)
+    mp.ylim (0,1)
+    altþekil.set_xticks ([])
+    altþekil.set_yticks ([])
+mp.show()

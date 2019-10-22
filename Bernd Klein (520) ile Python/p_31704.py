@@ -1,0 +1,40 @@
+# coding:iso-8859-9 Türkçe
+# p_31704.py: Sevgi sembolü kalbin topografik grafiði örneði.
+
+import numpy as np
+import matplotlib.pyplot as mp
+from p_315 import Renk
+
+x, y = np.ogrid [-1:1:100j, -1:1.56:100j]
+mp.style.use ("dark_background")
+mp.contour (
+    x.ravel(),
+    y.ravel(),
+    x**2 + (y - ((x**2)**(1.0 / 3)))**2,
+    [1],
+    colors='red')
+#mp.axis ('equal') # on/açýk, off/kapalý...
+mp.title ('Sevgi Sembolü Kalp Grafiði')
+
+mp.show()
+#---------------------------------------------------------------------------------------------------
+
+y, x = np.ogrid [-1:2:100j, -1:1:100j]
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk())
+
+altþekil = þekil.add_subplot()
+altþekil.set_facecolor (Renk.renk())
+
+mp.contour (
+    x.ravel(),
+    y.ravel(),
+    x**2 + (y - ((x**2)**(1.0 / 3)))**2,
+    [1],
+    colors=Renk.renk() )
+
+mp.axis ('equal')
+mp.title ('Sevgi Sembolü Kalp Grafiði', color=Renk.renk())
+
+mp.show()
