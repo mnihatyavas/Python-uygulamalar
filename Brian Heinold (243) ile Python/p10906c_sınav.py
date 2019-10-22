@@ -1,0 +1,13 @@
+# coding:iso-8859-9 Türkçe
+
+sonuç = 0
+sayý = fark = a = 1
+while sayý:
+    try: sayý = abs (eval (input ("Karekökü bulunacak sayýyý girin [0:Çýk]: ")))
+    except Exception: sayý = 5
+    while fark > 1e-10:
+        sonuç = (a + sayý / a) / 2
+        fark = abs (sonuç - a)
+        a = sonuç
+    break
+if sayý: print (sayý, "sayýsýnýn karekökü:", sonuç)

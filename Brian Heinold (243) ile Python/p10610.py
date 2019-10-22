@@ -1,0 +1,40 @@
+# coding:iso-8859-9 Türkçe
+
+from math import pi
+
+print ('\n'*5) # 5 satýr boþ atlar...
+
+cümle = input ('Herhangibir cümle girin: ')
+
+print ("\nCümlenizdeki 'a' harflerinin endeks konumlarý: ", end="")
+for i in range (len (cümle)):
+    if cümle[i]=='a': print (i, end=" ")
+
+üçlü_cümle = ''
+üçlü_cümle += cümle*3
+print ("\n\nCümlenizin üçlemesi", üçlü_cümle)
+
+print ("\nCümlenizin ardýþýk açýlýmý:")
+for i in range (len (cümle)): print (cümle[:i+1])
+
+cümle2 = cümle.lower()
+for krk in ',.;:-?!()\'"': cümle2 = cümle2.replace (krk, '')
+print ("\n\nKüçük harfli ve noktalamalardan arýndýrýlan cümleniz:", cümle2)
+
+p = str (pi)
+print ("\nPi sayýsý: [", pi, "]", sep="")
+print ("Pi sayýsýnýn tamsayý deðeri: [", p[:p.index('.')], "]", sep="")
+print ("Pi sayýsýnýn küsürat deðeri: [", p[p.index('.'):], "]", sep="")
+
+alfabe = 'abcçdefgðhýijklmnoöpqrsþtuüvwxyz'
+anahtar= 'xznýlweböügjhçqdyvtkfuomþpciasðr'
+mesaj = input ('\nÞifrelenecek mesajýnýzý girin: ').lower()
+þifreli=deþifreli=''
+for k in mesaj:
+    if k.isalpha(): þifreli += anahtar[alfabe.index (k)]
+    else: þifreli += k
+for k in þifreli:
+    if k.isalpha(): deþifreli += alfabe[anahtar.index (k)]
+    else: deþifreli += k
+print ("Girdiðiniz mesajýn þifreli sonucu: ", þifreli)
+print ("Þifrelenenin tekrar deþifreli sonucu: ", deþifreli)

@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+
+print ("Tüm sayýlar içinde, basamaklarýnýn çarpým ve toplamlarýna eþit 9 özel sayý:\n==>", end="")
+for i in range (11, 10000):
+    d = str (i)
+    e = len (d)
+    çarp = 1
+    topla = sonuç = 0
+    for j in range (e):
+        çarp *= int (d[j])
+        topla += int (d[j])
+    sonuç = çarp + topla
+    if i == sonuç: print (i, end=" ")
+
+print ("\n\nÝlk-son rakamlarý yerdeðiþtirince oraný 3.5 olan ilk sayý:")
+for i in range (12, 1000000):
+    d = str (i)
+    e = len (d)
+    d = d[1:] + d[:1]
+    if 3.5 < float (d) / i < 3.50009: print (i, d, float (d) / i ); break
+
+çarpým = 1
+for i in range (1, 1001):
+    çarpým *= i
+d = str (çarpým)
+e = len (d)
+for i in range (0, e):
+    if d[e-i-1] != "0": break
+print ("\n1000! faktöriyel==>\n", d)
+print ("Rakamýn uzunluðu:", e)
+print ("Sondaki 0-sýfýr sayýsý:", i)

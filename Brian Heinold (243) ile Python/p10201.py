@@ -1,0 +1,9 @@
+# coding:iso-8859-9 Türkçe
+
+for i in range(10): print ('Merhaba')
+print ("==>10'lu döngü tamamlandý.\n")
+
+for i in range (3):
+    sayý = eval (input ('Bir sayý girin: '))
+    print ("Girdiðiniz ", sayý, "'in karesi=", sayý*sayý, "'dir.", sep="")
+print ("==>3'lü döngü tamamlandý.")

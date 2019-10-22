@@ -1,0 +1,24 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+from math import trunc
+
+azami=abs (trunc (eval (input ("Tek zarý kaç kez atmak istersin: "))))
+toplam=0
+for i in range (azami):
+    toplam +=randint (1,6)
+if toplam !=0: print (azami, "kez attýðýnýz tek zarýn toplamý", toplam, "ve ortalamasý da", round (toplam/azami, 2))
+print()
+asal=abs (trunc (eval (input ("Asal sayý kontrolü deðerini girin: "))))
+bayrak=0
+for i in range (2, asal):
+    if asal % i == 0: bayrak=1; break
+if not bayrak and asal != 0: print (asal, "bir asal sayýdýr (sadece 1 ve kendisine bölünür).")
+elif bayrak: print (asal, "bir asal sayý deðildir (1 ve kendisi dýþýnda da böleni vardýr).")
+print()
+enbüyük=enküçük=0
+sayý=abs (trunc (eval (input ("Kaç tesadüfi sayý üretelim [0->1000]: "))))
+for i in range (sayý):
+    enbüyük = randint (-1000, 1000)
+    if enküçük > enbüyük: enküçük = enbüyük
+print (sayý, "tesadüfi tamsayýnýn enküçüðü:", enküçük, "ve enbüyüðü de:", enbüyük)

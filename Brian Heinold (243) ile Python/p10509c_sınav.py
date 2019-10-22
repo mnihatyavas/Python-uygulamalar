@@ -1,0 +1,42 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+from math import *
+
+kere = abs (trunc (eval (input ("Kaç kere denemek istersin [2,10000]: "))))
+if kere < 2: kere = 2
+if kere > 10000: kere = 10000
+kazandý1=kaybetti1=kazandý2=kaybetti2=deðiþtirdi=deðiþtirmedi=0
+for i in range (kere):
+    hediyeli_kapý = randint (1,3)
+    misafir = randint (1,3)
+    if hediyeli_kapý==1:
+        if misafir==1:
+            if randint (0,1): kaybetti1+=1; deðiþtirdi+=1 # misafir deðiþtirdi
+            else: kazandý2+=1; deðiþtirmedi+=1
+        else:
+           if randint (0,1): kazandý1+=1; deðiþtirdi+=1 # misafir deðiþtirdi
+           else: kaybetti2+=1; deðiþtirmedi+=1
+    elif hediyeli_kapý==2:
+        if misafir==2:
+            if randint (0,1): kaybetti1+=1; deðiþtirdi+=1 # misafir deðiþtirdi
+            else: kazandý2+=1; deðiþtirmedi+=1
+        else:
+            if randint (0,1): kazandý1+=1; deðiþtirdi+=1 # misafir deðiþtirdi
+            else: kaybetti2+=1; deðiþtirmedi+=1
+    else: # hediyeli_kapý==3:
+        if misafir==3:
+            if randint (0,1): kaybetti1+=1; deðiþtirdi+=1 # misafir deðiþtirdi
+            else: kazandý2+=1; deðiþtirmedi+=1
+        else:
+            if randint (0,1): kazandý1+=1; deðiþtirdi+=1 # misafir deðiþtirdi
+            else: kaybetti2+=1; deðiþtirmedi+=1
+
+print (kere, "oyunda", deðiþtirdi, round ((deðiþtirdi/kere)*100, 2),
+    " % kez deðiþtirdi;", kazandý1, round ((kazandý1/deðiþtirdi)*100, 2),
+    "% kere kazandý", kaybetti1, round ((kaybetti1/deðiþtirdi)*100, 2),
+    "% kere kaybetti")
+print (kere, "oyunda", deðiþtirmedi, round ((deðiþtirmedi/kere)*100, 2),
+    "% kez deðiþtirmedi;", kazandý2, round ((kazandý2/deðiþtirmedi)*100, 2),
+    "% kere kazandý", kaybetti2, round ((kaybetti2/deðiþtirmedi)*100, 2),
+    "% kere kaybetti")

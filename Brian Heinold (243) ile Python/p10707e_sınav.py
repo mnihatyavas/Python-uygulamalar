@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+
+mesaj = input ("Þifrelenecek mesajý girin: ").lower()
+if len(mesaj)==0: mesaj = "m.nihat yavaþ, 1957"
+liste=[]
+þifreli=""
+alfabe = "abcçdefgðhýijklmnoöpqrsþtuüvwxyz"*2
+for k in mesaj:
+    if k.isalpha():
+        kayma = randint (1, len (alfabe)/2)
+        liste = liste + [kayma]
+        þifreli = þifreli + alfabe[kayma + alfabe.index (k)]
+    else: þifreli = þifreli + k
+print ("\nÞifreli mesajýmýz:", þifreli)
+deþifreli=""
+for k in þifreli:
+    if k.isalpha():
+        if alfabe.index (k) > liste[0]: deþifreli = deþifreli + alfabe[alfabe.index (k) - liste[0]]
+        else: deþifreli = deþifreli + alfabe[alfabe.index (k) + len (alfabe)//2 - liste[0]]
+        del liste[0]
+    else: deþifreli = deþifreli + k
+print ("Deþifreli mesajýmýz:", deþifreli)
+
+çýktý="""
+Þifrelenecek mesajý girin: M.Nihat Yavaþ; 17/04/1957; Yeþilyurt-Malatya
+
+Þifreli mesajýmýz: ð.tclty ckdhk; 17/04/1957; mbwjqüwþf-ayxütbð
+Deþifreli mesajýmýz: m.nihat yavaþ; 17/04/1957; yeþilyurt-malatya
+"""

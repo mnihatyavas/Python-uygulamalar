@@ -1,0 +1,33 @@
+# coding:iso-8859-9 Türkçe
+
+from math import *
+
+santim = eval (input ("Santimetre deðeri girin: "))
+if santim < 0: santim = -santim
+print (santim, "santimetre =", round (santim / 2.54, 2), "inch'dir.")
+
+harf = input ("\nC: Celsius, F:Fahrenheit veya K:Kelvin gir: ")
+if harf != 'c' and harf != 'f' and harf != 'k': harf = 'c'
+ýsý = eval (input (harf + " Isý deðerini girin: "))
+if harf == "k":
+    if ýsý < 0: ýsý = 0;
+    print (ýsý, "K = ", round(ýsý-273.15, 2), "C = ", round(1.8*(ýsý-273.15)+32, 2), "F", sep="")
+elif harf == "c":
+    if ýsý < -273.15: ýsý = -273.15;
+    print (ýsý,"C = ", round(ýsý+273.15, 2), "K = ", round(1.8*ýsý+32, 2), "F", sep="", end="")
+    if ýsý < 0: print ("==>Donma noktasý altý")
+    elif 0 < ýsý <=100: print ("==>Normal sýcaklýk aralýðý")
+    else: print ("==>Kaynama noktasý üstü")
+else:
+    if ýsý < -459.67: ýsý = -459.67;
+    print (ýsý, "F = ", round(5/9*(ýsý-32), 2), "C = ", round(5/9*(ýsý-32)+273.15, 2), "K", sep="")
+
+sayý = trunc (eval (input ("\nBir tamsayý girin: ")))
+print (sayý, "tamsayýsýnýn bölenleri:", end=" ")
+if sayý < 0: sayý = -sayý; negatif = True
+else: negatif = False
+for i in range (1, sayý+1):
+    if (sayý/i)*i == (sayý//i)*i:
+        if not negatif: print (i, end=" ")
+        else: print (-i, end=" ")
+print("\n")

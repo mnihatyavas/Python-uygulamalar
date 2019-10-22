@@ -1,0 +1,15 @@
+# coding:iso-8859-9 Türkçe
+
+s = ''
+for i in range (10000):
+    k = input ('Bir karakter gir [Çýk:q/Q]: ')
+    if  k=='q' or k=='Q': break
+    s = s + k
+print ("-"*50, "\nGirdiðiniz cümle: ", s, "\n", "-"*50, sep="")
+
+if "þ" in s: print ("Girdiðiniz cümlede 'þ' harfi mevcuttur.")
+if "Yavaþ" in s: print ("Girdiðiniz cümlede 'Yavaþ' kelimesi mevcuttur.")
+if ("þ" or "Þ" or "ç" or "Ç" or "ð" or "Ð" or "ý" or "Ý" or "ö" or "Ö" or "ü" or "Ü") in s:
+    print ("Girdiðiniz cümle Türkçe karakter içermektedir.")
+if ("." or "," or ":" or ";" or ".." or "...") in s:
+    print ("Girdiðiniz cümle noktalama karakteri içermektedir.")

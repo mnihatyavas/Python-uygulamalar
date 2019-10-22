@@ -1,0 +1,12 @@
+# coding:iso-8859-9 Türkçe
+
+teklif1 = "Sayýn "
+teklif2 = "\n\nSize yeni Platin Artý Ýkramiyeli kartýmýzý %47.99 gibi\nçok özel bir tanýtým indirimiyle sunmaktan gurur duyuyorum.\n"
+teklif3 = ", böyle bir teklif kimseye her gün pek sýk yapýlmaz;\nbu yüzden +90-800-314-1592 ücretsiz numaramýzý hemen\naramanýzý þiddetle tavsiye ediyorum.\nBöylesi indirimli tanýtým kampanya indirimini çok uzun süre devam\nettiremeyiz, "
+teklif4 = ", bu yüzden hiç vakit yitirmeden\nhemen bizi aramalýsýnýz!.."
+
+giriþ = input ("Açýk ad soyadýnýzý giriniz: ")
+if len(giriþ) > 0:
+    try: ad = giriþ[:giriþ.index(' ')]
+    except ValueError: ad = giriþ
+    print (teklif1, giriþ, teklif2, ad, teklif3, ad, teklif4, sep="")

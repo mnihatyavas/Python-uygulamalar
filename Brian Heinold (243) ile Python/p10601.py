@@ -1,0 +1,16 @@
+# coding:iso-8859-9 Türkçe
+
+# String dizge'ler deðiþtirilemez, ancak yeniden yaratýlabilirler...
+dizge1 = 'Selam'
+dizge2 = "Merhaba"
+dizge3 = """Bu tek satýrý ikinciye taþýran uzun
+bir dizge örneðidir. Ýstediðiniz kadar uzatabilirsiniz!"""
+
+gir_sayý = eval (input ('Doðum yýlýnýzý 4 rakamlý girin: '))
+gir_dizge = input ('Ad ve soyadýnýzý girin: ')
+
+print ("\nÝlk dizge: [", dizge1, "] ve uzunluðu: [", len (dizge1), "]", sep="")
+print ("Ýkinci dizge: [", dizge2, "] ve uzunluðu: [", len (dizge2), "]", sep="")
+print ("Üçüncü dizge: [", dizge3, "] ve uzunluðu: [", len (dizge3), "]", sep="")
+print ("\nSayýsal veri giriþi: [", gir_sayý, "]", sep="")
+print ("Dizgesel veri giriþi: [", gir_dizge, "] ve uzunluðu: [", len (gir_dizge), "]", sep="")

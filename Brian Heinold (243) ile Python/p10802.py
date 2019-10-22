@@ -1,0 +1,29 @@
+# coding:iso-8859-9 Türkçe
+
+dizge = "M. Nihat Yavaþ; 17 / 04 / 1957; Yeþilyurt - Malatya;"
+print ("Orijinal dizgemiz:", dizge)
+print ("\nsplit'le kelimeleri liste elemanýna dönüþtürme:", dizge.split())
+
+from string import punctuation
+print ("\nPunctuation/noktalama string deðiþkeni içeriði:", punctuation)
+for k in punctuation: dizge = dizge.replace (k, ' ')
+print ("\nNoktalamalarý boþluklanmýþ dizgemiz:", dizge)
+liste = dizge.split()
+print ("\nYeni split listemiz:", liste)
+
+dizge = """Split metodu ve punctuation özel string deðiþkeniyle metni
+noktalamalarýndan arýndýrýp, küçük harfe çevirip, istediðimiz kelimelerin
+metin içinde tekrarlanma sayýsýný, metni split kelime elemanlý listeye
+dönüþtürerek yapabiliriz."""
+print ("\nMetnimiz:", dizge)
+for k in punctuation: dizge = dizge.replace (k, " ")
+liste = dizge.lower().split()
+print ("\nListemiz:", liste)
+print ("\nMetindeki 'split' kelime sayýsý:", liste.count ("split"))
+print ("Metindeki 'metni' kelime sayýsý:", liste.count ("metni"))
+print ("Metindeki 've' kelime sayýsý:", liste.count ("ve"))
+
+telefon = "0-90-551-555-94-64"
+print ("\nTelefon no:", telefon)
+print ("'-'lerden arýnýk telefon no:", telefon.replace ("-", " "))
+print ("Listeye dönüþen telefon no elemanlarý:", telefon.split ("-"))

@@ -1,0 +1,42 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+
+kelime = input ("Anagram için herhangi BÝR kelime girin: ").lower().replace (" ", "")
+if len(kelime) < 3: kelime = "anagram"
+for i in range (len(kelime)-1):
+    k = kelime[i]
+    sonuç = kelime[:i] + kelime[i+1] + k + kelime[i+2:]
+    print ("Kelimenin ", i+1, "'.inci anagramý: ", sonuç, sep="")
+print()
+kelime = (kelime + " ")*3
+þifreli=''
+for i in range (0, len(kelime)-1, 2):
+    þifreli= þifreli + kelime[i+1] + kelime[i]
+print ("2'li þifreleme:", þifreli)
+deþifreli=''
+for i in range (0, len(þifreli)-1, 2):
+    deþifreli= deþifreli + þifreli[i+1] + þifreli[i]
+print ("2'li deþifreleme:", deþifreli)
+print()
+þifreli=deþifreli=''
+for i in range (0, len(kelime)-2, 3):
+    þifreli += kelime[i+2] + kelime[i+1] + kelime[i]
+print ("3'lü þifreleme:", þifreli)
+deþifreli=''
+for i in range (0, len(þifreli)-2, 3):
+    deþifreli += þifreli[i+2] + þifreli[i+1] + þifreli[i]
+print ("3'lü deþifreleme:", deþifreli)
+print()
+k = int (eval (input ("Kaçarlý þifreleme oluþturacaksýn: ")))
+if k > len (kelime)-k: k = len(kelime)-k
+elif k < 2: k = 2
+þifreli=deþifreli=''
+for i in range (0, len(kelime)+1-k, k):
+    for j in range (i+k-1, i-1, -1):
+        þifreli += kelime[j]
+print (k, "'li genel þifreleme: ", þifreli, sep="")
+for i in range (0, len(þifreli)+1-k, k):
+    for j in range (i+k-1, i-1, -1):
+        deþifreli += þifreli[j]
+print (k, "'li genel deþifreleme: ", deþifreli, sep="")

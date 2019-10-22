@@ -1,0 +1,20 @@
+# coding:iso-8859-9 Türkçe
+
+from math import *
+from random import *
+
+seri_toplamý = 0
+for i in range (1, 10001): seri_toplamý = seri_toplamý + 1 / i**2
+print ("1/1 + 1/ 2^2 +..+1/1000^2 =", seri_toplamý)
+print ()
+sayý = random()
+print ("23.865^", sayý, ") = ", 23.865**sayý, sep="")
+print ()
+sayý1 = randint (1,100)
+sayý2 = random()
+sayý3 = sayý1 + sayý2
+print (sayý3, "^", sayý2, ") = ", sayý3**sayý2, sep="")
+print ("pow(", sayý3, ",", sayý2, ") = ", pow (sayý3, sayý2), sep="")
+print ()
+sayý = randint (1, 50)
+print ("Faktöriyel(", sayý, ") = ", factorial (sayý), sep="")

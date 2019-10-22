@@ -1,0 +1,55 @@
+# coding:iso-8859-9 Türkçe
+
+from random import *
+from math import *
+
+print ("[1->9] arasý küsuratlý 50 tesadüfi sayý: [", end="")
+for i in range (50):
+    sayý1 = randint (1, 9)
+    sayý2 = random()
+    print (round ((sayý1 + sayý2), 2), end=" ")
+print ("]")
+print ("\n[1->51] arasý küsuratlý 50 tesadüfi sayý: [", end="")
+for i in range (50):
+    sayý1 = randint (1, i+2)
+    sayý2 = random()
+    print (round (sayý1 + sayý2, 5), end=" ")
+print ("]")
+
+açý = eval (input ("\n[-180-->180] arasý bir açý girin: "))
+if açý >= 0:
+    if açý <= 180: print ("Açýnýz:", açý, "derecedir.")
+    else: print ("Açýnýz: 180 derecedir.")
+else:
+    if açý >= -180: print ("Açýnýz:", 360 + açý, "derecedir.")
+    else: print ("Açýnýz: 180 derecedir.")
+
+saniye = eval (input ("\n[0-->3599] arasý bir saniye girin: "))
+if saniye < 0: saniye = 0
+if saniye > 3599: saniye = 3599
+dakika = saniye // 60
+saniye = saniye % 60
+print ("Girdiðiniz zaman:", dakika, "dakika ve", saniye, "saniye'dir.")
+
+zaman1 = eval (input ("\n[0-->24] arasý bir saat girin: "))
+if zaman1 < 0: zaman1 = 0
+if zaman1 > 24: zaman1 = 24
+zaman2 = eval (input ("\nKaç saat daha burada kalacaksýn?: "))
+if zaman2 < 0: zaman2 = -zaman2
+print ("Buradan saat tam ", (zaman1 + zaman2 % 24) % 24, ".00'de ayrýlmalýsýnýz!", sep="")
+
+deðer = input ("\nHerhangibir (-/+) tamsayý girin: ")
+sayý = trunc (eval (deðer))
+uzunluk = len (deðer)
+if sayý < 0:
+    uzunluk = uzunluk - 1
+    sayý = -sayý
+    for i in range (uzunluk):
+        taban = sayý % (10**(i+1))
+        print ("2^", -taban, " = ", 2**(-taban), sep="")
+        print()
+else:
+    for i in range (uzunluk):
+        taban = sayý % (10**(i+1))
+        print ("2^", taban, " = ", 2**(taban), sep="")
+        print()

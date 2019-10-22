@@ -1,0 +1,8 @@
+# p10105.py
+# coding:iso-8859-9 Türkçe
+
+isim = input ('Ýsminizi girin: ')
+print ('Merhaba,', isim)
+
+sayý = eval (input ('\nBoyunuzu girin (sm): '))
+print ('Olmasý gereken uygun kilonuz:', sayý % 100 - 10)

@@ -1,0 +1,54 @@
+# coding:iso-8859-9 Türkçe
+
+satýr = 0
+while not (0 < satýr < 15):
+    try: satýr = int (eval (input ("Paskal üçgeni satýr sayýsýný girin [1->14]: ")))
+    except Exception: satýr = 14
+
+print ("\nPASKAL ÜÇGENÝ: \"(x + y) ^ satýr\" açýlýmý katsayýlarý:\n", "="*53, sep="")
+# 1.deneme...
+L1 = [0 for i in range (satýr)]
+L1 = L1 + [1] + L1
+print ([L1[k] for k in range (satýr*2+1) if L1[k] != 0])
+L2=L1
+for i in range (satýr):
+    for j in range (satýr*2):
+        L2[j] = L1[j] + L1[j+1]
+    print ([L2[k] for k in range (satýr*2+1) if L2[k] != 0])
+    L1 = L2
+
+print("-"*79)
+# 2.deneme...
+L1 = [0 for i in range (satýr)]
+L1 = L1 + [1]
+for i in range (satýr+1):
+    if L1[i] == 0: print ("{:4s}" .format (" "), end=" " )
+    else: print ("{:4d}" .format (L1[i]), end=" " )
+L2=L1
+print()
+for i in range (satýr):
+    for j in range (satýr):
+        L2[j] = L1[j] + L1[j+1]
+    for k in range (satýr+1):
+        if L2[k] == 0: print ("{:4s}" .format (" "), end=" " )
+        else: print ("{:4d}" .format (L2[k]), end=" " )
+    print()
+    L1 = L2
+
+print("-"*79)
+# 3.deneme...
+L1 = [0 for i in range (satýr)]
+L1 = L1 + [1]
+for i in range (satýr+1):
+    if L1[i] == 0: print ("{:2s}" .format (" "), end=" " )
+    else: print ("{:4d}" .format (L1[i]), end=" " )
+L2=L1
+print()
+for i in range (satýr):
+    for j in range (satýr):
+        L2[j] = L1[j] + L1[j+1]
+    for k in range (satýr+1):
+        if L2[k] == 0: print ("{:2s}" .format (" "), end=" " )
+        else: print ("{:4d}" .format (L2[k]), end=" " )
+    print()
+    L1 = L2

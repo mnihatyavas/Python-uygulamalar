@@ -1,0 +1,6 @@
+# p10103b.py
+# coding:iso-8859-9 Türkçe
+
+sayý1 = eval (input ('Ýlk sayýnýzý girin: '))
+sayý2 = eval (input ('Ýkinci sayýnýzý girin: '))
+print ('Girdiðiniz sayýlarýn ortalamasý: ', (sayý1 + sayý2) / 2)

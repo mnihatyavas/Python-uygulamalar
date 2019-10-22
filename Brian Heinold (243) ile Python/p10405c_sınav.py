@@ -1,0 +1,73 @@
+# coding:iso-8859-9 Türkçe
+
+from math import *
+from random import randint
+
+zaman1 = eval (input ("\n[0-->24] arasý bir saat girin: "))
+if zaman1 < 0: zaman1 = 0
+if zaman1 > 24: zaman1 = 24
+zaman2 = abs (eval (input ("\nKaç saat daha burada kalacaksýn?: ")))
+zaman3 = (zaman1 + zaman2 % 24) % 24
+sembol =""
+if zaman3 > 12: sembol = "pm"; zaman3 -= 12
+else: sembol = "am"
+print ("Buradan saat tam ", zaman3, ".00 ", sembol, "'de ayrýlmalýsýnýz!", sep="")
+print()
+# Açýklama gereði, þeker miktarý arama aralýðý 150-200 ve
+# x-y-z paylaþýmlarý ilk toplam 150 adetten 29-25-21'den baþlayabilir ve
+# þeker miktarý aynýyken þ-5x=2 ve þ-6y=3 ve þ-7x=2 þartý saðlanmalý;
+# ancak çözümü bulduktan sonra döngüleri tamamen break'lemeyi bilemedim!..
+x1=y1=z1=þx=þy=þz= 0
+for þ in range (150, 201):
+    for x in range (29, 42):
+        if (þ - 5*x == 2):
+            if x==x1: continue
+            x1=x
+            print (þ, "x:", x);
+            þx=þ
+            if þz==þy and þy==þx: print ("TAMAM BULDUM, Þeker:", þ)
+            break
+        for y in range (25, 35):
+            if (þ - 6*y == 3):
+                if y==y1: continue
+                y1=y
+                print (þ, "y:", y)
+                þy=þ
+                if þz==þy and þy==þx: print ("TAMAM BULDUM, Þeker:", þ)
+                break
+            for z in range (21, 30):
+                if (þ - 7*z == 2):
+                    if z==z1: continue
+                    z1=z
+                    print (þ, "z:", z)
+                    þz=þ
+                    if þz==þy and þy==þx: print ("TAMAM BULDUM, Þeker:", þ)
+                    break
+print()
+# Þeker'in genellenmesi denemesi...
+azami = abs (trunc (eval (input ("Kavanozdaki azami þeker sayýsýný gir: "))))
+z=y=9
+x=7
+buldum=False
+for z in range (9, azami+1, 7):
+    while y <= z:
+        if y==z: break
+        y +=6
+    while x <= z:
+        if x==z: break
+        x +=5
+    if z==y==x: buldum=True; break
+if buldum: print ("Buldum; Kavanozdaki þeker sayýsý:", x)
+else: print ("Maalesef, þeker sayýsýný bulamadým!")
+print()
+kazandý=kaybetti=0
+for i in range (10):
+    puan = randint (1,2)
+    if puan==2: kazandý +=1
+    else: kaybetti +=1
+print ("Oyuncunun bilgisayara karþý 10 rauntluk tavla oyunu sonucu==>")
+print (kazandý, "kez kazandý ve", kaybetti, "kez kaybetti.")
+print ("Oyuncu: ", end="")
+if kazandý > kaybetti: print ("KAZANDI!")
+elif kazandý < kaybetti:  print ("KAYBETTÝ!")
+else: print ("BERABERE KALDI!")

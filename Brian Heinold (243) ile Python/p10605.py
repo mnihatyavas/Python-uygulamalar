@@ -1,0 +1,22 @@
+# coding:iso-8859-9 Türkçe
+
+s = "abcçdefgðhýijklmnoöprsþtuüvyz"
+print ("Alfabemiz:", s)
+print ("s[2:5] =", s[2:5])
+print ("s[:5] =", s[:5])
+print ("s[2:] =", s[2:])
+print ("s[:] =", s[:])
+print ("s[-3:] =", s[-3:])
+print ("s[1::3]:", s[1::3])
+print ("s[::-1]:", s[::-1])
+
+Çýktý="""
+Alfabemiz: abcçdefgðhýijklmnoöprsþtuüvyz
+s[2:5] = cçd
+s[:5] = abcçd
+s[2:] = cçdefgðhýijklmnoöprsþtuüvyz
+s[:] = abcçdefgðhýijklmnoöprsþtuüvyz
+s[-2:] = vyz
+s[1:len(s):3]: bdgýknpþüz
+s[::-1]: zyvüutþsrpöonmlkjiýhðgfedçcba
+"""

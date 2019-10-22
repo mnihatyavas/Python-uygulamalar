@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+
+try: sayý = abs (eval (input ("Küsüratlý bir feet deðeri girin: ")))
+except Exception: sayý = 4.75
+küsürat = sayý - int (sayý)
+inç = küsürat * 30.48 / 2.54
+print ("Girdiðiniz sayý:", int (sayý), "feet ve", inç, "inç'tir.")
+
+L = []
+büyükSayý1=büyükSayý2=0
+küçükSayý1=küçükSayý2=999
+while True:
+    dizge = input ("\n(5'7\") biçimli deðer girin [Çýkýþ: son]: ")
+    if dizge.lower() == "son": break
+
+    try: sayý1 = int (dizge[:dizge.index ("'")])
+    except Exception: sayý1 = 5; print (sayý1, "'")
+    try: sayý2 = int (dizge[dizge.index ("'")+1:dizge.index ("\"")])
+    except Exception: sayý2 = 7; print (sayý2, "\"")
+
+    if sayý1 > büyükSayý1: büyükSayý1 = sayý1
+    if sayý1 < küçükSayý1: küçükSayý1 = sayý1
+    if sayý2 > büyükSayý2: büyükSayý2 = sayý2
+    if sayý2 < küçükSayý2: küçükSayý2 = sayý2
+
+    sayý = sayý1 + (sayý2 * 2.54 / 30.48)
+    L = L + [sayý]
+print ("\nGirdiðiniz feet'inç\" deðerlerinin feet karþýlýklarý listesi==>")
+for k in L: print ("{:.2f}" .format (k), end=" ")
+print ("\n\nGirilen enbüyük ve enküçük feet deðerleri:", büyükSayý1, küçükSayý1)
+print ("Girilen enbüyük ve enküçük inç deðerleri:", büyükSayý2, küçükSayý2)

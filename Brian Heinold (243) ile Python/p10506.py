@@ -1,0 +1,39 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+from math import trunc
+
+# Virgüllerle ayrýk 2 ayrý veri giriþ yöntemi
+a, b = eval (input ('Virgüllerle ayrýk 2 sayý girin: '))
+if a<b: a,b=b,a # (küçük/büyük) kontrolsüz, biçimsiz sonuçlar üretebiliyor...
+print (a, "+", b, "=", a+b)
+print (a, "-", b, "=", a-b)
+print (a, "*", b, "=", a*b)
+print (a, "/", b, "=", a/b)
+""" Her 2 sayýnýn da negatif olmasý durumunda, sonucun pozitif ve 
+sýfýrdan büyük çýkmasýný isterseniz negatif küçüðü üste alabilirsiniz:
+Yani eðer a=-5, b=-15 ise a, b'den büyük olduðu halde
+print (b, "/", a, "=", b/a)
+ifadesi sonucu +3 yansýtýr
+"""
+print (a, "^", b, "=", a**b)
+print (a, "%", b, "=", a%b)
+print (a, "yüzde", b, "= %", (a-b)/b*100)
+
+""" Çoklu yorum satýrý
+     Program adý: Tek ve çok satýrlý python yorumlarý
+     Kodlayan: M.Nihat Yavaþ
+     Tarih: 29.09.2018-23:23 """
+
+""" veya
+Çoklu yorum satýrý
+Program adý: Tek ve çok satýrlý python yorumlarý
+Kodlayan: M.Nihat Yavaþ
+Tarih: 29.09.2018-23:23
+"""
+Çýktý=""" veya
+Çoklu yorum satýrý
+Program adý: Tek ve çok satýrlý python yorumlarý
+Kodlayan: M.Nihat Yavaþ
+Tarih: 29.09.2018-23:23
+"""

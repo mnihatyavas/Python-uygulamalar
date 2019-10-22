@@ -1,0 +1,21 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+
+sayý = randint (5, 25)
+for i in range (sayý): print ('Selam')
+print (sayý, "\n")
+sayaç=0
+for i in range (randint (5, 25)): print ('Selam'); sayaç +=1
+print (sayaç, "\n")
+sayý = randint (1, 6)
+for i in range (5): print ('Selam '*sayý)
+print (5, "\n")
+for i in range (5): print ('Selam ' * randint (1, 6))
+print (5, "\n")
+sayaç = 0
+sayý = randint (0,10000)
+for i in range (sayý):
+    if randint (1, 100) % 12 == 0: sayaç+=1
+print (sayý, 'kere [1->100] rasgele sayýlardan 12 ile bölüneni:', sayaç, "adettir.")
+print()

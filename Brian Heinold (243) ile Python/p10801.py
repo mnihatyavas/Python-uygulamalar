@@ -1,0 +1,21 @@
+# coding:iso-8859-9 Türkçe
+
+from random import choice
+adlar = ['Nihat', 'Mahmut', 'Sevim', 'Songül', 'Memet', 'Necati', 'Haným', 'Hatice']
+print ("Aktüel oyuncu:", choice (adlar))
+
+from random import sample
+print ("Aktüel üçlü:", sample (adlar, 3))
+print()
+dizge='abcçdefgðhýijklmnoöpqrsþtuüvwxyz1234567890!@#$%^&*().,:;'
+for i in range (100): print (choice (dizge), end='')
+print("\n")
+from random import shuffle
+shuffle (adlar)
+for a in adlar: print (a, 'hazýrlan, senin sýran geldi!')
+print()
+shuffle (adlar)
+takým = []
+if not len(adlar) % 2:
+    for i in range (0, len (adlar), 2): takým.append ([adlar[i], adlar[i+1]])
+    print ("Çiftleri açýklýyorum:", takým)

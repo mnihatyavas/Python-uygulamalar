@@ -1,0 +1,20 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+
+print ("Sade Ent harici bir tuþu Ent'larsanýz çýkarsýnýz...")
+while not input():
+    sayý = randint (3, 10000)
+    i = 2
+    while i < sayý and sayý % i != 0: i+=1
+    if i==sayý: print (sayý, "bir ASAL sayýdýr!")
+    else: print (sayý, "bir asal sayý DEÐÝLDÝR!")
+
+print ("\nSadece Ent harici bir HARFÝ Ent'larsanýz çýkarsýnýz...")
+while not input().isalpha():
+    sayý = randint (3, 10000)
+    for i in range (2,sayý):
+        if sayý % i == 0:
+            print (sayý, "bir asal sayý DEÐÝLDÝR!")
+            break
+    else: print (sayý, "bir ASAL sayýdýr!")

@@ -1,0 +1,17 @@
+# coding:iso-8859-9 Türkçe
+
+print ("[1901->2099] arasýndaki toplam gün sayýsý: {:,d}" .format ( (3000-1901)*365 + (3000-1900) // 4))
+L = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
+
+print()
+yýl1 = yýl2 = 0
+while not (1900 < yýl1 < 3000):
+    try: gün1, ay1, yýl1 = eval (input ("Ýlk gün, ay, yýl'ý girin: "))
+    except Exception: gün1, ay1, yýl1 = 1, 1, 2001
+while not (yýl1 < yýl2 < 3000):
+    try: gün2, ay2, yýl2 = eval (input ("Ýkinci gün, ay, yýl'ý girin: "))
+    except Exception: gün2, ay2, yýl2 = 31, 12, 2018
+
+günToplamý = 365 - (L[ay1-1] + gün1) + (yýl2 - (yýl1 + 1)) * 365 + (yýl2 - (yýl1 + 1)) // 4 + (L[ay2-1] + gün2)
+if (yýl2 - yýl1) < 4 and yýl2 % 4 == 0 and ay2 > 2: günToplamý +=1
+print ("{:02d}/{:02d}/{:4d} ile {:02d}/{:02d}/{:4d} arasýnda toplam: {:,d} gün vardýr." .format (gün1, ay1, yýl1, gün2, ay2, yýl2, günToplamý) )

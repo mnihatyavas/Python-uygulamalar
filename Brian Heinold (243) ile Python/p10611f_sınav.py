@@ -1,0 +1,16 @@
+# coding:iso-8859-9 Türkçe
+
+kelime = input ("k basamaklý þifreleme için dizge girin: ")
+k = int (eval (input ("Kaçarlý þifreleme oluþturacaksýn: ")))
+if k > len (kelime)//2: k = len(kelime)//2
+elif k < 2: k = 2
+þifreli=deþifreli=''
+for i in range (k-1, len(kelime), k):
+    for j in range (i, i-k, -1): þifreli += kelime[j]
+for i in range (len(kelime)%k): þifreli += kelime[-i-1]
+print ("\n", k, "'li genel þifreleme: ", þifreli, sep="")
+
+for i in range (k-1, len(þifreli), k):
+    for j in range (i, i-k, -1): deþifreli += þifreli[j]
+for i in range (len(þifreli)%k): deþifreli += þifreli[-i-1]
+print ("\n", k, "'li genel deþifreleme: ", deþifreli, sep="")

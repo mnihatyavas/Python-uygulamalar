@@ -1,0 +1,64 @@
+# coding:iso-8859-9 Türkçe
+
+from random import randint
+from math import *
+
+x=randint(-100, 0)
+y=randint(1, 100)
+z=randint(101, 200)
+print ("Deðiþtokuþ: x=", x, ", y=", y, "ve z=", z)
+x,y,z=y,z,x
+print ("x<->y=", x, ", y<->z=", y, "ve z<->x=", z)
+print()
+kare_muaf=ideal_kare=0
+for i in range (3, 1000):
+    bayrak=0
+    for j in range (2, i):
+        if (i//j)*j==i and trunc (sqrt (j))**2 == j: bayrak=1; break
+    if not bayrak: kare_muaf+=1 # ;print (i, "sayýsýnýn bölenleri kare-muaf'týr")
+    else: ideal_kare+=1 # ;print (i, "sayýsýnýn", j, "böleni ideal-kare'dir")
+print ("1->1000 arasý sayýlarýn", kare_muaf, "adeti kare muaf ve", ideal_kare, "adeti de ideal kare'dir")
+
+küp_muaf=ideal_küp=0
+for i in range (3, 1000):
+    bayrak=0
+    for j in range (2, i):
+        if (i//j)*j==i and trunc (pow (j, 1/3))**3 == j: bayrak=1; break
+    if not bayrak: küp_muaf+=1 # ;print (i, "sayýsýnýn bölenleri küp-muaf'týr")
+    else: ideal_küp+=1 # ;print (i, "sayýsýnýn", j, "böleni ideal-küp'tür")
+print ("1->1000 arasý sayýlarýn", küp_muaf, "adeti küp muaf ve", ideal_küp, "adeti de ideal küp'tür")
+
+beþüs_muaf=ideal_beþüs=0
+for i in range (3, 1000):
+    bayrak=0
+    for j in range (2, i):
+        if (i//j)*j==i and trunc (pow (j, 1/5))**5 == j: bayrak=1; break
+    if not bayrak: beþüs_muaf+=1 # ;print (i, "sayýsýnýn bölenleri beþüs-muaf'týr")
+    else: ideal_beþüs+=1 # ;print (i, "sayýsýnýn", j, "böleni ideal-beþüs'tür")
+print ("1->1000 arasý sayýlarýn", beþüs_muaf, "adeti beþüs muaf ve", ideal_beþüs, "adeti de ideal beþüs'tür")
+print()
+büyük1=büyük2=toplam=ortalama=yüz_üstü=sýfýr_altý=0
+küçük1=küçük2=100
+for i in range (10):
+    puan = randint (-10, 110)
+    if puan < 0: sýfýr_altý+=1; puan=0
+    if puan > 100: yüz_üstü+=1; puan=100
+    toplam+=puan
+    if puan > büyük1: büyük1 = puan
+    elif puan > büyük2: büyük2 = puan
+    if puan < küçük1: küçük1 = puan
+    elif puan < küçük2: küçük2 = puan
+    if küçük2 < küçük1: küçük2,küçük1=küçük1,küçük2
+    if büyük2 > büyük1: büyük2,büyük1=büyük1,büyük2
+print ("Öðrencinin toplam 10 notunun sonuçlarý==>")
+print ("Not ortalamasý:", round (toplam/10, 2) )
+print ("Endüþük 2 notu hariç ortalamasý:", round ((toplam-küçük1-küçük2)/8, 2) )
+print ("Enbüyük 2 notu:", büyük1, büyük2)
+print ("Enküçük 2 notu:", küçük1, küçük2)
+print ("Hatalý girilen negatif not sayýsý:", sýfýr_altý)
+print ("Hatalý girilen yüz üstü not sayýsý:", yüz_üstü)
+print()
+sayý = randint (1, 100)
+f=1
+for i in range (2, sayý+1): f *=i
+print (sayý, "faktöriyel:", f)

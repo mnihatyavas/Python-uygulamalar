@@ -1,0 +1,26 @@
+# coding:iso-8859-9 Türkçe
+
+from math import *
+from random import randint
+
+doðru=yanlýþ=0
+for i in range (1,11):
+    a = randint (1,9)
+    b = randint (1,9)
+    c = a * b
+    print (i, ".soru: ", a, " * ", b, " = ?", sep="")
+    cevap = eval (input ("Çarpmanýn cevabýný girin: "))
+    if cevap == c: print ("Doðru!"); doðru += 1
+    else: print ("Yanlýþ!"); yanlýþ += 1
+    print()
+print ("10 soruda toplam", doðru, "adet doðru ve", yanlýþ, "adet yanlýþ cevap verdiniz!")
+
+zaman1 = eval (input ("\n[0-->24] arasý bir saat girin: "))
+if zaman1 < 0: zaman1 = 0
+if zaman1 > 24: zaman1 = 24
+zaman2 = abs (eval (input ("\nKaç saat daha burada kalacaksýn?: ")))
+zaman3 = (zaman1 + zaman2 % 24) % 24
+sembol =""
+if zaman3 > 12: sembol = "pm"; zaman3 -= 12
+else: sembol = "am"
+print ("Buradan saat tam ", zaman3, ".00 ", sembol, "'de ayrýlmalýsýnýz!", sep="")

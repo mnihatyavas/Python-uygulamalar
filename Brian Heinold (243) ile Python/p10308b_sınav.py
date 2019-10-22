@@ -1,0 +1,63 @@
+# coding:iso-8859-9 Türkçe
+
+from random import *
+from math import *
+
+açý = eval (input ("Herhangi bir '-/+' açý girin: "))
+radyan = açý * pi / 180
+print ("Sin(", açý, ") = ", sin (radyan), sep="")
+print ("Cos(", açý, ") = ", cos (radyan), sep="")
+print ("Tan(", açý, ") = ", tan (radyan), sep="")
+
+Y = abs (eval (input ("\nHerhangibir 4 haneli '+' yýl girin: ")))
+C = trunc (Y / 100)
+m = (15 + C - (C/4) - (8*C+13)/25) % 30
+n = (4 + C - C/4) % 7
+a = Y % 4
+b = Y % 7
+c = Y % 19
+d = (19*c + m) % 30
+e = (2*a + 4*b + 6*d + n) % 7
+
+if d == 29 and e == 6: print ("Paskalya tarihi: Nisan 19")
+elif d == 28 and e == 6 and (m==2 or m==5 or m==10 or m==13 or m==16 or m==21 or m==24 or m==39): print ("Paskalya tarihi: Nisan 18")
+elif (trunc(d)+trunc(e)) > 9: print ("Paskalya tarihi: Nisan", trunc (d+e-9))
+else: print ("Paskalya tarihi: Mart", trunc (22+d+e))
+
+artýk = False
+if   Y//100 * 100 == Y and Y % 400 == 0: artýk = True
+elif Y//100 * 100 != Y and Y%4 == 0: artýk = True
+
+if artýk: print (Y, "yýlý artýk yýldýr, yani Þubat 29 çeker.")
+else: print (Y, "yýlý artýk yýl deðildir, yani Þubat 28 çeker.")
+
+if Y > 1600:
+    artýk = False
+    sayaç = 0
+    for i in range (1600, Y+1):
+        if   i//100 * 100 == i and i % 400 == 0: artýk = True
+        elif i//100 * 100 != i and i%4 == 0: artýk = True
+        if artýk: sayaç += 1; artýk=False
+    print ("Ayrýca 1600 yýlýndan bu yýla kadar toplam:", sayaç, "adet artýk yýl vardýr.")
+
+kuruþ = abs (trunc (eval (input ("\n100 Krþ veya altý tamsayý bozukluk girin: "))))
+if kuruþ > 100: kuruþ = 100
+kalan = kuruþ
+k1=k2=k3=k4=0
+if kalan >= 50: k1 = kalan//50; kalan = kalan - k1*50
+if kalan >= 25: k2 = kalan//25; kalan = kalan - k2*25
+if kalan >= 10: k3 = kalan//10; kalan = kalan - k3*10
+if kalan >= 5: k4 = kalan//5; kalan = kalan - k4*5
+
+print (kuruþ, " kuruþ içinde ", k1, " adet 50 kuruþ ", k2, " adet 25 kuruþ ", k3, " adet 10 kuruþ ", k4, " adet 5 kuruþ ve ", kalan, " adet 1 kuruþ bozukluk vardýr.")
+
+satýr = abs (trunc (eval (input ("\nMatrisin satýr sayýsýný girin: "))))
+sütun = abs (trunc (eval (input ("\nMatrisin sütun sayýsýný girin: "))))
+print()
+k=0
+for i in range (satýr):
+    for j in range (sütun):
+        print (k, end=" ")
+        k += 1
+        if k > 9: k = 0
+    print()

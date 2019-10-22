@@ -1,0 +1,42 @@
+# coding:iso-8859-9 Türkçe
+
+print ("1->10000 arasý palindromik (tersiyle ayný) sayýlar yanyana:", end=" ")
+for i in range (1,10001):
+    dizge = str (i)
+    if dizge == dizge[::-1]: print (dizge, end=" ")
+
+doðum_günü = 'Haziran 1, 1991'
+yýl = int (doðum_günü[-4:])
+print ("\n\nDoðum gününüz:", doðum_günü, "ise bu günkü yaþýnýz:", 2018 - yýl, "olur.")
+doðum_günü = '17 Nisan 1957'
+yýl = int (doðum_günü[-4:])
+print ("Doðum gününüz:", doðum_günü, "ise bu günkü yaþýnýz:", 2018 - yýl, "olur.")
+doðum_günü = '07/08/1955'
+yýl = int (doðum_günü[-4:])
+print ("Doðum gününüz:", doðum_günü, "ise bu günkü yaþýnýz:", 2018 - yýl, "olur.")
+doðum_günü = '7.8.1955'
+yýl = int (doðum_günü[-4:])
+print ("Doðum gününüz:", doðum_günü, "ise bu günkü yaþýnýz:", 2018 - yýl, "olur.")
+
+from random import randint
+sayý = randint (10, 100000)
+dizge = str (sayý)
+toplam = 0
+for i in range (len (dizge)): toplam += int (dizge[i])
+print ("\nGeliþigüzel", dizge, "sayýsýnýn toplamý:", toplam)
+print ("Ayný toplam kapsamlý liste yöntemiyle:", sum ([int (dizge) for dizge in str (sayý)]))
+
+ters = ""
+for i in range (len (dizge)): ters = dizge[i] + ters
+print ("Geliþigüzel", dizge, "sayýsýnýn tersi:", ters)
+
+from random import random
+sayý = randint (1, 100000) + random()
+tamsayý = int (sayý)
+küsürat = sayý - tamsayý
+print ("\nSayýmýz:", sayý, ", tamsayý kýsmý:", tamsayý, "ve küsürat kýsmý:", küsürat)
+
+sayý = randint (2, 1000)
+for i in range (2, int (sayý**0.5)+1):
+    if sayý % i == 0: break
+else: print ("\nKendisi ve 1'den baþka böleni olmayan", sayý, "asaldýr.")

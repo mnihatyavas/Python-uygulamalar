@@ -1,0 +1,9 @@
+# p10107.py
+# coding:iso-8859-9 Türkçe
+
+c_ýsý = eval (input ('Bir selsiyüs santigrad derece girin: '))
+f_ýsý = 9/5*c_ýsý+32
+
+print (c_ýsý, 'C derece:', f_ýsý, "F derecedir.")
+if f_ýsý > 212: print ('Bu ýsý kaynama noktasýnýn üzerindedir.')
+if f_ýsý < 32: print ('Bu ýsý donma noktasýnýn altýndadýr.')

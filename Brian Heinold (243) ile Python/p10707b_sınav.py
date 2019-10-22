@@ -1,0 +1,17 @@
+# coding:iso-8859-9 Türkçe
+
+liste = ["Ankara", "Ýstanbul", "Ýzmir", "Konya", "Bursa"]
+try: liste += eval (input ("Listeye eklenecek kelimeler (týrnaklý,virgülle ayrýk ve enaz 2 adet) girin: "))
+except Exception:
+    print (end="")
+print ("Eklemeli dizge listemiz:", liste)
+for i in range (len (liste)): liste[i] = liste[i][1:]
+print ("Ýlk karakterleri kýrpýlmýþ listemiz:", liste)
+print()
+liste2=[]
+alfabe = "abcçdefgðhýijklmnoöprsþtuüvyz"
+print ("Yeni ardýþýk uzayan alfabe elemanlý listemiz: [", end="")
+for i in range (len (alfabe)):
+    liste2.append (alfabe[i]*(i+1))
+for k in liste2: print (k, "=", len (k), sep="", end= " ")
+print ("]")

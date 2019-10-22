@@ -1,0 +1,44 @@
+# coding:iso-8859-9 Türkçe
+
+L1 = [[0]*10 for i in range (8)]
+print ("[8x10]'li listemiz:", L1)
+
+from random import randint
+for i in range (8):
+    for j in range (10):
+        L1[i][j] = randint (-10, 50)
+print ("Deðer atalý listemiz:", L1)
+
+print ("Formatlý listemiz:")
+for i in range (len (L1)):
+    for j in range (len (L1[0])):
+        print ("{:4d}" .format (L1[i][j]), end="")
+    print()
+
+print ("Listemizin ortalama deðeri:", sum ([L1[i][j] for i in range (len (L1)) for j in range (len (L1[0]))]) / (len (L1) * len (L1[0])) )
+
+from pprint import pprint
+print ("pprint'li listemiz:")
+pprint (L1)
+
+print ("Listemizin enbüyük elemaný:", max ([L1[i][j] for i in range (len(L1)) for j in range (len(L1[0])) ]))
+print ("Listemizin enküçük elemaný:", min ([L1[i][j] for i in range (len(L1)) for j in range (len(L1[0])) ]))
+satýr = randint (0, len (L1)-1)
+kolon = randint (0, len (L1[0])-1)
+print ("Listemizin", satýr+1, ".satýrdaki enbüyük elemaný:", max ([L1[satýr][j] for j in range (len(L1[0])) ]))
+print ("Listemizin", kolon+1, ".kolondaki enküçük elemaný:", min ([L1[i][kolon] for i in range (len(L1)) ]))
+
+L1 = [[0]*8 for i in range (8)]
+for i in range (len(L1)):
+    for j in range(len(L1[0])):
+        if (j+1)%2 == 1: L1[i][j] = 1
+        else: L1[i][j] = 2
+pprint (L1)
+
+toplam1 = sum([L1[i][i] for i in range(len(L1))])
+toplam2 = sum ([L1[i][i] for i in range (len(L1[0])-1,-1,-1)] )
+eþit = (toplam1== toplam2)
+for i in range(len(L1)):
+    eþit = (toplam1 == sum ([L1[i][j] for j in range(len(L1[0]))] ))
+if eþit: print ("[8x8] L1 listemiz sihirli kare (köþegen, satýr ve kolonlar toplamý eþit=", toplam1, ") matrisDÝR!")
+else: print ("[8x8] L1 listemiz sihirli kare matris DEÐÝLDÝR!")

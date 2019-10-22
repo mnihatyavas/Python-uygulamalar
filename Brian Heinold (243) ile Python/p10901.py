@@ -1,0 +1,19 @@
+#coding:iso-8859-9 Türkçe
+
+from random import randint
+ýsý=tip=0
+while tip != 9:
+    try: tip = eval (input ('[1:F; 2:C; 3:K] Derece tipi girin {9:Çýk}: '))
+    except Exception: tip = randint (1,3)
+    if tip == 9: print ("Hoþçakalýn, programý sonlandýrýyorum!")
+    if not (tip == 1 or tip == 2 or tip == 3 or tip == 9): tip = randint (1,3)
+    if tip != 9:
+        try: ýsý = eval (input (str(tip)+' için ýsý deðeri girin: '))
+        except Exception:
+            if tip == 1: ýsý = randint (-459, 5000)
+            elif tip == 2: ýsý = randint (-273, 5000)
+            else: ýsý = randint (0, 5000)
+    if tip == 1 and ýsý >= - 459.66999: print ("Girdiðiniz", ýsý, "F=",  5/9*(ýsý-32), "C ve", 5/9*(ýsý-32)+273.15, "K derecedir.")
+    elif tip == 2 and ýsý >= -273.15: print ("Girdiðiniz", ýsý, "C=",  1.8*ýsý+32, "F ve", 273.15+ýsý, "K derecedir.")
+    elif tip == 3 and ýsý >= 0: print ("Girdiðiniz", ýsý, "K=",  ýsý-273.15, "C ve", (ýsý-273.15)*1.8+32, "F derecedir.")
+

@@ -1,0 +1,71 @@
+# coding:iso-8859-9 Türkçe
+
+L = [[1,2,3,4],
+    [5,6,7,8],
+    [9,10,11,12]]
+
+print ("2 boyutlu (3x4) liste (yanyana):", L)
+
+print ("\n2 boyutlu (3x4) liste (altalta):")
+for satýr in range(3):
+    for kolon in range(4): print (L[satýr][kolon], end=" ")
+    print()
+
+print ("\nTamsayý FORMATLI 2 boyutlu (3x4) liste (altalta):")
+for i in range(3):
+    for j in range(4): print ("{:3d}" .format (L[i][j]), end="")
+    print()
+# s ile dizge formatlanýr, ^ ile ortalanýr, > ile saða hizalanýr...
+
+print ("\nOndalýk FORMATLI 2 boyutlu (3x4) liste (altalta):")
+for i in range(3):
+    for j in range(4): print ("{:6.2f}" .format (L[i][j]), end="")
+    print()
+
+from pprint import pprint
+print ("\npprint ile 2 boyutlu (3x4) liste (altalta):")
+for e in L: pprint (e)
+
+print ("\n10x20'lik 2 boyutlu sayýsal bir liste yaratma ve print'leme:")
+L=[[0]*20 for i in range (10)]
+print (L)
+
+print ("\n10x20'lik 2 boyutlu sayýsal listeyi pprint'leme:")
+pprint (L)
+from random import randint
+
+print ("\n10x20'lik 2 boyutlu sayýsal listeye [1->20] tesadüfi atama ve pprint'leme:")
+for i in range (10):
+    for j in range (20):
+        L[i][j] = randint (1,20)
+pprint (L)
+
+print ("\n10x20'lik 2 boyutlu [1->20] tesadüfi deðerli listeyi altalta print'leme:")
+for i in range (10):
+    for j in range (20):
+        print (L[i][j], end=" ")
+    print()
+
+sayaç = 0
+for i in range (10):
+    for j in range (20):
+        if L[i][j] % 2 == 0: sayaç +=1
+print ("\n10x20'lik 2 boyutlu [1->20] tesadüfi deðerli listedeki çiftli eleman sayýsý:", sayaç)
+sayaç = sum ([1 for i in range (10) for j in range (20) if L[i][j] % 2 != 0])
+print ("\n10x20'lik 2 boyutlu [1->20] tesadüfi deðerli listedeki tekli eleman sayýsý:", sayaç)
+
+print()
+satýr = randint (0, 9)
+print (satýr+1, " no'lu satýr elemanlarý:", L[satýr])
+
+print()
+kolon = randint (0, 19)
+print (kolon+1, " no'lu kolon elemanlarý:", [L[i][kolon] for i in range (len (L))])
+
+M = []
+for i in range (10):
+    for j in range (20):
+        M.append (L[i][j])
+print ("\n10x20'lik matris listeyi 1x200 dizi liste'ye çevirme:", M)
+
+print ("\n10x20'lik matris listeyi 1x200 dizi liste'ye çevirme:", [j for M in L for j in M])

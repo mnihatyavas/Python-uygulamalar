@@ -1,0 +1,22 @@
+# coding:iso-8859-9 Türkçe
+
+sorular = ["Türkiye'nin baþþehri neresidir?",
+    "Hangi þehrimiz Yunanistan sýnýrýndadýr?",
+    "Sýnýriçi en uzun nehrimiz hangisidir?",
+    "En debili nehrimiz hangisidir?",
+    "En büyük HES barajýmýz hangisidir",
+    "En yüksek daðýmýz hangisidir?",
+    "Nüfusu en kalabalýk þehrimiz hangisidir?",
+    "Alaný en büyük þehrimiz hangisidir?",
+    "En büyük gölümüz hangisidir?",
+    "En küçük nüfuslu þehrimiz hangisidir?"]
+cevaplar = ['Ankara', 'Edirne', 'Kýzýlýrmak', 'Fýrat', 'Atatürk', 'Aðrý', 'istanbul', 'Konya', 'Van', 'Ardahan']
+doðru_sayýsý = 0
+for i in range (len (sorular)):
+    cevap = input (sorular[i] + " ")
+    if cevap.lower() == cevaplar[i].lower():
+        print ('Aferin, bildiniz!')
+        doðru_sayýsý=doðru_sayýsý+1
+    else:
+        print ('Maalesef yanlýþ! Doðrusu: [', cevaplar[i], '] olmalýydý.', sep="")
+print ('\n', len(sorular), " sorudan toplam ", doðru_sayýsý, "'unu doðru bildiniz.", sep="")
