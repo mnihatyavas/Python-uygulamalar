@@ -1,0 +1,13 @@
+# coding:iso-8859-9 Türkçe
+
+from collections import Counter
+
+s1 = Counter ('aaabbb')
+s2 = Counter ('aabcccddddd')
+print ("s1:", s1)
+print ("s2:", s2)
+print()
+print ("s1+s2:", s1+s2) # Ýkisindeki deðerleri toplar...
+print ("s1-s2:", s1-s2) # Ýlkten ikincideki deðeri düþer, 0 ve altýný almaz...
+print ("s1&s2:", s1&s2) # Ýkisinden küçük deðerlisi...
+print ("s1|s2:", s1|s2) # Veya, ikisinden büyük deðerlisi...

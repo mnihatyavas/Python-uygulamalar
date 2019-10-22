@@ -1,0 +1,16 @@
+# coding:iso-8859-9 Türkçe
+
+# python -m pip install Pillow
+# easy_install Pillow
+
+from PIL import Image, ImageFilter
+
+print ("PIL modülünü kurma ve resmi varsayýlý göstericiyle net/bulanýk görüntülrme")
+try:
+    orijinalResim = Image.open ("resim/nissan.png")
+    orijinalResim.show()
+    bulanýkResim = orijinalResim.filter (ImageFilter.BLUR)
+    bulanýkResim.show()
+    #bulanýkResim.save ("bulanýk.png")
+except:
+    print ("HATA: Bulanýk resmi saklayamýyorum!..")

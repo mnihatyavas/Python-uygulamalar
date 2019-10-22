@@ -1,0 +1,23 @@
+# coding:iso-8859-9 Türkçe
+
+a = 3
+try:
+    b = eval (input ('Bir sayý giriniz: '))
+    print (a / b)
+except NameError: print ('HATA: Lütfen sayý girin, karakter deðil!..')
+except ZeroDivisionError: print ('Sýfýra bölüm hatasý; sýfýr girmeyin!..')
+
+print ('...\nÝstisna hatasý yönetildi ve program akýþý devam ediyor...')
+try:
+    b = eval (input ('\nTekrar düzgün bir sayý giriniz: '))
+    print (a / b)
+except: print ("H A T A : Herhangi bir sebeple TEKRAR hata oluþtu!..")
+
+print ('...\nÝstisna hatasý TEKRAR yönetildi ve program akýþý halen devam ediyor...')
+
+try:
+    b = eval (input ('\nTekrar düzgün bir sayý giriniz: '))
+    print (a / b)
+except Exception as ist: print ("H A T A :", ist)
+
+print ('...\nÝstisna hatasý 3.kez yönetildi ve program akýþý kesintisiz devam etmektedir...')

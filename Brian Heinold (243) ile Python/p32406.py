@@ -1,0 +1,25 @@
+# coding:iso-8859-9 Türkçe
+
+from collections import Counter
+import re
+
+metin = open ("p32406x2.txt").read()
+# Ýsterseniz "p32406x1.txt" Türkçe metin dosyasýný da kullanabilirsiniz...
+print ("Dosyadan okunan metin:\n", metin)
+
+sayar1 = Counter (metin)
+print ("\nMetnin karakterlerinin tekrarlanma sýklýðý:\n", list (sayar1.items()) )
+
+kelimeler = re.findall ("\w+", metin)
+print ("\nMetnin kelimeler listesi:\n", kelimeler)
+
+sayar2 = Counter (kelimeler)
+print ("\nKelimelerin tekrar sýklýðý:\n", list (sayar2.items()) )
+#-----------------------------------------------------------------------------------------
+
+print ("\nEn çok tekrarlanan 10 kelime azalan sýrada:", sep="")
+for (kelime, sýklýk) in sayar2.most_common(10): print (kelime, ':', sýklýk)
+
+print ("\nEn çok tekrarlanan 10 kelime artan sýrada:", sep="")
+for (kelime, sýklýk) in sayar2.most_common()[9::-1]: print (kelime, ':', sýklýk)
+# HATA: Çift tekrarlanma sýklýðý tersi [10-->9] bir düþük gerektiriyor...

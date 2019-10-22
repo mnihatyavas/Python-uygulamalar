@@ -1,0 +1,62 @@
+# coding:iso-8859-9 Türkçe
+
+from time import time, sleep
+from datetime import datetime
+from random import randint, random
+
+sayý = randint (0, 10**7)
+print ("Azami 10 sn bekle")
+
+ilk = time()
+for i in range (sayý): sayý +=1
+print ('\nÝþlem süresi:', round (time() - ilk, 3), "saniye'dir.")
+
+try: bekle = abs (eval (input ("\nKaç saniye bekleyelim: ")))
+except Exception: bekle = randint (0, 20) + random()
+if bekle > 20: bekle = 20
+sleep (bekle)
+print ("{:.3f} saniye bekledik." .format (bekle) )
+
+zaman = int (time() )
+gün = zaman // 86400
+yýl = gün // 365
+artýkGün = gün - yýl*365 - (2018-1970) // 4 - 2
+saat =  ((zaman % 86400 // 3600) + 3) % 24 # 3 saatlýk saat dilimi telefisi
+dakika = zaman % 3600 // 60
+saniye = zaman % 60
+print ("\n1.1.1970'den beri geçen süre {} yýl, {} gün, {} artýk gün, {} saat, {} dakika ve {} saniyedir."\
+        .format (yýl, gün, artýkGün, saat, dakika, saniye) )
+
+tarih = datetime (1,1,1).now()
+print ("\nÞimdiki standart tarih ve zaman:", tarih)
+print ("Biçimlediðimiz zaman ve tarih-1: [{}:{:02d}:{:02d}, {}/{}/{}]"\
+        .format (tarih.hour, tarih.minute, tarih.second, tarih.day, tarih.month, tarih.year) )
+am_pm = 'AM' if tarih.hour < 12 else 'PM'
+print ("Biçimlediðimiz zaman ve tarih-2: [{}:{:02d}:{:02d} {}, {}/{}/{}]"\
+        .format (tarih.hour%12, tarih.minute, tarih.second, am_pm, tarih.day, tarih.month, tarih.year) )
+
+"""strftime fonksiyonundaki kodla biçimlenen tarih ve zaman
+%c -->Yerel biçimlenen tarih ve zaman
+%x, %X -->%c ile biçimli tarih ve zaman
+%d -->Ayýn günü
+%j -->Yýlýn (artýk) günü
+%a, %A -->Kýsa ve uzun haftanýn gün adý
+%m -->(01-12) ay rakamý
+%b, %B -->Kýsa ve uzun ay adý
+%y, %Y -->2 ve 4 rakamlý yýl
+%H, %I -->24 ve 12 saat deðeri
+%M -->Dakika deðeri
+%S -->Saniye deðeri
+%p -->am veya pm
+"""
+
+print ("\nGünadý ve tarih-1:", tarih.strftime ('%A %x') )
+print ("Tarih ve zaman-2.:", tarih.strftime ('%c') )
+print ("Tarih ve zaman-3.:", tarih.strftime ("%Y yilinin %B ayinin %d'i %A ve saat %I:%M:%S %p") ) # strftime UTF-8 dýþý açýklamayý kabul etmiyor...
+print ("Tarih ve zaman-4.:", tarih.strftime ('{}:%M:%S %p %B {} %A').format (tarih.hour%12, tarih.day))
+
+tarih1 = datetime (2018,12,14) # Yýl, ay, gün; saat, dakika, saniye, 999999 rakam
+tarih2 = datetime (1957, 4, 17, 14, 35, 42, 234976)
+print ("\nYarattýðýmýz tarih nesnesi-1:", tarih1)
+print ("Yarattýðýmýz tarih nesnesi-2:", tarih2)
+print ("2 tarih arasýndan geçen süre:", tarih1-tarih2)

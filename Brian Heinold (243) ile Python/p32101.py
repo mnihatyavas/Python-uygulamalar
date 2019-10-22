@@ -1,0 +1,8 @@
+# coding:iso-8859-9 Türkçe
+
+import re
+
+# Örnekteki DüzenliÝfade=RegularExpression=re modül metodu tüm rakamlý ÖSÜA kelimeleri yerine "***" koyar...
+# sub-stitute (r-aw"kalýp", "deðiþtir", "dizge") #raw'da esc=\ etkisizdir
+
+print (re.sub (r"([ÖSÜA])(\d+)", "***", "Önce Ö1957yýlý04ayý17günü, Sonra S2018, Üst Ü1512bugün ve Alt A1704") )

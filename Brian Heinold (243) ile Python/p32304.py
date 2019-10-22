@@ -1,0 +1,61 @@
+# coding:iso-8859-9 Türkçe
+
+from math import sin, pi, pow, cos
+from random import randint, random
+from functools import reduce
+from operator import add, mul
+
+dizge = "Kapsamlý listeden önce Python map fonksiyonunu kullanmaktaydý."
+print ("Dizgemiz: [", dizge, "]", sep="")
+
+L = list (map (len, dizge.split()))
+print ("\nMap ile dizgedeki kelimelerin uzunluklarý listesi:", L)
+
+L = [len (kelime) for kelime in dizge.split()]
+print ("\nKapsamlý listelemeyle dizgedeki kelimelerin uzunluklarý listesi:", L)
+
+L = list (map (sin, (radyan for radyan in (0, pi/4, pi/2, 3*pi/4, pi, 5*pi/4, 3*pi/2, 7*pi/4) ) ))
+print ("\nMap ile 0,45,..270 derece/radyan'ýn sinüs'leri: ", end="")
+for i in range (len (L)): print (round (L[i], 2), end="  ")
+
+L = list (map (pow, [randint(0,50)+random() for i in range(10)], [randint(-50,50)+random() for i in range(10)]))
+print ("\n\nMap ile (0->50)^(-50->50) geliþigüzel pow sayýsý üretimi:", L)
+#------------------------------------------------------------------------------------------
+
+dizge = "Kapsamlý listeden önce, Python þartlý liste üretimini filter fonksiyonuyla gerçekleþtirmekteydi."
+print ("\nDizgemiz", dizge)
+
+L = list (filter (lambda x: len (x) > 6, dizge.split()))
+print ("\nFilter ile dizgedeki 6'den uzun kelimelerin listesi:", L)
+
+L = [kelime for kelime in dizge.split() if len (kelime) > 6]
+print ("\nKapsamlý listeyle dizgedeki 6'den uzun kelimelerin listesi:", L)
+
+L = list (filter (lambda x: abs (cos(x)) >= 0.75, [cos (a*pi/180) for a in range (0, 360, 10)] ))
+# Lambda, kapsamlý isabetinde olmadý; 0.65 filtresi için 0.75 istiyor?..
+print ("\nFilter ile dizgedeki -0.65->0.65 cos deðerleri listesi:", L)
+
+L = [cos (a*pi/180) for a in range (0, 360, 10) if -0.65 <= cos(a*pi/180) <= 0.65]
+print ("\nKapsamlý listeyle dizgedeki -0.65->0.65 cos deðerleri listesi:", L)
+#------------------------------------------------------------------------------------------
+
+L = [cos (a*pi/180) for a in range (0, 360, 10)]
+sayaç = 0
+for d in L:
+    if abs (d) <=.65: sayaç +=1
+print ("\n-0.65 <= cos(x) <= +0.65 döngülü liste elemanlarý sayýsý: ", sayaç)
+print ("-0.65 <= cos(x) <= +0.65 kapsamlý liste elemanlarý sayýsý: ", len ([cos (a*pi/180) for a in range (0, 360, 10) if abs (cos(a*pi/180)) <= 0.65]) )
+#------------------------------------------------------------------------------------------
+
+toplam = 0
+for i in range (1,101): toplam +=i
+print ("\n1->100 sayýnýn döngülü toplamý:", toplam)
+print ("\n1->100 sayýnýn reduce ve lambda'lý toplamý:", reduce (lambda x,y: x+y, range (1,101)) )
+
+print ("1->100 sayýnýn reduce ve add'li toplamý:", reduce (add, range (1,101)) )
+
+print()
+n = randint (0,50)
+print (n, "sayýsýnýn reduce ve lambda'lý faktöriyeli:", reduce (lambda x, y: x * y, range (1, n+1)) )
+
+print (n, "sayýsýnýn reduce ve mul'lý faktöriyeli:", reduce (mul, range (1, n+1)) )

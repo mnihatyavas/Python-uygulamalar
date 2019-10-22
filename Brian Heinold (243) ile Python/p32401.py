@@ -1,0 +1,52 @@
+# coding:iso-8859-9 Türkçe
+
+from itertools import *
+
+print ("[1] liste'sinin permutations/çeþitlemesi:", list (permutations ([1])), "\nÇeþit sayýsý:", len (list (permutations ([1]))) )
+print ("\n[1,2] liste'sinin permutations/çeþitlemesi:", list (permutations ([1,2])), "\nÇeþit sayýsý:", len (list (permutations ([1,2]))) )
+print ("\n[1,2,3] liste'sinin permutations/çeþitlemesi:", list (permutations ([1,2,3])), "\nÇeþit sayýsý:", len (list (permutations ([1,2,3]))) )
+print ("\n[1,2,3,4] liste'sinin permutations/çeþitlemesi:", list (permutations ([1,2,3,4])), "\nÇeþit sayýsý:", len (list (permutations ([1,2,3,4]))) )
+
+L = [''.join(p) for p in permutations('123')]
+print ("\n'123' dizge'sinin çeþitlemesi:", L, "\nÇeþit sayýsý:", len (L) )
+
+L = [''.join(p) for p in permutations('12345')]
+print ("\n'12345' dizge'sinin çeþitlemesi:", L, "\nÇeþit sayýsý:", len (L) )
+
+L = [''.join(p) for p in permutations('12345', 4)]
+print ("\n'12345' dizge'sinin 4'lü çeþitlemesi:", L, "\nÇeþit sayýsý:", len (L) )
+
+L = [''.join(p) for p in permutations('12345', 3)]
+print ("\n'12345' dizge'sinin 3'lü çeþitlemesi:", L, "\nÇeþit sayýsý:", len (L) )
+
+L = [''.join(p) for p in permutations('12345', 2)]
+print ("\n'12345' dizge'sinin 2'li çeþitlemesi:", L, "\nÇeþit sayýsý:", len (L) )
+
+L = [''.join(p) for p in permutations('12345', 1)]
+print ("\n'12345' dizge'sinin 1'li çeþitlemesi:", L, "\nÇeþit sayýsý:", len (L) )
+
+L = [''.join(p) for p in permutations('12345', 0)]
+print ("\n'12345' dizge'sinin 0'lý çeþitlemesi:", L, "\nÇeþit sayýsý:", len (L) )
+#------------------------------------------------------------------------------------------
+
+print ("-"*75)
+L = [''.join(b) for b in combinations("12345", 5)]
+print ("\n('12345',5) dizge'sinin combinations/bileþimi:", L, "\nBileþim sayýsý:", len (L) )
+
+L = [''.join(b) for b in combinations("12345", 4)]
+print ("\n('12345',4) dizge'sinin combinations/bileþimi:", L, "\nBileþim sayýsý:", len (L) )
+
+L = [''.join(b) for b in combinations("12345", 3)]
+print ("\n('12345',3) dizge'sinin combinations/bileþimi:", L, "\nBileþim sayýsý:", len (L) )
+
+L = [''.join(b) for b in combinations("12345", 2)]
+print ("\n('12345',2) dizge'sinin combinations/bileþimi:", L, "\nBileþim sayýsý:", len (L) )
+
+L = [''.join(b) for b in combinations("12345", 1)]
+print ("\n('12345',1) dizge'sinin combinations/bileþimi:", L, "\nBileþim sayýsý:", len (L) )
+
+L = [''.join(b) for b in combinations("12345", 0)]
+print ("\n('12345',0) dizge'sinin combinations/bileþimi:", L, "\nBileþim sayýsý:", len (L) )
+
+L = [''.join(b) for b in combinations_with_replacement("12345", 2)]
+print ("\n('12345',2) dizge'sinin combinations_with_replacement/yerdeðiþtirmeli_bileþimi:", L, "\nBileþim sayýsý:", len (L) )

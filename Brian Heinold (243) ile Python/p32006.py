@@ -1,0 +1,9 @@
+# coding:iso-8859-9 Türkçe
+
+from urllib.request import urlopen
+
+internet_sayfasý = urlopen ("https://www.qnbfinansbank.enpara.com/")
+htmlMetni = internet_sayfasý.read().decode()
+
+open ("mny1.html", "w").write (htmlMetni)
+# mny1.htm dosyasýný herhangibir tarayýcýyla "Birlikte Aç"

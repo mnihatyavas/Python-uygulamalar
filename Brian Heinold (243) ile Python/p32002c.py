@@ -1,0 +1,71 @@
+# coding:iso-8859-9 Türkçe
+
+import calendar
+from random import randint
+
+aylar = ["Ocak", "Þubat", "Mart", "Nisan", "Mayýs", "Haziran", "Temmuz", "Aðustos", "Eylül", "Ekim", "Kasým", "Aralýk"]
+günler1 = ["Pt", "Sa", "Ça", "Pe", "Cu", "Ct", "Pa"]
+günler2 = ["Pazartesi", "Salý", "Çarþamba", "Perþembe", "Cuma", "Cumartesi", "Pazar"]
+
+try: yýl = int (eval (input ("Takvim tamsayý yýlýný girin: ")))
+except Exception: yýl = 2018
+
+try: ay = int (eval (input ("Takvim tamsayý ayýný [1-12] girin: ")))
+except Exception: ay = randint (1, 12)
+if 12 < ay < 1: ay = randint (1, 12)
+
+try: gün = int (eval (input ("Takvim tamsayý haftanýn gününü [1:Pzt-7:Pz] girin: ")))
+except Exception: gün = randint (1, 7)
+if 7 < gün < 1: gün = randint (1, 7)
+print ("\n<", yýl, ">yýlýnýn <", aylar[ay-1], "> ayý takvimi:\n", "-"*36, sep="" )
+aylýkMetinTakvimi = calendar.TextCalendar (gün-1) # calendar.MONDAY == 1
+aylýkHtmlTakvimi = calendar.HTMLCalendar (gün-1)
+dosya = open ("mny1.html", "w")
+dizge = aylýkMetinTakvimi.formatmonth (yýl, ay)
+print (dizge) # Ay'lýk takvimleri hazýr formatlý bir bütün olarak yazar...
+print (aylýkHtmlTakvimi.formatmonth (yýl, ay), file=dosya)
+dosya.close()
+print ("HTML formatlý takvim için mny1.html dosyasýný iþletin")
+#----------------------------------------------------------------------------------------
+
+print ("\nSýfýrlar ilk PAZARTESÝ'nden önceki ve aysonu haftasý tamamlayanlarýdýr.\n", "-"*71, sep="")
+print (" " * ((20 - (len (aylar[ay-1]) + len (str (yýl)) + 2 )) // 2 ), aylar[ay-1], yýl)
+i = gün-1
+while True:
+    print (günler1 [i], end=" ")
+    i +=1
+    if i >= 7: i = 0
+    if i == gün-1: break
+print ()
+j = 0
+for i in aylýkMetinTakvimi.itermonthdays (yýl, ay):
+    j +=1
+    print ("{:2d}" .format (i), end=" ") # Ay'ýn günler1i belirlediðimiz formatla tek tek yazdýrýlýr...
+    if j%7 == 0: print()
+#----------------------------------------------------------------------------------------
+
+i = 0
+print ("\nAy Adlarý (Ýngilizce ve Türkçe):\n", "-"*32, sep="")
+for ayAdý in calendar.month_name:
+    if ayAdý == "": continue
+    print ("{:>10s} <{:02d}> {}" .format (ayAdý, i+1, aylar[i]) )
+    i +=1
+#----------------------------------------------------------------------------------------
+
+i = 0
+print ("\nGün Adlarý (Ýngilizce ve Türkçe):\n", "-"*33, sep="")
+for günAdý in calendar.day_name:
+    print ("{:>10s} <{}> {}" .format (günAdý, i+1, günler2[i]) )
+    i +=1
+#----------------------------------------------------------------------------------------
+
+print ("\nGirili [", yýl, "-", günler2[gün-1], "] gününün her aydaki 2.tekrar tarihleri:\n", "-"*62, sep="")
+for i in range (1, 13):
+    takvim = calendar.monthcalendar (yýl, i)
+    hafta1 = takvim [0]
+    hafta2 = takvim [1]
+    hafta3 = takvim [2]
+    if hafta1 [gün-1] != 0: # Örn: gün = calendar.MONDAY
+        arananGün = hafta2 [gün-1]
+    else: arananGün = hafta3 [gün-1]
+    print ("{:>10s} <{:02d}> {}" .format (calendar.month_name[i], arananGün, aylar[i-1]))

@@ -1,0 +1,13 @@
+# coding:iso-8859-9 Türkçe
+
+# from random import randint ==>Kullaným: randint (0, 10)
+# from random import randint as ri ==>Kullaným: ri (0, 19)
+# from random import * ==>Kullaným: randint (0, 10)
+import random #==>Kullaným: random.randint (0, 10)
+
+print ("Büyük geliþigüzel tamsayý:", random.randint (0, 10**100) )
+print ("\nGeliþigüzel küsüratlý sayý:", random.randint (0, 1000) + random.random() )
+
+print ("\n'dir' ile random modülünün içerdiði deðiþken ve fonksiyonlar:", dir (random) )
+print ("\n'help' ile random.randint(..) fonksiyonunun detaylý açýklamalarý:", help (random.randint) )
+print ("\n'help' ile random modülünün içerdiði deðiþken ve fonksiyonlarýn detaylý açýklamalarý:", help (random) )

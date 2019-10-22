@@ -1,0 +1,11 @@
+# coding:iso-8859-9 Türkçe
+
+ad = input ("Okunacak dosya adýný girin: ")
+if ad == "": ad = "p32502x.txt"
+
+try:
+    with open (ad, 'r') as dosya:
+        metin = dosya.read()
+except IOError: print ("\nHATA:", ad, "adlý dosyayý bulup da açamadým!")
+else: print ("\n", ad, " adlý dosya metni:\n\n", metin, sep="")
+finally: print ("\n'finally/sonuçta' ifadeleri try-except-else hatasý olsa da olmasa da iþletilir!")

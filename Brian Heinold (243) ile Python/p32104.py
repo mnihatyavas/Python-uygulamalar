@@ -1,0 +1,17 @@
+# coding:iso-8859-9 Türkçe
+
+import re
+
+def deðiþtir1 (uyan):
+    harf = uyan.group()
+    return harf.lower()
+	
+def deðiþtir2 (uyan):
+    harf, sayý = uyan.groups()
+    return harf.lower() + str (int (sayý)+10)
+
+print ("Ýkincileri küçük ilk büyükharfleri küçült:",
+    re.sub(r'([A-Z, ÇÐÝÖÞÜ])[a-z, çðiöþü]', deðiþtir1, 'ÞEFTALÝ Elma Kayýsý Ýðde Üzüm Ðurma Öküzgözü ÇAMfýstýðý') )
+	
+print ("\nHer büyükharften sonraki rakama 10 ekle:",
+    re.sub (r'([A-Z, ÇÐÝÖÞÜ])(\d)', deðiþtir2, 'A1 + B2 + C7 - Ü9 * Ý8 / Ö3') )

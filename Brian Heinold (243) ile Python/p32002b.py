@@ -1,0 +1,18 @@
+# coding:iso-8859-9 Türkçe
+
+import calendar
+# Referans: www.python.org==> Lib/calendar.py
+
+aylar = ["Ocak", "Þubat", "Mart", "Nisan", "Mayýs", "Haziran", "Temmuz", "Aðustos", "Eylül", "Ekim", "Kasým", "Aralýk"]
+
+try: yýl = int (eval (input ("(-/+) Tamsayý yýlý girin: ")))
+except Exception: yýl = 2018
+
+print ("\n[", yýl, "] yýlýnýn her ayýnýn ilk PAZARTESÝ günleri:\n", "="*48, sep="")
+for ay in range (1, 13):
+    takvim = calendar.monthcalendar (yýl, ay)
+    hafta1 = takvim[0]
+    hafta2 = takvim[1]
+    if hafta1 [calendar.MONDAY] != 0: arananGün = hafta1[calendar.MONDAY]
+    else: arananGün = hafta2[calendar.MONDAY]
+    print ("{:>10s} {} {}" .format (calendar.month_name[ay], arananGün, aylar[ay-1]) )
