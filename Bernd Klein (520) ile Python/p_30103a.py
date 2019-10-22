@@ -1,0 +1,51 @@
+# coding:iso-8859-9 Türkçe
+# p_30103a.py: Ayný dizisel toplamýn python ve numpy iþlem süratlerinin time modülüyle karþýlaþtýrýlmasý örneði.
+
+import numpy as np
+import time
+
+elemanSayýsý = 1000001
+
+def pythonFonksiyonu():
+    t1 = time.time() # ilk zaman...
+    X = range (elemanSayýsý)
+    Y = range (elemanSayýsý)
+    Z = [X [i] + Y [i] for i in range (len (X)) ]
+    #print (X[0],Y[0],Z[0])
+    #print (X[1000000],Y[1000000],Z[1000000])
+    return time.time() - t1 # iþlem zamaný...
+
+def numpyFonksiyonu():
+    t1 = time.time() # baþlangýç zamaný...
+    X = np.arange (elemanSayýsý)
+    Y = np.arange (elemanSayýsý)
+    Z = X + Y
+    #print (X[0],Y[0],Z[0])
+    #print (X[0001000],Y[1000000],Z[1000000])
+    return time.time() - t1 # iþlem için geçen zaman...
+
+t1 = pythonFonksiyonu()
+t2 = numpyFonksiyonu()
+
+print ("Python ve numpy iþlem zamanlarý:", t1, t2)
+print ("Bu örnekte numpy python'dan tam [" + str ( t1 / t2) + "] misli hýzlýdýr!")
+
+
+
+"""Çýktý:
+>python p_30103a.py
+Python ve numpy iþlem zamanlarý: 3.322805643081665 0.031200170516967773
+Bu örnekte numpy python'dan tam [106.49959881708351] misli hýzlýdýr!
+
+>python p_30103a.py  ** TEKRAR **
+Python ve numpy iþlem zamanlarý: 2.7300047874450684 0.015599966049194336
+Bu örnekte numpy python'dan tam [175.00068774739802] misli hýzlýdýr!
+
+>python p_30103a.py  ** TEKRAR **
+Python ve numpy iþlem zamanlarý: 2.88600492477417 0.015600204467773438
+Bu örnekte numpy python'dan tam [184.99789094021273] misli hýzlýdýr!
+
+>python p_30103a.py  ** TEKRAR **
+Python ve numpy iþlem zamanlarý: 5.038808822631836 0.015599727630615234
+Bu örnekte numpy python'dan tam [323.006205104692] misli hýzlýdýr!
+"""

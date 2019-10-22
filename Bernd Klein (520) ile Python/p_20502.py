@@ -1,0 +1,63 @@
+# coding:iso-8859-9 Türkçe
+# p_20502.py: Linux fork'la tutulan sayýnýn tahmini oyunu örneði.
+
+import os, sys, random
+
+def gizliSayý (azami):
+    dosya = open ("gizliSayý.kütük", "w")
+    gizliSayý = int (azami * random.random() ) + 1
+
+    tahmin = 0
+    while tahmin != gizliSayý:
+        tahmin = int (input ("Tahminini gir: ") )
+        dosya.write (str (tahmin) + " ")
+        if tahmin > 0:
+            if tahmin > gizliSayý: print (1)
+            elif tahmin < gizliSayý: print (-1)
+            else: print (0)
+            sys.stdout.flush()       
+        else: break # - sayýda çýk..
+    dosya.close()
+
+def tahminci (azami):
+    dosya = open ("tahminci.kütük", "w")
+    alt = 0
+    üst = azami
+    sonuç = 1
+    while sonuç != 0:
+        tahmin = (alt + üst) / 2
+        print ("Tavsiye tahmin:", tahmin)
+        sys.stdout.flush()       
+        dosya.write (str (tahmin) + " ")
+        sonuç = int (input ("Tahmininiz: ") )
+        if sonuç == -1: alt = tahmin
+        elif sonuç == 1: üst = tahmin
+        elif sonuç == 0:
+            mesaj = "Aranan sayý [%d[ bulundu!.." % tahmin
+            dosya.write (mesaj)
+        else:
+            print ("[0/1/-1] dýþýnda yanlýþ bir veri girdiniz")
+            dosya.write ("Hatalý giriþ")
+
+
+n = 100
+stdin  = sys.stdin.fileno() # Genelde 0: klavye
+stdout = sys.stdout.fileno() # Genelde 1: ekran
+
+ebeveynGirdi, yavruÇýktý  = os.pipe()
+yavruGirdi,  ebeveynÇýktý = os.pipe()
+kimlik = os.fork() # Unix-Linux için geçerlidir...
+if kimlik:
+    # ebeveyn iþlemi...
+    os.close (yavruÇýktý)
+    os.close (yavruGirdi)
+    os.dup2 (ebeveynGirdi,  stdin)
+    os.dup2 (ebeveynÇýktý, stdout)
+    gizliSayý (n)
+else:
+    # yavru iþlemi...
+    os.close (ebeveynGirdi)
+    os.close (ebeveynÇýktý)
+    os.dup2 (yavruGirdi,  stdin)
+    os.dup2 (yavruÇýktý, stdout)
+    tahminci (n)

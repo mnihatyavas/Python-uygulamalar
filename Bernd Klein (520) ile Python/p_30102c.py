@@ -1,0 +1,50 @@
+# coding:iso-8859-9 Türkçe
+# p_30102c.py: Bir numpy float16 tipli dizisinin elemansýz, herbir eleman ve eleman referans ebatlarý örneði.
+
+from sys import getsizeof as ebat
+import numpy as np
+
+# float16/32/64 ve int8/16/32/64 olarak tahsis edilecek bellek ebatý kullanýcý tarafýndan belirlenebilir...
+# Varsayýlan int64 ve float64'dür...
+
+selsiyüsListesi = np.array ([20.1, 0, 21.9e10, -22.5, -22.7e-10, -0, 1, 21.2e100, -20.9e-100, 2], np.float16)
+elemanSayýsý = len (selsiyüsListesi)
+
+boþListeEbatý = ebat (selsiyüsListesi)   # []
+listeElemanNesneleriEbatý = elemanSayýsý * ebat (selsiyüsListesi[0]) # 20.1, 20.8, 21.9, 22.5, 22.7, 22.3, 21.8, 21.2, 20.9, 20.1
+toplamEbat = boþListeEbatý + listeElemanNesneleriEbatý
+
+print ("Numpy modül dizisi ve elemanlarýnýn ebatlarýný (np.float16) inceleyelim\n", "-"*71, sep="")
+print ("Elemansýz liste ebatý:", boþListeEbatý)
+print ("Tüm eleman nesneleri ebatý:", listeElemanNesneleriEbatý)
+print("Toplam elemanlý liste ebatý:", toplamEbat)
+
+eleman = 0
+print ("\nTek tek elemanlarýn ebatlarý:")
+for i in range (elemanSayýsý):
+    eleman +=ebat (selsiyüsListesi[i])
+    print (selsiyüsListesi[i], "-->", ebat (selsiyüsListesi[i]) , sep="", end=", ")
+print ("\n\nTüm elemanlarýn gerçek toplam ebatý:", eleman)
+
+selsiyüsListesi = np.array ([])
+print ("\nElemansýz yaratýlan boþ liste ebatý:", ebat (selsiyüsListesi))
+print ("Herbir elemana referans için harcanan ebat:", int ((boþListeEbatý - ebat (selsiyüsListesi)) / elemanSayýsý), "byte")
+
+
+
+"""Çýktý:
+>python p_30102c.py
+Numpy modül dizisi ve elemanlarýnýn ebatlarýný (np.float16) inceleyelim
+-----------------------------------------------------------------------
+Elemansýz liste ebatý: 68
+Tüm eleman nesneleri ebatý: 140
+Toplam elemanlý liste ebatý: 208
+
+Tek tek elemanlarýn ebatlarý:
+20.1-->14, 0.0-->14, inf-->14, -22.5-->14, -0.0-->14, 0.0-->14, 1.0-->14, inf-->14, -0.0-->14, 2.0-->14,
+
+Tüm elemanlarýn gerçek toplam ebatý: 140
+
+Elemansýz yaratýlan boþ liste ebatý: 48
+Herbir elemana referans için harcanan ebat: 2 byte
+"""

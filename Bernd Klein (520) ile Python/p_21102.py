@@ -1,0 +1,68 @@
+# coding:iso-8859-9 Türkçe
+# p_21102.py: Genelleþtirilen içiçe 2 fonksiyonla aðýrlýk-boy kritiði örneði.
+
+def içiçeFonksiyon (g, f):
+    def h (*argümanlar, **kwargümanlar): # *:liste veya tüple argümanlar, **:sözlük argümanlar...
+        return g (f (*argümanlar, **kwargümanlar))
+    return h
+
+def ABE (aðýrlýk, boy): return aðýrlýk / boy**2
+
+def ABEdeðerlemesi (abe):
+    if abe < 15: return "Ölümcül zayýf"
+    elif abe < 16: return "Saðlýksýz zayýf"
+    elif abe < 18.5: return "Zayýf"
+    elif abe < 25: return "Saðlýklý ve formda"
+    elif abe < 30: return "Gürbüz"
+    elif abe < 35: return "1.derece Obez (þiþman)"
+    elif abe < 40: return "2.derece Obez (saðlýksýz þiþman)"
+    else: return "3.derece Obez (ölümcül þiþman)"
+
+f = içiçeFonksiyon (ABEdeðerlemesi, ABE)
+
+aðýrlýk = 1
+while aðýrlýk != 0:
+    try:
+        aðýrlýk = abs (float (input ("Aðýrlýk-kg [0=çýk]: ")))
+        boy = abs (float (input ("Boy-m [0=çýk]: ")))
+        if aðýrlýk==0 or boy==0: break
+    except: break
+
+    print (ABE (aðýrlýk, boy), ", Deðerleme: ", f (aðýrlýk, boy), "\n", sep="" )
+
+"""Çýktý:
+>python p_21102.py
+Aðýrlýk-kg [0=çýk]: 55
+Boy-m [0=çýk]: 1.70
+19.031141868512112, Deðerleme: Saðlýklý ve formda
+
+Aðýrlýk-kg [0=çýk]: 50
+Boy-m [0=çýk]: 1.7
+17.301038062283737, Deðerleme: Zayýf
+
+Aðýrlýk-kg [0=çýk]: 40
+Boy-m [0=çýk]: 1.7
+13.84083044982699, Deðerleme: Ölümcül zayýf
+
+Aðýrlýk-kg [0=çýk]: 70
+Boy-m [0=çýk]: 1.7
+24.221453287197235, Deðerleme: Saðlýklý ve formda
+
+Aðýrlýk-kg [0=çýk]: 80
+Boy-m [0=çýk]: 1.7
+27.68166089965398, Deðerleme: Gürbüz
+
+Aðýrlýk-kg [0=çýk]: 100
+Boy-m [0=çýk]: 1.7
+34.602076124567475, Deðerleme: 1.derece Obez (þiþman)
+
+Aðýrlýk-kg [0=çýk]: 120
+Boy-m [0=çýk]: 1.7
+41.52249134948097, Deðerleme: 3.derece Obez (ölümcül þiþman)
+
+Aðýrlýk-kg [0=çýk]: 110
+Boy-m [0=çýk]: 1.7
+38.062283737024224, Deðerleme: 2.derece Obez (saðlýksýz þiþman)
+
+Aðýrlýk-kg [0=çýk]:
+"""

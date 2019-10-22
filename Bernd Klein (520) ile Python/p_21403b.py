@@ -1,0 +1,54 @@
+# coding:iso-8859-9 Türkçe
+# p_21403b.py: Dekoratör sayaçlý LM süratinin belleklemeyle verimlileþtirilmesi örneði.
+
+from collections import Counter
+
+def sayaç (fonk):
+    def yardýmcý (*argümanlar, **kwargümanlar):
+        yardýmcý.çaðrý += 1
+        return fonk (*argümanlar, **kwargümanlar)
+    yardýmcý.çaðrý = 0
+    yardýmcý.__name__= fonk.__name__
+    return yardýmcý
+
+bellek = {} # bellek'le 5 bin, 300 bin gibi çaðrý sayýlarý çok çok düþürülür...
+
+@sayaç
+def LM (d1, d2):
+    if d1 == "": return len (d2)
+    if d2 == "": return len (d1)
+    mesafe = 0 if d1 [-1] == d2 [-1] else 1
+    i1 = (d1 [:-1], d2)
+    if not i1 in bellek: bellek [i1] = LM (*i1)
+    i2 = (d1, d2 [:-1])
+    if not i2 in bellek: bellek [i2] = LM (*i2)
+    i3 = (d1 [:-1], d2 [:-1])
+    if not i3 in bellek: bellek [i3] = LM (*i3)
+    sonuç = min ([bellek [i1] + 1, bellek [i2] + 1, bellek [i3] + mesafe])
+    return sonuç
+
+print ("Ýlk ve ikinci dizgelerin düzeltme mesafesi ve çaðrý sayýsý:\n", "-"*59, sep="")
+print ('LM("Python","Peithen")==>', LM ("Python", "Peithen"), ":", LM.çaðrý)
+print ('LM("Python","P")', LM ("Python", "P"), ":", LM.çaðrý)
+print ('LM("","Python")==>', LM ("", "Python"), ":", LM.çaðrý)
+
+print ('\nLM("Akdeniz","Akdeniizz")==>', LM ("Akdeniz", "Akdeniizz"), ":", LM.çaðrý)
+print ('LM("Kuþadasý","Kuþaddassý")', LM ("Kuþadasý", "Kuþaddassý"), ":", LM.çaðrý)
+print ('LM("Ýskender","Ýskender")==>', LM ("Ýskender", "Ýskender"), ":", LM.çaðrý)
+print ('LM("Ýskenderun","Ýskendurun")==>', LM ("Ýskenderun", "Iskendurun"), ":", LM.çaðrý)
+
+
+
+"""Çýktý:
+>python p_21403b.py
+Ýlk ve ikinci dizgelerin düzeltme mesafesi ve çaðrý sayýsý:
+-----------------------------------------------------------
+LM("Python","Peithen")==> 3 : 56
+LM("Python","P") 5 : 57
+LM("","Python")==> 6 : 58
+
+LM("Akdeniz","Akdeniizz")==> 2 : 137
+LM("Kuþadasý","Kuþaddassý") 2 : 235
+LM("Ýskender","Ýskender")==> 0 : 315
+LM("Ýskenderun","Ýskendurun")==> 2 : 427
+"""

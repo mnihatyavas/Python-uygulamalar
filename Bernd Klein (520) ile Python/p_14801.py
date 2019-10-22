@@ -1,0 +1,41 @@
+# coding:iso-8859-9 Türkçe
+# p_14801.py: Bir modülün korunaklý çaðrýlamaz ve genel çaðrýlabilir vasýflarýnýn listelenmesi örneði.
+
+import random
+
+sýnýfAdý = "random"
+özellikler = [x for x in dir (eval (sýnýfAdý)) if not x.startswith ("__")]
+print ("Özellikler listesi:\n", özellikler)
+
+çaðrýlamazÖzellikler = [x for x in dir (eval (sýnýfAdý)) if not x.startswith ("__") and not callable (eval (sýnýfAdý + "." + x))]
+print ("\nÇaðrýlamaz özellikler listesi:\n", çaðrýlamazÖzellikler)
+
+metodlar = [x for x in dir (eval (sýnýfAdý)) if not x.startswith ("__") and callable (eval (sýnýfAdý + "." + x))]
+print ("\nÇaðrýlabilir metodlar listesi:\n", metodlar)
+
+
+
+"""Çýktý:
+>python p_14801.py
+Özellikler listesi:
+ ['BPF', 'LOG4', 'NV_MAGICCONST', 'RECIP_BPF', 'Random', 'SG_MAGICCONST',
+'SystemRandom', 'TWOPI', '_BuiltinMethodType', '_MethodType', '_Sequence', '_Set',
+'_acos', '_bisect', '_ceil', '_cos', '_e', '_exp', '_inst', '_itertools', '_log', '
+_os', '_pi', '_random', '_sha512', '_sin', '_sqrt', '_test', '_test_generator',
+'_urandom', '_warn', 'betavariate', 'choice', 'choices', 'expovariate', 'gammavariate',
+'gauss', 'getrandbits', 'getstate', 'lognormvariate', 'normalvariate', 'paretovariate',
+'randint', 'random', 'randrange', 'sample', 'seed', 'setstate','shuffle', 'triangular', 'uniform',
+'vonmisesvariate', 'weibullvariate']
+
+Çaðrýlamaz özellikler listesi:
+ ['BPF', 'LOG4', 'NV_MAGICCONST', 'RECIP_BPF', 'SG_MAGICCONST', 'TWOPI',
+'_bisect', '_e', '_inst', '_itertools', '_os', '_pi', '_random']
+
+Çaðrýlabilir metodlar listesi:
+ ['Random', 'SystemRandom', '_BuiltinMethodType', '_MethodType', '_Sequence',
+'_Set', '_acos', '_ceil', '_cos', '_exp', '_log', '_sha512', '_sin', '_sqrt', '_test',
+'_test_generator', '_urandom', '_warn', 'betavariate', 'choice', 'choices',
+ 'expovariate', 'gammavariate', 'gauss', 'getrandbits', 'getstate', 'lognormvariate',
+'normalvariate', 'paretovariate', 'randint', 'random', 'randrange', 'sample', 'seed',
+'setstate', 'shuffle', 'triangular', 'uniform', 'vonmisesvariate', 'weibullvariate']
+"""

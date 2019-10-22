@@ -1,0 +1,36 @@
+# coding:iso-8859-9 Türkçe
+# p_21601x.py: Martermind usta'kýl oyununda gerekli fonksiyonlar alt-örneði.
+
+import random
+
+def ardýlÇarpým (n):
+    if n == 0: return 1
+    else: return (ardýlÇarpým (n-1) * n)
+
+def yerdeðiþtirim (birimler):
+    n = len (birimler)
+    if n==0: yield []
+    else:
+        for i in range (len (birimler)):
+            for r in yerdeðiþtirim (birimler [:i]+birimler [i+1:]):
+                yield [birimler [i]]+r
+                
+def kYerdeðiþtirim (birimler, n):
+    if n==0: yield []
+    else:
+        for i in range (len (birimler)):
+            for r in kYerdeðiþtirim (birimler, n-1):
+                if (not birimler [i] in r): yield [birimler [i]]+r
+
+def rasgeleYerdeðiþtirim (liste):
+    uz = len (liste);
+    azami = ardýlÇarpým (uz);
+    endeks = random.randrange (0, azami)
+    i = 0
+    for r in yerdeðiþtirim (liste):
+        if i == endeks: return r
+        i += 1
+
+def tümRenkler (renkler, konumlar):
+    renkler = rasgeleYerdeðiþtirim (renkler)
+    for r in kYerdeðiþtirim (renkler, konumlar): yield (r)

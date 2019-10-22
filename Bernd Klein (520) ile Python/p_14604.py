@@ -1,0 +1,57 @@
+# coding:iso-8859-9 Türkçe
+# p_14604.py: Fonksiyonu sýnýfa dekoratörlü yönetici fonksiyonla vasýf yapma örneði.
+
+print ("Soru: 2 kere 2 kaç eder?")
+cevap = input ("Feylesoflarýn cevaplarýný istiyor musun? (e/h): ")
+if cevap == "e": cevap = True
+else: cevap = False
+
+def cevabým (self, *argümanlar):  return "Þartlara göre deðiþir!.."
+
+def cevabýEkle (sýnýf): # Otomatik yönetici fonksiyonu..
+    if cevap: sýnýf.cevabým = cevabým
+    return sýnýf
+
+@ cevabýEkle
+class Feylesof1: pass
+@ cevabýEkle
+class Feylesof2: pass
+@ cevabýEkle
+class Feylesof3: pass
+@ cevabýEkle
+class Feylesof4: pass
+@ cevabýEkle
+class Feylesof5: pass
+
+sokrat = Feylesof1()
+aristo = Feylesof2()
+plato = Feylesof3()
+kant = Feylesof4()
+rasýl = Feylesof5()
+
+if cevap:
+    print ("\nSokrat:", sokrat.cevabým() )
+    print ("Aristo:", aristo.cevabým() )
+    print ("Plato:", plato.cevabým() )
+    print ("Kant:", kant.cevabým() )
+    print ("Rasýl:", rasýl.cevabým() )
+else: print ("Cevabý Filozoflarýn sessizliðinde ara!..")
+
+
+
+"""Çýktý:
+>python p_14604.py
+Soru: 2 kere 2 kaç eder?
+Feylesoflarýn cevaplarýný istiyor musun? (e/h): e
+
+Sokrat: Þartlara göre deðiþir!..
+Aristo: Þartlara göre deðiþir!..
+Plato: Þartlara göre deðiþir!..
+Kant: Þartlara göre deðiþir!..
+Rasýl: Þartlara göre deðiþir!..
+
+>python p_14604.py  ** TEKRAR **
+Soru: 2 kere 2 kaç eder?
+Feylesoflarýn cevaplarýný istiyor musun? (e/h): h
+Cevabý Filozoflarýn sessizliðinde ara!..
+"""

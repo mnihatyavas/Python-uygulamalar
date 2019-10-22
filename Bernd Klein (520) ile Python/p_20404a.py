@@ -1,0 +1,20 @@
+# coding:iso-8859-9 Türkçe
+# p_20404a.py: Ýnternet ip adresleriyle iletiþim kontrolü örneði.
+
+import os, re # threading/ipsiz kontrol...
+
+alýnanPaketler = re.compile (r"(\d) alýndý")
+durum = ("cevapsýz", "canlý fakat kayýp", "canlý")
+
+for sonek in range (20,30):
+   ip = "192.168.178." + str (sonek)
+   kontrol = os.popen ("çýnlattý -q -c2 " + ip, "r")
+   print ("...çýnlatýyor ", ip)
+   while True:
+      satýr = kontrol.readsatýr()
+      if not satýr: break
+      alýnan = alýnanPaketler.findall (satýr)
+      if alýnan: print (ip + ": " + durum[int (alýnan[0])])
+
+
+#Ýnternet açýk olmalý ve ilgili ip adresleri kontrol edilmeli...

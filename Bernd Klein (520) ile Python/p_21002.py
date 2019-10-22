@@ -1,0 +1,76 @@
+# coding:iso-8859-9 Türkçe
+# p_21002.py: Polinom sýnýfýyla katsayýlar, toplama ve çýkarma sonucu grafiðin çizilmesi örneði.
+
+class Polinom:
+    def __init__ (self, *katsayýlarýmýz):
+        # Katsayý verilerinin giriþi: a_n, ...a_1, a_0 þeklindedir...
+        self.katsayýlar = katsayýlarýmýz [::-1] # for-range verimliliði gereði ters listeye dönüþtürülüp saklanýr...
+
+    def __str__ (self): # Çýktý tekrar düz listeye çevrilir...
+        return "Polinom " + str (self.katsayýlar [::-1])
+
+    def __call__ (self, x): # Callable/çaðrýlabilir fonksiyon...
+        sonuç = 0
+        for endeks, katsayý in enumerate (self.katsayýlar): sonuç += katsayý * x** endeks
+        return sonuç
+            
+    def __add__ (self, diðeri):
+        k1 = self.katsayýlar
+        k2 = diðeri.katsayýlar
+        sonuç = [sum (t) for t in Polinom.enuzun (k1, k2)]
+        return Polinom (*sonuç)
+
+    def __sub__ (self, diðeri):
+        k1 = self.katsayýlar
+        k2 = diðeri.katsayýlar
+        sonuç = [t1 - t2 for t1, t2 in Polinom.enuzun (k1, k2)]
+        return Polinom (*sonuç)
+
+    @staticmethod
+    def enuzun (k1, k2, fillchar=None):    
+        for i in range (max (len (k1), len (k2))):
+            if i >= len (k1): yield (fillchar, k2 [i])
+            elif i >= len (k2): yield (k1 [i], fillchar)
+            else: yield (k1 [i], k2 [i])
+            i += 1
+
+    def türev (self):
+        türevliKatsayýlar = []
+        üs = 1
+        for i in range (1, len (self.katsayýlar)):
+            türevliKatsayýlar.append (self.katsayýlar [i] * üs)
+            üs += 1
+        return Polinom (*türevliKatsayýlar [::-1])
+
+
+if __name__ == "__main__":
+    p = Polinom (1, 0, -4, 3, 0) # x^4 - 4x^2 + 3x
+    print (p) # p için: __str__ çaðrýlýr...
+
+    print ("\nx=[-3,4] arasý p(x) deðerleri:\nx, p(x) =")
+    for x in range (-3, 5): print (x, p(x) ) # p(x) için: __call__ çaðrýlýr...
+
+    import numpy as np
+    import matplotlib.pyplot as mp
+    mp.style.use ("dark_background")
+    X = np.linspace (-3, 4, 100, endpoint=True)
+    F = p (X)
+    mp.plot (X, F)
+    mp.show()
+
+
+"""Çýktý:
+>python p_21002.py
+Polinom (1, 0, -4, 3, 0)
+
+x=[-3,4] arasý p(x) deðerleri:
+x, p(x) =
+-3 36
+-2 -6
+-1 -6
+0 0
+1 0
+2 6
+3 54
+4 204
+"""

@@ -1,0 +1,72 @@
+# coding:iso-8859-9 Türkçe
+# p_20701.py: Baðlantýlý ve izole yumrularýn iliþkilerinin listelenmesi örneði.
+
+iliþkiler = {
+        "a" : ["c"],
+        "b" : ["c", "e"],
+        "c" : ["a", "b", "d", "e"],
+        "d" : ["c"],
+        "e" : ["c", "b"],
+        "f" : [],
+        "g" : []
+    }
+
+def kenarlarÜret (iliþkiler):
+    kenarlar = []
+    for yumru in iliþkiler:
+        for komþu in iliþkiler [yumru]:
+            kenarlar.append ((yumru, komþu))
+    return kenarlar
+
+def izoleYumrular (iliþkiler):
+    izoleler = []
+    for yumru in iliþkiler:
+        if not iliþkiler[yumru]: izoleler += yumru
+    return izoleler
+
+
+liste1 = kenarlarÜret (iliþkiler)
+print ("Yumru iliþkileri tüple çifti listesi==>\n", liste1)
+
+print ("\nAlt-alta yumru iliþkileri tüple çifti listesi==>")
+for i in range (len (liste1)): print ((i+1), ":", liste1 [i])
+
+print ("\nAlt-alta yumru iliþkileri baðlantý çifti listesi==>")
+for i in range (len (liste1)): print ((i+1), ":", liste1[i][0], "--->", liste1[i][1])
+
+liste2 = izoleYumrular (iliþkiler)
+print ("\nÝzole yumru iliþkileri tüple çifti listesi==>", liste2)
+
+
+
+"""Çýktý:
+>python p_20701.py
+Yumru iliþkileri tüple çifti listesi==>
+ [('a', 'c'), ('b', 'c'), ('b', 'e'), ('c', 'a'), ('c', 'b'), ('c', 'd'), ('c','e'), ('d', 'c'), ('e', 'c'), ('e', 'b')]
+
+Alt-alta yumru iliþkileri tüple çifti listesi==>
+1 : ('a', 'c')
+2 : ('b', 'c')
+3 : ('b', 'e')
+4 : ('c', 'a')
+5 : ('c', 'b')
+6 : ('c', 'd')
+7 : ('c', 'e')
+8 : ('d', 'c')
+9 : ('e', 'c')
+10 : ('e', 'b')
+
+Alt-alta yumru iliþkileri baðlantý çifti listesi==>
+1 : a ---> c
+2 : b ---> c
+3 : b ---> e
+4 : c ---> a
+5 : c ---> b
+6 : c ---> d
+7 : c ---> e
+8 : d ---> c
+9 : e ---> c
+10 : e ---> b
+
+Ýzole yumru iliþkileri tüple çifti listesi==> ['f', 'g']
+"""

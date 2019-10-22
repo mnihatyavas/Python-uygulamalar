@@ -1,0 +1,25 @@
+# coding:iso-8859-9 Türkçe
+# p_20503.py: Linux fork'la ebeveyn/yavru klonlamalý borulama örneði.
+
+import os, time, sys
+boruAdý = 'borulama'
+
+def yavru( ):
+    yaz = os.open (boruAdý, os.O_WRONLY)
+    sayaç = 0
+    while True:
+        time.sleep (1)
+        os.write (yaz, 'Sayý %03d\n' % sayaç)
+        sayaç = (sayaç+1) % 5
+
+def ebeveyn( ):
+    oku = open (boruAdý, 'r')
+    while True:
+        satýr = oku.readline()[:-1]
+        print ('Ebeveyn no: %d aldý "%s" saat %s' % (os.getpid(), satýr, time.time( )) )
+
+
+if not os.path.exists (boruAdý): os.mkfifo (boruAdý)  
+kimlik = os.fork() # Unix, Linux için geçerli...
+if kimlik != 0: ebeveyn()
+else: yavru()

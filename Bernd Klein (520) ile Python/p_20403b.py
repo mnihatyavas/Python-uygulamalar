@@ -1,0 +1,61 @@
+# coding:iso-8859-9 Türkçe
+# p_20403b.py: Asal sayý tespitini herbir ipi tamamlayarak gerçekleþtirme örneði.
+
+import threading
+ 
+class AsalSayý (threading.Thread): # Miras yavrusu...
+    asalSayýlar = {}
+    kilit = threading.Lock()
+
+    def __init__ (self, sayý):
+        threading.Thread.__init__ (self)
+        self.Sayý = sayý
+        AsalSayý.kilit.acquire()
+        AsalSayý.asalSayýlar[sayý] = "None"
+        AsalSayý.kilit.release()
+
+    def run (self):
+        kontrol = 2
+        kontrolaDevam = True
+        while kontrol*kontrol < self.Sayý and kontrolaDevam:
+            if self.Sayý % kontrol == 0:
+                print ("%d bir asal sayý deðildir, çünkü %d = %d * %d" % ( self.Sayý, self.Sayý, kontrol, self.Sayý / kontrol) )
+                kontrolaDevam = False
+            kontrol += 1
+        if kontrolaDevam: print ("%d bir asal sayýdýr" % self.Sayý)
+        AsalSayý.kilit.acquire()
+        AsalSayý.asalSayýlar[self.Sayý] = kontrolaDevam
+        AsalSayý.kilit.release()
+
+
+ipler = []
+while True:
+    try: veri = abs (int (input ("\nSayý [q: son]: ")))
+    except: break
+
+    sicim = AsalSayý (veri) 
+    ipler += [sicim]
+    sicim.start() # run()'ý çalýþtýrýr...
+
+for x in ipler: x.join() # Bir ip tamamlanmadan diðerine geçmez...
+
+"""Çýktý:
+>python p_20403b.py
+
+Sayý [q: son]: 23
+23 bir asal sayýdýr
+
+Sayý [q: son]: 12
+12 bir asal sayý deðildir, çünkü 12 = 2 * 6
+
+Sayý [q: son]: 56
+56 bir asal sayý deðildir, çünkü 56 = 2 * 28
+
+Sayý [q: son]: 1
+1 bir asal sayýdýr
+
+Sayý [q: son]: -13
+13 bir asal sayýdýr
+
+Sayý [q: son]: q
+"""

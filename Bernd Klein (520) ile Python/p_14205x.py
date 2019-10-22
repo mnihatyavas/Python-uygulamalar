@@ -1,0 +1,70 @@
+# coding:iso-8859-9 Türkçe
+# p_14205x.py: Farklý para birimlerini belirtilen birime yada yuroya çevirme ana/alt-örneði.
+
+"""
+p_14202x.py'deki Uzunluk sýnýfýnýn farklý (uzunluk,"birim") sýnýf tip nesnelerini
+ayný birim altýnda toparlamasý gibi, bu ParaBirimleri sýnýfý da farklý ülke paralarý
+arasýndaki oranlara göre €/yuro temeline çevrim yapmaktadýr.
+"""
+
+class ParaBirimleri:
+    paralar =  {'CHF': 1.0821202355817312,
+                   'CAD': 1.488609845538393,
+                   'GBP': 0.8916546282920325,
+                   'JPY': 114.38826536281809,
+                   'EUR': 1.0,
+                   'USD': 1.11123458162018,
+                   'TL': 6.612356}
+    def __init__ (self, deðer, birim="EUR"):
+        self.deðer = deðer
+        self.birim = birim
+    def __str__ (self): return "{0:5.2f}".format (self.deðer) + " " + self.birim
+    def __repr__ (self): return 'ParaBirimleri (' + str (self.deðer) + ', "' + self.birim + '")'
+    def çevir (self, yeniBirim): # ParaBirimleri nesnesi self.birim'den yeniBirim'e çevrilir...
+        self.deðer = (self.deðer / ParaBirimleri.paralar [self.birim] * ParaBirimleri.paralar [yeniBirim])
+        self.birim = yeniBirim
+    def __add__ (self, diðer): # Diðer ilk nesne birimine, belirtilmemiþse yuro'ya çevrilerek eklenir...
+        if type (diðer) == int or type (diðer) == float: x = (diðer * ParaBirimleri.paralar[self.birim])
+        else: x = (diðer.deðer / ParaBirimleri.paralar[diðer.birim] * ParaBirimleri.paralar[self.birim]) 
+        return ParaBirimleri (x + self.deðer, self.birim)
+    def __iadd__ (self, diðer): # __add__ gibidir, ancak increment/üsteekleme yapar...
+        if type (diðer) == int or type (diðer) == float: x = (diðer * ParaBirimleri.paralar[self.birim])
+        else: x = (diðer.deðer / ParaBirimleri.paralar[diðer.birim] * ParaBirimleri.paralar[self.birim])
+        self.deðer += x
+        return self
+    def __radd__ (self, diðer): # self+diðer veya diðer+self yapar...
+        sonuç = self + diðer
+        if self.birim != "EUR": sonuç.çevir ("EUR")
+        return sonuç
+    # __sub__, __isub__ and __rsub__ toplama gibi çýkarma da yapýlabilir...
+    def __mul__ (self, diðer): # Skalar int-float para deðerleri çarpýmýný yapar...
+        if type (diðer) == int or type (diðer) == float: return ParaBirimleri (self.deðer * diðer, self.birim)
+        else: raise TypeError ("Desteklenmeyen iþlemci tipi * ParaBirimleri ve " + type (diðer).__name__)
+    def __rmul__ (self, diðer): return self.__mul__ (diðer)
+    def __imul__ (self, diðer):
+        if type (diðer) == int or type (diðer) == float:
+            self.deðer *= diðer
+            return self
+        else: raise TypeError ("Desteklenmeyen iþlemci tipi * ParaBirimleri ve " + type (diðer).__name__)
+
+
+if __name__ == "__main__":
+    x = ParaBirimleri (10, "USD")
+    y = ParaBirimleri (11)
+    z = ParaBirimleri (12.34, "JPY")
+    z += 7.8 + x + y + 255
+    print ("12.34JPY + 7.8EUR + 10USD + 11EUR + 255EUR =", z)
+
+    liste = [ParaBirimleri (10, "USD"), ParaBirimleri (11), ParaBirimleri (12.34, "JPY"), ParaBirimleri (12.34, "CAD"), ParaBirimleri (85.68, "TL")]
+
+    z = sum (liste)
+
+    print ("10USD + 11EUR + 12.23JPY + 12.34CAD + 85.68TL =", z)
+
+
+
+"""Çýktý:
+>python p_14205x.py
+12.34JPY + 7.8EUR + 10USD + 11EUR + 255EUR = 32361.23 JPY
+10USD + 11EUR + 12.23JPY + 12.34CAD + 85.68TL = 41.35 EUR
+"""

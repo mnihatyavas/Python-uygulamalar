@@ -1,0 +1,42 @@
+# coding:iso-8859-9 Türkçe
+# p_14802.py: @Dekoratörlü ve atamalý fonksiyonla çaðrý sayýsý tesbiti örneði.
+
+def sayaçMetodu (fonk):
+    def yardýmcý (*argümanlar, **kwargümanlar):
+        yardýmcý.çaðrý += 1
+        return fonk (*argümanlar, **kwargümanlar)
+    yardýmcý.çaðrý = 0
+    yardýmcý.__name__= fonk.__name__
+    return yardýmcý
+
+@sayaçMetodu # Dekoratörlü...
+def f(): pass
+
+print ("Dekoratörlü:")
+print (f.çaðrý)
+
+for _ in range (10): f()
+print (f.çaðrý)
+#------------------------------------------------------------------------------------------------------
+
+def fnk(): pass # Dekoratörsüz...
+f = sayaçMetodu (fnk)
+
+print ("\nDekoratörsüz:")
+print (f.çaðrý)
+
+for i in range (10): f()
+print (f.çaðrý)
+
+
+
+"""Çýktý:
+>python p_14802.py
+Dekoratörlü:
+0
+10
+
+Dekoratörsüz:
+0
+10
+"""

@@ -1,0 +1,27 @@
+# coding:iso-8859-9 Türkçe
+# p_20103.py: Veri çýkýþ ve giriþlerinde print ile sys.stdout.write ve input ile sys.stdin.readline() örneði.
+
+import sys
+
+print ("print ile varsayýlý çýktý ekrandýr.")
+sys.stdout.write ("Ekrana yazdýrmanýn 'sys.stdout.write()' yöntemi.\n")
+
+x = input ("\ninput ile varsayýlý veri giriþi klavyedir: ")
+print ("Girdiðiniz veri:", x)
+
+print ("\nKlavyeden 'sys.stdin.readline()' yöntemiyle giriþ: ", end=""); x = sys.stdin.readline()
+print ("Girdiðiniz veri:", x)
+
+
+
+"""Çýktý:
+>python p_20103.py
+print ile varsayýlý çýktý ekrandýr.
+Ekrana yazdýrmanýn 'sys.stdout.write()' yöntemi.
+
+input ile varsayýlý veri giriþi klavyedir: M Nihat Yavaþ
+Girdiðiniz veri: M Nihat Yavaþ
+
+Klavyeden 'sys.stdin.readline()' yöntemiyle giriþ: M.Nihat Yavaþ
+Girdiðiniz veri: M.Nihat Yavaþ
+"""

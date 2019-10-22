@@ -1,0 +1,31 @@
+# coding:iso-8859-9 Türkçe
+# p_20104.py: Kontrollü try-except-else sonsuz döngülü sayýsal veri giriþi örneði.
+
+import sys
+
+while True:
+    print ("\nÝstisna veya break [^z] oluþuncaya dek sonsuz döngü...")
+    try: sayý = int (input ("Bir sayý girin: "))
+    except Exception as ist:
+        print ("\nVeri giriþ sonu:", ist)
+        break
+    else:
+        if sayý == 0: print (sys.stderr, "0 sayýsýnýn tersi sonsuzdur!")
+        else: print ("Girilen %d sayýsýnýn tersi: %f" % (sayý, 1.0/sayý) )
+
+
+
+"""Çýktý:
+>python p_20104.py
+Ýstisna veya break [^Z] oluþuncaya dek sonsuz döngü...
+Bir sayý girin: 12
+Girilen 12 sayýsýnýn tersi: 0.083333
+
+Ýstisna veya break [^Z] oluþuncaya dek sonsuz döngü...
+Bir sayý girin: 0
+<_io.TextIOWrapper name='<stderr>' mode='w' encoding='utf-8'> 0 sayýsýnýn tersi sonsuzdur!
+
+Ýstisna veya break [^Z] oluþuncaya dek sonsuz döngü...
+Bir sayý girin: ^Z
+Veri giriþ sonu:
+"""

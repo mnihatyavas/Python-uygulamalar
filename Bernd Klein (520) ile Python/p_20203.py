@@ -1,0 +1,45 @@
+# coding:iso-8859-9 Türkçe
+# p_20203.py: Dizin deðiþtirme, içeriklerini dökme, dizin yaratma, adýný deðiþtirme ve silme örneði.
+
+import os
+# cwd/CurrentWorkingDirectory/AktüelÇalýþýlanDizin
+print ("cwd:", os.getcwd() )
+
+os.chdir ("d:\Kiler")
+print ("cwd:", os.getcwd() )
+
+os.chdir ("c:\\Users\\pc\Desktop\\MyFiles\\4. Dersler\\python")
+print ("\nMevcut dizin içerikleri:", os.listdir (".") )
+print ("\n'\iþlenmiþ örnekler' dizin dosyalarý:", os.listdir (".\iþlenmiþ örnekler") )
+
+try: os.mkdir ("nihat")
+except: pass
+input ("\n'nihat' dizini yaratýldý [Ent]: ")
+
+os.rename ("nihat", "mahmut")
+input ("'nihat' dizinadý 'mahmut' olarak deðiþtirildi [Ent]: ")
+
+os.rmdir ("mahmut")
+print ("'mahmut' dizini silindi...")
+
+# import shutil
+# shutil.copyfile (kaynak, hedef)
+
+"""Çýktý:
+>python p_20203.py
+cwd: C:\\Users\\pc\\Desktop\\MyFiles\\4. Dersler\\python
+cwd: d:\\Kiler
+
+Mevcut dizin içerikleri: ['cmd.exe', 'ders', 'iþlenmiþ örnekler', 'metin', 'p_20201a.py',
+ 'p_20201b.py', 'p_20202.py', 'p_20203.py', 'resim', '__pycache__']
+
+'\iþlenmiþ örnekler' dizin dosyalarý: ['bekle', 'p_10301.py', 'p_10401.py', 'p_10501.py',
+'p_10502.py', 'p_10503.py', 'p_10601.py', 'p_10701.py', 'p_10702.py',
+....
+20104.py', 'p_20105.py', 'p_20106.py', 'p_20107.py',
+'__BKlein Python Örnekleri Kodlamasý (adet).html']
+
+'nihat' dizini yaratýldý [Ent]:
+'nihat' dizinadý 'mahmut' olarak deðiþtirildi [Ent]:
+'mahmut' dizini silindi...
+"""

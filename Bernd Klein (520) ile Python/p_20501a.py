@@ -1,0 +1,37 @@
+# coding:iso-8859-9 Türkçe
+# p_20501a.py: Linus fork/çatallamayla bira þiþeleri oyunu örneði.
+
+import os
+
+def yavru (daðýt):
+  þiþeler = 99
+  while True:
+    bira = "bira þiþesi"
+    duvarda = "duvarda dizilidir."
+    biriniAl = "Birini al ve isteyene uzat."
+    dükan = "Dükana git ve tekrar bir kutu bira satýn al."
+
+    if þiþeler > 0:
+      veriler =  (þiþeler, bira, duvarda, biriniAl, þiþeler - 1, bira, duvarda)
+      koçak = "%2d %s %s\n%2d\n%2d %s %s" % veriler # Ýlk 99 mýsra için koçak=117 byte (yeniden hesapla!)...
+      os.write (daðýt, koçak)
+      þiþeler -= 1
+    else:
+      þiþeler = 99
+      veriler =  (bira, duvarda, dükan, þiþeler, bira, duvarda)
+      koçak = "Maalesef sýfýr %s %s\n%s\n%s\n%2d %s %s" % veriler # Dükandan yenileme mýsrasý için koçak=128 byte (yeniden hesapla!)...
+      os.write (daðýt, koçak)
+
+def ebeveyn():
+    yeniden, daðýt = os.pipe()
+    if os.fork() == 0: yavru (daðýt) # os.fork() Linux içindir, Windows için exec/spawn kullanýlabilir...
+    else:
+        sayaç = 1
+        while True:
+            if sayaç % 100: koçak = os.read (yeniden, 117)
+            else: koçak = os.read (yeniden, 128)
+            print ('Tekerleme no: %d\n%s\n' % (sayaç, koçak) )
+            sayaç += 1
+
+
+ebeveyn()

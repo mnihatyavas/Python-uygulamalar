@@ -1,0 +1,53 @@
+# coding:iso-8859-9 Türkçe
+# p_21403a.py: Dekoratörlü LM'le hatalý kelime aðýrlýðý ve tespit çaðrý sayýsý örneði.
+
+from collections import Counter
+
+def sayaç (fonk):
+    def yardýmcý (*argümanlar, **kwargümanlar):
+        yardýmcý.çaðrý += 1
+        anahtar = str (argümanlar) + str (kwargümanlar)
+        yardýmcý.say [anahtar] += 1
+        return fonk (*argümanlar, **kwargümanlar)
+    yardýmcý.say = Counter()
+    yardýmcý.çaðrý = 0
+    yardýmcý.__name__= fonk.__name__
+    return yardýmcý
+
+@sayaç # Belleksiz dekoratörle kendini çaðýran iþlem yavaþtýr...
+def LM (d1, d2):
+    if d1 == "": return len (d2)
+    if d2 == "": return len (d1)
+    if d1 [-1] == d2 [-1]: maliyet = 0
+    else: maliyet = 1
+    sonuç = min ([LM (d1 [:-1], d2) + 1, LM (d1, d2 [:-1]) + 1,  LM (d1 [:-1], d2 [:-1]) + maliyet])
+    return sonuç
+
+print (LM ("Python", "Peithen"))
+print ("LM tam " + str (LM.çaðrý) + " kere çaðrýldý!")
+#print (LM.say.most_common() )
+
+print ("\nÝlk ve ikinci dizgelerin düzeltme mesafesi ve çaðrý sayýsý:")
+print ('LM("Python","Peithen"):', LM ("Python", "Peithen"), LM.çaðrý)
+print ('LM("Python","P")', LM ("Python", "P"), LM.çaðrý)
+print ('LM("","Python"):', LM ("", "Python"), LM.çaðrý)
+
+print ('LM("Akdeniz","Akdeniizz"):', LM ("Akdeniz", "Akdeniizz"), LM.çaðrý)
+print ('LM("Kuþadasý","Kuþaddassý")', LM ("Kuþadasý", "Kuþaddassý"), LM.çaðrý)
+print ('LM("Ýskender","Ýskender"):', LM ("Ýskender", "Ýskender"), LM.çaðrý)
+
+
+
+"""Çýktý:
+>python p_21403.py
+3
+LM tam 29737 kere çaðrýldý!
+
+Ýlk ve ikinci dizgelerin düzeltme mesafesi ve çaðrý sayýsý:
+LM("Python","Peithen"): 3 59474
+LM("Python","P") 5 59493
+LM("","Python"): 6 59494
+LM("Akdeniz","Akdeniizz"): 2 395708
+LM("Kuþadasý","Kuþaddassý") 2 2280405
+LM("Ýskender","Ýskender"): 0 2678998
+"""

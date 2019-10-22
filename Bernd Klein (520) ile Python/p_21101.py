@@ -1,0 +1,28 @@
+# coding:iso-8859-9 Türkçe
+# p_21101.py: Ýçiçe 2 fonksiyonun sýralarýnýn deðiþtirilmesinin farklý sonuçlarý örneði.
+
+def içiçeFonksiyon (g, f):
+    def h (x): return g (f (x))
+    return h
+
+def selsiyüstenFahrenhayta (t): return 1.8 * t + 32
+def hataAyarý (t): return 0.9 * t - 0.5
+
+çevir1 = içiçeFonksiyon (hataAyarý, selsiyüstenFahrenhayta)
+print ("10 dereceyi önce fahrenhayt'a çevir, sonra hata düzeltmesi yap:")
+print (çevir1 (10), "=", hataAyarý (selsiyüstenFahrenhayta (10)) )
+
+çevir2 = içiçeFonksiyon (selsiyüstenFahrenhayta, hataAyarý)
+print ("\n10 derecenin önce hata düzeltmesini yap, sonra fahrenhayt'a çevir:")
+print (çevir2 (10), "=", selsiyüstenFahrenhayta (hataAyarý (10)) )
+
+
+
+"""Çýktý:
+>python p_21101.py
+10 dereceyi önce fahrenhayt'a çevir, sonra hata düzeltmesi yap:
+44.5 = 44.5
+
+10 derecenin önce hata düzeltmesini yap, sonra fahrenhayt'a çevir:
+47.3 = 47.3
+"""

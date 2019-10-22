@@ -1,0 +1,24 @@
+# coding:iso-8859-9 Türkçe
+# p_14701.py: Argümaný normal ve meta sýnýf olan sýnýf nesnesi örneði.
+
+class MetaSýnýf (type): # "class MetaSýnýf (object)" deðil!..
+    def __new__ (sýnýf, sýnýfAdý, süperSýnýflar, özellikSözlüðü):
+        print ("Sýnýf adý: ", sýnýfAdý)
+        print ("Süper sýnýflar: ", süperSýnýflar)
+        print ("Özellikler sözlüðü: ", özellikSözlüðü)
+        return type.__new__ (sýnýf, sýnýfAdý, süperSýnýflar, özellikSözlüðü)
+
+class S: pass
+
+class A (S, metaclass=MetaSýnýf): pass
+
+a = A()
+
+
+
+"""Çýktý:
+>python p_14701.py
+Sýnýf adý:  A
+Süper sýnýflar:  (<class '__main__.S'>,)
+Özellikler sözlüðü:  {'__module__': '__main__', '__qualname__': 'A'}
+"""

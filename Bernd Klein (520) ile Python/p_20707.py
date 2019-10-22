@@ -1,0 +1,67 @@
+# coding:iso-8859-9 Türkçe
+# p_20707.py: Verili grafiklerin yumrularý, baðlantýlarý ve çaplarý örneði.
+
+from p_20702 import Grafik
+
+g1 = {
+    "a" : ["c"],
+    "b" : ["c","e","f"],
+    "c" : ["a","b","d","e"],
+    "d" : ["c"],
+    "e" : ["b","c","f"],
+    "f" : ["b","e"]
+}
+
+g2 = {
+    "a" : ["c"],
+    "b" : ["c","e","f"],
+    "c" : ["a","b","d","e"],
+    "d" : ["c"],
+    "e" : ["b","c","f"],
+    "f" : ["b","e", "g"],
+    "g" : ["f"]
+}
+
+g3 = {
+    "a" : ["c"],
+    "b" : ["c", "e", "f"],
+    "c" : ["a", "b", "d", "e"],
+    "d" : ["c"],
+    "e" : ["b", "c", "f"],
+    "f" : ["b", "e", "g"],
+    "g" : ["f", "h"],
+    "h" : ["g"]
+}
+
+grafik = Grafik (g1)
+çap = grafik.grafiðinÇapý()
+print ("Grafik 'g1' için==>")
+print (grafik, "\nGrafiðin çapý: ", çap, sep="")
+
+g = Grafik (g2)
+çap = g.grafiðinÇapý()
+print ("\nGrafik 'g2' için==>")
+print (g, "\nGrafiðin çapý: ", çap, sep="")
+
+print ("\nGrafik 'g3' için==>")
+print (Grafik (g3), "\nGrafiðin çapý: ", Grafik (g3).grafiðinÇapý(), sep="")
+
+
+
+"""Çýktý:
+>python p_20708.py
+Grafik 'g1' için==>
+Yumrular: a b c d e f
+Baðlantýlar: {'a', 'c'} {'c', 'b'} {'e', 'b'} {'f', 'b'} {'c', 'd'} {'e', 'c'} {'e', 'f'}
+Grafiðin çapý: 3
+
+Grafik 'g2' için==>
+Yumrular: a b c d e f g
+Baðlantýlar: {'a', 'c'} {'c', 'b'} {'e', 'b'} {'f', 'b'} {'c', 'd'} {'e', 'c'} {'e', 'f'} {'g', 'f'}
+Grafiðin çapý: 4
+
+Grafik 'g3' için==>
+Yumrular: a b c d e f g h
+Baðlantýlar: {'a', 'c'} {'c', 'b'} {'e', 'b'} {'f', 'b'} {'c', 'd'} {'e', 'c'} {'e', 'f'} {'g', 'f'} {'g', 'h'}
+Grafiðin çapý: 5
+"""

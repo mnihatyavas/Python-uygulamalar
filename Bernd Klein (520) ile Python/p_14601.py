@@ -1,0 +1,75 @@
+# coding:iso-8859-9 Türkçe
+# p_14601.py: Argümansýz ve argümaný sýnýf olan sýnýf nesneleri örneði.
+
+class Feylesof1:
+    def cevap (self, *argümanlar): return 0
+class Feylesof2:
+    def cevap (self, *argümanlar): return 1
+class Feylesof3:
+    def cevap (self, *argümanlar): return 4
+class Feylesof4:
+    def cevap (self, *argümanlar): return 2
+class Feylesof5:
+    def cevap (self, *argümanlar): return "Sonsuz"
+
+sokrat = Feylesof1()
+aristo = Feylesof2()
+plato = Feylesof3()
+kant = Feylesof4()
+rasýl = Feylesof5()
+
+print ("Her Feylesof/kafa'dan ayrý ses==>\nSoru: (2 * 2 = ?)\n", "-"*37, sep="")
+print ("Sokrat:", sokrat.cevap() )
+print ("Aristo:", aristo.cevap() )
+print ("Plato:", plato.cevap() )
+print ("Kant:", kant.cevap() )
+print ("Rasýl:", rasýl.cevap() )
+print ("-"*37, "\nOrtak cevap: Þartlara göre deðiþir!..", sep="")
+#------------------------------------------------------------------------------------------------------
+
+class Cevaplar:
+    def cevap (self, *argümanlar):  return "Þartlara göre deðiþir!.."
+
+class Feylesof1 (Cevaplar): pass
+class Feylesof2 (Cevaplar): pass
+class Feylesof3 (Cevaplar): pass
+class Feylesof4 (Cevaplar): pass
+class Feylesof5 (Cevaplar): pass
+
+sokrat = Feylesof1()
+aristo = Feylesof2()
+plato = Feylesof3()
+kant = Feylesof4()
+rasýl = Feylesof5()
+
+print ("\n", "="*37, "\nSoru: 2 kere 2 kaç eder?", sep="")
+print ("\nSokrat:", sokrat.cevap() )
+print ("Aristo:", aristo.cevap() )
+print ("Plato:", plato.cevap() )
+print ("Kant:", kant.cevap() )
+print ("Rasýl:", rasýl.cevap() )
+
+
+
+"""Çýktý:
+>python p_14601.py
+Her Feylesof/kafa'dan ayrý ses==>
+Soru: (2 * 2 = ?)
+-------------------------------------
+Sokrat: 0
+Aristo: 1
+Plato: 4
+Kant: 2
+Rasýl: Sonsuz
+-------------------------------------
+Ortak cevap: Þartlara göre deðiþir!..
+
+=====================================
+Soru: 2 kere 2 kaç eder?
+
+Sokrat: Þartlara göre deðiþir!..
+Aristo: Þartlara göre deðiþir!..
+Plato: Þartlara göre deðiþir!..
+Kant: Þartlara göre deðiþir!..
+Rasýl: Þartlara göre deðiþir!..
+"""

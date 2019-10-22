@@ -1,0 +1,55 @@
+# coding:iso-8859-9 Türkçe
+# p_14603.py: Harici fonksiyonu sýnýfa yönetici fonksiyon vasýtasýyla metod vasfý yapma örneði.
+
+print ("Soru: 2 kere 2 kaç eder?")
+cevap = input ("Feylesoflarýn cevaplarýný istiyor musun? (e/h): ")
+if cevap == "e": cevap = True
+else: cevap = False
+
+def cevabým (self, *argümanlar):  return "Þartlara göre deðiþir!.."
+
+def cevabýEkle (sýnýf): # Yönetici fonksiyonu..
+    if cevap: sýnýf.cevabým = cevabým
+
+class Feylesof1: pass
+class Feylesof2: pass
+class Feylesof3: pass
+class Feylesof4: pass
+class Feylesof5: pass
+
+cevabýEkle (Feylesof1)
+cevabýEkle (Feylesof2)
+cevabýEkle (Feylesof3)
+cevabýEkle (Feylesof4)
+cevabýEkle (Feylesof5)
+
+sokrat = Feylesof1()
+aristo = Feylesof2()
+plato = Feylesof3()
+kant = Feylesof4()
+rasýl = Feylesof5()
+
+if cevap:
+    print ("\nSokrat:", sokrat.cevabým() )
+    print ("Aristo:", aristo.cevabým() )
+    print ("Plato:", plato.cevabým() )
+    print ("Kant:", kant.cevabým() )
+    print ("Rasýl:", rasýl.cevabým() )
+else: print ("Cevabý Filozoflarýn sessizliðinde ara!..")
+
+"""Çýktý:
+>python p_14603.py
+Soru: 2 kere 2 kaç eder?
+Feylesoflarýn cevaplarýný istiyor musun? (e/h): e
+
+Sokrat: Þartlara göre deðiþir!..
+Aristo: Þartlara göre deðiþir!..
+Plato: Þartlara göre deðiþir!..
+Kant: Þartlara göre deðiþir!..
+Rasýl: Þartlara göre deðiþir!..
+
+>python p_14603.py  ** TEKRAR **
+Soru: 2 kere 2 kaç eder?
+Feylesoflarýn cevaplarýný istiyor musun? (e/h): h
+Cevabý Filozoflarýn sessizliðinde ara!..
+"""

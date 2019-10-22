@@ -1,0 +1,29 @@
+# coding:iso-8859-9 Türkçe
+# p_20202.py: Veri giriþ input'la .exe programlarý iþletme örneði.
+
+import os
+
+a = " "
+while (a != "exit"):
+    a = input ("Veri giriþi [Çýkýþ: exit]: ")
+    dosya = os.popen (a)
+    print (dosya.read())
+
+print ("Heyyaah, bu iþ bu kadar!..")
+
+"""Çýktý:
+>python p_20202.py
+Veri giriþi: M.Nihat Yavaþ
+'M.Nihat' iç ya da dýþ komut, çalýþtýrýlabilir
+program ya da toplu iþ dosyasý olarak tanýnmýyor.
+
+Veri giriþi: write # WordPad açýlýr...
+
+Veri giriþi: notepad # NotePad açýlýr...
+
+Veri giriþi: mspaint # MSPaint açýlýr...
+
+Veri giriþi: exit
+
+Heyyaah, bu iþ bu kadar!..
+"""

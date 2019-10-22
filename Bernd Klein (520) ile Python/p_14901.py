@@ -1,0 +1,25 @@
+# coding:iso-8859-9 Türkçe
+# p_14901.py: Enaz bir pass metodlu soyut sýnýfý argümanlayan somut sýnýf nesnesi örneði.
+
+class SoyutSýnýf: # 1-2 soyut/pass metod içeren sahte soyut sýnýf...
+    def soyutMetod (self): pass # Yürütmesiz soyut metod...
+    def somutMetod (self): print ("Ben her iþleminizi yaparým abi!..")
+
+class SomutSýnýf (SoyutSýnýf): pass # Soyut sýnýfa miraslý somut sýnýf...
+
+a = SoyutSýnýf() # Soyut sýnýf olsaydý tiplenemezdi, hata verirdi...
+b = SomutSýnýf()
+
+a.soyutMetod()
+a.somutMetod()
+
+b.soyutMetod()
+b.somutMetod()
+
+
+
+"""Çýktý:
+>python p_14901.py
+Ben her iþleminizi yaparým abi!..
+Ben her iþleminizi yaparým abi!..
+"""

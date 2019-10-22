@@ -1,0 +1,49 @@
+# coding:iso-8859-9 Türkçe
+# p_14803.py: Metasýnýf argümanlý sýnýf nesnesi metodlarýnýn çaðrý sayýlarý tesbiti örneði.
+
+class SayaçMetoduSýnýfý (type): # Metasýnýf tipli...
+    @staticmethod
+    def sayaçMetodu (fonk): # Metodun çaðrý sayýsýný raporlar...
+        def yardýmcý (*a, **kwa):
+            yardýmcý.çaðrý += 1
+            return fonk (*a, **kwa)
+        yardýmcý.çaðrý = 0
+        yardýmcý.__name__= fonk.__name__
+        return yardýmcý
+
+    def __new__ (sýnýf, sýnýfAdý, süperSýnýflar, özellikSözlüðü):
+        for öz in özellikSözlüðü:
+            if callable (özellikSözlüðü [öz]) and not öz.startswith ("__"):
+                özellikSözlüðü [öz] = sýnýf.sayaçMetodu (özellikSözlüðü [öz])
+        return type.__new__ (sýnýf, sýnýfAdý, süperSýnýflar, özellikSözlüðü)
+
+class A (metaclass=SayaçMetoduSýnýfý):
+    def m1 (self):pass
+    def m2 (self): pass
+
+
+if __name__ == "__main__":
+    x = A()
+    print (x.m1.çaðrý, x.m2.çaðrý)
+
+    x.m1()
+    print (x.m1.çaðrý, x.m2.çaðrý)
+
+    x.m1()
+    x.m2()
+    print (x.m1.çaðrý, x.m2.çaðrý)
+
+    x = A()
+    for _ in range (20): x.m1()
+    for _ in range (10): x.m2()
+    print (x.m1.çaðrý, x.m2.çaðrý)
+
+
+
+"""Çýktý:
+>python p_14803.py
+0 0
+1 0
+2 1
+22 11
+"""

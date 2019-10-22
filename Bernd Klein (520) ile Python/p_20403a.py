@@ -1,0 +1,51 @@
+# coding:iso-8859-9 Türkçe
+# p_20403a.py: Girilen sayýnýn asal sayýlýðýnýn ip kontrolüyle testi örneði.
+
+import threading
+ 
+class AsalSayý (threading.Thread):
+    def __init__ (self, sayý):
+        threading.Thread.__init__ (self)
+        self.Sayý = sayý
+ 
+    def run (self):
+        sayaç = 2
+        while sayaç*sayaç < self.Sayý:
+            if self.Sayý % sayaç == 0:
+                print ("%d bir asal sayý deðildir, çünkü %d = %d * %d" % ( self.Sayý, self.Sayý, sayaç, self.Sayý / sayaç) )
+                return
+            sayaç += 1
+        print ("%d bir asal sayýdýr" % self.Sayý)
+
+ipler = []
+while True:
+    try: veri = abs (int (input ("\nSayý [q: son]: ") ))
+    except: break
+
+    sicim = AsalSayý (veri)
+    ipler += [sicim]
+    sicim.start() # run()'ý çalýþtýrýr...
+
+for x in ipler: x.join()
+
+
+"""Çýktý:
+>python p_20403.py
+
+Sayý [q: son]: 128
+128 bir asal sayý deðildir, çünkü 128 = 2 * 64
+
+Sayý [q: son]: 7
+7 bir asal sayýdýr
+
+Sayý [q: son]: 125
+125 bir asal sayý deðildir, çünkü 125 = 5 * 25
+
+Sayý [q: son]: -65
+65 bir asal sayý deðildir, çünkü 65 = 5 * 13
+
+Sayý [q: son]: 0
+0 bir asal sayýdýr
+
+Sayý [q: son]: q
+"""

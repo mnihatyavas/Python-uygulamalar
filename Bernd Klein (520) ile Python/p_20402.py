@@ -1,0 +1,40 @@
+# coding:iso-8859-9 Türkçe
+# p_20402.py: 10 ayrý sicimi baþlatýp, 5 sn duraksatýp, sonra sürdürme örneði.
+
+import time
+from threading import Thread as Ýp # threading: Python-3
+
+def uyutucu (i):
+    print ("Sicim no: %d, 5 saniyeliðine uyuklar." % i)
+    time.sleep (5)
+    print ("Sicim no: %d uyanýr." % i)
+
+for i in range (10):
+    t = Ýp (target = uyutucu, args = (i,) )
+    t.start()
+
+
+
+"""Çýktý:
+>python p_20402.py
+Sicim no: 0, 5 saniyeliðine uyuklar.
+Sicim no: 1, 5 saniyeliðine uyuklar.
+Sicim no: 2, 5 saniyeliðine uyuklar.
+Sicim no: 3, 5 saniyeliðine uyuklar.
+Sicim no: 4, 5 saniyeliðine uyuklar.
+Sicim no: 5, 5 saniyeliðine uyuklar.
+Sicim no: 6, 5 saniyeliðine uyuklar.
+Sicim no: 7, 5 saniyeliðine uyuklar.
+Sicim no: 8, 5 saniyeliðine uyuklar.
+Sicim no: 9, 5 saniyeliðine uyuklar.
+Sicim no: 0 uyanýr.
+Sicim no: 1 uyanýr.
+Sicim no: 2 uyanýr.
+Sicim no: 3 uyanýr.
+Sicim no: 4 uyanýr.
+Sicim no: 5 uyanýr.
+Sicim no: 6 uyanýr.
+Sicim no: 7 uyanýr.
+Sicim no: 8 uyanýr.
+Sicim no: 9 uyanýr.
+"""

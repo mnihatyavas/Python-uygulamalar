@@ -1,0 +1,49 @@
+# coding:iso-8859-9 Türkçe
+# p_14702.py: Ayný tip dönüþlü metasýnýf ve normal sýnýf nesnelerinin eþitliði karþýlaþtýþmasý örneði.
+
+class Singleton (type):
+    _tipler = {}
+    def __call__ (sýnýf, *argümanlar, **kwargümanlar):
+        if sýnýf not in sýnýf._tipler: sýnýf._tipler [sýnýf] = super (Singleton, sýnýf).__call__ (*argümanlar, **kwargümanlar)
+        return sýnýf._tipler [sýnýf]
+
+class SingletonSýnýfý (metaclass=Singleton): pass
+class NormalSýnýf(): pass
+
+x = SingletonSýnýfý()
+y = SingletonSýnýfý()
+print ("Metasýnýf tiplemeli Singleton sýnýf nesneleri için: x==y?", x == y)
+
+x = NormalSýnýf()
+y = NormalSýnýf()
+print ("Normal sýnýf nesneleri için: x==y?", x == y)
+print ("-"*62)
+#--------------------------------------------------------------------------------------------------
+
+class Singleton (object):
+    _tip = None
+    def __new__ (sýnýf, *argümanlar, **kwargümanlar):
+        if not sýnýf._tip: sýnýf._tip = object.__new__ (sýnýf, *argümanlar, **kwargümanlar)
+        return sýnýf._tip
+
+class SingletonSýnýfý (Singleton): pass
+class NormalSýnýf(): pass
+
+x = SingletonSýnýfý()
+y = SingletonSýnýfý()
+print ("Normal Singleton sýnýf nesneleri için: x==y?", x == y)
+
+x = NormalSýnýf()
+y = NormalSýnýf()
+print ("Normal sýnýf nesneleri için: x==y?", x == y)
+
+
+
+"""Çýktý:
+>python p_14702.py
+Metasýnýf tiplemeli Singleton sýnýf nesneleri için: x==y? True
+Normal sýnýf nesneleri için: x==y? False
+--------------------------------------------------------------
+Normal Singleton sýnýf nesneleri için: x==y? True
+Normal sýnýf nesneleri için: x==y? False
+"""

@@ -1,0 +1,36 @@
+# coding:iso-8859-9 Türkçe
+# p_21401.py: Anahtar-deðer çiftli sözlük verilerinde anahtar hatasý istisnasý örneði.
+
+ilçeler = {
+    "Akdenizz": "Mersin",
+    "Kuþadas": "Aydýn",
+    "Ýskendurun": "Hatay",
+    "Yeþilyurd": "Malatya",
+    "Alenya": "Antalya",
+    "Alþancak": "Ýzmir",
+    "Kizalay": "Ankara",
+    "Üskütar": "Ýstanbul",
+    "Çekirke": "Bursa",
+    "Bandýrna": "Balýkesir" }
+
+try:
+    print ("Ýlçelerin baðlý olduklarý iller:")
+    print (ilçeler ["Akdeniz"] )
+    print (ilçeler ["Kuþadasý"] )
+    print (ilçeler ["Ýskenderun"] )
+    print (ilçeler ["Yeþilyurt"] )
+    print (ilçeler ["Alanya"] )
+    print (ilçeler ["Alsancak"] )
+    print (ilçeler ["Kýzýlay"] )
+    print (ilçeler ["Üsküdar"] )
+    print (ilçeler ["Çekirge"] )
+    print (ilçeler ["Bandýrma"] )
+except Exception as ist: print ("[KeyError/AnahtarHatasý]:", ist)
+
+
+
+"""Çýktý:
+>python p_21401.py
+Ýlçelerin baðlý olduklarý iller:
+[KeyError/AnahtarHatasý]: 'Akdeniz'
+"""

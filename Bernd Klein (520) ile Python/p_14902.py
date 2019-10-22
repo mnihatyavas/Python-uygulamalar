@@ -1,0 +1,35 @@
+# coding:iso-8859-9 Türkçe
+# p_14902.py: Soyut sýnýfýn tüm soyut metodlarýný esgeçen somut sýnýf nesneleri örneði.
+
+from abc import ABC, abstractmethod
+# Python kütüphanesinde hazýr abc.py, ABC/AbstractBaseClass: SoyutTemelSýnýf
+ 
+class SoyutSýnýf (ABC): # Bir soyut metod içeren soyut sýnýf...
+    def __init__ (self, deðer):
+        self.deðer = deðer
+        super().__init__()
+    @abstractmethod
+    def soyutMetod (self): pass
+class SomutSýnýf (SoyutSýnýf): pass
+
+# a = SoyutSýnýf() ==> Soyut sýnýf tiplenemez (TypeError)...
+# b = SomutSýnýf (42) ==> Soyut sýnýfýn tüm soyut metodlarýný override/esgeçmeyen tipleme olmaz (TypeError)...
+
+class SomutSýnýf1 (SoyutSýnýf):
+    def soyutMetod (self): return self.deðer**2
+class SomutSýnýf2 (SoyutSýnýf):
+    def soyutMetod (self): return self.deðer**0.5
+
+a = SomutSýnýf1 (42)
+b = SomutSýnýf2 (42)
+
+print ("42'nin karesi =", a.soyutMetod() )
+print ("42'nin karekökü =", b.soyutMetod() )
+
+
+
+"""Çýktý:
+>python p_14902.py
+42'nin karesi = 1764
+42'nin karekökü = 6.48074069840786
+"""

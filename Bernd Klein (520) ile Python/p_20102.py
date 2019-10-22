@@ -1,0 +1,24 @@
+# coding:iso-8859-9 Türkçe
+# p_20102.py: Komut iletisinden girilen argümanlarýn yönetilmesi örneði.
+
+import sys
+
+print ("Komut satýrý iletileri listesi:", sys.argv)
+
+for i in range (len (sys.argv) ):
+    if i == 0: print ("\nÇalýþtýrýlan programýn adý: %s" % sys.argv [0] )
+    else: print ("%d.argüman: %s" % (i, sys.argv [i]) )
+
+
+
+"""Çýktý:
+>python p_20102.py "M.Nihat Yavaþ"
+1957 Yeþilyurt-Malatya TR
+Komut satýrý iletileri listesi: ['p_20102.py', 'M.Nihat Yavaþ', '1957', 'Yeþilyurt-Malatya', 'TR']
+
+Çalýþtýrýlan programýn adý: p_20102.py
+1.argüman: M.Nihat Yavaþ
+2.argüman: 1957
+3.argüman: Yeþilyurt-Malatya
+4.argüman: TR
+"""

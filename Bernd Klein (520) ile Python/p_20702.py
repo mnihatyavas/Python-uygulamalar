@@ -1,0 +1,198 @@
+# coding:iso-8859-9 Türkçe
+# p_20702.py: Grafik sýnýfýyla, yumru, baðlantý, izole, yeni yumru ve baðlantý ekleme örneði.
+
+class Grafik (object):
+    def __init__ (self, grafikSözlüðü=None):
+        if grafikSözlüðü == None: grafikSözlüðü = {}
+        self.__grafikSözlüðü = grafikSözlüðü
+
+    def yumrular (self): return list (self.__grafikSözlüðü.keys() )
+
+    def yumruEkle (self, yumru):
+        if yumru not in self.__grafikSözlüðü: self.__grafikSözlüðü[yumru] = []
+
+    def baðlantýlar (self): return self.baðlantýlarýKur()
+
+    def baðlantýlarýKur (self):
+        baðlantýlar = []
+        for yumru in self.__grafikSözlüðü:
+            for komþu in self.__grafikSözlüðü[yumru]:
+                if {komþu, yumru} not in baðlantýlar: baðlantýlar.append ({yumru, komþu})
+        return baðlantýlar
+
+    def baðlantýEkle (self, baðlantý):
+        baðlantý = set (baðlantý)
+        (yumru1, yumru2) = tuple (baðlantý)
+        if yumru1 in self.__grafikSözlüðü: self.__grafikSözlüðü[yumru1].append (yumru2)
+        else: self.__grafikSözlüðü[yumru1] = [yumru2]
+
+    def patikaBul (self, ilkYumru, sonYumru, patika=None):
+        if patika == None: patika = []
+        grafik = self.__grafikSözlüðü
+        patika = patika + [ilkYumru]
+        if ilkYumru == sonYumru: return patika
+        if ilkYumru not in grafik: return None
+        for yumru in grafik[ilkYumru]:
+            if yumru not in patika:
+                eklenenPatika = self.patikaBul (yumru, sonYumru, patika)
+                if eklenenPatika: return eklenenPatika
+        return None
+
+    def tümPatikalarýBul (self, ilkYumru, sonYumru, patika=[]):
+        grafik = self.__grafikSözlüðü
+        patika = patika + [ilkYumru]
+        if ilkYumru == sonYumru: return [patika]
+        if ilkYumru not in grafik: return []
+        patikalar = []
+        for yumru in grafik[ilkYumru]:
+            if yumru not in patika:
+                eklenenPatika = self.tümPatikalarýBul (yumru, sonYumru, patika)
+                for p in eklenenPatika: patikalar.append (p)
+        return patikalar
+
+    def __str__ (self):
+        sonuç = "Yumrular: "
+        for y in self.__grafikSözlüðü: sonuç += str (y) + " "
+        sonuç += "\nBaðlantýlar: "
+        for b in self.baðlantýlarýKur(): sonuç += str (b) + " "
+        return sonuç
+
+    # Sonraki örneklerin eklenti fonksiyonlarý...
+    def yumruDerecesi (self, yumru):
+        komþuYumrular =  self.__grafikSözlüðü[yumru]
+        derece = len (komþuYumrular) + komþuYumrular.count (yumru)
+        return derece
+
+    def izoleYumrular (self):
+        grafik = self.__grafikSözlüðü
+        izoleListesi = []
+        for yumru in grafik:
+            if not grafik[yumru]: izoleListesi += [yumru]
+        return izoleListesi
+
+    def asgariDerece (self):
+        asgari = 100000000
+        for yumru in self.__grafikSözlüðü:
+            yumruDerecesi = self.yumruDerecesi (yumru)
+            if yumruDerecesi < asgari: asgari = yumruDerecesi
+        return asgari
+
+    def azamiDerece (self):
+        azami = 0
+        for yumru in self.__grafikSözlüðü:
+            yumruDerecesi = self.yumruDerecesi (yumru)
+            if yumruDerecesi > azami: azami = yumruDerecesi
+        return azami
+
+    def dereceSilsilesi (self):
+        silsileListesi = []
+        for yumru in self.__grafikSözlüðü: silsileListesi.append (self.yumruDerecesi (yumru))
+        silsileListesi.sort (reverse = True)
+        return tuple (silsileListesi)
+
+    @staticmethod
+    def erdoes_gallai (silsile):
+        if sum (silsile) % 2: return False
+        for k in range (1, len (silsile) + 1):
+            sol = sum (silsile[:k])
+            sað =  k * (k-1) + sum ([min (x, k) for x in silsile[k:]])
+            if sol > sað: return False
+        return True
+
+    def yoðunluk (self):
+        g = self.__grafikSözlüðü
+        Y = len (g.keys())
+        B = len (self.baðlantýlar())
+        return 2.0 * B / (Y *(Y - 1)) # Baðlantý yoðunluðu [0->1] arasýdýr...
+
+    def baðlantýlýMý (self, baðlantýlýYumrular = None, ilkYumru=None):
+        if baðlantýlýYumrular is None: baðlantýlýYumrular = set()
+        gSöz = self.__grafikSözlüðü
+        yumrular = list (gSöz.keys())
+        if not ilkYumru: # Ýlk yumru belirtilmemiþse, 0.yumruyu seç...
+            ilkYumru = yumrular[0]
+        baðlantýlýYumrular.add (ilkYumru)
+        if len (baðlantýlýYumrular) != len (yumrular):
+            for yumru in gSöz[ilkYumru]:
+                if yumru not in baðlantýlýYumrular:
+                    if self.baðlantýlýMý (baðlantýlýYumrular, yumru): return True
+        else: return True
+        return False
+
+    def grafiðinÇapý (self):
+        y = self.yumrular()
+        çiftlerListesi = [(y[i], y[j]) for i in range (len (y) - 1) for j in range (i+1, len (y))]
+        enkýsaYol = []
+        for (y1, y2) in çiftlerListesi:
+            patikalar = self.tümPatikalarýBul (y1, y2)
+            enkýsasý = sorted (patikalar, key=len)[0]
+            enkýsaYol.append (enkýsasý)
+        enkýsaYol.sort (key=len)
+        grafiðinÇapý = len (enkýsaYol[-1]) - 1 # Artan sýralamada son yol enuzunudur...
+        return grafiðinÇapý
+
+
+if __name__ == "__main__":
+    g = {
+        "a" : ["d"],
+        "b" : ["c"],
+        "c" : ["b", "c", "d", "e"],
+        "d" : ["a", "c"],
+        "e" : ["c"],
+        "f" : [], 
+        "g" : []
+        }
+
+    grafik = Grafik (g)
+
+    print ("Grafiðin mevcut yumrularý:")
+    print (grafik.yumrular())
+
+    print ("Grafiðin mevcut baðlantýlarý:")
+    print (grafik.baðlantýlar())
+
+    print ("Yeni bir yumru 'z' ekle:")
+    grafik.yumruEkle ("z")
+
+    print ("Grafiðin ilk güncel yumrularý:")
+    print (grafik.yumrular())
+ 
+    print ("Yeni bir baðlantý {'a', 'z'} ekle:")
+    grafik.baðlantýEkle ({"a", "z"})
+
+    print ("Grafiðin ikinci güncel yumrularý:")
+    print (grafik.yumrular() )
+
+    print ("Grafiðin ikinci güncel baðlantýlarý:")
+    print (grafik.baðlantýlar())
+
+    print ('Yeni baðlantýlý iki yumru {"x","y"} ekle:')
+    grafik.baðlantýEkle ({"x", "y"})
+    grafik.yumruEkle ("x")
+
+    print ("Grafiðin son yumrularý:")
+    print (grafik.yumrular())
+
+    print ("Grafiðin son baðlantýlarý:")
+    print (grafik.baðlantýlar())
+
+"""Çýktý:
+>python p_20702.py
+Grafiðin mevcut yumrularý:
+['a', 'b', 'c', 'd', 'e', 'f', 'g']
+Grafiðin mevcut baðlantýlarý:
+[{'a', 'd'}, {'b', 'c'}, {'c'}, {'c', 'd'}, {'c', 'e'}]
+Yeni bir yumru 'z' ekle:
+Grafiðin ilk güncel yumrularý:
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'z']
+Yeni bir baðlantý {'a', 'z'} ekle:
+Grafiðin ikinci güncel yumrularý:
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'z']
+Grafiðin ikinci güncel baðlantýlarý:
+[{'a', 'd'}, {'b', 'c'}, {'c'}, {'c', 'd'}, {'c', 'e'}, {'z', 'a'}]
+Yeni baðlantýlý iki yumru {"x","y"} ekle:
+Grafiðin son yumrularý:
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'z', 'x']
+Grafiðin son baðlantýlarý:
+[{'a', 'd'}, {'b', 'c'}, {'c'}, {'c', 'd'}, {'c', 'e'}, {'z', 'a'}, {'x', 'y'}]
+"""

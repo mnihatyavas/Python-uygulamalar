@@ -1,0 +1,46 @@
+# coding:iso-8859-9 Türkçe
+# p_30102a.py: Bir listenin elemansýz, herbir eleman ve eleman referans ebatlarý örneði.
+
+from sys import getsizeof as ebat
+
+selsiyüsListesi = [20.1, 0, 21.9e10, -22.5, -22.7e-10, -0, 1, 21.2e100, -20.9e-100, 2]
+elemanSayýsý = len (selsiyüsListesi)
+
+boþListeEbatý = ebat (selsiyüsListesi)   # []
+listeElemanNesneleriEbatý = elemanSayýsý * ebat (selsiyüsListesi [0]) # 20.1, 20.8, 21.9, 22.5, 22.7, 22.3, 21.8, 21.2, 20.9, 20.1
+toplamEbat = boþListeEbatý + listeElemanNesneleriEbatý
+
+print ("Normal bir python listesi ve elemanlarýnýn ebatlarýný inceleyelim\n", "-"*65, sep="")
+print ("Elemansýz liste ebatý:", boþListeEbatý)
+print ("Tüm eleman nesneleri ebatý:", listeElemanNesneleriEbatý)
+print("Toplam elemanlý liste ebatý:", toplamEbat)
+
+eleman = 0
+print ("\nTek tek elemanlarýn ebatlarý:")
+for i in range (elemanSayýsý):
+    eleman +=ebat (selsiyüsListesi [i])
+    print (selsiyüsListesi [i], "-->", ebat (selsiyüsListesi [i]) , sep="", end=", ")
+print ("\n\nTüm elemanlarýn gerçek toplam ebatý:", eleman)
+
+selsiyüsListesi = []
+print ("\nElemansýz yaratýlan boþ liste ebatý:", ebat (selsiyüsListesi))
+print ("Herbir elemana referans için harcanan ebat:", int ((boþListeEbatý - ebat (selsiyüsListesi)) / elemanSayýsý), "byte")
+
+
+
+"""Çýktý:
+>python p_30102a.py
+Normal bir python listesi ve elemanlarýnýn ebatlarýný inceleyelim
+-----------------------------------------------------------------
+Elemansýz liste ebatý: 76
+Tüm eleman nesneleri ebatý: 160
+Toplam elemanlý liste ebatý: 236
+
+Tek tek elemanlarýn ebatlarý:
+20.1-->16, 0-->12, 219000000000.0-->16, -22.5-->16, -2.27e-09-->16, 0-->12, 1-->14, 2.12e+101-->16, -2.09e-99-->16, 2-->14,
+
+Tüm elemanlarýn gerçek toplam ebatý: 148
+
+Elemansýz yaratýlan boþ liste ebatý: 36
+Herbir elemana referans için harcanan ebat: 4 byte
+"""

@@ -1,0 +1,67 @@
+# coding:iso-8859-9 Türkçe
+# p_14401.py: Sýnýf init deðiþken ve sýnýrsýz özellikleri slot/yarýk'la sýnýrlama örneði.
+
+class A(): pass
+
+a = A()
+a.x = 66
+a.y = "dinamik yaratýlan özellik"
+
+print (a.x, a.y)
+print (a.__dict__)
+print (a.__dict__["x"], a.__dict__ ["y"])
+#-----------------------------------------------------------------------------------------------
+
+class Y():
+    #__slots__ = ['deðer']
+    def __init__ (self, d): self.deðer = d
+
+print()
+a = Y (57)
+a.x = 66
+a.y = "Dinamik özellik mümkün"
+a.z = "Sýnýrsýz özellik eklenebilir"
+
+print (a.deðer, a.x, a.y, a.z)
+print (a.__dict__)
+#-----------------------------------------------------------------------------------------------
+
+class Y():
+    __slots__ = ['deðer1', "deðer2", "deðer3"]
+    def __init__ (self, d1, d2, d3):
+        self.deðer1 = d1
+        self.deðer2 = d2
+        self.deðer3 = d3
+
+print()
+a = Y(1957, "M.Nihat Yavaþ", "Yeþilyurt-Malatya")
+print (a.deðer1, a.deðer2, a.deðer3)
+
+a.deðer1 = 2019
+a.deðer2 = "Statik özellik mümkün"
+a.deðer3 = "Ancak mevcut sýnýrlý 3 özellik kullanýlabilir"
+print (a.deðer1, a.deðer2, a.deðer3)
+
+print()
+try: a.x = 1
+except Exception as ist: print (ist)
+try: a.y = "__slots__ (yarýklar) listesinde tanýmlý olmayan özelliði reddeder"
+except Exception as ist: print (ist)
+
+
+
+"""Çýktý:
+>python p_14401.py
+66 dinamik yaratýlan özellik
+{'x': 66, 'y': 'dinamik yaratýlan özellik'}
+66 dinamik yaratýlan özellik
+
+57 66 Dinamik özellik mümkün Sýnýrsýz özellik eklenebilir
+{'deðer': 57, 'x': 66, 'y': 'Dinamik özellik mümkün', 'z': 'Sýnýrsýz özellik eklenebilir'}
+
+1957 M.Nihat Yavaþ Yeþilyurt-Malatya
+2019 Statik özellik mümkün Ancak mevcut sýnýrlý 3 özellik kullanýlabilir
+
+'Y' object has no attribute 'x'
+'Y' object has no attribute 'y'
+"""

@@ -1,0 +1,43 @@
+# coding:iso-8859-9 Türkçe
+# p_20501b: Linux fork/çatallamayla ebeveyn-yavru klonlamalý bira oyunu örneði.
+
+import os
+
+def yavru (daðýt):
+    þiþeler = 99
+    while True:
+        bira = "bira þiþesi"
+        duvarda = "duvarda dizilidir."
+        biriniAl = "Birini al ve isteyene uzat."
+        dükan = "Dükana git ve tekrar bir kutu bira satýn al."
+
+        if þiþeler > 0:
+            veriler =  (þiþeler, bira, duvarda, biriniAl, þiþeler - 1, bira, duvarda)
+            koçak = "%2d %s %s\n%2d\n%2d %s %s" % veriler # Ýlk 99 mýsra için koçak=117 byte (yeniden hesapla!)...
+            os.write (daðýt, koçak)
+            þiþeler -= 1
+        else:
+            þiþeler = 99
+            veriler =  (bira, duvarda, dükan, þiþeler, bira, duvarda)
+            koçak = "Maalesef sýfýr %s %s\n%s\n%s\n%2d %s %s" % veriler # Dükandan yenileme mýsrasý için koçak=128 byte (yeniden hesapla!)...
+            os.write (daðýt, koçak)
+
+def ebeveyn():
+    yeniden, daðýt = os.pipe()
+    if os.fork() == 0: # Linux içindir...
+        os.close (yeniden)
+        yavru (daðýt)
+    else:
+        os.close (daðýt)
+        sayaç = 1
+        yeniden = os.fdopen (yeniden)
+        while True:
+            print ('Tekerleme no: %d\n%s\n' % (sayaç, koçak) )
+            for i in range (4):
+                koçak = yeniden.readline()[:-1]
+                print ('%s' % (koçak) )
+            sayaç += 1
+            print()
+
+
+ebeveyn()

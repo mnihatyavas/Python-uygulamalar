@@ -1,0 +1,58 @@
+# coding:iso-8859-9 Türkçe
+# p_21403c.py: Dekoratör sayaçlý LM'in bellekle'mesini de dekoratörleme örneði.
+
+from collections import Counter
+
+def sayaç (fonk):
+    def yardýmcý (*a, **kwa):
+        yardýmcý.çaðrý += 1
+        return fonk (*a, **kwa)
+    yardýmcý.çaðrý = 0
+    yardýmcý.__name__= fonk.__name__
+    return yardýmcý
+
+# bellek{} sözlük deðiþkeni LM'den arýndýrýlýp bir dekoratör fonksiyona konulabilir...
+# LM içi bellek yerine bellekle fonksiyonu çaðrýldýðýndan, çaðrý sayýsý bir misli artar.
+def bellekle (fonk):
+    bellek = {}
+    def bellekleyici (*a, **kwa):
+        anahtar = str (a) + str (kwa)
+        if anahtar not in bellek: bellek [anahtar] = fonk (*a, **kwa)
+        return bellek [anahtar]
+    return bellekleyici
+
+@sayaç
+@bellekle
+def LM (dizge1, dizge2):
+    if dizge1 == "": return len (dizge2)
+    if dizge2 == "": return len (dizge1)
+    if dizge1 [-1] == dizge2 [-1]: fark = 0
+    else: fark = 1
+    sonuç = min ([LM (dizge1 [:-1], dizge2) + 1, LM (dizge1, dizge2 [:-1]) + 1, LM (dizge1 [:-1], dizge2 [:-1]) + fark])
+    return sonuç
+
+print ("Ýlk ve ikinci dizgelerin düzeltme mesafesi ve çaðrý sayýsý:\n", "-"*59, sep="")
+print ('LM("Python","Peithen")==>', LM ("Python", "Peithen"), ":", LM.çaðrý)
+print ('LM("Python","P")', LM ("Python", "P"), ":", LM.çaðrý)
+print ('LM("","Python")==>', LM ("", "Python"), ":", LM.çaðrý)
+
+print ('\nLM("Akdeniz","Akdeniizz")==>', LM ("Akdeniz", "Akdeniizz"), ":", LM.çaðrý)
+print ('LM("Kuþadasý","Kuþaddassý")', LM ("Kuþadasý", "Kuþaddassý"), ":", LM.çaðrý)
+print ('LM("Ýskender","Ýskender")==>', LM ("Ýskender", "Ýskender"), ":", LM.çaðrý)
+print ('LM("Ýskenderun","Ýskendurun")==>', LM ("Ýskenderun", "Iskendurun"), ":", LM.çaðrý)
+
+
+
+"""Çýktý:
+>python p_21403c.py
+Ýlk ve ikinci dizgelerin düzeltme mesafesi ve çaðrý sayýsý:
+-----------------------------------------------------------
+LM("Python","Peithen")==> 3 : 127
+LM("Python","P") 5 : 128
+LM("","Python")==> 6 : 129
+
+LM("Akdeniz","Akdeniizz")==> 2 : 319
+LM("Kuþadasý","Kuþaddassý") 2 : 560
+LM("Ýskender","Ýskender")==> 0 : 753
+LM("Ýskenderun","Ýskendurun")==> 2 : 1054
+"""

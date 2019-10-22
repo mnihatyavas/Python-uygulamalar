@@ -1,0 +1,39 @@
+# coding:iso-8859-9 Türkçe
+# p_14903.py: Soyut sýnýfý argümanlayan somut sýnýfýn esgeçme metodlarý ve ekstra somut metodu örneði.
+
+from abc import ABC, abstractmethod
+
+class SoyutSýnýf (ABC):
+    @abstractmethod
+    def soyutMetod1 (self): print ("\nPass geçmek zorunda deðilim!..")
+    @abstractmethod
+    def soyutMetod2 (self): print ("\nPass geçmeyip bir þeyler yapalým!..")
+
+class SomutSýnýf (SoyutSýnýf):
+    def soyutMetod1 (self):
+        super().soyutMetod1()
+        print ("Soyut metod-1 iþlemini ilave iþlemle zenginleþtirelim!..")
+    def soyutMetod2 (self):
+        super().soyutMetod2()
+        print ("Soyut metod-2 iþlemini ekstra iþlemle zenginleþtirelim!..")
+    def somutMetod (self):
+        print ("\nÝlla sadece miraslanan soyut sýnýfýn soyut metodlarý esgeçmesiyle yetinmeyelim!..")
+
+a = SomutSýnýf()
+
+a.soyutMetod1()
+a.soyutMetod2()
+a.somutMetod()
+
+
+
+"""Çýktý:
+>python p_14903.py
+Pass geçmek zorunda deðilim!..
+Soyut metod-1 iþlemini ilave iþlemle zenginleþtirelim!..
+
+Pass geçmeyip bir þeyler yapalým!..
+Soyut metod-2 iþlemini ekstra iþlemle zenginleþtirelim!..
+
+Ýlla sadece miraslanan soyut sýnýfýn soyut metodlarý esgeçmesiyle yetinmeyelim!..
+"""

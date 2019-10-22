@@ -1,0 +1,23 @@
+# coding:iso-8859-9 Türkçe
+# p_20105.py: print çýktýsýný sys.stdout'la ekrana ve dosyaya yönlendirme örneði.
+
+import sys
+
+çýktý = sys.stdout
+print ("Çýktýlar ekrana geliyor.")
+
+dosya = open ("test.txt", "a")
+sys.stdout = dosya
+print ("Bu çýktý satýrý test.txt dosyasýna yönlendirilmiþtir.")
+dosya.close()
+
+sys.stdout = çýktý
+print ("Çýktýlar tekrar ekrana geliyor.")
+
+
+
+"""Çýktý:
+>python p_20105.py
+Çýktýlar ekrana geliyor.
+Çýktýlar tekrar ekrana geliyor.
+"""
