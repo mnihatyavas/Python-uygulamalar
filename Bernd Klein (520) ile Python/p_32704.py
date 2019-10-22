@@ -1,0 +1,77 @@
+#coding:iso-8859-9 Türkçe
+# p_32704.py: Dizgeyi strftime, strptime ve parse ile biçemleme örneði.
+
+from datetime import datetime, timedelta
+from dateutil.parser import parse
+
+tarih1 = datetime (2019, 8, 12)
+tarih1 += timedelta (0, 3661)
+
+print ("Datetime tipli tarih: ", tarih1, type (tarih1),
+    "\nDizge tipli tarih: ", str (tarih1), type (str (tarih1)), sep="") # str kullanýmý...
+#----------------------------------------------------------------------------------------------------
+
+günler = ["Pazar", "Pazartesi", "Salý", "Çarþamba", "Perþembe", "Cuma", "Cumartesi"]
+print ("\nDatetime tarihin biçemlisi:", tarih1.strftime ("[Gun-Ay-Yil: %d-%m-%Y]") ) # strftime kullanýmý...
+print ("Kýsa ismen haftanýn günü: " + tarih1.strftime ('%a') )
+print ("Uzun ismen haftanýn günü: " + tarih1.strftime ('%A') )
+print ("Rakamen haftanýn günü: " + tarih1.strftime ('%w') ) # 0-->6
+print ("Türkçe uzun ismen haftanýn günü: " + günler [eval (tarih1.strftime ('%w'))] )
+#----------------------------------------------------------------------------------------------------
+
+aylar = ["Ocak", "Þubat", "Mart", "Nisan", "Mayýs", "Haziran", "Temmuz", "Aðustos", "Eylül", "Ekim", "Kasým", "Aralýk"]
+print ("\nRakamen ayýn günü:", tarih1.strftime ('%d') )
+print ("Kýsa ismen ay:", tarih1.strftime ('%b') )
+print ("Uzun ismen ay:", tarih1.strftime ('%B') )
+print ("Rakamen ay:", tarih1.strftime ('%m') ) # 1-->12
+if eval (tarih1.strftime ('%m')[0]): ay = eval (tarih1.strftime ('%m')) - 1
+else: ay = eval (tarih1.strftime ('%m')[1]) - 1
+print ("Türkçe uzun ismen ay:", aylar [ay] )
+print ("-"*42)
+#----------------------------------------------------------------------------------------------------
+
+tarih2 = datetime.strptime ("12 Aug 19", "%d %b %y") # %y=19 veya %Y=2019...
+print ("\nGünün biçemsiz tarihi: ", tarih2, "\n   Biçemli tarih: ", tarih2.strftime ("%d-%m-%Y"), sep="") # strptime kullanýmý...
+
+dizge = "2019-08-12T04:43:12"
+print ("Günün tarih ve zamaný:", datetime.strptime (dizge, "%Y-%m-%dT%H:%M:%S") )
+
+dizge = "17/4/1957 2:03:29 PM"
+tarih3 = datetime.strptime (dizge, "%d/%m/%Y %I:%M:%S %p")
+print ("Dizgesel tarih: ", dizge, "\n   Biçemli strptime tarih: ", tarih3, sep="")
+print ("-"*46)
+#----------------------------------------------------------------------------------------------------
+
+print ("\nDoðrudan parse'la dizgeyi tarihe çevirme:", parse ("Mon Aug 12 05:05:53 2019"))
+print ("Dolaylý datetime.strptime'la dizgeyi tarihe çevirme:", datetime.strptime ("Mon Aug 12 05:05:53 2019", "%a %b %d %H:%M:%S %Y") )
+
+
+
+"""Çýktý:
+>python p_32704.py
+Datetime tipli tarih: 2019-08-12 01:01:01<class 'datetime.datetime'>
+Dizge tipli tarih: 2019-08-12 01:01:01<class 'str'>
+
+Datetime tarihin biçemlisi: [Gun-Ay-Yil: 12-08-2019]
+Kýsa ismen haftanýn günü: Mon
+Uzun ismen haftanýn günü: Monday
+Rakamen haftanýn günü: 1
+Türkçe uzun ismen haftanýn günü: Pazartesi
+
+Rakamen ayýn günü: 12
+Kýsa ismen ay: Aug
+Uzun ismen ay: August
+Rakamen ay: 08
+Türkçe uzun ismen ay: Aðustos
+------------------------------------------
+
+Günün biçemsiz tarihi: 2019-08-12 00:00:00
+   Biçemli tarih: 12-08-2019
+Günün tarih ve zamaný: 2019-08-12 04:43:12
+Dizgesel tarih: 17/4/1957 2:03:29 PM
+   Biçemli strptime tarih: 1957-04-17 14:03:29
+----------------------------------------------
+
+Doðrudan parse'la dizgeyi tarihe çevirme: 2019-08-12 05:05:53
+Dolaylý datetime.strptime'la dizgeyi tarihe çevirme: 2019-08-12 05:05:53
+"""

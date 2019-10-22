@@ -1,0 +1,55 @@
+#coding:iso-8859-9 Türkçe
+# p_32502c.py: Pandas veri çerçevesi grafiðinde üç/çoklu eksen kullanýlmasý örneði.
+
+import matplotlib.pyplot as mp
+import pandas as pd
+from p_315 import Renk
+
+þehirler = {"ad": ["Londra", "Berlin", "Madrid", "Roma", "Paris", "Viyana", "Buçarest",
+    "Hamburg", "Budapeþte", "Varþova", "Barselona", "Münih", "Milano"],
+            "nüfus": [8615246, 3562166, 3165235, 2874038, 2273305, 1805681, 1803425,
+    1760433, 1754000, 1740119, 1602386, 1493900, 1350680],
+            "yüzölçüm": [1572, 891.85, 605.77, 1285, 105.4, 414.6, 228,
+    755, 525.2, 517, 101.9, 310.4, 181.8] }
+
+vÇ = pd.DataFrame (þehirler, columns=["nüfus", "yüzölçüm"], index=þehirler ["ad"] )
+vÇ ["yoðunluk"] = (vÇ ["nüfus"] / vÇ ["yüzölçüm"]).round (2)
+print ("Þehirler veri çerçevesi:\n", vÇ, sep="")
+
+þekil = mp.figure()
+þekil.suptitle ("Þehir Ýstatistikleri")
+þekil.subplots_adjust (right=0.75)
+
+altþekil1 = þekil.subplots()
+altþekil1.set_ylabel ("Nüfus")
+altþekil1.set_xlabel ("Þehirler")
+
+þekil.set_facecolor (Renk.renk())
+altþekil1.set_facecolor (Renk.renk())
+
+altþekil2, altþekil3 = altþekil1.twinx(), altþekil1.twinx()
+altþekil2.set_ylabel ("Yüzölçümü")
+altþekil3.set_ylabel ("Yoðunluk")
+saðOmurga = altþekil3.spines ['right']
+saðOmurga.set_position (('axes', 1.17))
+altþekil3.set_frame_on (True)
+altþekil3.patch.set_visible (False)
+
+vÇ ["nüfus"].plot (
+    ax=altþekil1,
+    style="-d", color=Renk.renk(),
+    xticks=range (len (vÇ.index)),
+    use_index=True,
+    rot=90)
+vÇ ["yüzölçüm"].plot (
+    ax=altþekil2,
+    style="--*", color=Renk.renk(),
+    use_index=True,
+    rot=90)
+vÇ ["yoðunluk"].plot (
+    ax=altþekil3,
+    style="--o", color=Renk.renk(),
+    use_index=True,
+    rot=90)
+þekil.legend()
+mp.show()

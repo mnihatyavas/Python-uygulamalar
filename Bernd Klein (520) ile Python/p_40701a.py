@@ -1,0 +1,35 @@
+# coding:iso-8859-9 Türkçe
+# p_40701a.py: Tek satýrlýk entry dizgesel veri giriþi örneði.
+
+from tkinter import *
+from p_315 import Renk
+
+kök = Tk()
+kök.title ("Entry Veri Giriþi")
+
+def göster():
+    etiket.config (text="Merhaba {" + giriþ1.get() + " " + giriþ2.get() + "}", bg=Renk.renk(), fg=Renk.renk() )
+    giriþ1.delete (0, END) # Baþtan son endekse kadar tümünü siler...
+    giriþ2.delete (0, END)
+
+çerçeve = Frame (kök, bg="Cyan" )
+çerçeve.pack()
+
+Label (çerçeve, text="Adýnýz:", bg="Khaki", fg="Purple").grid (row=0, column=0, pady=2)
+giriþ1 = Entry (çerçeve, bg="Lime", fg="Coral")
+giriþ1.grid (row=0, column=1)
+
+Label (çerçeve, text="Soyadýnýz", bg="Khaki", fg="Purple").grid (row=1) # Belirtilmeyen varsayýlý column=0
+giriþ2 = Entry (çerçeve, bg="Lime", fg="Coral")
+giriþ2.grid (row=1, column=1)
+
+giriþ1.insert (0, "M.Nihat")
+giriþ2.insert (0, "Yavaþ")
+
+Button (çerçeve, text="Göster", command=göster, bg="black", fg="Yellow").grid (row=3, column=0, sticky=W, pady=4)
+Button (çerçeve, text="ÇIK", command=çerçeve.quit, bg="black", fg="Red").grid(row=3, column=1, sticky=W, pady=4)
+
+etiket = Label (çerçeve)
+etiket.grid (row=4, columnspan=2, stick=W, pady=10, padx=2)
+
+kök.mainloop( )

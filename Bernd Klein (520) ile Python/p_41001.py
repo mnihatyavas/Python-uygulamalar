@@ -1,0 +1,91 @@
+# coding:iso-8859-9 Türkçe
+# p_41001.py: Metin bileþeninin sade, kaydýraçlý ve resimli örneði
+
+from tkinter import *
+from p_315 import Renk
+
+kök = Tk()
+kök.title ("Metin Bileþeni-1")
+
+metin = Text (kök, height=2, width=30)
+metin.pack()
+
+metin.insert (END, "Bu, sadece iki satýrlýk küçük\nbir metin bileþenidir.\n")
+
+kök.mainloop()
+#---------------------------------------------------------------------------------------------------------
+
+kök = Tk()
+kök.title ("Metin Bileþeni-2")
+
+metin = Text (kök, height=2, width=30)
+metin.pack()
+
+alýntý = """HAMLET: Olmak yada olmamak--Esas mesele budur:
+Hangisi daha soyludur, acaba çirkin bahtýn
+Ok ve mýzraklarýnýn anýlar eziyeti mi,
+Yoksa bir acun sýkýntýya göðüs germek,
+Ve sonunda hepsiyle zýtlaþmak mý? Ölmek, uyumak--
+Fazlasý deðil--ve uyuyunca deriz ki sonlandýrdýk
+Kalp sýzýsýný, ve binlerce doðal þoklarý
+Bedenin miraslandýðý. Bu'dur kemale erme
+Sofucasýna arzulanan."""
+
+metin.insert (END, alýntý)
+
+kök.mainloop()
+#---------------------------------------------------------------------------------------------------------
+
+kök = Tk()
+kök.title ("Kaydýraçlý Metin Bileþeni")
+
+kaydýraç = Scrollbar (kök)
+kaydýraç.pack (side=RIGHT, fill=Y)
+
+metin = Text (kök, height=4, width=50)
+metin.pack(side=LEFT)
+
+kaydýraç.config (command=metin.yview)
+metin.config (yscrollcommand=kaydýraç.set)
+
+metin.insert (END, alýntý)
+
+kök.mainloop()
+#---------------------------------------------------------------------------------------------------------
+
+kök = Tk()
+kök.title ("Resimli ve Kaydýraçlý Metin")
+
+metin1 = Text (kök, height=15, width=25, background=Renk.renk() )
+metin1.pack (side=LEFT)
+# kök renklendirmesi bg ve fg ile deðil, background ve foreground iledir...
+resim = PhotoImage (file='resim/shakespeare.png')
+metin1.image_create (END, image=resim)
+
+metin2 = Text (kök, height=15, width=45, background=Renk.renk() )
+metin2.pack (side=LEFT)
+
+kaydýraç = Scrollbar (kök, command=metin2.yview)
+kaydýraç.pack (side=RIGHT, fill=Y)
+
+metin2.configure (yscrollcommand=kaydýraç.set)
+
+metin2.tag_configure ('koyu-yatýk', foreground="blue", font=('Arial', 10, 'bold', 'italic'))
+metin2.tag_configure ('büyük', foreground="Brown", font=('Verdana', 20, 'bold'))
+metin2.tag_configure ('koyu-renkli', foreground='#476042', background="Tan", font=('Tempus Sans ITC', 12, 'bold'))
+metin2.tag_bind ('devam', "<1>", lambda olay, t=metin2: t.insert (END, "Þimdi deðil, belki daha sonra!\n", "koyu-yatýk") )
+# tag_configure ve tag_bind'lar sonradan metin.insert(END, metin, tag) olarak kullanýlacaktýr...
+
+metin2.insert (END,'William Shakespeare\n', 'büyük')
+
+alýntý = """
+Olmak yada olmamak--Esas mesele budur:
+Hangisi daha soyludur, acaba çirkin bahtýn
+Ok ve mýzraklarýnýn anýlar eziyeti mi,
+Yoksa bir acun sýkýntýya göðüs germek,
+"""
+
+metin2.insert (END, alýntý, 'koyu-renkli')
+metin2.insert (END, 'devamý var...\n', 'devam')
+
+kök.mainloop()

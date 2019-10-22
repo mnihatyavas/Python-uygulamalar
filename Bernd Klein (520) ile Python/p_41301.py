@@ -1,0 +1,35 @@
+# coding:iso-8859-9 Türkçe
+# p_41301.py: Aþaðý-açýlan menü ve altseçenekleri örneði.
+
+from tkinter import *
+from tkinter.filedialog import askopenfilename as aof
+
+def YeniDosya(): mesaj.config (text="Yeni bir dosya yaratýlacak.")
+def DosyaAç():
+    dosyaAdý = aof()
+    mesaj.config (text=dosyaAdý)
+
+def Hakkýnda(): mesaj.config (text="Bu basit bir aþaðý-açýlan menü örneðidir.")
+
+kök = Tk()
+kök.title ("Aþaðýya-açýlan Menü")
+kök.geometry ("250x85")
+
+menü = Menu (kök)
+kök.config (menu=menü, bg="DarkKhaki")
+
+dosyaMenüsü = Menu (menü, bg="Navy", fg="Coral")
+menü.add_cascade (label="Dosya", menu=dosyaMenüsü)
+dosyaMenüsü.add_command (label="Yeni", command=YeniDosya)
+dosyaMenüsü.add_command (label="Aç...", command=DosyaAç)
+dosyaMenüsü.add_separator()
+dosyaMenüsü.add_command (label="ÇIK", command=kök.quit)
+
+yardýmMenüsü = Menu (menü, bg="DarkRed", fg="Yellow")
+menü.add_cascade (label="Yardým", menu=yardýmMenüsü)
+yardýmMenüsü.add_command (label="Hakkýmýzda...", command=Hakkýnda)
+
+mesaj = Message (kök, bg="Purple", fg="Gold")
+mesaj.pack (side=BOTTOM)
+
+kök.mainloop()

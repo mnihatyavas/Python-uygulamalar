@@ -1,0 +1,20 @@
+# coding:iso-8859-9 Türkçe
+# p_41102.py: Python filedialog ile dosya önizleme ve açma örneði.
+
+from tkinter import *
+from tkinter.filedialog import askopenfilename
+
+kök = Tk()
+kök.title ("Dosya Açma Diyaloðu")
+
+def dosyaAç():
+    dosyaAdý = askopenfilename()
+    etiket.config (text="Açýlan dosya: " + dosyaAdý)
+
+Button (kök, text='ÇIK', command=kök.quit).pack (fill=X)    
+Button (kök, text='Önizlemesi yapýlýp açýlacak dosyayý seç', command=dosyaAç).pack (fill=X)
+
+etiket = Label (kök)
+etiket.pack (side=BOTTOM)
+
+kök.mainloop()

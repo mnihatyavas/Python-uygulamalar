@@ -1,0 +1,65 @@
+# coding:iso-8859-9 Türkçe
+# p_40601.py: Çentik kutusuyla cinsiyet, yaþ ve medeni durum çoklu seçenek örneði.
+
+from tkinter import *
+from p_315 import Renk
+
+kök = Tk()
+kök.title ("Çokseçenekli Çentik Kutularý")
+
+def göster():
+    metin = ""
+    if deðiþken1.get() == 1: metin += "Kadýn, " # 0=false/çentiksiz, 1=true/çentikli
+    if deðiþken2.get() == 1: metin += "Erkek, "
+    if deðiþken3.get() == 1: metin += "Çocuk, "
+    if deðiþken4.get() == 1: metin += "Genç, "
+    if deðiþken5.get() == 1: metin += "Kamil, "
+    if deðiþken6.get() == 1: metin += "Yaþlý, "
+    if deðiþken7.get() == 1: metin += "Bekar, "
+    if deðiþken8.get() == 1: metin += "Evli, "
+    if deðiþken9.get() == 1: metin += "Dul, "
+    etiket.config (text=metin, bg=Renk.renk(), fg=Renk.renk() )
+
+çerçeve = Frame (kök, bg=Renk.renk() )
+çerçeve.grid()
+
+Label (çerçeve, text="Lütfen aþaðýdakilerden\nenaz birini iþaretleyin:", bg=Renk.renk(), fg=Renk.renk(), font=("Arial", 15, "bold") ).grid (row=0, stick=W, pady=10)
+
+deðiþken1 = IntVar()
+Checkbutton (çerçeve, text="Kadýn", variable=deðiþken1, fg="Coral", bg="Black" ).grid (row=1, sticky=W)
+
+deðiþken2 = IntVar()
+Checkbutton (çerçeve, text="Erkek", variable=deðiþken2, fg="Coral", bg="Black" ).grid (row=2, sticky=W)
+
+Label (çerçeve, text="-"*20, bg="Brown", fg="Yellow").grid (row=3, stick=W)
+
+deðiþken3 = IntVar()
+Checkbutton (çerçeve, text="Çocuk", variable=deðiþken3, fg="Coral", bg="Black" ).grid (row=4, sticky=W)
+
+deðiþken4 = IntVar()
+Checkbutton (çerçeve, text="Genç", variable=deðiþken4, fg="Coral", bg="Black" ).grid (row=5, sticky=W)
+
+deðiþken5 = IntVar()
+Checkbutton (çerçeve, text="Kamil", variable=deðiþken5, fg="Coral", bg="Black" ).grid (row=6, sticky=W)
+
+deðiþken6 = IntVar()
+Checkbutton (çerçeve, text="Yaþlý", variable=deðiþken6, fg="Coral", bg="Black" ).grid (row=7, sticky=W)
+
+Label (çerçeve, text="-"*20, bg="Brown", fg="Yellow").grid (row=8, stick=W)
+
+deðiþken7 = IntVar()
+Checkbutton (çerçeve, text="Bekar", variable=deðiþken7, fg="Coral", bg="Black" ).grid (row=9, sticky=W)
+
+deðiþken8 = IntVar()
+Checkbutton (çerçeve, text="Evli", variable=deðiþken8, fg="Coral", bg="Black" ).grid (row=10, sticky=W)
+
+deðiþken9 = IntVar()
+Checkbutton (çerçeve, text="Dul", variable=deðiþken9, fg="Coral", bg="Black" ).grid (row=11, sticky=W)
+
+Button (çerçeve, text="Seçilenleri Göster", command=göster, bg=Renk.renk(), fg=Renk.renk() ).grid (row=12, column=0, sticky=W, pady=5)
+Button (çerçeve, text="Çýk", command=kök.quit, bg=Renk.renk(), fg=Renk.renk() ).grid (row=12, column=0, pady=5)
+
+etiket = Label (çerçeve, font=("Verdana", 15, "bold") )
+etiket.grid (row=13, stick=W)
+
+kök.mainloop()

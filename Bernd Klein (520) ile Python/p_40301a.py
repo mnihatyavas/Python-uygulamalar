@@ -1,0 +1,56 @@
+# coding:iso-8859-9 Türkçe
+# p_40301a.py: Tkinter Button ile slogan yazdýrma ve saniye sayacý örneði.
+
+import tkinter as tk
+from p_315 import Renk
+
+def sloganYaz():
+    print ("Tkinter kullanýmý çok kolay bir GUI modülüdür!..")
+    tk.Label (çerçeve,
+        text="Tkinter kullanýmý çok kolay bir GUI modülüdür!..",
+        bg=Renk.renk(),
+        fg=Renk.renk() ).pack()
+
+kök = tk.Tk()
+kök.title ("Slogan düðmesi")
+çerçeve =  tk.Frame (kök, bg=Renk.renk())
+çerçeve.pack()
+
+tk.Button (çerçeve,
+    text="ÇIK",
+    bg="FireBrick",
+    fg="Yellow",
+    command=kök.destroy).pack (side=tk.LEFT) # quit arada kapatmýyor...
+tk.Button (çerçeve,
+    text="Lütfen týklayýn",
+    bg="Gold",
+    fg="Blue",
+    padx=10,
+    pady=10,
+    command=sloganYaz).pack (side=tk.LEFT)
+
+kök.mainloop()
+#-----------------------------------------------------------------------------------------------------
+
+sayaç=0
+def sayaçEtiketi (fiþ):
+    def say():
+        global sayaç
+        sayaç += 1
+        fiþ.config (text=str (sayaç), bg=Renk.renk(), fg=Renk.renk() )
+        fiþ.after (1000, say)
+    say()
+ 
+kök = tk.Tk()
+kök.title ("Saniye sayacý")
+çerçeve = tk.Frame (kök, bg=Renk.renk() )
+çerçeve.pack()
+
+etiket = tk.Label (çerçeve, font=("Arial", 100, "bold") )
+etiket.pack()
+
+tk.Button (çerçeve, text="Sayacý Baþlat", command=lambda:sayaçEtiketi (etiket), bg="#000", fg="MintCream").pack()
+# Parametreli fonksiyon komutlarýnda, arada lambda olmazsa, ilk baþta týklamadan iþletir...
+tk.Button (çerçeve, text='Programý Sonlandýr', width=50, command=kök.quit, bg="#057fb5", fg="#ff0").pack()
+
+kök.mainloop()

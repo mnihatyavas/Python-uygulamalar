@@ -1,0 +1,44 @@
+# coding:iso-8859-9 Türkçe
+# p_40702.py: Form doldurma ve görüntüleme örneði.
+
+from tkinter import *
+from p_315 import Renk
+
+alanlar = ('Soyadýnýz', 'Adýnýz', 'Mesleðiniz', 'Tabiyetiniz')
+
+def getir (veriGiriþleri):
+    metin = ""
+    for veri in veriGiriþleri:
+        alan = veri [0]
+        dizge  = veri [1].get()
+        metin += "(" + alan + ": " + dizge + ") "
+    etiket.config (text= "[ " + metin [:-1] + " ]", bg=Renk.renk(), fg=Renk.renk() ) 
+
+def veriGiriþFormu (kök, alanlar):
+    veriGiriþleri = []
+    for alan in alanlar:
+      satýr = Frame (kök) # satýr=çerçeve...
+      satýr.pack (side=TOP, fill=X, padx=5, pady=5)
+      yafta = Label (satýr, width=15, text=alan, anchor='w', bg="Lime", fg="Blue", padx=2)
+      yafta.pack (side=LEFT, padx=2)
+      girilenVeri = Entry (satýr, bg="Cyan", fg="FireBrick")
+      girilenVeri.pack (side=RIGHT, expand=YES, fill=X)
+      veriGiriþleri.append ((alan, girilenVeri))
+    return veriGiriþleri
+
+if __name__ == '__main__':
+    kök = Tk()
+    kök.title ("Baþvuru Formu")
+    çerçeve = Frame (kök, bg="DarkKhaki")
+    çerçeve.pack()
+    veriGiriþleri = veriGiriþFormu (çerçeve, alanlar)
+    kök.bind ('<Return>', (lambda event, x=veriGiriþleri: getir (x) ) ) # [Ent]="Göster" olayý...
+    düðme1 = Button (çerçeve, text='Göster', bg="DarkSlateGray", fg="Yellow",
+        command=(lambda x=veriGiriþleri: getir (x) ) )
+    düðme1.pack (side=LEFT, padx=5, pady=5)
+    düðme2 = Button (çerçeve, text='ÇIK', bg="#ddd", fg="Red",command=kök.quit)
+    düðme2.pack (side=LEFT, padx=5, pady=5)
+    etiket = Label (çerçeve)
+    etiket.pack(pady=7)
+
+kök.mainloop( )

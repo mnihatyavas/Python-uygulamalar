@@ -1,0 +1,35 @@
+# coding:iso-8859-9 Türkçe
+# p_40602.py: Programlama ve yabancý diller çokseçmeli çentik kutularý örneði.
+
+from tkinter import *
+
+class Çentikçubuðu (Frame):
+    def __init__ (self, ebeveyn=None, liste=[], yön=LEFT, demirle=W):
+        Frame.__init__ (self, ebeveyn)
+        self.deðiþkenler = []
+        for eleman in liste:
+            deðiþken = IntVar()
+            çentik = Checkbutton (self, text=eleman, variable=deðiþken)
+            çentik.pack (side=yön, anchor=demirle, expand=YES)
+            self.deðiþkenler.append (deðiþken)
+    def durum (self): return map ((lambda deðiþken: deðiþken.get() ), self.deðiþkenler)
+
+if __name__ == '__main__':
+    kök = Tk()
+    diller = Çentikçubuðu (kök, ['Python', 'Java', 'JS', 'HTML', "CSS"])
+    lisanlar = Çentikçubuðu (kök, ['Ýngilizce', 'Almanca', "Fransýzca", "Rusca"])
+    diller.pack (side=TOP,  fill=X)
+    lisanlar.pack (side=TOP, anchor=W)
+    diller.config (relief=GROOVE, bd=2)
+    lisanlar.config (relief=GROOVE, bd=2)
+
+    def durumlar(): etiket.config (text=("[" + str (list (diller.durum())) + str (list (lisanlar.durum())) + "]"))
+
+    Button (kök, text='GÖSTER', command=durumlar).pack (side=LEFT, anchor=W)
+    Button (kök, text='ÇIK', command=kök.quit).pack (side=RIGHT)
+
+
+    etiket = Label (kök)
+    etiket.pack()
+
+kök.mainloop()

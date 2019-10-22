@@ -1,0 +1,100 @@
+# coding:iso-8859-9 Türkçe
+# p_40501a.py: Radyo düðmeleri ve onlara variable-value ile deðiþken-deðer atanmasý örneði.
+
+import tkinter as tk
+from p_315 import Renk
+
+kök = tk.Tk()
+kök.title ("Radyo Düðmeleri-1")
+
+def seçiminiz(): etiket.config (text="Seçtiðiniz programlama dili: " + liste [deðer.get()], bg=Renk.renk(), fg=Renk.renk() )
+liste = ["Pyton", "JavaScript", "Java", "HTML", "CSS"]
+
+deðer = tk.IntVar()
+deðer.set (1) # Ýlk açýlýþta varsayýlý seçilen 1=JavaScript
+# variable=deðer: StringVar(),  IntVar(), DoubleVar() veya BooleanVar() olabilir...
+
+çerçeve = tk.Frame (kök, bg=Renk.renk() )
+çerçeve.pack()
+
+tk.Label (çerçeve,
+    text="""Aþaðýdaki programlama dillerinden\nsadece birini seçebilirsiniz:""",
+    justify=tk.LEFT,
+    bg=Renk.renk(),
+    fg=Renk.renk(),
+    padx = 20).pack()
+
+tk.Radiobutton (çerçeve, text="Python", bg=Renk.renk(), fg=Renk.renk(), padx = 20, variable=deðer, value=0, command=seçiminiz).pack (anchor=tk.W)
+tk.Radiobutton (çerçeve, text="JavaScript", bg=Renk.renk(), fg=Renk.renk(), padx = 20, variable=deðer, value=1, command=seçiminiz).pack (anchor=tk.W)
+tk.Radiobutton (çerçeve, text="Java", bg=Renk.renk(), fg=Renk.renk(), padx = 20, variable=deðer, value=2, command=seçiminiz).pack (anchor=tk.W)
+tk.Radiobutton (çerçeve, text="HTML", bg=Renk.renk(), fg=Renk.renk(), padx = 20, variable=deðer, value=3, command=seçiminiz).pack (anchor=tk.W)
+tk.Radiobutton (çerçeve, text="CSS", bg=Renk.renk(), fg=Renk.renk(), padx = 20, variable=deðer, value=4, command=seçiminiz).pack (anchor=tk.W)
+
+etiket = tk.Label (çerçeve, text="Seçtiðiniz programlama dili: " + liste [deðer.get()], justify=tk.LEFT, bg=Renk.renk(), fg=Renk.renk(), padx = 20, pady=20)
+etiket.pack (anchor=tk.W)
+
+kök.mainloop()
+#------------------------------------------------------------------------------------------------------
+
+from tkinter import *
+
+kök = Tk()
+kök.title ("Radyo Düðmeleri-2")
+
+def seçiminiz(): etiket.config (text="Seçtiðiniz programlama dili: " + liste [deðer.get()], bg=Renk.renk(), fg=Renk.renk() )
+
+deðer = IntVar()
+deðer.set (1) # Ýlk açýlýþta varsayýlý seçilen 1=JavaScript
+# variable=deðer: StringVar(),  IntVar(), DoubleVar() veya BooleanVar() olabilir...
+
+çerçeve = Frame (kök, bg=Renk.renk() )
+çerçeve.pack()
+
+Label (çerçeve,
+    text="""Aþaðýdaki programlama dillerinden\nsadece birini seçebilirsiniz:""",
+    justify=LEFT,
+    bg=Renk.renk(),
+    fg=Renk.renk(),
+    width=30,
+    padx = 16).pack()
+
+dillerListesi = ["Pyton", "JavaScript", "Java", "HTML", "CSS"]
+for i, dil in enumerate (dillerListesi): Radiobutton (çerçeve, text=dil, bg=Renk.renk(), fg=Renk.renk(), padx = 20, variable=deðer, value=i, command=seçiminiz).pack() # Varsayýlý: CENTER
+
+Label (çerçeve, text="-"*48).pack()
+etiket = Label (çerçeve, text="Seçtiðiniz programlama dili: " + liste [deðer.get()], justify=LEFT, bg=Renk.renk(), fg=Renk.renk(), padx = 20, pady=20)
+etiket.pack()
+
+mainloop() # Varsayýlý: kök.mainloop()
+#------------------------------------------------------------------------------------------------------
+
+kök = Tk()
+kök.title ("Radyo Düðmeleri-3")
+
+def seçiminiz(): etiket.config (text="Seçtiðiniz programlama dili: " + liste [deðer.get()], bg=Renk.renk(), fg=Renk.renk() )
+
+deðer = IntVar()
+deðer.set (0) # Ýlk açýlýþta varsayýlý seçilen 0=Python
+# variable=deðer: StringVar(),  IntVar(), DoubleVar() veya BooleanVar() olabilir...
+
+çerçeve = Frame (kök, bg=Renk.renk() )
+çerçeve.pack()
+
+Label (çerçeve,
+    text="""Aþaðýdaki programlama dillerinden\nsadece birini seçebilirsiniz:""",
+    justify=LEFT,
+    bg=Renk.renk(),
+    fg=Renk.renk(),
+    width=30,
+    padx = 16).pack()
+
+diller = ["Pyton", "JavaScript", "Java", "HTML", "CSS"]
+for i in range (len (diller) ): Radiobutton (çerçeve, text=diller [i], indicatoron=0, bg=Renk.renk(), fg=Renk.renk(), width=20, variable=deðer, value=i, command=seçiminiz).pack()
+# Varsayýlý indicatoron=1 (radyo düðme yuvarlak ikon görünür)...
+# Seçilen buton gömülüdür...
+
+Label (çerçeve, text="-"*48, bg="Black", fg="Yellow").pack()
+etiket = Label (çerçeve, text="Seçtiðiniz programlama dili: " + liste [deðer.get()], justify=LEFT, bg=Renk.renk(), fg=Renk.renk(), padx = 20, pady=20)
+etiket.pack()
+
+kök.mainloop()

@@ -1,0 +1,104 @@
+#coding:iso-8859-9 Türkçe
+# p_40101a.py: Python tkinter'le etiket, resim, buton, çerçeve ve sayaç örneði.
+
+import tkinter as tk
+
+kök = tk.Tk() # tk modülünün Tk() aletkutulu kök widget/bileþen'i...
+kök.mainloop() # Ýçi boþ kök penceresi...
+#----------------------------------------------------------------------------------------------------------
+
+kök = tk.Tk()
+bileþen = tk.Label (kök, text="Merhaba Renkli Tkinter Pencereli Dünyasý!..") # kök ebeveynin Label yavrusu...
+bileþen.pack() # Label metni ebatýnda paketle...
+kök.mainloop() # Ýçi etiket beyanlý pencere...
+#----------------------------------------------------------------------------------------------------------
+
+kök = tk.Tk()
+logo = tk.PhotoImage (file="resim/pythonLogosu.gif")
+etiketBileþeni1 = tk.Label (kök, image=logo).pack (side="right")
+açýklama = """
+Önceleri sadece GIF ve PPM/PGM resim biçemleri
+destekleniyordu, ancak güncel python 3.8 sürümünde
+diðer resim dosya biçemlerine de görüntü imkaný
+saðlayan GUI grafiksel kullanýcý arayüz geliþtirilmiþtir."""
+
+etiketBileþeni2 = tk.Label (
+    kök,
+    justify=tk.LEFT, # Metni LEFT, RIGHT veya CENTER (varsayýlý) hizalar...
+    padx = 10, # metnin sol ve saðýna 10px boþluk býrakýr; pady ise üst ve altýna...
+    text=açýklama).pack (side="left")
+kök.mainloop()
+#----------------------------------------------------------------------------------------------------------
+
+kök = tk.Tk()
+logo = tk.PhotoImage (file="resim/pythonLogosu.gif")
+etiket = tk.Label (
+    kök,
+    text=açýklama,
+    justify=tk.CENTER, # varsayýlý...
+    padx = 50, # Sol-sað boþluk...
+    pady = 50, # Alt-üst boþluk...
+    image=logo,
+    compound = tk.CENTER # etiket bileþenindeki resmin metinle biliþimi ortasýnda...
+    ).pack (side="right")
+kök.mainloop()
+#----------------------------------------------------------------------------------------------------------
+
+kök = tk.Tk()
+logo = tk.PhotoImage (file="resim/pythonLogosu.gif")
+etiket = tk.Label (
+    kök,
+    text=açýklama,
+    #justify=tk.CENTER, # varsayýlý...
+    padx = 50, # Sol-sað boþluk...
+    pady = 10, # Alt-üst boþluk...
+    image=logo,
+    compound = tk.TOP # LEFT, RIGHT, TOP ve BOTTOM...
+    ).pack (side="right")
+kök.mainloop()
+#----------------------------------------------------------------------------------------------------------
+
+kök = tk.Tk()
+tk.Label (kök,
+    text="Times yazý fonlu kýrmýzý metin",
+    fg = "red",
+    font = "Times").pack()
+tk.Label (kök,
+    text="Helvetica 16 koyu yatýk fonlu yeþil zeminde açýk-yeþil metin",
+    fg = "LightGreen",
+    bg = "dark green",
+    font = "Helvetica 16 bold italic").pack()
+tk.Label (kök,
+    text="Verdana 10 koyu fonlu sarý zeminde mavi metin",
+    fg = "blue",
+    bg = "yellow",
+    font = "Verdana 10 bold").pack()
+tk.Label (kök,
+    text="Segoe Script 20 normal fonlu ateþ-tuðlasý zeminde altýn renkli metin",
+    fg = "Gold",
+    bg = "FireBrick",
+    font = ("Segoe Script", 20, 'normal') ).pack()
+kök.mainloop()
+#----------------------------------------------------------------------------------------------------------
+
+from tkinter import Tk, Frame
+from p_315 import Renk
+
+sayaç = 0
+def sayacýBaþlat (yafta):
+    def say():
+        global sayaç
+        sayaç += 1
+        yafta.config (text=str (sayaç), fg=Renk.renk(), bg=Renk.renk() )
+        yafta.after (1000, say) # Her 1000mS=1sn'de tekrar iþlet...
+    say()
+
+kök = Tk()
+kök.title ("Saniye Sayacý")
+çerçeve = Frame (kök, bg="MidnightBlue")
+etiket = tk.Label (çerçeve, font=("arial", 100, "bold") )
+etiket.pack()
+sayacýBaþlat (etiket)
+düðme = tk.Button (çerçeve, text='Programý Sonlandýr', width=50, height=2, bg="black", fg="yellow", command=kök.destroy).pack()
+çerçeve.pack()
+kök.mainloop()

@@ -1,0 +1,35 @@
+# coding:iso-8859-9 Türkçe
+# p_41101.py: Python messagebox ile tüm mesaj kutularý örneði.
+
+# >python -m pip install --upgrade pip
+
+from tkinter import *
+from tkinter.messagebox import *
+
+kök = Tk()
+kök.title ("Mesaj Kutularý")
+
+def cevapMesajý(): showerror ("Cevap", "Pardon, ama cevap bulunamadý")
+
+def çýkýþMesajlarý():
+    if askyesno ('Onay', 'Çýkayým mý?'):
+        showwarning ('Evet', 'Týklayýnca çýkýyorum')
+        kök.quit()
+    else: showinfo ('Ýptal', 'Çýkýþ iptal edildi')
+
+def tümMesajlar():
+    askokcancel ("Ýptal", "Tamam mý, Ýptal mi?")
+    askquestion ("Soru Sor", "Sordun mu?")
+    askretrycancel ("Tekrar veya Ýptal", "Tekrar mý, Ýptal mi?")
+    askyesno ("Evet veya Hayýr", "Evet mi, Hayýr mý?")
+    askyesnocancel ("Evet, Hayýr, Ýptal", "Evet mi, Hayýr mý, Ýptal mi?")
+    showerror ("Hatayý göster", "Hata budur")
+    showinfo ("Bilgilendirme", "Bu mesaj bilgilendirme maksatlýdýr")
+    showwarning ("Ýkaz", "Bu bir ikaz mesajýdýr")
+
+Button (kök, text='Tüm varsayýlý mesaj kutularý', command=tümMesajlar).pack (fill=X)
+Button (kök, text='Cevap ver', command=cevapMesajý).pack (fill=X)
+Button (kök, text='Çýkýþ mesajlarý', command=çýkýþMesajlarý).pack (fill=X)
+Button (kök, text='ÇIK', command=kök.quit).pack (fill=X)
+
+kök.mainloop()

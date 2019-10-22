@@ -1,0 +1,38 @@
+# coding:iso-8859-9 Türkçe
+# p_40201.py: Message bileþeni ve parametrik içerikleri örneði.
+
+from tkinter import *
+
+kök = Tk()
+özsöz = "Ne yaptýðýn önemli deðildir, önemli olan senin yapmýþ olmandýr.\n(Mahatma Gandhi)"
+mesaj = Message (kök, text = özsöz)
+mesaj.config (bg='DarkGreen', fg="SpringGreen", font=('times', 10, 'italic') )
+mesaj.pack()
+#--------------------------------------------------------------------------------------------------------
+
+Message (kök, text=özsöz, width=1000, anchor=SW, bg="Navy", fg="SpringGreen", font=('times', 10) ).pack()
+# anchor/demirat: N/north/kuzey, NE, E, SE, S, SW, W, NW veya CENTER (varsayýlý).
+
+Message (kök, text=özsöz, aspect=400, bg='DarkGreen', fg="SpringGreen", font=('times', 10) ).pack()
+# aspect/görünüþ: Mesaj geniþliðinin yüksekliðe oraný (varsayýlý 150).
+
+Message (kök, text=özsöz, width=1000, bd=3, bg="Brown", fg="Lime", font=('times', 10) ).pack()
+# bd/borderwidth/sýnýrgeniþliði (varsayýlý 2).
+
+Message (kök, text=özsöz, width=1000, cursor="arrow", bg="Tan", fg="Lime", font=('times', 10) ).pack()
+# cursor/imleç: Fare üzerindeyken imleç biçimi (varsayýlý "arrow"/ok).
+
+Message (kök, text=özsöz, width=1000, highlightthickness=10, highlightbackground="black", highlightcolor="yellow", bg="Sienna", fg="Lime", font=('times', 10) ).pack()
+# highlightthickness-background-color/ýþýldakkalýnlýðý-zemini-rengi.
+
+Message (kök, text=özsöz, width=1000, bd=10, relief=GROOVE, bg="Brown", fg="Lime", font=('times', 10) ).pack()
+# relief/kabartma: FLAT/düz (varsayýlý), SUNKEN/gömülü, RAISED/kabarýk, GROOVE/oluk ve RIDGE/sýrt.
+
+Message (kök, text=özsöz, width=1000, bd=10, relief=SUNKEN, takefocus="true", bg="Olive", fg="Lime", font=('times', 10) ).pack()
+# takefocus/odaklan: True ise bileþen odaklanýlýr (varsayýlý false).
+
+isim = "M.Nihat Yavaþ"
+Message (kök, text=özsöz, textvariable=isim, width=1000, bd=10, relief=RAISED, bg="Coral", fg="Lime", font=('times', 10) ).pack()
+# textvariable/dizgedeðiþkeni: Mesajý bir deðiþkenle iliþkilendirir; deðiþken içeriði deðiþirse mesajý günceller.
+
+mainloop()

@@ -1,0 +1,37 @@
+#coding:iso-8859-9 Türkçe
+# p_32803.py: Zaman serilerinin grafiklenmesi örneði.
+
+import pandas as pd
+import matplotlib.pyplot as mp
+from datetime import datetime, timedelta
+from p_315 import Renk
+from random import random
+
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
+
+günSayýsý = 15
+ilk = datetime (2019, 8, 13)
+tarihler = [ilk + timedelta (days=i) for i in range (günSayýsý)]
+Mersin = [int (random() * 20 + 15) for _ in range (günSayýsý)]
+Aðrý = [int (random() * 20 + 5) for _ in range (günSayýsý)]
+zsMersin = pd.Series (Mersin, index=tarihler)
+zsAðrý = pd.Series (Aðrý, index=tarihler)
+ortalama = (zsMersin + zsAðrý) / 2
+
+þekil = mp.figure (figsize=(10,4))
+þekil.set_facecolor (Renk.renk())
+
+altþekil = þekil.add_subplot()
+altþekil.set_facecolor (Renk.renk())
+
+mp.title ("Günboyu Sýcaklýklar")
+mp.ylabel ("Selsiyüs Derece")
+mp.xlabel ("Tarih")
+
+mp.plot (zsMersin, "-d", label="Mersin", color=Renk.renk())
+mp.plot (zsAðrý, "--o", label="Aðrý", color=Renk.renk())
+mp.plot (ortalama, "-.*", label="Ortalama", color=Renk.renk())
+
+mp.legend (loc="best")
+mp.show()

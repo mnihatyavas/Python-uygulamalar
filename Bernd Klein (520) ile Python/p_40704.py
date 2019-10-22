@@ -1,0 +1,92 @@
+# coding:iso-8859-9 Türkçe
+# p_40704.py: Alýnan faizli borcun aylýk eþit geri ödeme hesabý örneði.
+
+from tkinter import *
+from p_315 import Renk
+
+"""Hesaplama formülleri:
+==>r aylýk ondalýk faizle k ay süresince aylýk sabit Ö tutarýný ödeme sonrasý A ana borç'dan geriye ödenmemiþ kalan bakiye:
+   B =(1+r)**k*A-((1+r)**k-1)*Ö/r
+==>Þayet tüm A borcu ödenecek ve B=0 kalacaksa, n sayýdaki aylýk eþit ödeme tutarý:
+Ö=r*(1+2)**n*A/((1+r)**n-1)
+"""
+
+alanlar = ('Yýllýk Faiz', 'Ödeme Adedi', 'Alýnan Ana Borç', 'Aylýk Geri Ödeme', 'Kalan Bakiye')
+
+def aylýkÖdeme (girilenler):
+    if girilenler ["Alýnan Ana Borç"].get() == "0": return
+    r = (float (girilenler ['Yýllýk Faiz'].get() ) / 100) / 12 #Aylýk ondalýk faiz...
+    borç = float (girilenler ['Alýnan Ana Borç'].get() )
+    n =  float (girilenler ['Ödeme Adedi'].get() )
+    kalan = float (girilenler ['Kalan Bakiye'].get() )
+    b = (1 + r)** n # Birikimli bileþik faiz...
+    aylýkÖdeme = r * ( (b * borç - kalan) / ( b - 1 ) )
+    girilenler ['Aylýk Geri Ödeme'].delete (0, END)
+    girilenler ['Aylýk Geri Ödeme'].insert (0, ("%8.2f" % (aylýkÖdeme) ).strip() )
+    print ("\nAylýk ondalýk faiz:", r)
+    print ("Aylýk Geri Ödeme: %8.2f" % (aylýkÖdeme) )
+
+def kalanBakiye (girilenler):
+    if girilenler ["Alýnan Ana Borç"].get() == "0": return
+    r = (float (girilenler ['Yýllýk Faiz'].get() ) / 100) / 12 # Aylýk ondalýk faiz...
+    borç = float (girilenler ['Alýnan Ana Borç'].get() )
+    n =  float (girilenler ['Ödeme Adedi'].get() )
+    b = (1 + r)**n # Birikimli bileþik faiz...
+    aylýkÖdeme = float (girilenler ['Aylýk Geri Ödeme'].get() )
+    kalan = b * borç  - ( (b - 1) / r) * aylýkÖdeme
+    girilenler ['Kalan Bakiye'].delete (0, END)
+    girilenler ['Kalan Bakiye'].insert (0, ("%8.2f" % (kalan) ).strip() )
+    print ("\nAylýk ondalýk faiz:", r)
+    print ("Kalan Bakiye: %8.2f" % (kalan) )
+
+def getir (veriGiriþleri):
+    print()
+    for _ in range (len (veriGiriþleri) ): print ('%s: %s' % (alanlar [_], veriGiriþleri [ alanlar [_] ].get() ))
+
+def formYarat (kök, alanlar):
+    girilenler = {}
+    for alan in alanlar:
+        satýr = Frame (kök)
+        satýr.pack (side=TOP, fill=X, padx=5, pady=5)
+        etiket = Label (satýr, width=22, text=alan+": ", anchor='w', bg="Navy", fg="Yellow")
+        etiket.pack (side=LEFT, padx=1)
+        veri = Entry (satýr, bg="DarkGreen", fg="Pink")
+        veri.pack (side=RIGHT, expand=YES, fill=X)
+        veri.insert (0,"0")
+        girilenler [alan] = veri
+    return girilenler
+
+if __name__ == '__main__':
+    kök = Tk()
+    kök.title ("Aylýk Eþit Borç Ödeme")
+    çerçeve = Frame (kök, bg=Renk.renk() )
+    çerçeve.pack()
+    veriler = formYarat (çerçeve, alanlar)
+    kök.bind ('<Return>', (lambda event, x=veriler: getir (x)) )
+    düðme1 = Button (çerçeve, text='Kalan Bakiye', bg="Black", fg="Cyan",
+          command=(lambda x=veriler: kalanBakiye (x)) )
+    düðme1.pack (side=LEFT, padx=5, pady=5)
+    düðme2 = Button (çerçeve, text='Aylýk Geri Ödeme', bg="Black", fg="Cyan",
+          command=(lambda x=veriler: aylýkÖdeme (x)) )
+    düðme2.pack (side=LEFT, padx=5, pady=5)
+    düðme3 = Button (çerçeve, text='ÇIK',  bg="Brown", fg="Yellow",command=kök.quit)
+    düðme3.pack (side=LEFT, padx=5, pady=5)
+    kök.mainloop()
+
+
+
+"""Çýktý:
+>python p_40704.py
+
+Aylýk ondalýk faiz: 0.020833333333333332
+Aylýk Geri Ödeme:  1619.16
+
+Aylýk ondalýk faiz: 0.020833333333333332
+Kalan Bakiye:     0.12
+
+Yýllýk Faiz: 25
+Ödeme Adedi: 50
+Alýnan Ana Borç: 50000
+Aylýk Geri Ödeme: 1619.16
+Kalan Bakiye: 0.12
+"""

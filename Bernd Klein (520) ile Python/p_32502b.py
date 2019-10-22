@@ -1,0 +1,80 @@
+#coding:iso-8859-9 Türkçe
+# p_32502b.py: Pandas veri çerçevesi grafiðinde çift eksen kullanýlmasý örneði.
+
+import matplotlib.pyplot as mp
+import pandas as pd
+from p_315 import Renk
+
+þehirler = {"ad": ["Londra", "Berlin", "Madrid", "Roma", "Paris", "Viyana", "Buçarest",
+    "Hamburg", "Budapeþte", "Varþova", "Barselona", "Münih", "Milano"],
+            "nüfus": [8615246, 3562166, 3165235, 2874038, 2273305, 1805681, 1803425,
+    1760433, 1754000, 1740119, 1602386, 1493900, 1350680],
+            "yüzölçüm": [1572, 891.85, 605.77, 1285, 105.4, 414.6, 228,
+    755, 525.2, 517, 101.9, 310.4, 181.8] }
+
+vÇ = pd.DataFrame (þehirler, columns=["nüfus", "yüzölçüm"], index=þehirler ["ad"] )
+
+print ("Þehirler veri çerçevesi:\n", vÇ, sep="")
+
+þekil = mp.figure()
+þekil.set_facecolor (Renk.renk() )
+þekil.suptitle ("Þehirlerin Ýstatistikleri")
+
+altþekil1 = þekil.subplots()
+altþekil1.set_ylabel ("Nüfus")
+altþekil1.set_xlabel ("Þehirler")
+altþekil1.set_facecolor (Renk.renk() )
+
+altþekil2 = altþekil1.twinx()
+altþekil2.set_ylabel ("Yüzölçümü")
+
+vÇ ["nüfus"].plot (
+    ax=altþekil1,
+    style="-", color=Renk.renk(),
+    xticks=range (len (vÇ.index)),
+    use_index=True,
+    rot=90)
+vÇ ["yüzölçüm"].plot (
+    ax=altþekil2,
+    style="--", color=Renk.renk(),
+    use_index=True,
+    rot=90)
+þekil.legend()
+mp.show()
+#-------------------------------------------------------------------------------------------------------
+
+mp.style.use ("dark_background")
+altþekil1= vÇ ["nüfus"].plot (style="-", color=Renk.renk(),
+                                   xticks=range (len (vÇ.index)),
+                                   use_index=True, 
+                                   rot=90)
+altþekil2 = altþekil1.twinx()
+vÇ["yüzölçüm"].plot (ax=altþekil2,
+                        style="-", color=Renk.renk(),
+                        use_index=True,
+                        rot=90)
+altþekil1.legend (loc = (.7,.9), frameon = False)
+altþekil2.legend ( loc = (.7, .85), frameon = False)
+altþekil1.set_facecolor (Renk.renk() )
+mp.show()
+
+
+
+"""Çýktý:
+>python p_32502b.py
+Þehirler veri çerçevesi:
+             nüfus  yüzölçüm
+Londra     8615246   1572.00
+Berlin     3562166    891.85
+Madrid     3165235    605.77
+Roma       2874038   1285.00
+Paris      2273305    105.40
+Viyana     1805681    414.60
+Buçarest   1803425    228.00
+Hamburg    1760433    755.00
+Budapeþte  1754000    525.20
+Varþova    1740119    517.00
+Barselona  1602386    101.90
+Münih      1493900    310.40
+Milano     1350680    181.80
+"""

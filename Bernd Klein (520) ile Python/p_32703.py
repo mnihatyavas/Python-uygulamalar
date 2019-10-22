@@ -1,0 +1,84 @@
+#coding:iso-8859-9 Türkçe
+# p_32703.py: Modül datetime'ýn datetime ve timedelta sýnýfý örneði.
+
+from datetime import datetime, timedelta
+import pytz
+
+zt = datetime (2019, 8, 11, 0, 26, 45)
+print ("Verili zamanlý tarih:", zt)
+print ("Verili zamnlý tarih naif/bön mi?", (zt.tzinfo == None) )
+
+zt2 = datetime.now (pytz.utc)
+print ("Þimdinin utc'li zamanlý tarihi:", zt2)
+print ("Verili zamanlý tarih aware/uyanýk mi?", (zt2.tzinfo != None), (zt2.tzinfo.utcoffset (zt2) != None) )
+print ("Evrensel zaman koordinatý ve saat farký:", zt2.tzinfo, zt2.tzinfo.utcoffset (zt2) )
+
+günSayýsý = 5
+ilk = datetime (2019, 2, 27)
+tarihler = [ilk + timedelta (days=x) for x in range (0, günSayýsý)]
+print ("\n5 günlük timedelta gün artýþý:\n", "-"*30, sep="")
+for tarih in tarihler: print (tarih)
+
+ilk = datetime (2019, 1, 2)
+tarihler = [ilk - timedelta (days=x) for x in range (0, günSayýsý)]
+print ("\n5 günlük timedelta gün azalýþý:\n", "-"*31, sep="")
+for tarih in tarihler: print (tarih)
+print ("-"*59)
+#-----------------------------------------------------------------------------------------------------
+
+günFarký = datetime (2019, 8,12, 3, 8, 45) - datetime (1959, 4, 17, 14, 30)
+print ("\nYaþ ve gün sayýsý karþýlýðý: ", (2019 - 1957), " yýl ve ", günFarký, sep="")
+print ("Yaþ'ýn gün sayýsý ve saniye artaný:", günFarký.days, günFarký.seconds)
+print ("-"*59)
+#-----------------------------------------------------------------------------------------------------
+
+tarih1 = datetime (1957, 4, 17)
+tarih2 = tarih1 + timedelta (300) # 300 gün sonrasý...
+tarih3 = tarih1 - timedelta (300) # 300 gün öncesi...
+tarih4 = tarih1 + 3.14 * timedelta (300) # 3.14*300=942 gün ilavesi...
+tarih5 = tarih2 + timedelta (0, 3661)
+print ("\nVerilen tarih: ", tarih1,
+    "\n300 gün sonrasý: ", tarih2,
+    "\n300 gün ve 3661 saniye sonrasý: ", tarih5,
+    "\n300 gün öncesi: ", tarih3,
+    "\n3.14 * 300 gün sonrasý: ", tarih4,
+    "\nSon eklenen tarihin gün farký: ", (tarih4 - tarih1), sep="")
+
+
+
+"""Çýktý:
+>python p_32703.py
+Verili zamanlý tarih: 2019-08-11 00:26:45
+Verili zamnlý tarih naif/bön mi? True
+Þimdinin utc'li zamanlý tarihi: 2019-08-12 00:40:17.717456+00:00
+Verili zamanlý tarih aware/uyanýk mi? True True
+Evrensel zaman koordinatý ve saat farký: UTC 0:00:00
+
+5 günlük timedelta gün artýþý:
+------------------------------
+2019-02-27 00:00:00
+2019-02-28 00:00:00
+2019-03-01 00:00:00
+2019-03-02 00:00:00
+2019-03-03 00:00:00
+
+5 günlük timedelta gün azalýþý:
+-------------------------------
+2019-01-02 00:00:00
+2019-01-01 00:00:00
+2018-12-31 00:00:00
+2018-12-30 00:00:00
+2018-12-29 00:00:00
+-----------------------------------------------------------
+
+Yaþ ve gün sayýsý karþýlýðý: 62 yýl ve 22031 days, 12:38:45
+Yaþ'ýn gün sayýsý ve saniye artaný: 22031 45525
+-----------------------------------------------------------
+
+Verilen tarih: 1957-04-17 00:00:00
+300 gün sonrasý: 1958-02-11 00:00:00
+300 gün ve 3661 saniye sonrasý: 1958-02-11 01:01:01
+300 gün öncesi: 1956-06-21 00:00:00
+3.14 * 300 gün sonrasý: 1959-11-15 00:00:00
+Son eklenen tarihin gün farký: 942 days, 0:00:00
+"""

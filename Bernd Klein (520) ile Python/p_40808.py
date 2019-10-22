@@ -1,0 +1,22 @@
+# coding:iso-8859-9 Türkçe
+# p_40808.py: Canvas tuvalinde eþit aralýklý yatay-dikey ýzgara hatlarý çizimi örneði.
+
+from tkinter import *
+from p_315 import Renk
+
+def ýzgaralama (t, aralýk, en, boy): # Dikey/boy ve yatay/en çizgiler aralýk/px mesafeli olacak...
+    renk = Renk.renk()
+    for x in range (aralýk, en, aralýk): t.create_line (x,0, x,boy, fill=renk)
+    for y in range (aralýk, boy, aralýk): t.create_line (0,y, en,y, fill=renk)
+
+kök = Tk()
+kök.title ("Izgaralama")
+
+tuvalEni = 300
+tuvalBoyu =100
+tuval = Canvas (kök, width=tuvalEni, height=tuvalBoyu, bg=Renk.renk() )
+tuval.pack()
+
+ýzgaralama (tuval,10, tuvalEni, tuvalBoyu)
+
+kök.mainloop()

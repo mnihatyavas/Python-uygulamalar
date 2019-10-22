@@ -1,0 +1,29 @@
+# coding:iso-8859-9 Türkçe
+# p_40202.py: Message bileþeni ve parametrelerinin geliþigüzel deðiþtirilmesi örneði.
+
+from tkinter import *
+from p_315 import Renk
+from random import randint
+
+kök=Tk()
+
+def deðiþtir():
+    global çerçeve, hizala
+    mesaj.config (font=('segoe script', 20, 'normal'),
+        bg=Renk.renk(), fg=Renk.renk(),
+        width=randint (275,1200),
+        justify=hizala [randint (0, 2)],
+        bd=randint (1,10), relief=çerçeve [randint (0, 4)])
+
+boþdeyiþ = """Yapýlagelen þeylerin hiçbir önemi yoktur, önemli olan yapýlagiden þeylerle \
+    boþu-boþuna ve de hiçi-hiçine etkileþim ve katýlým halinde vakit geçirerek kendini \
+    süründürebilmendir.\n\n(M.Nihat Yavaþ)"""
+mesaj = Message (kök, text=boþdeyiþ, anchor=CENTER, padx=5, pady=5)
+mesaj.pack()
+
+Button (kök, text="DEÐÝÞTÝR", bg="black", fg="yellow", command=deðiþtir).pack()
+
+hizala = [LEFT, RIGHT, CENTER]
+çerçeve = [FLAT, SUNKEN, RAISED, GROOVE, RIDGE]
+
+mainloop()

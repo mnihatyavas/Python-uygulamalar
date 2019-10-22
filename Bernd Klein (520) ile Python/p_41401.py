@@ -1,0 +1,25 @@
+# coding:iso-8859-9 Türkçe
+# p_41401.py: Bileþene (düðme) baðlý olay gerçekleþtiðinde fonksiyon yürütme örneði.
+
+from tkinter import *
+from tkinter.messagebox import *
+from p_315 import Renk
+
+def selam (olay): etiket.config (text="Merhaba, düðmeyi tek týkladýnýz!..", bg=Renk.renk(), fg=Renk.renk() )
+def çýk (olay):
+    etiket.config (text="Düðme çýkýþ için çift týklandý!..", bg=Renk.renk(), fg=Renk.renk() )
+    if askyesno ('Onay', 'Çýkayým mý?'):
+        showwarning ('Evet', 'Onayladýnýz; týklayýnca çýkýyorum...')
+        import sys; sys.exit (0)
+    else: showinfo ('Ýptal', 'Çýkýþ iptal edildi; kalýyorum...')
+
+düðmeBileþeni = Button (None, text="Tek týkla [selam]\nÇift týkla [çýk]", bg="Blue", fg="Lime")
+düðmeBileþeni.pack()
+
+düðmeBileþeni.bind ('<Button-1>', selam)
+düðmeBileþeni.bind ('<Double-1>', çýk) 
+
+etiket = Label (None, font=("Segoe Script", 18, "italic") )
+etiket.pack()
+
+düðmeBileþeni.mainloop()

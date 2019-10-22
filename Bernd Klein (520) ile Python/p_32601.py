@@ -1,0 +1,199 @@
+#coding:iso-8859-9 Türkçe
+# p_32601.py: Pandas serisinde çoklu endeks ve sýralama örneði.
+
+import pandas as pd
+
+þehirler = ["Viyana", "Hamburg", "Berlin", "Zürih"]
+özellikleri = [("ülke", "yüzölçümü", "nüfus", "yoðunluk")] * 4
+endeks = [þehirler, özellikleri]
+veriler = [
+    ("Avusturya", 414.60, 1805681, int (1805681 / 414.6 * 100) / 100),
+    ("Almanya", 755.00, 1760433, int (1760433 / 755 * 100) / 100),
+    ("Almanya", 891.85, 3562166, int (3562166 / 891.85 * 100) / 100),
+    ("Ýsviçre", 87.88, 378884, int (378884 / 87.88* 100) / 100) ]
+þehirlerSerisi = pd.Series (veriler, index=endeks)
+
+print ("Þehirler ve özellikleri'ne endeksli veriler serisi:\n", þehirlerSerisi, sep="")
+print ("-"*79)
+#-------------------------------------------------------------------------------------------------------
+
+þehirler = [
+    "Viyana", "Viyana", "Viyana", "Viyana",
+    "Hamburg","Hamburg", "Hamburg", "Hamburg",
+    "Berlin", "Berlin", "Berlin", "Berlin",
+    "Zürih", "Zürih", "Zürih", "Zürih"]
+özellikleri = [
+    "ülke", "yüzölçümü", "nüfus", "yoðunluk",
+    "ülke", "yüzölçümü", "nüfus", "yoðunluk",
+    "ülke", "yüzölçümü", "nüfus", "yoðunluk",
+    "ülke", "yüzölçümü", "nüfus", "yoðunluk" ]
+veriler = [
+    "Avusturya", 414.60, 1805681, int (1805681 / 414.6 * 100) / 100,
+    "Almanya", 755.00, 1760433, int (1760433 / 755 * 100) / 100,
+    "Almanya", 891.85, 3562166, int (3562166 / 891.85 * 100) / 100,
+    "Ýsviçre", 87.88, 378884, int (378884 / 87.88* 100) / 100 ]
+endeks = [þehirler, özellikleri]
+þehirlerSerisi = pd.Series (veriler, index=endeks)
+
+print ("\n4 faklý þehir ve özellikleri'ne endeksli veriler serisi:\n", þehirlerSerisi, sep="")
+print ("-"*50)
+#-------------------------------------------------------------------------------------------------------
+
+þS= þehirlerSerisi
+print ("\nSadece Viyana'nýn özellikli verileri:\n", þS ["Viyana"], sep="")
+
+print ("\nViyana'nýn yoðunluk özellikli verisi: ", þS ["Viyana"] ["yoðunluk"],
+    "\nVeya: ", þS ["Viyana", "yoðunluk"], sep="")
+
+print ("\nSadece Hamburg ve Zürih'in özellikli verileri:\n", þS [["Hamburg", "Zürih"]], sep="")
+print ("-"*50)
+#-------------------------------------------------------------------------------------------------------
+
+þS2 = þS.sort_index()
+print ("\nTüm verileri artan sýralý þehirler serisi:\n", þS2, sep="")
+
+print ("\nÞehirler arasýndan dilim verileri:\n", þS2 ["Hamburg" : "Viyana"], sep="" )
+print ("-"*40)
+#-------------------------------------------------------------------------------------------------------
+
+print ("\nTüm þehirlerin sadece yoðunluk verileri:\n", þS [:, "yoðunluk"], sep="")
+print ("-"*52)
+#-------------------------------------------------------------------------------------------------------
+
+þS3 = þS.swaplevel()
+print ("\nÞehirler deðil ÖZELLÝKLER öncelikli endeks verileri:\n", þS3, sep="")
+
+þS3.sort_index (inplace=True)
+print ("\nÖzelliklere göre artan sýralý gruplanan veriler:\n", þS3, sep="")
+
+
+
+"""Çýktý:
+>python p_32601.py
+Þehirler ve özellikleri'ne endeksli veriler serisi:
+Viyana   (ülke, yüzölçümü, nüfus, yoðunluk)    (Avusturya, 414.6, 1805681, 4355.23)
+Hamburg  (ülke, yüzölçümü, nüfus, yoðunluk)      (Almanya, 755.0, 1760433, 2331.69)
+Berlin   (ülke, yüzölçümü, nüfus, yoðunluk)     (Almanya, 891.85, 3562166, 3994.13)
+Zürih    (ülke, yüzölçümü, nüfus, yoðunluk)       (Ýsviçre, 87.88, 378884, 4311.37)
+dtype: object
+-------------------------------------------------------------------------------
+
+4 faklý þehir ve özellikleri'ne endeksli veriler serisi:
+Viyana   ülke         Avusturya
+         yüzölçümü        414.6
+         nüfus          1805681
+         yoðunluk       4355.23
+Hamburg  ülke           Almanya
+         yüzölçümü          755
+         nüfus          1760433
+         yoðunluk       2331.69
+Berlin   ülke           Almanya
+         yüzölçümü       891.85
+         nüfus          3562166
+         yoðunluk       3994.13
+Zürih    ülke           Ýsviçre
+         yüzölçümü        87.88
+         nüfus           378884
+         yoðunluk       4311.37
+dtype: object
+--------------------------------------------------
+
+Sadece Viyana'nýn özellikli verileri:
+ülke         Avusturya
+yüzölçümü        414.6
+nüfus          1805681
+yoðunluk       4355.23
+dtype: object
+
+Viyana'nýn yoðunluk özellikli verisi: 4355.23
+Veya: 4355.23
+
+Sadece Hamburg ve Zürih'in özellikli verileri:
+Hamburg  ülke         Almanya
+         yüzölçümü        755
+         nüfus        1760433
+         yoðunluk     2331.69
+Zürih    ülke         Ýsviçre
+         yüzölçümü      87.88
+         nüfus         378884
+         yoðunluk     4311.37
+dtype: object
+--------------------------------------------------
+
+Tüm verileri artan sýralý þehirler serisi:
+Berlin   nüfus          3562166
+         yoðunluk       3994.13
+         yüzölçümü       891.85
+         ülke           Almanya
+Hamburg  nüfus          1760433
+         yoðunluk       2331.69
+         yüzölçümü          755
+         ülke           Almanya
+Viyana   nüfus          1805681
+         yoðunluk       4355.23
+         yüzölçümü        414.6
+         ülke         Avusturya
+Zürih    nüfus           378884
+         yoðunluk       4311.37
+         yüzölçümü        87.88
+         ülke           Ýsviçre
+dtype: object
+
+Þehirler arasýndan dilim verileri:
+Hamburg  nüfus          1760433
+         yoðunluk       2331.69
+         yüzölçümü          755
+         ülke           Almanya
+Viyana   nüfus          1805681
+         yoðunluk       4355.23
+         yüzölçümü        414.6
+         ülke         Avusturya
+dtype: object
+----------------------------------------
+
+Tüm þehirlerin sadece yoðunluk verileri:
+Viyana     4355.23
+Hamburg    2331.69
+Berlin     3994.13
+Zürih      4311.37
+dtype: object
+----------------------------------------------------
+
+Þehirler deðil ÖZELLÝKLER öncelikli endeks verileri:
+ülke       Viyana     Avusturya
+yüzölçümü  Viyana         414.6
+nüfus      Viyana       1805681
+yoðunluk   Viyana       4355.23
+ülke       Hamburg      Almanya
+yüzölçümü  Hamburg          755
+nüfus      Hamburg      1760433
+yoðunluk   Hamburg      2331.69
+ülke       Berlin       Almanya
+yüzölçümü  Berlin        891.85
+nüfus      Berlin       3562166
+yoðunluk   Berlin       3994.13
+ülke       Zürih        Ýsviçre
+yüzölçümü  Zürih          87.88
+nüfus      Zürih         378884
+yoðunluk   Zürih        4311.37
+dtype: object
+
+Özelliklere göre artan sýralý gruplanan veriler:
+nüfus      Berlin       3562166
+           Hamburg      1760433
+           Viyana       1805681
+           Zürih         378884
+yoðunluk   Berlin       3994.13
+           Hamburg      2331.69
+           Viyana       4355.23
+           Zürih        4311.37
+yüzölçümü  Berlin        891.85
+           Hamburg          755
+           Viyana         414.6
+           Zürih          87.88
+ülke       Berlin       Almanya
+           Hamburg      Almanya
+           Viyana     Avusturya
+           Zürih        Ýsviçre
+dtype: object
+"""
